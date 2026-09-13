@@ -555,6 +555,7 @@
       inset: 0;
       background: rgba(26, 23, 20, 0.88);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -602,6 +603,11 @@
       flex: 1 1 50%;
       padding: 32px 28px;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .modal-details-body {
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -724,6 +730,7 @@
       transition: all .15s;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       z-index: 10;
+      user-select: none;
     }
     .modal-nav-btn:hover {
       background: #fff;
@@ -732,6 +739,12 @@
     }
     .modal-prev { left: 14px; }
     .modal-next { right: 14px; }
+
+    /* Hidden by default on Desktop */
+    .modal-top-bar { display: none; }
+    .modal-mobile-bottom-bar { display: none; }
+    .drawer-header { display: none; }
+    .modal-drawer-backdrop { display: none; }
 
     /* Toast Notification */
     #toast {
@@ -765,22 +778,272 @@
       font-size: 16px;
     }
 
-    /* Responsive */
+    /* Responsive - Mobile Fullscreen Immersive Lightbox */
     @media (max-width: 860px) {
-      .modal-card {
-        flex-direction: column;
-        max-height: 90vh;
+      #lightbox {
+        padding: 0;
+        background: rgba(12, 10, 8, 0.96);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
       }
+      #lightbox.open {
+        display: block;
+      }
+      .modal-card {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        max-width: 100vw;
+        border-radius: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      .modal-close {
+        display: none;
+      }
+
+      /* Fullscreen Image Container */
       .modal-img-wrap {
-        flex: 0 0 45vh;
-        min-height: auto;
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        min-height: 0;
+        background: transparent;
+        padding: 58px 16px 80px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        touch-action: pan-y;
+        flex: none;
       }
       .modal-img-wrap img {
-        max-height: 45vh;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 30px rgba(0,0,0,0.65));
+        border-radius: 6px;
       }
+
+      /* Floating Mobile Top Bar */
+      .modal-top-bar {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        box-sizing: border-box;
+        height: 54px;
+        padding: 0 16px;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%);
+        z-index: 1025;
+        pointer-events: auto;
+      }
+      .modal-top-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .modal-top-badge {
+        flex: 0 0 auto;
+        font: 11px/1 ui-monospace, monospace;
+        background: rgba(255,255,255,0.18);
+        color: #ede2cf;
+        padding: 4px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        letter-spacing: .04em;
+      }
+      .modal-top-title {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 15px;
+        color: #ffffff;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+      }
+      .modal-top-close {
+        flex: 0 0 32px;
+        min-width: 32px;
+        background: rgba(255,255,255,0.22);
+        border: 1px solid rgba(255,255,255,0.25);
+        color: #ffffff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: background .15s ease;
+        margin-left: 10px;
+        flex-shrink: 0;
+      }
+      .modal-top-close:active {
+        background: rgba(255,255,255,0.45);
+      }
+
+      /* Floating Mobile Bottom Action Bar */
+      .modal-mobile-bottom-bar {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1025;
+        gap: 10px;
+        background: rgba(24, 20, 16, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        padding: 6px 10px;
+        border-radius: 30px;
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      }
+      .mobile-action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: 20px;
+        font: 12.5px/1 Georgia, "Songti SC", serif;
+        cursor: pointer;
+        border: none;
+        transition: all .15s ease;
+        user-select: none;
+      }
+      .mobile-action-btn.copy-btn {
+        background: var(--accent);
+        color: #ffffff;
+        font-weight: 500;
+      }
+      .mobile-action-btn.copy-btn:active {
+        background: #733c2c;
+      }
+      .mobile-action-btn.detail-btn {
+        background: rgba(255,255,255,0.12);
+        color: #f5ede0;
+      }
+      .mobile-action-btn.detail-btn:active {
+        background: rgba(255,255,255,0.22);
+      }
+
+      /* Slide-up Bottom Drawer for Mobile Details */
       .modal-details {
-        padding: 20px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1040;
+        background: var(--paper-pop);
+        border-radius: 18px 18px 0 0;
+        box-shadow: 0 -12px 40px rgba(0,0,0,0.6);
+        max-height: 80vh;
+        padding: 0 20px 28px;
+        overflow-y: auto;
+        transform: translateY(105%);
+        transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1);
+        border-top: 1px solid var(--line-dark);
+        scrollbar-width: thin;
       }
+      .modal-details.drawer-open {
+        transform: translateY(0);
+      }
+      .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        background: var(--paper-pop);
+        padding: 12px 0 10px;
+        z-index: 2;
+        margin: 0 -20px 12px;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }
+      .drawer-handle {
+        width: 38px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(0,0,0,0.22);
+      }
+      .drawer-close-btn {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.06);
+        border: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        cursor: pointer;
+        color: var(--ink);
+      }
+      .drawer-close-btn:active {
+        background: rgba(0,0,0,0.15);
+      }
+      .modal-drawer-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 1035;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease;
+      }
+      .modal-drawer-backdrop.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Modal Nav Arrows on Mobile */
+      .modal-nav-btn {
+        position: fixed;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        background: rgba(0,0,0,0.45);
+        color: #ffffff;
+        border: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 1020;
+      }
+      .modal-prev { left: 10px; }
+      .modal-next { right: 10px; }
     }
     @media (max-width: 680px) {
       header { padding: 24px 16px 16px; }
@@ -869,34 +1132,66 @@
 
   <!-- Lightbox Modal -->
   <div id="lightbox">
+    <!-- Floating Mobile Top Header -->
+    <div class="modal-top-bar" id="modal-top-bar">
+      <div class="modal-top-info">
+        <span class="modal-top-badge" id="modal-top-badge">01 / 50</span>
+        <span class="modal-top-title" id="modal-top-title">北京故宫</span>
+      </div>
+      <button class="modal-top-close" id="modal-top-close" title="关闭 (Esc)">✕</button>
+    </div>
+
+    <!-- Navigation Buttons -->
     <button class="modal-nav-btn modal-prev" id="btn-prev" title="上一张 (Left Arrow)">‹</button>
     <button class="modal-nav-btn modal-next" id="btn-next" title="下一张 (Right Arrow)">›</button>
 
-    <div class="modal-card">
+    <div class="modal-card" id="modal-card">
       <button class="modal-close" id="modal-close" title="关闭 (Esc)">✕</button>
 
-      <div class="modal-img-wrap">
+      <div class="modal-img-wrap" id="modal-img-wrap">
         <img id="modal-img" src="" alt="印章大图">
       </div>
 
-      <div class="modal-details">
-        <div>
-          <div class="modal-badge" id="modal-badge">5A SCENIC SPOTS 01</div>
-          <h2 class="modal-title" id="modal-title">北京故宫</h2>
-        </div>
-        <div class="modal-meta" id="modal-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</div>
-        <div class="modal-colors" id="modal-colors">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
+      <!-- Floating Mobile Bottom Action Bar -->
+      <div class="modal-mobile-bottom-bar" id="modal-mobile-bottom-bar">
+        <button class="mobile-action-btn copy-btn" id="btn-mobile-copy-prompt" type="button">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span>复制 Prompt</span>
+        </button>
+        <button class="mobile-action-btn detail-btn" id="btn-mobile-open-details" type="button">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span>查看详情</span>
+        </button>
+      </div>
 
-        <!-- Full Prompt Block -->
-        <div class="modal-prompt-box">
-          <div class="modal-prompt-header">
-            <span class="modal-prompt-title">原始作图 Prompt</span>
-            <button class="btn-modal-copy" id="btn-copy-modal-prompt">复制完整提示词</button>
+      <!-- Details Section (Desktop: Right Column; Mobile: Slide-up Drawer) -->
+      <div class="modal-details" id="modal-details">
+        <div class="drawer-header" id="drawer-header">
+          <div class="drawer-handle"></div>
+          <button class="drawer-close-btn" id="btn-drawer-close" title="收起详情">✕</button>
+        </div>
+        <div class="modal-details-body">
+          <div>
+            <div class="modal-badge" id="modal-badge">5A SCENIC SPOTS 01</div>
+            <h2 class="modal-title" id="modal-title">北京故宫</h2>
           </div>
-          <div class="modal-prompt-content" id="modal-prompt-content"></div>
+          <div class="modal-meta" id="modal-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</div>
+          <div class="modal-colors" id="modal-colors">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
+
+          <!-- Full Prompt Block -->
+          <div class="modal-prompt-box">
+            <div class="modal-prompt-header">
+              <span class="modal-prompt-title">原始作图 Prompt</span>
+              <button class="btn-modal-copy" id="btn-copy-modal-prompt">复制完整提示词</button>
+            </div>
+            <div class="modal-prompt-content" id="modal-prompt-content"></div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Drawer Backdrop (for mobile) -->
+    <div class="modal-drawer-backdrop" id="modal-drawer-backdrop"></div>
   </div>
 
   <!-- Toast Notification -->
@@ -933,6 +1228,16 @@
     const modalColors = document.querySelector("#modal-colors");
     const modalPromptContent = document.querySelector("#modal-prompt-content");
     const btnCopyModalPrompt = document.querySelector("#btn-copy-modal-prompt");
+
+    // Mobile specific modal elements
+    const modalTopBadge = document.querySelector("#modal-top-badge");
+    const modalTopTitle = document.querySelector("#modal-top-title");
+    const modalTopClose = document.querySelector("#modal-top-close");
+    const btnMobileCopyPrompt = document.querySelector("#btn-mobile-copy-prompt");
+    const btnMobileOpenDetails = document.querySelector("#btn-mobile-open-details");
+    const btnDrawerClose = document.querySelector("#btn-drawer-close");
+    const modalDetails = document.querySelector("#modal-details");
+    const modalDrawerBackdrop = document.querySelector("#modal-drawer-backdrop");
 
     function getCollection() {
       return window.COLLECTIONS[currentSeriesKey] || window.COLLECTIONS.scenic_spots;
@@ -1247,8 +1552,20 @@
     searchInput.oninput = render;
 
     /* -------------------------------------------------------------
-       Lightbox Modal with Full Prompt
+       Lightbox Modal & Mobile Drawer Logic
        ------------------------------------------------------------- */
+    function openDrawer() {
+      modalDetails.classList.add("drawer-open");
+      modalDrawerBackdrop.classList.add("show");
+      document.querySelectorAll(".modal-nav-btn").forEach(b => b.style.opacity = "0");
+    }
+
+    function closeDrawer() {
+      modalDetails.classList.remove("drawer-open");
+      modalDrawerBackdrop.classList.remove("show");
+      document.querySelectorAll(".modal-nav-btn").forEach(b => b.style.opacity = "");
+    }
+
     function openModal(index) {
       if (index < 0 || index >= currentFilteredRows.length) return;
       currentModalIndex = index;
@@ -1257,29 +1574,67 @@
       const displayName = x.city || x.title || x.name;
       const promptText = x.prompt || "";
 
+      closeDrawer();
+
       modalImg.src = x.output;
       modalImg.alt = displayName;
+      
+      // Desktop info
       modalBadge.textContent = `${col.titleEn.toUpperCase()} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
       modalTitle.textContent = displayName;
       modalDesc.textContent = x.features || "";
       modalColors.textContent = x.colors ? `印层配色：${x.colors}` : "";
       modalPromptContent.textContent = promptText;
 
-      btnCopyModalPrompt.onclick = () => copyText(promptText, `已复制「${displayName}」完整作图 Prompt 到剪贴板`);
+      // Mobile top info
+      modalTopBadge.textContent = `${col.title} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
+      modalTopTitle.textContent = displayName;
+
+      // Copy buttons
+      btnCopyModalPrompt.onclick = () => copyText(promptText, `已复制「${displayName}」完整作图 Prompt`);
+      btnMobileCopyPrompt.onclick = (e) => {
+        e.stopPropagation();
+        copyText(promptText, `已复制「${displayName}」作图 Prompt`);
+      };
 
       lightboxEl.classList.add("open");
     }
 
     document.querySelector("#modal-close").onclick = () => lightboxEl.classList.remove("open");
+    modalTopClose.onclick = () => lightboxEl.classList.remove("open");
+
     lightboxEl.onclick = e => {
-      if (e.target.id === "lightbox") lightboxEl.classList.remove("open");
+      if (e.target.id === "lightbox" || e.target.id === "modal-img-wrap" || e.target.id === "modal-card") {
+        if (modalDetails.classList.contains("drawer-open")) {
+          closeDrawer();
+        } else {
+          lightboxEl.classList.remove("open");
+        }
+      }
     };
 
-    document.querySelector("#btn-prev").onclick = () => {
+    btnMobileOpenDetails.onclick = (e) => {
+      e.stopPropagation();
+      openDrawer();
+    };
+
+    btnDrawerClose.onclick = (e) => {
+      e.stopPropagation();
+      closeDrawer();
+    };
+
+    modalDrawerBackdrop.onclick = (e) => {
+      e.stopPropagation();
+      closeDrawer();
+    };
+
+    document.querySelector("#btn-prev").onclick = (e) => {
+      if (e) e.stopPropagation();
       if (currentModalIndex > 0) openModal(currentModalIndex - 1);
       else openModal(currentFilteredRows.length - 1);
     };
-    document.querySelector("#btn-next").onclick = () => {
+    document.querySelector("#btn-next").onclick = (e) => {
+      if (e) e.stopPropagation();
       if (currentModalIndex < currentFilteredRows.length - 1) openModal(currentModalIndex + 1);
       else openModal(0);
     };
@@ -1287,10 +1642,48 @@
     // Keyboard Arrow Navigation
     window.addEventListener("keydown", e => {
       if (!lightboxEl.classList.contains("open")) return;
-      if (e.key === "Escape") lightboxEl.classList.remove("open");
-      else if (e.key === "ArrowLeft") document.querySelector("#btn-prev").click();
-      else if (e.key === "ArrowRight") document.querySelector("#btn-next").click();
+      if (e.key === "Escape") {
+        if (modalDetails.classList.contains("drawer-open")) {
+          closeDrawer();
+        } else {
+          lightboxEl.classList.remove("open");
+        }
+      } else if (e.key === "ArrowLeft") {
+        document.querySelector("#btn-prev").click();
+      } else if (e.key === "ArrowRight") {
+        document.querySelector("#btn-next").click();
+      }
     });
+
+    // Touch Swipe Gestures for Mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    lightboxEl.addEventListener("touchstart", e => {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    lightboxEl.addEventListener("touchend", e => {
+      if (modalDetails.classList.contains("drawer-open")) return;
+      if (e.changedTouches.length === 1) {
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+        const dx = touchEndX - touchStartX;
+        const dy = touchEndY - touchStartY;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          if (dx < 0) {
+            document.querySelector("#btn-next").click();
+          } else {
+            document.querySelector("#btn-prev").click();
+          }
+        }
+      }
+    }, { passive: true });
 
     // Color Palette Switcher
     document.querySelectorAll(".color-btn").forEach(btn => {
@@ -1311,6 +1704,21 @@
       updateHeader();
       buildCategoryOptions();
       render();
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const modalParam = urlParams.get("modal");
+    const drawerParam = urlParams.get("drawer");
+    if (modalParam !== null) {
+      const idx = parseInt(modalParam, 10);
+      if (!isNaN(idx) && idx >= 0) {
+        setTimeout(() => {
+          openModal(idx);
+          if (drawerParam === "1" || drawerParam === "true") {
+            openDrawer();
+          }
+        }, 50);
+      }
     }
   </script>
 </body>
