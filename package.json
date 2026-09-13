@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/holynova/rubber-stamp-world-cities/issues"
+  },
+  "dependencies": {
+    "jszip": "^3.10.2"
   }
 }
