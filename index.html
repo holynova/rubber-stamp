@@ -179,6 +179,25 @@
       background: rgba(255,255,255,0.2);
     }
 
+    .series-tab.tab-favorites {
+      background: #fdf5f3;
+      border-color: #e8c5be;
+      color: #8d4d39;
+    }
+    .series-tab.tab-favorites:hover {
+      background: #faece8;
+      border-color: #8d4d39;
+    }
+    .series-tab.tab-favorites.active {
+      background: #8d4d39;
+      color: #ffffff;
+      border-color: #8d4d39;
+      box-shadow: 2px 2px 0 #7e6f5c55;
+    }
+    .series-tab.tab-favorites .fav-heart {
+      font-size: 13px;
+    }
+
     /* Controls Bar: Search, Custom UI Dropdown Filter, Colors & Count */
     .controls-wrap {
       max-width: 1240px;
@@ -195,6 +214,39 @@
       border: 1px solid var(--line);
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .btn-batch-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #8d4d39;
+      color: #ffffff;
+      border: 1px solid #8d4d39;
+      border-radius: 4px;
+      padding: 8px 14px;
+      font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      cursor: pointer;
+      transition: all .15s ease;
+      user-select: none;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(141, 77, 57, 0.2);
+    }
+    .btn-batch-download:hover {
+      background: #733c2c;
+      border-color: #733c2c;
+      transform: translateY(-1px);
+    }
+    .btn-batch-download:active {
+      transform: translateY(0);
+    }
+    .btn-batch-download:disabled {
+      background: #ded7cb;
+      border-color: #cbbfad;
+      color: #9c9180;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+      opacity: 0.7;
     }
     .search-box {
       flex: 1 1 240px;
@@ -689,6 +741,95 @@
       scrollbar-width: thin;
     }
 
+    /* Card Like Button */
+    .card-like-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(248, 241, 229, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--line);
+      color: #8c8374;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s ease;
+      z-index: 5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      user-select: none;
+    }
+    .card-like-btn:hover {
+      transform: scale(1.1);
+      color: #c93b2b;
+      background: #fff;
+    }
+    .card-like-btn.liked {
+      color: #c93b2b;
+      background: #fff;
+      border-color: #c93b2b44;
+      box-shadow: 0 2px 8px rgba(201, 59, 43, 0.25);
+    }
+    .card-like-btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      stroke: currentColor;
+    }
+    .card-like-btn.liked svg {
+      fill: #c93b2b;
+      stroke: #c93b2b;
+    }
+    .card-like-btn:active svg {
+      transform: scale(0.85);
+    }
+
+    /* Modal Desktop Actions Bar */
+    .modal-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 2px 0;
+    }
+    .modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 4px;
+      font: 500 13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      cursor: pointer;
+      border: 1px solid var(--line-dark);
+      background: #f5ede0;
+      color: var(--ink);
+      transition: all .15s ease;
+      user-select: none;
+    }
+    .modal-btn:hover {
+      background: #fff;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .modal-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .modal-like-btn.liked {
+      background: #fbeae8;
+      border-color: #c93b2b;
+      color: #c93b2b;
+      font-weight: 500;
+    }
+    .modal-like-btn.liked svg {
+      fill: #c93b2b;
+      stroke: #c93b2b;
+    }
+
     /* Modal Navigation & Close */
     .modal-close {
       position: absolute;
@@ -776,6 +917,45 @@
       padding: 60px 20px;
       color: var(--muted);
       font-size: 16px;
+    }
+    .empty-favorites {
+      background: var(--paper-card);
+      border: 1px dashed var(--line-dark);
+      border-radius: 8px;
+      padding: 50px 24px;
+      max-width: 520px;
+      margin: 40px auto;
+    }
+    .empty-favorites .empty-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+    .empty-favorites h3 {
+      font-size: 18px;
+      color: var(--ink);
+      margin: 0 0 10px;
+      font-weight: 500;
+    }
+    .empty-favorites p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+    .btn-goto-gallery {
+      background: #8d4d39;
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 4px;
+      font: 500 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      cursor: pointer;
+      transition: all .15s ease;
+      box-shadow: 0 2px 6px rgba(141, 77, 57, 0.3);
+    }
+    .btn-goto-gallery:hover {
+      background: #733c2c;
+      transform: translateY(-1px);
     }
 
     /* Responsive - Mobile Fullscreen Immersive Lightbox */
@@ -961,6 +1141,24 @@
         display: inline-block;
         line-height: 1;
       }
+      .mobile-action-btn.like-btn {
+        background: rgba(255,255,255,0.14);
+        color: #f5ede0;
+      }
+      .mobile-action-btn.like-btn:active {
+        background: rgba(255,255,255,0.25);
+        transform: scale(0.96);
+      }
+      .mobile-action-btn.like-btn.liked {
+        background: #c93b2b;
+        color: #ffffff;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(201, 59, 43, 0.4);
+      }
+      .mobile-action-btn.like-btn.liked svg {
+        fill: #ffffff;
+        stroke: #ffffff;
+      }
       .mobile-action-btn.copy-btn {
         background: var(--accent);
         color: #ffffff;
@@ -1123,9 +1321,10 @@
     <button class="series-tab" data-series="zodiac">十二生肖 <span class="count-badge">12</span></button>
     <button class="series-tab" data-series="solar_terms">二十四节气 <span class="count-badge">24</span></button>
     <button class="series-tab" data-series="shanhaijing">山海神异 <span class="count-badge">10</span></button>
+    <button class="series-tab tab-favorites" data-series="favorites" title="查看所有已点赞的印章作品"><span class="fav-heart">❤️</span> 我的点赞 <span class="count-badge" id="fav-tab-badge">0</span></button>
   </nav>
 
-  <!-- Controls Bar: Search, Custom Styled Dropdown Filter, Color Modes -->
+  <!-- Controls Bar: Search, Custom Styled Dropdown Filter, Color Modes, Batch Download -->
   <div class="controls-wrap">
     <div class="controls">
       <!-- Search -->
@@ -1151,6 +1350,12 @@
         <button class="color-btn" data-ink="charcoal">墨黑</button>
         <button class="color-btn" data-ink="cinnabar">朱砂</button>
       </div>
+
+      <!-- Batch Download Liked Stamps Button -->
+      <button class="btn-batch-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载所有已点赞的高清原图" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>批量下载原图 (<span id="batch-download-count">0</span>)</span>
+      </button>
 
       <!-- Count Stats -->
       <div class="count-indicator" id="count-indicator">50 / 50 名胜风景</div>
@@ -1189,6 +1394,10 @@
 
       <!-- Floating Mobile Bottom Action Bar -->
       <div class="modal-mobile-bottom-bar" id="modal-mobile-bottom-bar">
+        <button class="mobile-action-btn like-btn" id="btn-mobile-like" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span id="mobile-like-text">点赞</span>
+        </button>
         <button class="mobile-action-btn copy-btn" id="btn-mobile-copy-prompt" type="button">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>复制 Prompt</span>
@@ -1213,6 +1422,18 @@
           <div class="modal-meta" id="modal-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</div>
           <div class="modal-colors" id="modal-colors">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
 
+          <!-- Actions Bar: Like & Single Download -->
+          <div class="modal-actions-bar">
+            <button class="modal-btn modal-like-btn" id="btn-modal-like" title="点赞/取消点赞">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span id="modal-like-text">点赞收藏</span>
+            </button>
+            <button class="modal-btn modal-download-btn" id="btn-modal-download" title="下载当前高清原图">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>下载原图</span>
+            </button>
+          </div>
+
           <!-- Full Prompt Block -->
           <div class="modal-prompt-box">
             <div class="modal-prompt-header">
@@ -1232,7 +1453,8 @@
   <!-- Toast Notification -->
   <div id="toast">已复制到剪贴板</div>
 
-  <!-- Data Script -->
+  <!-- JSZip & Data Scripts -->
+  <script src="jszip.min.js"></script>
   <script src="data.js"></script>
 
   <script>
@@ -1244,6 +1466,8 @@
     let currentFilteredRows = [];
     let currentModalIndex = 0;
 
+    const LIKES_STORAGE_KEY = "rubber_stamp_likes_v1";
+
     const seriesTabs = document.querySelectorAll(".series-tab");
     const searchInput = document.querySelector("#search-input");
     const filterTrigger = document.querySelector("#custom-filter-trigger");
@@ -1253,6 +1477,9 @@
     const countIndicator = document.querySelector("#count-indicator");
     const gridEl = document.querySelector("#grid");
     const toastEl = document.querySelector("#toast");
+    const favTabBadge = document.querySelector("#fav-tab-badge");
+    const batchDownloadCount = document.querySelector("#batch-download-count");
+    const btnBatchDownload = document.querySelector("#btn-batch-download");
 
     // Modal elements
     const lightboxEl = document.querySelector("#lightbox");
@@ -1263,18 +1490,245 @@
     const modalColors = document.querySelector("#modal-colors");
     const modalPromptContent = document.querySelector("#modal-prompt-content");
     const btnCopyModalPrompt = document.querySelector("#btn-copy-modal-prompt");
+    const btnModalLike = document.querySelector("#btn-modal-like");
+    const modalLikeText = document.querySelector("#modal-like-text");
+    const btnModalDownload = document.querySelector("#btn-modal-download");
 
     // Mobile specific modal elements
     const modalTopBadge = document.querySelector("#modal-top-badge");
     const modalTopTitle = document.querySelector("#modal-top-title");
     const modalTopClose = document.querySelector("#modal-top-close");
+    const btnMobileLike = document.querySelector("#btn-mobile-like");
+    const mobileLikeText = document.querySelector("#mobile-like-text");
     const btnMobileCopyPrompt = document.querySelector("#btn-mobile-copy-prompt");
     const btnMobileOpenDetails = document.querySelector("#btn-mobile-open-details");
     const btnDrawerClose = document.querySelector("#btn-drawer-close");
     const modalDetails = document.querySelector("#modal-details");
     const modalDrawerBackdrop = document.querySelector("#modal-drawer-backdrop");
 
+    /* -------------------------------------------------------------
+       Likes & Favorites System (LocalStorage)
+       ------------------------------------------------------------- */
+    function getLikedSet() {
+      try {
+        const raw = localStorage.getItem(LIKES_STORAGE_KEY);
+        return new Set(raw ? JSON.parse(raw) : []);
+      } catch (e) {
+        return new Set();
+      }
+    }
+
+    function saveLikedSet(set) {
+      try {
+        localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify([...set]));
+      } catch (e) {
+        console.warn("Could not save favorites to localStorage", e);
+      }
+    }
+
+    function isLiked(output) {
+      return getLikedSet().has(output);
+    }
+
+    function getAllLikedItems() {
+      const set = getLikedSet();
+      const allLiked = [];
+      const seriesOrder = ["scenic_spots", "poetry", "cities", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+      seriesOrder.forEach(sKey => {
+        const col = window.COLLECTIONS[sKey];
+        if (col && col.items) {
+          col.items.forEach(item => {
+            if (set.has(item.output)) {
+              allLiked.push({
+                ...item,
+                seriesKey: sKey,
+                seriesTitle: col.title,
+                seriesTitleEn: col.titleEn
+              });
+            }
+          });
+        }
+      });
+      return allLiked;
+    }
+
+    function toggleLike(item) {
+      if (!item || !item.output) return false;
+      const set = getLikedSet();
+      const liked = set.has(item.output);
+      const name = item.city || item.title || item.name || "作品";
+
+      if (liked) {
+        set.delete(item.output);
+        saveLikedSet(set);
+        showToast(`已取消对「${name}」的点赞`);
+      } else {
+        set.add(item.output);
+        saveLikedSet(set);
+        showToast(`已点赞「${name}」❤️`);
+      }
+
+      updateLikesUI();
+      return !liked;
+    }
+
+    function handleCardLike(output) {
+      const col = getCollection();
+      const item = col.items.find(x => x.output === output) || getAllLikedItems().find(x => x.output === output);
+      if (item) toggleLike(item);
+    }
+
+    function updateLikesUI() {
+      const set = getLikedSet();
+      const count = set.size;
+
+      if (favTabBadge) favTabBadge.textContent = count;
+      if (batchDownloadCount) batchDownloadCount.textContent = count;
+      if (btnBatchDownload) btnBatchDownload.disabled = count === 0;
+
+      // Update like buttons in current grid
+      document.querySelectorAll(".card-like-btn").forEach(btn => {
+        const out = btn.dataset.output;
+        const isL = set.has(out);
+        btn.classList.toggle("liked", isL);
+        btn.title = isL ? "取消点赞" : "点赞收藏";
+        btn.innerHTML = getHeartSvg(isL);
+      });
+
+      // If currently viewing favorites series tab, re-render and update header
+      if (currentSeriesKey === "favorites") {
+        updateHeader();
+        buildCategoryOptions();
+        render();
+      }
+
+      // If modal is open, update modal buttons
+      if (lightboxEl.classList.contains("open") && currentFilteredRows[currentModalIndex]) {
+        const curItem = currentFilteredRows[currentModalIndex];
+        const isL = set.has(curItem.output);
+        syncModalLikeButtons(isL);
+      }
+    }
+
+    function getHeartSvg(filled) {
+      return filled
+        ? `<svg width="15" height="15" viewBox="0 0 24 24" fill="#c93b2b" stroke="#c93b2b" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`
+        : `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+    }
+
+    function syncModalLikeButtons(isL) {
+      if (btnModalLike) {
+        btnModalLike.classList.toggle("liked", isL);
+        modalLikeText.textContent = isL ? "已点赞" : "点赞收藏";
+      }
+      if (btnMobileLike) {
+        btnMobileLike.classList.toggle("liked", isL);
+        mobileLikeText.textContent = isL ? "已点赞" : "点赞";
+      }
+    }
+
+    /* -------------------------------------------------------------
+       Batch & Single Download (JSZip Client-Side Packaging)
+       ------------------------------------------------------------- */
+    async function downloadLikedStamps() {
+      const likedItems = getAllLikedItems();
+      if (likedItems.length === 0) {
+        showToast("您还没有点赞任何印章作品，请先点击 ❤️ 点赞！");
+        return;
+      }
+
+      if (typeof JSZip === "undefined") {
+        showToast("下载打包模块加载中，请稍候重试");
+        return;
+      }
+
+      const origHtml = btnBatchDownload.innerHTML;
+      btnBatchDownload.disabled = true;
+
+      try {
+        showToast(`开始准备打包 ${likedItems.length} 张高清原图...`);
+        const zip = new JSZip();
+        const folder = zip.folder("rubber-stamps-favorites");
+
+        for (let i = 0; i < likedItems.length; i++) {
+          const item = likedItems[i];
+          btnBatchDownload.innerHTML = `<span>⏳ 打包中 (${i + 1}/${likedItems.length})...</span>`;
+
+          const response = await fetch(item.output);
+          if (!response.ok) throw new Error(`无法获取图片: ${item.output}`);
+          const blob = await response.blob();
+
+          const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\\/:*?"<>|]/g, "_");
+          const filename = `${item.seriesTitle || "印章"}_${String(item.id).padStart(2, "0")}_${cleanTitle}.png`;
+          folder.file(filename, blob);
+        }
+
+        btnBatchDownload.innerHTML = `<span>⚡ 正在压缩导出...</span>`;
+        const zipBlob = await zip.generateAsync({
+          type: "blob",
+          compression: "DEFLATE",
+          compressionOptions: { level: 6 }
+        });
+
+        const downloadUrl = URL.createObjectURL(zipBlob);
+        const a = document.createElement("a");
+        a.href = downloadUrl;
+        a.download = `rubber-stamps-favorites-${likedItems.length}枚.zip`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(downloadUrl);
+
+        showToast(`🎉 成功打包下载 ${likedItems.length} 张高清原图！`);
+      } catch (err) {
+        console.error("Batch download error:", err);
+        showToast("下载打包遇到问题，请检查网络后重试");
+      } finally {
+        btnBatchDownload.innerHTML = origHtml;
+        btnBatchDownload.disabled = getLikedSet().size === 0;
+      }
+    }
+
+    async function downloadSingleStamp(item) {
+      if (!item || !item.output) return;
+      try {
+        const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\\/:*?"<>|]/g, "_");
+        showToast(`正在下载「${cleanTitle}」原图...`);
+        const res = await fetch(item.output);
+        if (!res.ok) throw new Error("Fetch failed");
+        const blob = await res.blob();
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `${cleanTitle}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        showToast(`已开始下载「${cleanTitle}」原图`);
+      } catch (e) {
+        showToast("下载失败，请稍后重试");
+      }
+    }
+
+    /* -------------------------------------------------------------
+       Collection & Header Resolver
+       ------------------------------------------------------------- */
     function getCollection() {
+      if (currentSeriesKey === "favorites") {
+        const likedItems = getAllLikedItems();
+        return {
+          id: "favorites",
+          title: "我的点赞",
+          titleEn: "My Favorites",
+          count: likedItems.length,
+          kicker: "my favorite collection / rubber stamp gallery / 2026",
+          headline: "我的点赞印章<br>精选收藏作品集",
+          desc: `已收藏 ${likedItems.length} 枚心仪印章作品。支持一键批量打包下载高清原图，或在下方集中翻阅。`,
+          tagPrefix: "点赞",
+          badgeFormat: "收藏 {id}",
+          items: likedItems
+        };
+      }
       return window.COLLECTIONS[currentSeriesKey] || window.COLLECTIONS.scenic_spots;
     }
 
@@ -1322,56 +1776,80 @@
       const items = col.items;
       let categories = [{ key: "all", label: `全部${col.title}`, count: items.length }];
 
-      if (currentSeriesKey === "scenic_spots") {
-        const regions = ["华北", "华东", "西南", "西北", "华中", "华南", "东北"];
-        regions.forEach(r => {
-          const c = items.filter(x => x.region && x.region.includes(r)).length;
-          if (c > 0) categories.push({ key: `region-${r}`, label: `${r}名胜`, count: c });
-        });
-      } else if (currentSeriesKey === "poetry") {
-        const cats = ["春生·花木", "夏盛·清荷", "秋思·枫江", "冬藏·飞雪", "天地·旷野"];
-        cats.forEach(k => {
-          const c = items.filter(x => x.category === k).length;
-          if (c > 0) categories.push({ key: `category-${k}`, label: k, count: c });
-        });
-      } else if (currentSeriesKey === "wildlife") {
-        const map = {
-          "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
-          "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
-          "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
-          "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"]
+      if (currentSeriesKey === "favorites") {
+        const seriesNames = {
+          scenic_spots: "名胜风景",
+          poetry: "古诗名句",
+          cities: "世界城市",
+          wildlife: "珍稀动物",
+          marine: "海洋生物",
+          atmosphere: "大气现象",
+          zodiac: "十二生肖",
+          solar_terms: "二十四节气",
+          shanhaijing: "山海神异"
         };
-        Object.keys(map).forEach(group => {
-          const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
-          if (c > 0) categories.push({ key: `wildlife-${group}`, label: group, count: c });
+        Object.keys(seriesNames).forEach(sKey => {
+          const c = items.filter(x => x.seriesKey === sKey).length;
+          if (c > 0) categories.push({ key: `fav-series-${sKey}`, label: seriesNames[sKey], count: c });
         });
-      } else if (currentSeriesKey === "marine") {
-        const map = {
-          "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
-          "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
-          "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
-          "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"]
-        };
-        Object.keys(map).forEach(group => {
-          const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
-          if (c > 0) categories.push({ key: `marine-${group}`, label: group, count: c });
-        });
-      } else if (currentSeriesKey === "atmosphere") {
-        const map = {
-          "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
-          "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
-          "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
-          "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
-        };
-        Object.keys(map).forEach(group => {
-          const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
-          if (c > 0) categories.push({ key: `atmo-${group}`, label: group, count: c });
-        });
-      } else if (currentSeriesKey === "solar_terms") {
-        ["春", "夏", "秋", "冬"].forEach(s => {
-          const c = items.filter(x => x.season === s).length;
-          if (c > 0) categories.push({ key: `season-${s}`, label: `${s}季物候`, count: c });
-        });
+      } else {
+        // Option to filter liked in current series
+        const currentLikedCount = items.filter(x => isLiked(x.output)).length;
+        if (currentLikedCount > 0) {
+          categories.push({ key: "current-liked", label: "❤️ 本系列已点赞", count: currentLikedCount });
+        }
+
+        if (currentSeriesKey === "scenic_spots") {
+          const regions = ["华北", "华东", "西南", "西北", "华中", "华南", "东北"];
+          regions.forEach(r => {
+            const c = items.filter(x => x.region && x.region.includes(r)).length;
+            if (c > 0) categories.push({ key: `region-${r}`, label: `${r}名胜`, count: c });
+          });
+        } else if (currentSeriesKey === "poetry") {
+          const cats = ["春生·花木", "夏盛·清荷", "秋思·枫江", "冬藏·飞雪", "天地·旷野"];
+          cats.forEach(k => {
+            const c = items.filter(x => x.category === k).length;
+            if (c > 0) categories.push({ key: `category-${k}`, label: k, count: c });
+          });
+        } else if (currentSeriesKey === "wildlife") {
+          const map = {
+            "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
+            "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
+            "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
+            "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"]
+          };
+          Object.keys(map).forEach(group => {
+            const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
+            if (c > 0) categories.push({ key: `wildlife-${group}`, label: group, count: c });
+          });
+        } else if (currentSeriesKey === "marine") {
+          const map = {
+            "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
+            "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
+            "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
+            "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"]
+          };
+          Object.keys(map).forEach(group => {
+            const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
+            if (c > 0) categories.push({ key: `marine-${group}`, label: group, count: c });
+          });
+        } else if (currentSeriesKey === "atmosphere") {
+          const map = {
+            "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
+            "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
+            "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
+            "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
+          };
+          Object.keys(map).forEach(group => {
+            const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
+            if (c > 0) categories.push({ key: `atmo-${group}`, label: group, count: c });
+          });
+        } else if (currentSeriesKey === "solar_terms") {
+          ["春", "夏", "秋", "冬"].forEach(s => {
+            const c = items.filter(x => x.season === s).length;
+            if (c > 0) categories.push({ key: `season-${s}`, label: `${s}季物候`, count: c });
+          });
+        }
       }
 
       // Populate Custom Dropdown Menu
@@ -1474,13 +1952,18 @@
       const f = currentCategoryFilter;
 
       currentFilteredRows = col.items.filter(x => {
-        const titleStr = (x.city || x.title || x.name || "") + " " + (x.animal || "") + " " + (x.season || "") + " " + (x.region || "") + " " + (x.province || "") + " " + (x.author || "") + " " + (x.work || "") + " " + (x.category || "");
+        const titleStr = (x.city || x.title || x.name || "") + " " + (x.animal || "") + " " + (x.season || "") + " " + (x.region || "") + " " + (x.province || "") + " " + (x.author || "") + " " + (x.work || "") + " " + (x.category || "") + " " + (x.seriesTitle || "");
         const textToMatch = (titleStr + " " + (x.features || "") + " " + (x.keywords || []).join(" ") + " " + (x.colors || "")).toLowerCase();
         const matchesQuery = !q || textToMatch.includes(q);
 
         let matchesFilter = true;
         if (f !== "all") {
-          if (f.startsWith("region-")) {
+          if (f === "current-liked") {
+            matchesFilter = isLiked(x.output);
+          } else if (f.startsWith("fav-series-")) {
+            const sKey = f.replace("fav-series-", "");
+            matchesFilter = x.seriesKey === sKey;
+          } else if (f.startsWith("region-")) {
             const reg = f.replace("region-", "");
             matchesFilter = x.region && x.region.includes(reg);
           } else if (f.startsWith("category-")) {
@@ -1520,7 +2003,18 @@
       countIndicator.textContent = `${currentFilteredRows.length} / ${col.items.length} ${col.title}`;
 
       if (!currentFilteredRows.length) {
-        gridEl.innerHTML = '<div class="empty">没有找到符合条件的印章作品。</div>';
+        if (currentSeriesKey === "favorites") {
+          gridEl.innerHTML = `
+            <div class="empty empty-favorites">
+              <div class="empty-icon">🤍</div>
+              <h3>暂无已点赞的印章作品</h3>
+              <p>在画廊中浏览喜欢的印章作品时，点击卡片右上角或展开大图中的 ❤️ 爱心按钮，即可收藏至此处并支持一键批量打包下载原图！</p>
+              <button class="btn-goto-gallery" onclick="switchSeries('scenic_spots')">去浏览印章画廊</button>
+            </div>
+          `;
+        } else {
+          gridEl.innerHTML = '<div class="empty">没有找到符合条件的印章作品。</div>';
+        }
         return;
       }
 
@@ -1528,12 +2022,16 @@
         const displayName = x.city || x.title || x.name;
         const badgeLabel = col.badgeFormat ? col.badgeFormat.replace("{id}", String(x.id).padStart(2, "0")) : `NO. ${String(x.id).padStart(2, "0")}`;
         const promptText = x.prompt || "";
+        const liked = isLiked(x.output);
 
         return `
           <article class="card" data-index="${idx}">
             <div class="frame" onclick="openModal(${idx})">
               <img class="stamp-img" src="${x.output}" alt="${displayName}" onerror="this.src='placeholder.svg'" loading="lazy">
               <span class="badge">${badgeLabel}</span>
+              <button class="card-like-btn ${liked ? "liked" : ""}" data-output="${x.output}" onclick="event.stopPropagation(); handleCardLike('${x.output}')" title="${liked ? "取消点赞" : "点赞收藏"}">
+                ${getHeartSvg(liked)}
+              </button>
             </div>
             <div class="card-info">
               <h2 onclick="openModal(${idx})">${displayName}</h2>
@@ -1564,7 +2062,7 @@
     }
 
     function switchSeries(key) {
-      if (currentSeriesKey === key && currentCategoryFilter === "all") return;
+      if (currentSeriesKey === key && currentCategoryFilter === "all" && currentFilteredRows.length > 0) return;
       currentSeriesKey = key;
       currentCategoryFilter = "all";
 
@@ -1608,6 +2106,7 @@
       const col = getCollection();
       const displayName = x.city || x.title || x.name;
       const promptText = x.prompt || "";
+      const liked = isLiked(x.output);
 
       closeDrawer();
 
@@ -1615,15 +2114,34 @@
       modalImg.alt = displayName;
       
       // Desktop info
-      modalBadge.textContent = `${col.titleEn.toUpperCase()} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
+      modalBadge.textContent = `${(x.seriesTitleEn || col.titleEn).toUpperCase()} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
       modalTitle.textContent = displayName;
       modalDesc.textContent = x.features || "";
       modalColors.textContent = x.colors ? `印层配色：${x.colors}` : "";
       modalPromptContent.textContent = promptText;
 
       // Mobile top info
-      modalTopBadge.textContent = `${col.title} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
+      modalTopBadge.textContent = `${x.seriesTitle || col.title} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
       modalTopTitle.textContent = displayName;
+
+      // Sync like state
+      syncModalLikeButtons(liked);
+
+      // Bind like button actions
+      btnModalLike.onclick = (e) => {
+        e.stopPropagation();
+        toggleLike(x);
+      };
+      btnMobileLike.onclick = (e) => {
+        e.stopPropagation();
+        toggleLike(x);
+      };
+
+      // Bind single download actions
+      btnModalDownload.onclick = (e) => {
+        e.stopPropagation();
+        downloadSingleStamp(x);
+      };
 
       // Copy buttons
       btnCopyModalPrompt.onclick = () => copyText(promptText, `已复制「${displayName}」完整作图 Prompt`);
@@ -1732,8 +2250,21 @@
     /* -------------------------------------------------------------
        App Bootstrap & Hash Routing
        ------------------------------------------------------------- */
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("seedLikes") === "1" || urlParams.get("seedLikes") === "true") {
+      const demoLikes = [
+        "images/scenic_spots/01_故宫博物院.png",
+        "images/scenic_spots/02_八达岭长城.png",
+        "images/poetry/01_竹外桃花三两枝.png",
+        "images/poetry/50_一蓑烟雨任平生.png",
+        "images/wildlife/01_大熊猫.png",
+        "images/marine/01_蓝鲸.png"
+      ];
+      localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify(demoLikes));
+    }
+
     const hash = window.location.hash.replace("#", "");
-    if (hash && window.COLLECTIONS[hash]) {
+    if (hash && (window.COLLECTIONS[hash] || hash === "favorites")) {
       switchSeries(hash);
     } else {
       updateHeader();
@@ -1741,7 +2272,8 @@
       render();
     }
 
-    const urlParams = new URLSearchParams(window.location.search);
+    updateLikesUI();
+
     const modalParam = urlParams.get("modal");
     const drawerParam = urlParams.get("drawer");
     if (modalParam !== null) {
