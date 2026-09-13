@@ -59,25 +59,6 @@
       padding-bottom: calc(var(--safe-bottom) + 20px);
     }
 
-    /* Ink Palette Color Filter Overrides */
-    .ink-cinnabar {
-      --paper: #f8f6f2;
-      --paper-card: #ffffff;
-      --paper-pop: #ffffff;
-      --ink: #2b2724;
-      --accent: #b9281e;
-      --accent-hover: #9e2017;
-      --line: #ede5da;
-    }
-    .ink-cinnabar .stamp-img, 
-    .ink-cinnabar .note-main-img {
-      filter: url(#seal-cinnabar-filter);
-    }
-    .ink-charcoal .stamp-img, 
-    .ink-charcoal .note-main-img {
-      filter: grayscale(1) contrast(1.25) brightness(0.95);
-    }
-
     /* -------------------------------------------------------------
        App Header (Xiaohongshu Navigation & Top Channels)
        ------------------------------------------------------------- */
@@ -167,32 +148,6 @@
       align-items: center;
       gap: 8px;
       flex-shrink: 0;
-    }
-
-    /* Color Mode Switcher */
-    .color-switcher {
-      display: flex;
-      background: #eae1d1;
-      border-radius: 14px;
-      padding: 2px;
-      gap: 2px;
-    }
-    .color-btn {
-      border: none;
-      background: transparent;
-      padding: 3px 8px;
-      font-size: 11px;
-      color: #666;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all .12s ease;
-      white-space: nowrap;
-    }
-    .color-btn.active {
-      background: #ffffff;
-      color: var(--ink);
-      font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .btn-top-download {
@@ -1004,10 +959,6 @@
         height: 32px;
         font-size: 12.5px;
       }
-      .color-btn {
-        padding: 3px 6px;
-        font-size: 10.5px;
-      }
       .btn-top-download {
         height: 26px;
         padding: 0 8px;
@@ -1082,29 +1033,6 @@
 </head>
 <body>
 
-  <!-- SVG Filter for Authentic Seal Vermilion on Pure White Paper -->
-  <svg width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
-    <defs>
-      <filter id="seal-cinnabar-filter" color-interpolation-filters="sRGB">
-        <feColorMatrix type="matrix" values="
-          0.3333 0.3333 0.3333 0 0
-          0.3333 0.3333 0.3333 0 0
-          0.3333 0.3333 0.3333 0 0
-          0      0      0      1 0"/>
-        <feComponentTransfer>
-          <feFuncR type="linear" slope="2.2" intercept="-0.45"/>
-          <feFuncG type="linear" slope="2.2" intercept="-0.45"/>
-          <feFuncB type="linear" slope="2.2" intercept="-0.45"/>
-        </feComponentTransfer>
-        <feColorMatrix type="matrix" values="
-          0.26 0    0    0 0.74
-          0    0.85 0    0 0.15
-          0    0    0.88 0 0.12
-          0    0    0    1 0"/>
-      </filter>
-    </defs>
-  </svg>
-
   <!-- Xiaohongshu Top Header Navigation -->
   <header class="app-header">
     <div class="header-main-row">
@@ -1119,13 +1047,8 @@
         <input type="text" id="search-input" placeholder="搜索名胜、诗句、动物或配色..." autocomplete="off">
       </div>
 
-      <!-- Right Tools: Color Switcher & Batch Download -->
+      <!-- Right Tools: Batch Download -->
       <div class="header-tools">
-        <div class="color-switcher">
-          <button class="color-btn active" data-ink="default">原色</button>
-          <button class="color-btn" data-ink="cinnabar">朱砂</button>
-          <button class="color-btn" data-ink="charcoal">墨黑</button>
-        </div>
         <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载所有已点赞的高清原图" disabled>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           <span>下载 (<span id="batch-download-count">0</span>)</span>
@@ -1941,22 +1864,7 @@
       }
     }, { passive: true });
 
-    document.querySelectorAll(".color-btn").forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll(".color-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        document.body.className = btn.dataset.ink === "cinnabar" ? "ink-cinnabar" : btn.dataset.ink === "charcoal" ? "ink-charcoal" : "";
-      };
-    });
-
     const urlParams = new URLSearchParams(window.location.search);
-    const inkParam = urlParams.get("ink");
-    if (inkParam === "cinnabar" || inkParam === "charcoal") {
-      document.body.className = inkParam === "cinnabar" ? "ink-cinnabar" : "ink-charcoal";
-      document.querySelectorAll(".color-btn").forEach(b => {
-        b.classList.toggle("active", b.dataset.ink === inkParam);
-      });
-    }
 
     if (urlParams.get("seedLikes") === "1" || urlParams.get("seedLikes") === "true") {
       const demoLikes = [
