@@ -18,550 +18,409 @@
 
   <style>
     :root {
-      --paper: #eee5d5;
-      --paper-card: #f8f1e5;
-      --paper-pop: #faf5eb;
-      --ink: #292722;
-      --muted: #746d60;
-      --line: #cfc2ad;
-      --line-dark: #b8a78e;
-      --accent: #8d4d39;
-      --accent-hover: #a63f26;
-      --tab-bg: #e6dac6;
-      --tab-active: #292722;
-      --tab-active-text: #faf5eb;
+      --paper: #f5efe6;
+      --paper-card: #ffffff;
+      --paper-pop: #ffffff;
+      --ink: #222222;
+      --muted: #888888;
+      --line: #e8e0d4;
+      --line-dark: #d5cbbe;
+      --accent: #ff2442; /* Xiaohongshu Signature Red */
+      --accent-hover: #e01b37;
+      --seal-red: #b9281e;
+      --tab-active: #222222;
+      --tab-active-text: #ffffff;
       --code-bg: #2b2724;
       --code-text: #e6dac6;
+      --safe-bottom: env(safe-area-inset-bottom, 16px);
+      --safe-top: env(safe-area-inset-top, 0px);
     }
     * {
       box-sizing: border-box;
       touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     html {
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
       overflow-x: hidden;
+      background: var(--paper);
     }
     body {
       margin: 0;
       padding: 0;
       width: 100%;
+      min-height: 100vh;
       overflow-x: hidden;
       background: var(--paper);
       color: var(--ink);
-      font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
-      background-image: radial-gradient(#7e6f5c18 .7px, transparent .7px);
-      background-size: 7px 7px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       -webkit-font-smoothing: antialiased;
-      -webkit-tap-highlight-color: transparent;
-      padding-bottom: env(safe-area-inset-bottom, 30px);
+      padding-bottom: calc(var(--safe-bottom) + 20px);
     }
 
     /* Ink Palette Color Filter Overrides */
     .ink-cinnabar {
-      --paper: #f9f8f5;
+      --paper: #f8f6f2;
       --paper-card: #ffffff;
       --paper-pop: #ffffff;
       --ink: #2b2724;
       --accent: #b9281e;
       --accent-hover: #9e2017;
-      --tab-active: #b9281e;
-      --line: #e8e2d8;
-      --line-dark: #d6ccbe;
-      background: #f7f5f1;
-      background-image: radial-gradient(#b9281e0f .8px, transparent .8px);
-    }
-    .ink-cinnabar .card {
-      background: #ffffff;
-      border-color: #e5ded2;
-    }
-    .ink-cinnabar .card .frame {
-      background: #ffffff;
-      box-shadow: inset 0 0 0 1px rgba(185, 40, 30, 0.08);
+      --line: #ede5da;
     }
     .ink-cinnabar .stamp-img, 
-    .ink-cinnabar .modal-img-wrap img {
+    .ink-cinnabar .note-main-img {
       filter: url(#seal-cinnabar-filter);
     }
     .ink-charcoal .stamp-img, 
-    .ink-charcoal .modal-img-wrap img {
+    .ink-charcoal .note-main-img {
       filter: grayscale(1) contrast(1.25) brightness(0.95);
     }
 
-    header {
-      max-width: 1240px;
-      width: 100%;
-      margin: auto;
-      padding: 42px 28px 24px;
+    /* -------------------------------------------------------------
+       App Header (Xiaohongshu Navigation & Top Channels)
+       ------------------------------------------------------------- */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 239, 230, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
+      padding: max(8px, var(--safe-top)) 16px 0;
     }
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      width: 100%;
-    }
-    .header-content {
-      flex: 1;
-      min-width: 0;
-    }
-    .kicker {
-      font: 11.5px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    h1 {
-      font-size: clamp(28px, 4.8vw, 56px);
-      line-height: 1.15;
-      font-weight: 400;
-      margin: 0 0 14px;
-      max-width: 800px;
-      letter-spacing: -0.01em;
-    }
-    header p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.68;
-      margin: 0;
-    }
-    .header-actions {
+
+    .header-main-row {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 6px;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 7px;
       flex-shrink: 0;
     }
-    .btn-top {
-      display: inline-flex;
+    .brand-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #b9281e;
+      color: #ffffff;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      background: #f7f0e4;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 9px 14px;
+      justify-content: center;
+      font-size: 12.5px;
+      font-family: Georgia, "Songti SC", serif;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(185, 40, 30, 0.22);
+    }
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
       color: var(--ink);
-      text-decoration: none;
-      font: 12.5px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-      letter-spacing: .03em;
-      transition: all .15s ease;
-      box-shadow: 2px 2px 0 #c7b9a244;
-      cursor: pointer;
+      letter-spacing: -0.01em;
       white-space: nowrap;
     }
-    .btn-top:hover {
-      background: #ede3d0;
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 3px 3px 0 #c7b9a288;
-    }
 
-    /* Series Nav Tabs */
-    .series-nav {
-      max-width: 1240px;
-      margin: 20px auto 0;
-      padding: 0 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .series-tab {
-      background: var(--tab-bg);
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 8px 14px;
-      font: 13.5px/1.3 Georgia, "Songti SC", serif;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all .15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      user-select: none;
-    }
-    .series-tab:hover {
-      background: #ded1bd;
-      border-color: var(--ink);
-    }
-    .series-tab.active {
-      background: var(--tab-active);
-      color: var(--tab-active-text);
-      border-color: var(--tab-active);
-      box-shadow: 2px 2px 0 #7e6f5c55;
-    }
-    .series-tab .count-badge {
-      font: 11px/1 ui-monospace, monospace;
-      padding: 2px 5px;
-      border-radius: 3px;
-      background: rgba(0,0,0,0.08);
-    }
-    .series-tab.active .count-badge {
-      background: rgba(255,255,255,0.2);
-    }
-
-    .series-tab.tab-favorites {
-      background: #fdf5f3;
-      border-color: #e8c5be;
-      color: #8d4d39;
-    }
-    .series-tab.tab-favorites:hover {
-      background: #faece8;
-      border-color: #8d4d39;
-    }
-    .series-tab.tab-favorites.active {
-      background: #8d4d39;
-      color: #ffffff;
-      border-color: #8d4d39;
-      box-shadow: 2px 2px 0 #7e6f5c55;
-    }
-    .series-tab.tab-favorites .fav-heart {
-      font-size: 13px;
-    }
-
-    /* Controls Bar: Search, Custom UI Dropdown Filter, Colors & Count */
-    .controls-wrap {
-      max-width: 1240px;
-      margin: 18px auto 0;
-      padding: 0 28px;
-    }
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      background: #f5ede0;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    }
-    .btn-batch-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #8d4d39;
-      color: #ffffff;
-      border: 1px solid #8d4d39;
-      border-radius: 4px;
-      padding: 8px 14px;
-      font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      cursor: pointer;
-      transition: all .15s ease;
-      user-select: none;
-      white-space: nowrap;
-      box-shadow: 0 1px 3px rgba(141, 77, 57, 0.2);
-    }
-    .btn-batch-download:hover {
-      background: #733c2c;
-      border-color: #733c2c;
-      transform: translateY(-1px);
-    }
-    .btn-batch-download:active {
-      transform: translateY(0);
-    }
-    .btn-batch-download:disabled {
-      background: #ded7cb;
-      border-color: #cbbfad;
-      color: #9c9180;
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-      opacity: 0.7;
-    }
-    .search-box {
-      flex: 1 1 240px;
+    .search-capsule {
+      flex: 1 1 280px;
+      max-width: 440px;
       position: relative;
     }
-    .search-box input {
+    .search-capsule input {
       width: 100%;
-      background: var(--paper-pop);
-      border: 1px solid var(--line-dark);
-      border-radius: 4px;
-      padding: 8px 12px 8px 32px;
-      font: 13.5px/1.4 inherit;
+      height: 32px;
+      background: #eae1d1;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 0 12px 0 32px;
+      font-size: 12.5px;
       color: var(--ink);
       outline: none;
-      transition: border-color .15s;
+      transition: all .15s ease;
     }
-    .search-box input:focus {
-      border-color: var(--accent);
-      background: #fff;
+    .search-capsule input:focus {
+      background: #ffffff;
+      border-color: #d6ccbe;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-    .search-icon {
+    .search-capsule .search-icon {
       position: absolute;
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--muted);
+      font-size: 12px;
+      color: #888;
       pointer-events: none;
-      font-size: 13px;
     }
 
-    /* Custom UI Dropdown Filter (No Native Select) */
-    .custom-filter {
-      position: relative;
-      flex: 0 0 auto;
-      min-width: 190px;
-    }
-    .custom-filter-trigger {
+    .header-tools {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-      background: var(--paper-pop);
-      border: 1px solid var(--line-dark);
-      border-radius: 4px;
-      padding: 8px 12px;
-      font: 13.5px/1.4 Georgia, "Songti SC", serif;
-      color: var(--ink);
-      cursor: pointer;
-      user-select: none;
-      transition: all .15s ease;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    }
-    .custom-filter-trigger:hover {
-      background: #fff;
-      border-color: var(--accent);
-    }
-    .custom-filter-trigger.open {
-      border-color: var(--accent);
-      background: #fff;
-      box-shadow: 0 0 0 2px rgba(141, 77, 57, 0.15);
-    }
-    .custom-filter-trigger .arrow {
-      font-size: 10px;
-      color: var(--muted);
-      transition: transform .2s ease;
-    }
-    .custom-filter-trigger.open .arrow {
-      transform: rotate(180deg);
-    }
-    .custom-filter-menu {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      min-width: 100%;
-      width: max-content;
-      max-width: 320px;
-      background: #fdfbf7;
-      border: 1px solid var(--line-dark);
-      border-radius: 6px;
-      padding: 6px 0;
-      box-shadow: 0 8px 24px rgba(40, 30, 20, 0.15);
-      z-index: 100;
-      display: none;
-      max-height: 380px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-    }
-    .custom-filter-menu.open {
-      display: block;
-      animation: menuFadeIn .15s ease;
-    }
-    @keyframes menuFadeIn {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .custom-filter-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 14px;
-      font: 13.5px/1.4 Georgia, "Songti SC", serif;
-      color: var(--ink);
-      cursor: pointer;
-      transition: background .12s;
-    }
-    .custom-filter-option:hover {
-      background: #f3ebd9;
-      color: var(--accent);
-    }
-    .custom-filter-option.active {
-      background: #ece0ca;
-      font-weight: bold;
-      color: var(--accent);
-    }
-    .custom-filter-option .opt-badge {
-      font: 11px/1 ui-monospace, monospace;
-      color: var(--muted);
-      background: rgba(0,0,0,0.06);
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
-    /* Category Pill Chips Row */
-    .category-pills-wrap {
-      max-width: 1240px;
-      margin: 10px auto 0;
-      padding: 0 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .cat-pill {
-      background: #f2e9dc;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 5px 11px;
-      font: 12.5px/1.3 Georgia, "Songti SC", serif;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all .12s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      user-select: none;
-    }
-    .cat-pill:hover {
-      background: #e6dac6;
-      color: var(--ink);
-      border-color: var(--line-dark);
-    }
-    .cat-pill.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-      font-weight: 500;
-      box-shadow: 1px 1px 0 rgba(0,0,0,0.15);
-    }
-    .cat-pill .pill-count {
-      font: 10.5px/1 ui-monospace, monospace;
-      opacity: 0.85;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
     /* Color Mode Switcher */
     .color-switcher {
       display: flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--paper-pop);
-      border: 1px solid var(--line);
-      border-radius: 4px;
+      background: #eae1d1;
+      border-radius: 14px;
       padding: 2px;
+      gap: 2px;
     }
     .color-btn {
       border: none;
       background: transparent;
-      padding: 5px 9px;
-      font: 12px/1 ui-monospace, SFMono-Regular, monospace;
-      color: var(--muted);
-      border-radius: 3px;
+      padding: 3px 8px;
+      font-size: 11px;
+      color: #666;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all .12s;
-    }
-    .color-btn:hover {
-      color: var(--ink);
-    }
-    .color-btn.active {
-      background: #ded1bd;
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .count-indicator {
-      font: 12.5px/1 ui-monospace, SFMono-Regular, monospace;
-      color: var(--muted);
-      margin-left: auto;
+      transition: all .12s ease;
       white-space: nowrap;
     }
+    .color-btn.active {
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
 
-    /* Stamp Cards Grid - Xiaohongshu Waterfall & Card Style */
-    main {
-      max-width: 1240px;
-      margin: 20px auto 60px;
-      padding: 0 28px;
+    .btn-top-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: 26px;
+      padding: 0 10px;
+      background: #b9281e;
+      color: #ffffff;
+      border: none;
+      border-radius: 13px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .15s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(185, 40, 30, 0.2);
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 18px 14px;
+    .btn-top-download:hover {
+      background: #9e2017;
+      transform: translateY(-1px);
     }
-    .card {
-      background: var(--paper-card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      overflow: hidden;
+    .btn-top-download:disabled {
+      background: #dbd3c6;
+      color: #9c9383;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+      opacity: 0.8;
+    }
+
+    /* Xiaohongshu Top Channel Tabs (Horizontally Scrollable) */
+    .xhs-tabs-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .xhs-tabs-wrap::-webkit-scrollbar {
+      display: none;
+    }
+    .xhs-tabs-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 2px 0 0;
+      white-space: nowrap;
+      min-width: max-content;
+    }
+    .xhs-tab {
+      background: transparent;
+      border: none;
+      padding: 6px 2px 8px;
+      cursor: pointer;
       display: flex;
       flex-direction: column;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      cursor: pointer;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(40,30,20,0.1);
-      border-color: var(--line-dark);
-    }
-    .frame {
+      align-items: center;
       position: relative;
-      background: #e8ded0;
-      aspect-ratio: 4 / 5;
+      user-select: none;
+      transition: all .15s ease;
+    }
+    .xhs-tab .tab-text {
+      font-size: 14px;
+      color: #777777;
+      font-weight: 400;
+      transition: all .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .xhs-tab:hover .tab-text {
+      color: var(--ink);
+    }
+    .xhs-tab.active .tab-text {
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .xhs-tab .tab-indicator {
+      position: absolute;
+      bottom: 0;
+      width: 16px;
+      height: 2.5px;
+      border-radius: 1.5px;
+      background: transparent;
+      transition: all .2s ease;
+    }
+    .xhs-tab.active .tab-indicator {
+      background: var(--accent);
+      width: 20px;
+    }
+    .xhs-tab .fav-badge {
+      font-size: 10px;
+      background: rgba(255, 36, 66, 0.12);
+      color: var(--accent);
+      padding: 1px 5px;
+      border-radius: 10px;
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    /* Sub-category Quick Filter Pills */
+    .category-pills-wrap {
+      max-width: 1200px;
+      margin: 4px auto 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .category-pills-wrap::-webkit-scrollbar {
+      display: none;
+    }
+    .cat-pill {
+      background: #eae1d1;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      padding: 3px 9px;
+      font-size: 11.5px;
+      color: #666;
+      cursor: pointer;
+      transition: all .12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .cat-pill:hover {
+      background: #dfd5c3;
+      color: var(--ink);
+    }
+    .cat-pill.active {
+      background: var(--ink);
+      color: #ffffff;
+      font-weight: 500;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .cat-pill .pill-count {
+      font-size: 10px;
+      opacity: 0.8;
+      font-family: ui-monospace, monospace;
+    }
+
+    /* -------------------------------------------------------------
+       Xiaohongshu Dual-Column Waterfall / Card Feed
+       ------------------------------------------------------------- */
+    .feed-container {
+      max-width: 1200px;
+      margin: 10px auto 40px;
+      padding: 0 12px;
+    }
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px 10px;
+      align-items: start;
+    }
+
+    .feed-card {
+      background: var(--paper-card);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease;
+      border: 1px solid var(--line);
+    }
+    .feed-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.09);
+    }
+
+    /* Natural dynamic image height */
+    .feed-card-media {
+      width: 100%;
+      background: #ede6d8;
+      position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
     }
-    .frame img {
+    .feed-card-media img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-height: 380px;
       object-fit: cover;
       display: block;
       transition: transform .3s ease;
     }
-    .card:hover .frame img {
-      transform: scale(1.03);
-    }
-    .badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: rgba(248, 241, 229, 0.92);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border: 1px solid var(--line);
-      color: var(--ink);
-      font: 10px/1 ui-monospace, SFMono-Regular, monospace;
-      padding: 3px 6px;
-      border-radius: 4px;
-      letter-spacing: .04em;
+    .feed-card:hover .feed-card-media img {
+      transform: scale(1.025);
     }
 
-    .card-info {
-      padding: 10px 10px 10px;
+    .feed-card-info {
+      padding: 8px 10px 10px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      flex: 1;
+      gap: 5px;
+      background: #ffffff;
     }
-    .card-title {
-      font-size: 14.5px;
+    .feed-card-title {
+      font-size: 13.5px;
       font-weight: 500;
+      color: #222222;
       line-height: 1.35;
-      color: var(--ink);
       margin: 0;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
-      transition: color .15s;
     }
-    .card:hover .card-title {
-      color: var(--accent);
-    }
-    .card-footer {
+    .feed-card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      margin-top: auto;
-      padding-top: 2px;
+      margin-top: 2px;
     }
     .card-author {
       display: flex;
@@ -574,313 +433,505 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: var(--accent);
-      color: #faf5eb;
+      background: #b9281e;
+      color: #ffffff;
       font-size: 9.5px;
-      font-weight: 600;
-      display: inline-flex;
+      font-weight: bold;
+      display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
     .author-name {
-      font: 11px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Songti SC", serif;
-      color: var(--muted);
+      font-size: 11px;
+      color: #777777;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .card-like-btn {
       background: transparent;
       border: none;
-      padding: 2px 4px;
+      padding: 2px 2px;
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      color: #8c8374;
+      color: #777777;
       cursor: pointer;
-      border-radius: 4px;
       transition: transform .15s ease, color .15s ease;
       flex-shrink: 0;
       user-select: none;
     }
     .card-like-btn:hover {
-      color: #c93b2b;
+      color: var(--accent);
       transform: scale(1.12);
     }
     .card-like-btn.liked {
-      color: #c93b2b;
+      color: var(--accent);
     }
     .card-like-btn svg {
       width: 14px;
       height: 14px;
-      transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       stroke: currentColor;
     }
     .card-like-btn.liked svg {
-      fill: #c93b2b;
-      stroke: #c93b2b;
+      fill: var(--accent);
+      stroke: var(--accent);
     }
     .card-like-btn:active svg {
       transform: scale(0.85);
     }
 
-    /* Lightbox Modal */
-    #lightbox {
+    /* -------------------------------------------------------------
+       Xiaohongshu Note Detail Page Modal / View
+       ------------------------------------------------------------- */
+    #note-detail-modal {
       position: fixed;
       inset: 0;
-      background: rgba(26, 23, 20, 0.88);
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 24px;
     }
-    #lightbox.open {
+    #note-detail-modal.open {
       display: flex;
-      animation: modalFadeIn .18s ease;
+      animation: noteFadeIn .2s ease;
     }
-    @keyframes modalFadeIn {
+    @keyframes noteFadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    .modal-card {
+
+    .note-window {
       position: relative;
-      background: var(--paper-pop);
-      max-width: 960px;
+      background: #ffffff;
       width: 100%;
-      max-height: 92vh;
-      border-radius: 8px;
-      overflow: hidden;
+      max-width: 580px;
+      height: 92vh;
+      max-height: 920px;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
       display: flex;
-      flex-direction: row;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      border: 1px solid var(--line);
+      flex-direction: column;
+      overflow: hidden;
     }
-    .modal-img-wrap {
-      flex: 1 1 50%;
-      background: #1e1c19;
+
+    /* Note Top Bar (Back, Author Avatar, Follow, Share) */
+    .note-header {
+      height: 52px;
+      padding: 0 14px;
+      background: #ffffff;
+      border-bottom: 1px solid #f0ece6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    .note-btn-back {
+      background: transparent;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 380px;
-      max-height: 92vh;
-      overflow: hidden;
+      color: #333333;
+      cursor: pointer;
+      transition: background .15s;
     }
-    .modal-img-wrap img {
-      max-width: 100%;
-      max-height: 92vh;
+    .note-btn-back:hover {
+      background: #f5f0e8;
+    }
+
+    .note-author-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .note-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #b9281e;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .note-author-meta {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .note-author-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #222222;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .note-author-sub {
+      font-size: 11px;
+      color: #888888;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .note-btn-follow {
+      background: #ffffff;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 3px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .15s;
+      flex-shrink: 0;
+    }
+    .note-btn-follow:hover {
+      background: rgba(255, 36, 66, 0.06);
+    }
+    .note-btn-follow.followed {
+      border-color: #d6ccbe;
+      color: #888888;
+      background: #f5f0e8;
+    }
+
+    .note-btn-share {
+      background: transparent;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333333;
+      cursor: pointer;
+      transition: background .15s;
+      flex-shrink: 0;
+    }
+    .note-btn-share:hover {
+      background: #f5f0e8;
+    }
+
+    /* Scrollable Note Body */
+    .note-scroll-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #ffffff;
+      padding-bottom: 74px; /* Space for bottom bar */
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Media showcase with natural height */
+    .note-media-wrap {
+      width: 100%;
+      background: #f4eee3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 260px;
+    }
+    .note-img-container {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .note-main-img {
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
       object-fit: contain;
       display: block;
     }
-    .modal-details {
-      flex: 1 1 50%;
-      padding: 32px 28px;
-      overflow-y: auto;
+
+    /* Xiaohongshu Top Badges on Image */
+    .note-badge-ai {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: rgba(255,255,255,0.92);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 12px;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
     }
-    .modal-details-body {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    .note-badge-ai svg {
+      width: 11px;
+      height: 11px;
+      fill: currentColor;
     }
-    .modal-badge {
-      font: 12px/1 ui-monospace, monospace;
-      color: var(--accent);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .modal-title {
-      font-size: 26px;
-      font-weight: 400;
-      line-height: 1.25;
-      margin: 0;
-    }
-    .modal-meta {
-      font-size: 14.5px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .modal-colors {
-      font: 12.5px/1.5 ui-monospace, monospace;
-      color: var(--accent);
-      background: rgba(141, 77, 57, 0.08);
-      padding: 6px 10px;
-      border-radius: 4px;
-      border-left: 3px solid var(--accent);
+    .note-page-indicator {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: rgba(255,255,255,0.92);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-family: ui-monospace, monospace;
+      pointer-events: none;
     }
 
-    /* Modal Full Prompt Block */
-    .modal-prompt-box {
-      margin-top: 8px;
-      background: #f1e9dc;
-      border: 1px solid var(--line-dark);
+    /* Text & Note Content */
+    .note-content-container {
+      padding: 16px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .note-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #222222;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .note-text-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #333333;
+    }
+    .note-desc {
+      margin: 0;
+      color: #444444;
+    }
+    .note-colors-tag {
+      margin: 0;
+      font-size: 13.5px;
+      color: #b9281e;
+      background: #fcf6f4;
+      padding: 6px 10px;
       border-radius: 6px;
+      border-left: 3px solid #b9281e;
+      display: inline-block;
+    }
+
+    /* Prompt section inside Note */
+    .note-prompt-section {
+      margin-top: 6px;
+      background: #f9f7f3;
+      border: 1px solid #ebd9c8;
+      border-radius: 8px;
       padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    .modal-prompt-header {
+    .prompt-section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .modal-prompt-title {
-      font: 12px/1 ui-monospace, monospace;
-      font-weight: bold;
-      color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: .05em;
+    .prompt-title-tag {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #222222;
     }
-    .btn-modal-copy {
-      background: var(--ink);
-      color: var(--paper);
-      border: 1px solid var(--ink);
+    .btn-copy-inline-prompt {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #222222;
+      color: #ffffff;
+      border: none;
+      padding: 4px 10px;
       border-radius: 4px;
-      padding: 6px 12px;
-      font: 12px/1 ui-monospace, monospace;
+      font-size: 11.5px;
       cursor: pointer;
-      transition: all .15s;
+      transition: all .15s ease;
     }
-    .btn-modal-copy:hover {
+    .btn-copy-inline-prompt:hover {
       background: var(--accent);
-      border-color: var(--accent);
     }
-    .modal-prompt-content {
-      font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+    .prompt-full-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      line-height: 1.55;
       color: #3b3732;
-      background: #fff;
+      background: #ffffff;
+      border: 1px solid #e8dfd2;
+      border-radius: 6px;
       padding: 10px;
-      border-radius: 4px;
-      max-height: 220px;
+      max-height: 180px;
       overflow-y: auto;
       white-space: pre-wrap;
       word-break: break-word;
-      border: 1px solid var(--line);
+      cursor: pointer;
       scrollbar-width: thin;
     }
+    .prompt-full-text:hover {
+      border-color: #b9281e;
+    }
 
-    /* Modal Desktop Actions Bar */
-    .modal-actions-bar {
+    .note-date-location {
+      font-size: 12px;
+      color: #999999;
+      margin-top: 4px;
+    }
+
+    /* Bottom Fixed Action Bar */
+    .note-bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      padding: 0 16px;
+      background: #ffffff;
+      border-top: 1px solid #f0ece6;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin: 2px 0;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 20;
     }
-    .modal-btn {
-      display: inline-flex;
+
+    .note-comment-capsule {
+      flex: 1 1 auto;
+      height: 36px;
+      background: #f4f0e8;
+      border: none;
+      border-radius: 18px;
+      padding: 0 14px;
+      display: flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
-      border-radius: 4px;
-      font: 500 13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #777777;
+      font-size: 12.5px;
       cursor: pointer;
-      border: 1px solid var(--line-dark);
-      background: #f5ede0;
+      transition: background .15s ease;
+    }
+    .note-comment-capsule:hover {
+      background: #ede6d8;
       color: var(--ink);
-      transition: all .15s ease;
-      user-select: none;
-    }
-    .modal-btn:hover {
-      background: #fff;
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .modal-btn svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-    .modal-like-btn.liked {
-      background: #fbeae8;
-      border-color: #c93b2b;
-      color: #c93b2b;
-      font-weight: 500;
-    }
-    .modal-like-btn.liked svg {
-      fill: #c93b2b;
-      stroke: #c93b2b;
     }
 
-    /* Modal Navigation & Close */
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.1);
-      border: none;
-      color: var(--ink);
-      font-size: 18px;
-      line-height: 1;
-      cursor: pointer;
+    .note-actions-right {
       display: flex;
       align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .note-action-btn {
+      background: transparent;
+      border: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      transition: background .15s;
-      z-index: 10;
+      gap: 2px;
+      color: #333333;
+      cursor: pointer;
+      transition: transform .12s ease;
+      min-width: 32px;
     }
-    .modal-close:hover {
-      background: rgba(0,0,0,0.2);
+    .note-action-btn:active {
+      transform: scale(0.9);
     }
-    .modal-nav-btn {
+    .note-action-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+    .note-action-btn.liked svg {
+      fill: var(--accent);
+      stroke: var(--accent);
+      color: var(--accent);
+    }
+    .note-action-btn.liked .action-num {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .action-num {
+      font-size: 11px;
+      color: #666666;
+      line-height: 1;
+      font-family: -apple-system, sans-serif;
+    }
+
+    /* Prev & Next Floating Arrow Buttons */
+    .note-nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: rgba(248, 241, 229, 0.9);
-      border: 1px solid var(--line);
-      color: var(--ink);
-      font-size: 20px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.1);
+      color: #222222;
+      font-size: 24px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all .15s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 10;
+      transition: all .15s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      z-index: 30;
       user-select: none;
     }
-    .modal-nav-btn:hover {
-      background: #fff;
+    .note-nav-btn:hover {
+      background: #ffffff;
       transform: translateY(-50%) scale(1.08);
       color: var(--accent);
     }
-    .modal-prev { left: 14px; }
-    .modal-next { right: 14px; }
-
-    /* Hidden by default on Desktop */
-    .modal-top-bar { display: none; }
-    .modal-mobile-bottom-bar { display: none; }
-    .drawer-header { display: none; }
-    .modal-drawer-backdrop { display: none; }
+    .note-nav-prev { left: -60px; }
+    .note-nav-next { right: -60px; }
 
     /* Toast Notification */
     #toast {
       position: fixed;
-      bottom: 30px;
+      bottom: max(30px, var(--safe-bottom));
       left: 50%;
       transform: translateX(-50%) translateY(50px);
-      background: #2b2724;
+      background: rgba(20, 18, 16, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #faf5eb;
-      padding: 10px 18px;
+      padding: 9px 18px;
       border-radius: 20px;
-      font: 13px/1.3 Georgia, "Songti SC", serif;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      font-size: 13px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
       opacity: 0;
       pointer-events: none;
       transition: all .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 2000;
-      letter-spacing: .02em;
+      z-index: 3000;
+      white-space: nowrap;
     }
     #toast.show {
       opacity: 1;
@@ -893,521 +944,102 @@
       text-align: center;
       padding: 60px 20px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
     }
     .empty-favorites {
       background: var(--paper-card);
       border: 1px dashed var(--line-dark);
-      border-radius: 8px;
-      padding: 50px 24px;
-      max-width: 520px;
+      border-radius: 12px;
+      padding: 50px 20px;
+      max-width: 480px;
       margin: 40px auto;
     }
     .empty-favorites .empty-icon {
-      font-size: 42px;
-      margin-bottom: 12px;
+      font-size: 40px;
+      margin-bottom: 10px;
     }
     .empty-favorites h3 {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--ink);
-      margin: 0 0 10px;
-      font-weight: 500;
+      margin: 0 0 8px;
+      font-weight: 600;
     }
     .empty-favorites p {
-      font-size: 14px;
+      font-size: 13.5px;
       line-height: 1.6;
       color: var(--muted);
-      margin: 0 0 20px;
+      margin: 0 0 18px;
     }
     .btn-goto-gallery {
-      background: #8d4d39;
+      background: var(--accent);
       color: #fff;
       border: none;
-      padding: 9px 20px;
-      border-radius: 4px;
-      font: 500 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 8px 18px;
+      border-radius: 18px;
+      font-size: 13.5px;
+      font-weight: 500;
       cursor: pointer;
-      transition: all .15s ease;
-      box-shadow: 0 2px 6px rgba(141, 77, 57, 0.3);
-    }
-    .btn-goto-gallery:hover {
-      background: #733c2c;
-      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(255, 36, 66, 0.3);
     }
 
-    /* Responsive - Mobile Fullscreen Immersive Lightbox */
-    @media (max-width: 860px) {
-      #lightbox {
-        padding: 0;
-        background: rgba(12, 10, 8, 0.96);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-      }
-      #lightbox.open {
-        display: block;
-      }
-      .modal-card {
-        position: fixed;
-        inset: 0;
-        width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
-        max-width: 100vw;
-        border-radius: 0;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: visible;
-        margin: 0;
-        padding: 0;
-        z-index: 1030;
-      }
-      .modal-close {
-        display: none;
-      }
-
-      /* Fullscreen Image Container */
-      .modal-img-wrap {
-        width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
-        min-height: 0;
-        background: transparent;
-        padding: 58px 16px 80px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        touch-action: pan-y;
-        flex: none;
-      }
-      .modal-img-wrap img {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        filter: drop-shadow(0 10px 30px rgba(0,0,0,0.65));
-        border-radius: 6px;
-      }
-
-      /* Floating Mobile Top Bar */
-      .modal-top-bar {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        box-sizing: border-box;
-        height: 54px;
-        padding: 0 16px;
-        align-items: center;
-        justify-content: space-between;
-        background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%);
-        z-index: 1025;
-        pointer-events: auto;
-      }
-      .modal-top-info {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex: 1 1 auto;
-        min-width: 0;
-        overflow: hidden;
-      }
-      .modal-top-badge {
-        flex: 0 0 auto;
-        font: 11px/1 ui-monospace, monospace;
-        background: rgba(255,255,255,0.18);
-        color: #ede2cf;
-        padding: 4px 8px;
-        border-radius: 4px;
-        white-space: nowrap;
-        letter-spacing: .04em;
-      }
-      .modal-top-title {
-        flex: 1 1 auto;
-        min-width: 0;
-        font-size: 15px;
-        color: #ffffff;
-        font-weight: 500;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.85);
-      }
-      .modal-top-close {
-        flex: 0 0 32px;
-        min-width: 32px;
-        background: rgba(255,255,255,0.22);
-        border: 1px solid rgba(255,255,255,0.25);
-        color: #ffffff;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        cursor: pointer;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        transition: background .15s ease;
-        margin-left: 10px;
-        flex-shrink: 0;
-      }
-      .modal-top-close:active {
-        background: rgba(255,255,255,0.45);
-      }
-
-      /* Floating Mobile Bottom Action Bar */
-      .modal-mobile-bottom-bar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        bottom: max(22px, env(safe-area-inset-bottom, 22px));
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1025;
-        gap: 10px;
-        background: rgba(22, 18, 14, 0.9);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        padding: 5px 6px;
-        border-radius: 36px;
-        border: 1px solid rgba(255,255,255,0.18);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.65);
-        width: max-content;
-        max-width: calc(100vw - 24px);
-        box-sizing: border-box;
-      }
-      .mobile-action-btn {
-        display: inline-flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        height: 38px;
-        padding: 0 16px;
-        border-radius: 20px;
-        font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-        cursor: pointer;
-        border: none;
-        transition: transform .12s ease, background .15s ease;
-        user-select: none;
-        white-space: nowrap;
-        flex-shrink: 0;
-        box-sizing: border-box;
-      }
-      .mobile-action-btn svg {
-        flex-shrink: 0;
-        width: 14px;
-        height: 14px;
-      }
-      .mobile-action-btn span {
-        white-space: nowrap;
-        display: inline-block;
-        line-height: 1;
-      }
-      .mobile-action-btn.like-btn {
-        background: rgba(255,255,255,0.14);
-        color: #f5ede0;
-      }
-      .mobile-action-btn.like-btn:active {
-        background: rgba(255,255,255,0.25);
-        transform: scale(0.96);
-      }
-      .mobile-action-btn.like-btn.liked {
-        background: #c93b2b;
-        color: #ffffff;
-        font-weight: 500;
-        box-shadow: 0 2px 8px rgba(201, 59, 43, 0.4);
-      }
-      .mobile-action-btn.like-btn.liked svg {
-        fill: #ffffff;
-        stroke: #ffffff;
-      }
-      .mobile-action-btn.copy-btn {
-        background: var(--accent);
-        color: #ffffff;
-        font-weight: 500;
-        box-shadow: 0 2px 8px rgba(141, 77, 57, 0.4);
-      }
-      .mobile-action-btn.copy-btn:active {
-        background: #733c2c;
-        transform: scale(0.96);
-      }
-      .mobile-action-btn.detail-btn {
-        background: rgba(255,255,255,0.14);
-        color: #f5ede0;
-      }
-      .mobile-action-btn.detail-btn:active {
-        background: rgba(255,255,255,0.25);
-        transform: scale(0.96);
-      }
-
-      /* Slide-up Bottom Drawer for Mobile Details - Crystal Clear without Gray Overlay */
-      .modal-details {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1050;
-        background: #faf7f2;
-        border-radius: 20px 20px 0 0;
-        box-shadow: 0 -14px 45px rgba(0,0,0,0.65);
-        max-height: 82vh;
-        padding: 0 20px max(24px, env(safe-area-inset-bottom, 24px));
-        overflow-y: auto;
-        transform: translateY(105%);
-        transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1);
-        border-top: 1px solid var(--line-dark);
-        scrollbar-width: thin;
-      }
-      .modal-details.drawer-open {
-        transform: translateY(0);
-      }
-      .drawer-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        background: #faf7f2;
-        padding: 12px 0 10px;
-        z-index: 2;
-        margin: 0 -20px 12px;
-        border-bottom: 1px solid rgba(0,0,0,0.08);
-      }
-      .drawer-handle {
-        width: 38px;
-        height: 4px;
-        border-radius: 2px;
-        background: rgba(0,0,0,0.25);
-      }
-      .drawer-close-btn {
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0,0,0,0.08);
-        border: none;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 13px;
-        cursor: pointer;
-        color: var(--ink);
-      }
-      .drawer-close-btn:active {
-        background: rgba(0,0,0,0.18);
-      }
-      .modal-drawer-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.55);
-        z-index: 1035;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .25s ease;
-      }
-      .modal-drawer-backdrop.show {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      /* Modal Nav Arrows on Mobile */
-      .modal-nav-btn {
-        position: fixed;
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
-        background: rgba(0,0,0,0.45);
-        color: #ffffff;
-        border: 1px solid rgba(255,255,255,0.2);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        z-index: 1020;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      }
-      .modal-nav-btn:hover {
-        background: rgba(0,0,0,0.45);
-        color: #ffffff;
-        transform: translateY(-50%);
-      }
-      .modal-nav-btn:active {
-        background: rgba(255,255,255,0.3);
-        transform: translateY(-50%) scale(0.92);
-      }
-      .modal-prev { left: 10px; }
-      .modal-next { right: 10px; }
-    }
-
-    /* Mobile First Screen Compact Optimization (<680px) */
+    /* -------------------------------------------------------------
+       Mobile Responsive Specifications (<680px)
+       ------------------------------------------------------------- */
     @media (max-width: 680px) {
-      header {
-        padding: 12px 14px 8px;
-        border-bottom: 1px solid var(--line);
+      .app-header {
+        padding: max(8px, var(--safe-top)) 10px 0;
       }
-      .header-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-      .kicker {
+      .brand-title {
         display: none;
       }
-      h1 {
-        font-size: 19px;
-        line-height: 1.2;
-        margin: 0;
-        font-weight: 500;
-        letter-spacing: -0.01em;
+      .header-main-row {
+        gap: 8px;
+        padding-bottom: 6px;
       }
-      h1 br {
-        display: none;
+      .search-capsule {
+        flex: 1 1 auto;
+        max-width: none;
       }
-      header p {
-        display: none;
-      }
-      .header-actions {
-        margin: 0;
-      }
-      .btn-top {
-        padding: 4px 9px;
-        font-size: 11.5px;
-        height: 28px;
-        border-radius: 14px;
-        gap: 4px;
-      }
-
-      /* Single-line Scrollable Series Tabs */
-      .series-nav {
-        padding: 6px 14px 2px;
-        margin: 0 auto;
-        gap: 6px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .series-nav::-webkit-scrollbar {
-        display: none;
-      }
-      .series-tab {
-        padding: 5px 10px;
-        font-size: 12px;
-        flex-shrink: 0;
-        white-space: nowrap;
-        border-radius: 4px;
-      }
-      .series-tab .count-badge {
-        padding: 1px 4px;
-        font-size: 10px;
-        margin-left: 2px;
-      }
-
-      /* Compact Controls & Filters Bar */
-      .controls-wrap {
-        padding: 0 14px;
-        margin-top: 6px;
-      }
-      .controls {
-        padding: 6px 8px;
-        gap: 6px;
-        flex-wrap: wrap;
-      }
-      .search-box {
-        flex: 1 1 100%;
+      .search-capsule input {
         height: 32px;
-        padding: 0 8px;
-      }
-      .search-box input {
         font-size: 12.5px;
       }
-      .custom-filter {
-        flex: 1 1 auto;
-        min-width: 120px;
-        width: auto;
-      }
-      .custom-filter-trigger {
-        height: 30px;
-        padding: 0 8px;
-        font-size: 11.5px;
-      }
-      .color-switcher {
-        display: flex;
-        gap: 2px;
-        padding: 2px;
-      }
       .color-btn {
-        padding: 3px 8px;
+        padding: 3px 6px;
+        font-size: 10.5px;
+      }
+      .btn-top-download {
+        height: 26px;
+        padding: 0 8px;
         font-size: 11px;
       }
-      .btn-batch-download {
-        height: 30px;
-        padding: 0 10px;
-        font-size: 11.5px;
+      .xhs-tabs-nav {
+        gap: 14px;
       }
-      .count-indicator {
-        display: none;
+      .xhs-tab .tab-text {
+        font-size: 14px;
       }
-
-      /* Compact Category Pills */
-      .category-pills-wrap {
-        padding: 4px 14px 2px;
-        margin-top: 2px;
-        gap: 5px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .category-pills-wrap::-webkit-scrollbar {
-        display: none;
-      }
-      .cat-pill {
-        padding: 3px 8px;
-        font-size: 11px;
-        flex-shrink: 0;
-        white-space: nowrap;
+      .xhs-tab.active .tab-text {
+        font-size: 15px;
       }
 
-      /* Main Cards Grid - Fast Visual Access & Xiaohongshu 2-column Flow */
-      main {
+      /* Fixed 2-column mobile feed */
+      .feed-container {
         padding: 0 8px;
         margin-top: 8px;
-        margin-bottom: 40px;
       }
-      .grid {
+      .feed-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
       }
-      .card {
+      .feed-card {
         border-radius: 8px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        margin-bottom: 0;
       }
-      .card-info {
-        padding: 7px 8px 8px;
+      .feed-card-info {
+        padding: 6px 8px 8px;
         gap: 4px;
       }
-      .card-title {
+      .feed-card-title {
         font-size: 13px;
         line-height: 1.32;
       }
@@ -1419,12 +1051,31 @@
       .author-name {
         font-size: 10.5px;
       }
-      .card-like-btn {
-        padding: 1px 2px;
+
+      /* Mobile Note Detail Page Fullscreen overlay */
+      #note-detail-modal {
+        background: #ffffff;
       }
-      .card-like-btn svg {
-        width: 13px;
-        height: 13px;
+      .note-window {
+        max-width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .note-nav-btn {
+        display: none; /* Swipe gesture instead */
+      }
+      .note-header {
+        padding-top: var(--safe-top);
+        height: calc(50px + var(--safe-top));
+      }
+      .note-bottom-bar {
+        padding-bottom: var(--safe-bottom);
+        height: calc(54px + var(--safe-bottom));
+      }
+      .note-scroll-body {
+        padding-bottom: calc(64px + var(--safe-bottom));
       }
     }
   </style>
@@ -1454,165 +1105,190 @@
     </defs>
   </svg>
 
-  <!-- Top Header -->
-  <header>
-    <div class="header-inner">
-      <div class="header-content">
-        <div class="kicker" id="hero-kicker">china national scenic heritage / rubber stamp collection / 2026</div>
-        <h1 id="hero-title">橡胶戳华夏胜景<br>中国 5A 级景区名胜</h1>
-        <p id="hero-desc">精选 50 处中国最具代表性的 5A 级风景名胜与世界文化遗产。以极简手工线刻橡胶印章凝固华夏山河的壮丽画卷。</p>
+  <!-- Xiaohongshu Top Header Navigation -->
+  <header class="app-header">
+    <div class="header-main-row">
+      <div class="brand-area">
+        <span class="brand-logo">印</span>
+        <span class="brand-title">橡胶戳印记</span>
       </div>
-      <div class="header-actions">
-        <a class="btn-top" href="https://github.com/holynova/rubber-stamp-world-cities" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
+
+      <!-- Search Capsule -->
+      <div class="search-capsule">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="搜索名胜、诗句、动物或配色..." autocomplete="off">
+      </div>
+
+      <!-- Right Tools: Color Switcher & Batch Download -->
+      <div class="header-tools">
+        <div class="color-switcher">
+          <button class="color-btn active" data-ink="default">原色</button>
+          <button class="color-btn" data-ink="cinnabar">朱砂</button>
+          <button class="color-btn" data-ink="charcoal">墨黑</button>
+        </div>
+        <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载所有已点赞的高清原图" disabled>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>下载 (<span id="batch-download-count">0</span>)</span>
+        </button>
       </div>
     </div>
+
+    <!-- Xiaohongshu Scrollable Channel Tabs -->
+    <div class="xhs-tabs-wrap">
+      <nav class="xhs-tabs-nav" id="series-nav">
+        <button class="xhs-tab active" data-series="scenic_spots">
+          <span class="tab-text">名胜风景</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="poetry">
+          <span class="tab-text">古诗名句</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="cities">
+          <span class="tab-text">世界城市</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="wildlife">
+          <span class="tab-text">珍稀动物</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="marine">
+          <span class="tab-text">海洋生物</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="atmosphere">
+          <span class="tab-text">大气现象</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="zodiac">
+          <span class="tab-text">十二生肖</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="solar_terms">
+          <span class="tab-text">二十四节气</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="shanhaijing">
+          <span class="tab-text">山海神异</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="favorites">
+          <span class="tab-text">❤️ 我的点赞 <span class="fav-badge" id="fav-tab-badge">0</span></span>
+          <span class="tab-indicator"></span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Quick Sub-Category Filter Pills -->
+    <div class="category-pills-wrap" id="category-pills-wrap"></div>
   </header>
 
-  <!-- 9 Series Navigation Tabs -->
-  <nav class="series-nav" id="series-nav">
-    <button class="series-tab active" data-series="scenic_spots">名胜风景 <span class="count-badge">50</span></button>
-    <button class="series-tab" data-series="poetry">古诗名句 <span class="count-badge">50</span></button>
-    <button class="series-tab" data-series="cities">世界城市 <span class="count-badge">30</span></button>
-    <button class="series-tab" data-series="wildlife">珍稀动物 <span class="count-badge">20</span></button>
-    <button class="series-tab" data-series="marine">海洋生物 <span class="count-badge">20</span></button>
-    <button class="series-tab" data-series="atmosphere">大气现象 <span class="count-badge">20</span></button>
-    <button class="series-tab" data-series="zodiac">十二生肖 <span class="count-badge">12</span></button>
-    <button class="series-tab" data-series="solar_terms">二十四节气 <span class="count-badge">24</span></button>
-    <button class="series-tab" data-series="shanhaijing">山海神异 <span class="count-badge">10</span></button>
-    <button class="series-tab tab-favorites" data-series="favorites" title="查看所有已点赞的印章作品"><span class="fav-heart">❤️</span> 我的点赞 <span class="count-badge" id="fav-tab-badge">0</span></button>
-  </nav>
-
-  <!-- Controls Bar: Search, Custom Styled Dropdown Filter, Color Modes, Batch Download -->
-  <div class="controls-wrap">
-    <div class="controls">
-      <!-- Search -->
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="search-input" placeholder="搜索名称、特征、诗句或配色..." autocomplete="off">
-      </div>
-
-      <!-- Custom UI Category Filter Dropdown -->
-      <div class="custom-filter" id="custom-filter-container">
-        <button class="custom-filter-trigger" id="custom-filter-trigger" type="button" aria-haspopup="true">
-          <span id="custom-filter-label">全部分类</span>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="custom-filter-menu" id="custom-filter-menu">
-          <!-- Dynamically populated options -->
-        </div>
-      </div>
-
-      <!-- Color Palette Filter -->
-      <div class="color-switcher">
-        <button class="color-btn active" data-ink="default">原色</button>
-        <button class="color-btn" data-ink="charcoal">墨黑</button>
-        <button class="color-btn" data-ink="cinnabar">朱砂</button>
-      </div>
-
-      <!-- Batch Download Liked Stamps Button -->
-      <button class="btn-batch-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载所有已点赞的高清原图" disabled>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        <span>批量下载原图 (<span id="batch-download-count">0</span>)</span>
-      </button>
-
-      <!-- Count Stats -->
-      <div class="count-indicator" id="count-indicator">50 / 50 名胜风景</div>
-    </div>
-  </div>
-
-  <!-- Quick Category Filter Pills -->
-  <div class="category-pills-wrap" id="category-pills-wrap"></div>
-
-  <!-- Cards Grid -->
-  <main>
-    <div class="grid" id="grid"></div>
+  <!-- Feed Waterfall Container -->
+  <main class="feed-container">
+    <div class="feed-grid" id="grid"></div>
   </main>
 
-  <!-- Lightbox Modal -->
-  <div id="lightbox">
-    <!-- Drawer Backdrop (for mobile) -->
-    <div class="modal-drawer-backdrop" id="modal-drawer-backdrop"></div>
-
-    <!-- Floating Mobile Top Header -->
-    <div class="modal-top-bar" id="modal-top-bar">
-      <div class="modal-top-info">
-        <span class="modal-top-badge" id="modal-top-badge">01 / 50</span>
-        <span class="modal-top-title" id="modal-top-title">北京故宫</span>
-      </div>
-      <button class="modal-top-close" id="modal-top-close" title="关闭 (Esc)">✕</button>
-    </div>
-
-    <!-- Navigation Buttons -->
-    <button class="modal-nav-btn modal-prev" id="btn-prev" title="上一张 (Left Arrow)">‹</button>
-    <button class="modal-nav-btn modal-next" id="btn-next" title="下一张 (Right Arrow)">›</button>
-
-    <div class="modal-card" id="modal-card">
-      <button class="modal-close" id="modal-close" title="关闭 (Esc)">✕</button>
-
-      <div class="modal-img-wrap" id="modal-img-wrap">
-        <img id="modal-img" src="" alt="印章大图">
-      </div>
-
-      <!-- Floating Mobile Bottom Action Bar -->
-      <div class="modal-mobile-bottom-bar" id="modal-mobile-bottom-bar">
-        <button class="mobile-action-btn like-btn" id="btn-mobile-like" type="button">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          <span id="mobile-like-text">点赞</span>
+  <!-- Xiaohongshu Note Detail Page Modal -->
+  <div id="note-detail-modal" aria-modal="true" role="dialog">
+    <div class="note-window" id="note-window">
+      <!-- Top Navigation Bar -->
+      <div class="note-header">
+        <button class="note-btn-back" id="btn-note-back" onclick="closeNoteDetail()" title="返回列表">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <button class="mobile-action-btn copy-btn" id="btn-mobile-copy-prompt" type="button">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          <span>复制 Prompt</span>
-        </button>
-        <button class="mobile-action-btn detail-btn" id="btn-mobile-open-details" type="button">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-          <span>查看详情</span>
-        </button>
-      </div>
 
-      <!-- Details Section (Desktop: Right Column; Mobile: Slide-up Drawer) -->
-      <div class="modal-details" id="modal-details">
-        <div class="drawer-header" id="drawer-header">
-          <div class="drawer-handle"></div>
-          <button class="drawer-close-btn" id="btn-drawer-close" title="收起详情">✕</button>
+        <div class="note-author-info">
+          <div class="note-avatar" id="note-avatar">印</div>
+          <div class="note-author-meta">
+            <div class="note-author-name" id="note-author-name">橡胶戳艺术印记</div>
+            <div class="note-author-sub" id="note-author-sub">华夏胜景系列</div>
+          </div>
+          <button class="note-btn-follow" id="btn-note-follow" onclick="toggleFollow()">关注</button>
         </div>
-        <div class="modal-details-body">
-          <div>
-            <div class="modal-badge" id="modal-badge">5A SCENIC SPOTS 01</div>
-            <h2 class="modal-title" id="modal-title">北京故宫</h2>
-          </div>
-          <div class="modal-meta" id="modal-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</div>
-          <div class="modal-colors" id="modal-colors">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
 
-          <!-- Actions Bar: Like & Single Download -->
-          <div class="modal-actions-bar">
-            <button class="modal-btn modal-like-btn" id="btn-modal-like" title="点赞/取消点赞">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              <span id="modal-like-text">点赞收藏</span>
-            </button>
-            <button class="modal-btn modal-download-btn" id="btn-modal-download" title="下载当前高清原图">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>下载原图</span>
-            </button>
-          </div>
+        <button class="note-btn-share" id="btn-note-share" onclick="shareCurrentNote()" title="分享">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+        </button>
+      </div>
 
-          <!-- Full Prompt Block -->
-          <div class="modal-prompt-box">
-            <div class="modal-prompt-header">
-              <span class="modal-prompt-title">原始作图 Prompt</span>
-              <button class="btn-modal-copy" id="btn-copy-modal-prompt">复制完整提示词</button>
+      <!-- Desktop Nav Arrows -->
+      <button class="note-nav-btn note-nav-prev" id="btn-note-prev" onclick="navNote(-1)" title="上一张 (←)">‹</button>
+      <button class="note-nav-btn note-nav-next" id="btn-note-next" onclick="navNote(1)" title="下一张 (→)">›</button>
+
+      <!-- Scrollable Note Body -->
+      <div class="note-scroll-body" id="note-scroll-body">
+        <!-- Natural Image Display (Uncropped) -->
+        <div class="note-media-wrap">
+          <div class="note-img-container">
+            <img class="note-main-img" id="note-main-img" src="" alt="印章作品大图">
+            <div class="note-badge-ai">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+              <span>可能含AI生成内容</span>
             </div>
-            <div class="modal-prompt-content" id="modal-prompt-content"></div>
+            <div class="note-page-indicator" id="note-page-indicator">1/1</div>
           </div>
+        </div>
+
+        <!-- Note Text Body -->
+        <div class="note-content-container">
+          <h1 class="note-title" id="note-title">北京故宫 · 太和红墙</h1>
+
+          <div class="note-text-body">
+            <p class="note-desc" id="note-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏。</p>
+            <div class="note-colors-tag" id="note-colors-tag">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
+
+            <!-- Inline Xiaohongshu Prompt Block -->
+            <div class="note-prompt-section">
+              <div class="prompt-section-header">
+                <span class="prompt-title-tag">提示词：</span>
+                <button class="btn-copy-inline-prompt" onclick="copyCurrentPrompt()">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>复制 Prompt</span>
+                </button>
+              </div>
+              <div class="prompt-full-text" id="note-prompt-text" onclick="copyCurrentPrompt()" title="点击一键复制作图 Prompt"></div>
+            </div>
+
+            <div class="note-date-location">
+              <span id="note-date">2026-09-13</span> · <span>中国</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Fixed Action Bar -->
+      <div class="note-bottom-bar">
+        <!-- Capsule Prompt Copy Shortcut -->
+        <button class="note-comment-capsule" onclick="copyCurrentPrompt()" title="点击复制作图 Prompt">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>点击复制作图 Prompt...</span>
+        </button>
+
+        <div class="note-actions-right">
+          <!-- Like Button -->
+          <button class="note-action-btn" id="btn-note-like" onclick="toggleNoteLike()" title="点赞">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span class="action-num" id="note-like-text">点赞</span>
+          </button>
+
+          <!-- Download Single PNG Button -->
+          <button class="note-action-btn" id="btn-note-download" onclick="downloadCurrentNote()" title="下载高清原图">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span class="action-num">下载</span>
+          </button>
+
+          <!-- Share Button -->
+          <button class="note-action-btn" onclick="shareCurrentNote()" title="分享">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span class="action-num">分享</span>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast">已复制到剪贴板</div>
+  <div id="toast">已复制作图 Prompt 到剪贴板</div>
 
   <!-- JSZip & Data Scripts -->
   <script src="jszip.min.js"></script>
@@ -1626,46 +1302,35 @@
     let currentCategoryFilter = "all";
     let currentFilteredRows = [];
     let currentModalIndex = 0;
+    let isFollowed = false;
 
     const LIKES_STORAGE_KEY = "rubber_stamp_likes_v1";
 
-    const seriesTabs = document.querySelectorAll(".series-tab");
+    const seriesTabs = document.querySelectorAll(".xhs-tab");
     const searchInput = document.querySelector("#search-input");
-    const filterTrigger = document.querySelector("#custom-filter-trigger");
-    const filterMenu = document.querySelector("#custom-filter-menu");
-    const filterLabel = document.querySelector("#custom-filter-label");
     const pillsWrap = document.querySelector("#category-pills-wrap");
-    const countIndicator = document.querySelector("#count-indicator");
     const gridEl = document.querySelector("#grid");
     const toastEl = document.querySelector("#toast");
     const favTabBadge = document.querySelector("#fav-tab-badge");
     const batchDownloadCount = document.querySelector("#batch-download-count");
     const btnBatchDownload = document.querySelector("#btn-batch-download");
 
-    // Modal elements
-    const lightboxEl = document.querySelector("#lightbox");
-    const modalImg = document.querySelector("#modal-img");
-    const modalBadge = document.querySelector("#modal-badge");
-    const modalTitle = document.querySelector("#modal-title");
-    const modalDesc = document.querySelector("#modal-desc");
-    const modalColors = document.querySelector("#modal-colors");
-    const modalPromptContent = document.querySelector("#modal-prompt-content");
-    const btnCopyModalPrompt = document.querySelector("#btn-copy-modal-prompt");
-    const btnModalLike = document.querySelector("#btn-modal-like");
-    const modalLikeText = document.querySelector("#modal-like-text");
-    const btnModalDownload = document.querySelector("#btn-modal-download");
-
-    // Mobile specific modal elements
-    const modalTopBadge = document.querySelector("#modal-top-badge");
-    const modalTopTitle = document.querySelector("#modal-top-title");
-    const modalTopClose = document.querySelector("#modal-top-close");
-    const btnMobileLike = document.querySelector("#btn-mobile-like");
-    const mobileLikeText = document.querySelector("#mobile-like-text");
-    const btnMobileCopyPrompt = document.querySelector("#btn-mobile-copy-prompt");
-    const btnMobileOpenDetails = document.querySelector("#btn-mobile-open-details");
-    const btnDrawerClose = document.querySelector("#btn-drawer-close");
-    const modalDetails = document.querySelector("#modal-details");
-    const modalDrawerBackdrop = document.querySelector("#modal-drawer-backdrop");
+    // Note Detail Modal elements
+    const noteModal = document.querySelector("#note-detail-modal");
+    const noteWindow = document.querySelector("#note-window");
+    const noteScrollBody = document.querySelector("#note-scroll-body");
+    const noteMainImg = document.querySelector("#note-main-img");
+    const noteAvatar = document.querySelector("#note-avatar");
+    const noteAuthorName = document.querySelector("#note-author-name");
+    const noteAuthorSub = document.querySelector("#note-author-sub");
+    const btnNoteFollow = document.querySelector("#btn-note-follow");
+    const noteTitle = document.querySelector("#note-title");
+    const noteDesc = document.querySelector("#note-desc");
+    const noteColorsTag = document.querySelector("#note-colors-tag");
+    const notePromptText = document.querySelector("#note-prompt-text");
+    const notePageIndicator = document.querySelector("#note-page-indicator");
+    const btnNoteLike = document.querySelector("#btn-note-like");
+    const noteLikeText = document.querySelector("#note-like-text");
 
     /* -------------------------------------------------------------
        Likes & Favorites System (LocalStorage)
@@ -1752,39 +1417,34 @@
         const out = btn.dataset.output;
         const isL = set.has(out);
         btn.classList.toggle("liked", isL);
-        btn.title = isL ? "取消点赞" : "点赞收藏";
+        btn.title = isL ? "取消点赞" : "点赞";
         btn.innerHTML = getHeartSvg(isL);
       });
 
-      // If currently viewing favorites series tab, re-render and update header
+      // If currently viewing favorites series tab, re-render
       if (currentSeriesKey === "favorites") {
-        updateHeader();
         buildCategoryOptions();
         render();
       }
 
-      // If modal is open, update modal buttons
-      if (lightboxEl.classList.contains("open") && currentFilteredRows[currentModalIndex]) {
+      // If detail modal is open, sync modal like button
+      if (noteModal.classList.contains("open") && currentFilteredRows[currentModalIndex]) {
         const curItem = currentFilteredRows[currentModalIndex];
         const isL = set.has(curItem.output);
-        syncModalLikeButtons(isL);
+        syncNoteLikeUI(isL);
       }
     }
 
     function getHeartSvg(filled) {
       return filled
-        ? `<svg width="15" height="15" viewBox="0 0 24 24" fill="#c93b2b" stroke="#c93b2b" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`
-        : `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="#ff2442" stroke="#ff2442" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`
+        : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
     }
 
-    function syncModalLikeButtons(isL) {
-      if (btnModalLike) {
-        btnModalLike.classList.toggle("liked", isL);
-        modalLikeText.textContent = isL ? "已点赞" : "点赞收藏";
-      }
-      if (btnMobileLike) {
-        btnMobileLike.classList.toggle("liked", isL);
-        mobileLikeText.textContent = isL ? "已点赞" : "点赞";
+    function syncNoteLikeUI(isL) {
+      if (btnNoteLike) {
+        btnNoteLike.classList.toggle("liked", isL);
+        noteLikeText.textContent = isL ? "已点赞" : "点赞";
       }
     }
 
@@ -1807,24 +1467,24 @@
       btnBatchDownload.disabled = true;
 
       try {
-        showToast(`开始准备打包 ${likedItems.length} 张高清原图...`);
+        showToast(`准备打包 ${likedItems.length} 张高清原图...`);
         const zip = new JSZip();
         const folder = zip.folder("rubber-stamps-favorites");
 
         for (let i = 0; i < likedItems.length; i++) {
           const item = likedItems[i];
-          btnBatchDownload.innerHTML = `<span>⏳ 打包中 (${i + 1}/${likedItems.length})...</span>`;
+          btnBatchDownload.innerHTML = `<span>⏳ ${i + 1}/${likedItems.length}</span>`;
 
           const response = await fetch(item.output);
           if (!response.ok) throw new Error(`无法获取图片: ${item.output}`);
           const blob = await response.blob();
 
-          const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\\/:*?"<>|]/g, "_");
+          const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\/:*?"<>|]/g, "_");
           const filename = `${item.seriesTitle || "印章"}_${String(item.id).padStart(2, "0")}_${cleanTitle}.png`;
           folder.file(filename, blob);
         }
 
-        btnBatchDownload.innerHTML = `<span>⚡ 正在压缩导出...</span>`;
+        btnBatchDownload.innerHTML = `<span>⚡ 压缩中</span>`;
         const zipBlob = await zip.generateAsync({
           type: "blob",
           compression: "DEFLATE",
@@ -1843,7 +1503,7 @@
         showToast(`🎉 成功打包下载 ${likedItems.length} 张高清原图！`);
       } catch (err) {
         console.error("Batch download error:", err);
-        showToast("下载打包遇到问题，请检查网络后重试");
+        showToast("下载遇到问题，请检查网络后重试");
       } finally {
         btnBatchDownload.innerHTML = origHtml;
         btnBatchDownload.disabled = getLikedSet().size === 0;
@@ -1853,7 +1513,7 @@
     async function downloadSingleStamp(item) {
       if (!item || !item.output) return;
       try {
-        const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\\/:*?"<>|]/g, "_");
+        const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\/:*?"<>|]/g, "_");
         showToast(`正在下载「${cleanTitle}」原图...`);
         const res = await fetch(item.output);
         if (!res.ok) throw new Error("Fetch failed");
@@ -1865,14 +1525,14 @@
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(a.href);
-        showToast(`已开始下载「${cleanTitle}」原图`);
+        showToast(`已保存「${cleanTitle}」高清原图`);
       } catch (e) {
         showToast("下载失败，请稍后重试");
       }
     }
 
     /* -------------------------------------------------------------
-       Collection & Header Resolver
+       Collection Resolver
        ------------------------------------------------------------- */
     function getCollection() {
       if (currentSeriesKey === "favorites") {
@@ -1882,11 +1542,6 @@
           title: "我的点赞",
           titleEn: "My Favorites",
           count: likedItems.length,
-          kicker: "my favorite collection / rubber stamp gallery / 2026",
-          headline: "我的点赞印章<br>精选收藏作品集",
-          desc: `已收藏 ${likedItems.length} 枚心仪印章作品。支持一键批量打包下载高清原图，或在下方集中翻阅。`,
-          tagPrefix: "点赞",
-          badgeFormat: "收藏 {id}",
           items: likedItems
         };
       }
@@ -1930,7 +1585,7 @@
     }
 
     /* -------------------------------------------------------------
-       Custom UI Filter & Quick Pills Builder
+       Quick Sub-Category Filter Pills Builder
        ------------------------------------------------------------- */
     function buildCategoryOptions() {
       const col = getCollection();
@@ -1954,10 +1609,9 @@
           if (c > 0) categories.push({ key: `fav-series-${sKey}`, label: seriesNames[sKey], count: c });
         });
       } else {
-        // Option to filter liked in current series
         const currentLikedCount = items.filter(x => isLiked(x.output)).length;
         if (currentLikedCount > 0) {
-          categories.push({ key: "current-liked", label: "❤️ 本系列已点赞", count: currentLikedCount });
+          categories.push({ key: "current-liked", label: "❤️ 已点赞", count: currentLikedCount });
         }
 
         if (currentSeriesKey === "scenic_spots") {
@@ -2013,15 +1667,6 @@
         }
       }
 
-      // Populate Custom Dropdown Menu
-      filterMenu.innerHTML = categories.map(opt => `
-        <div class="custom-filter-option ${opt.key === currentCategoryFilter ? "active" : ""}" data-key="${opt.key}">
-          <span>${opt.label}</span>
-          <span class="opt-badge">${opt.count}</span>
-        </div>
-      `).join("");
-
-      // Populate Quick Filter Pills
       if (categories.length > 1) {
         pillsWrap.style.display = "flex";
         pillsWrap.innerHTML = categories.map(opt => `
@@ -2035,16 +1680,6 @@
         pillsWrap.innerHTML = "";
       }
 
-      // Update trigger label
-      const activeOpt = categories.find(o => o.key === currentCategoryFilter) || categories[0];
-      filterLabel.textContent = `${activeOpt.label} (${activeOpt.count})`;
-
-      // Bind dropdown option clicks
-      filterMenu.querySelectorAll(".custom-filter-option").forEach(el => {
-        el.onclick = () => selectCategory(el.dataset.key);
-      });
-
-      // Bind pill clicks
       pillsWrap.querySelectorAll(".cat-pill").forEach(el => {
         el.onclick = () => selectCategory(el.dataset.key);
       });
@@ -2052,61 +1687,15 @@
 
     function selectCategory(key) {
       currentCategoryFilter = key;
-
-      // Sync Dropdown Active
-      filterMenu.querySelectorAll(".custom-filter-option").forEach(o => {
-        o.classList.toggle("active", o.dataset.key === key);
-      });
-      const activeOpt = filterMenu.querySelector(`.custom-filter-option[data-key="${key}"]`);
-      if (activeOpt) {
-        filterLabel.textContent = `${activeOpt.querySelector("span").textContent} (${activeOpt.querySelector(".opt-badge").textContent})`;
-      }
-
-      // Sync Pills Active
       pillsWrap.querySelectorAll(".cat-pill").forEach(p => {
         p.classList.toggle("active", p.dataset.key === key);
       });
-
-      closeFilterDropdown();
       render();
     }
 
-    function toggleFilterDropdown() {
-      const isOpen = filterMenu.classList.contains("open");
-      if (isOpen) closeFilterDropdown();
-      else openFilterDropdown();
-    }
-    function openFilterDropdown() {
-      filterMenu.classList.add("open");
-      filterTrigger.classList.add("open");
-    }
-    function closeFilterDropdown() {
-      filterMenu.classList.remove("open");
-      filterTrigger.classList.remove("open");
-    }
-
-    filterTrigger.onclick = (e) => {
-      e.stopPropagation();
-      toggleFilterDropdown();
-    };
-
-    document.addEventListener("click", (e) => {
-      if (!document.querySelector("#custom-filter-container").contains(e.target)) {
-        closeFilterDropdown();
-      }
-    });
-
     /* -------------------------------------------------------------
-       Header & Render Core
+       Gallery Feed Render
        ------------------------------------------------------------- */
-    function updateHeader() {
-      const col = getCollection();
-      document.querySelector("#hero-kicker").textContent = col.kicker;
-      document.querySelector("#hero-title").innerHTML = col.headline;
-      document.querySelector("#hero-desc").textContent = col.desc;
-      document.title = `${col.title} · 橡胶戳艺术印记`;
-    }
-
     function render() {
       const col = getCollection();
       const q = searchInput.value.trim().toLowerCase();
@@ -2134,26 +1723,23 @@
             const s = f.replace("season-", "");
             matchesFilter = x.season === s;
           } else if (f.startsWith("wildlife-") || f.startsWith("marine-") || f.startsWith("atmo-")) {
-            const activeEl = filterMenu.querySelector(`.custom-filter-option[data-key="${f}"]`);
-            if (activeEl) {
-              const grpName = activeEl.querySelector("span").textContent;
-              const groups = {
-                "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
-                "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
-                "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
-                "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"],
-                "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
-                "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
-                "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
-                "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"],
-                "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
-                "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
-                "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
-                "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
-              };
-              if (groups[grpName]) {
-                matchesFilter = groups[grpName].some(n => x.name.includes(n));
-              }
+            const grpKey = f.split("-")[1];
+            const groups = {
+              "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
+              "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
+              "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
+              "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"],
+              "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
+              "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
+              "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
+              "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"],
+              "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
+              "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
+              "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
+              "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
+            };
+            if (groups[grpKey]) {
+              matchesFilter = groups[grpKey].some(n => x.name.includes(n));
             }
           }
         }
@@ -2161,15 +1747,13 @@
         return matchesQuery && matchesFilter;
       });
 
-      countIndicator.textContent = `${currentFilteredRows.length} / ${col.items.length} ${col.title}`;
-
       if (!currentFilteredRows.length) {
         if (currentSeriesKey === "favorites") {
           gridEl.innerHTML = `
             <div class="empty empty-favorites">
               <div class="empty-icon">🤍</div>
               <h3>暂无已点赞的印章作品</h3>
-              <p>在画廊中浏览喜欢的印章作品时，点击卡片右上角或展开大图中的 ❤️ 爱心按钮，即可收藏至此处并支持一键批量打包下载原图！</p>
+              <p>在画廊中浏览喜欢的印章作品时，点击 ❤️ 点赞，即可收藏至此处并支持一键批量打包下载！</p>
               <button class="btn-goto-gallery" onclick="switchSeries('scenic_spots')">去浏览印章画廊</button>
             </div>
           `;
@@ -2181,21 +1765,19 @@
 
       gridEl.innerHTML = currentFilteredRows.map((x, idx) => {
         const displayName = x.city || x.title || x.name;
-        const badgeLabel = col.badgeFormat ? col.badgeFormat.replace("{id}", String(x.id).padStart(2, "0")) : `NO. ${String(x.id).padStart(2, "0")}`;
         const liked = isLiked(x.output);
         const seriesName = x.seriesTitle || col.title || "橡胶戳";
         const tagText = x.region || x.season || x.category || x.province || x.author || seriesName;
         const avatarChar = (seriesName && seriesName[0]) || "印";
 
         return `
-          <article class="card" data-index="${idx}" onclick="openModal(${idx})">
-            <div class="frame">
+          <article class="feed-card" data-index="${idx}" onclick="openNoteDetail(${idx})">
+            <div class="feed-card-media">
               <img class="stamp-img" src="${x.output}" alt="${displayName}" onerror="this.src='placeholder.svg'" loading="lazy">
-              <span class="badge">${badgeLabel}</span>
             </div>
-            <div class="card-info">
-              <h2 class="card-title">${displayName}</h2>
-              <div class="card-footer">
+            <div class="feed-card-info">
+              <h2 class="feed-card-title">${displayName}</h2>
+              <div class="feed-card-footer">
                 <div class="card-author">
                   <span class="author-avatar">${avatarChar}</span>
                   <span class="author-name">${tagText}</span>
@@ -2210,13 +1792,6 @@
       }).join("");
     }
 
-    function copyCardPrompt(index) {
-      if (index >= 0 && index < currentFilteredRows.length) {
-        const item = currentFilteredRows[index];
-        copyText(item.prompt, `已复制「${item.city || item.title || item.name}」作图 Prompt`);
-      }
-    }
-
     function switchSeries(key) {
       if (currentSeriesKey === key && currentCategoryFilter === "all" && currentFilteredRows.length > 0) return;
       currentSeriesKey = key;
@@ -2225,10 +1800,12 @@
       seriesTabs.forEach(t => {
         const isAct = t.dataset.series === key;
         t.classList.toggle("active", isAct);
+        if (isAct) {
+          t.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
       });
 
       window.location.hash = key;
-      updateHeader();
       buildCategoryOptions();
       searchInput.value = "";
       render();
@@ -2241,21 +1818,9 @@
     searchInput.oninput = render;
 
     /* -------------------------------------------------------------
-       Lightbox Modal & Mobile Drawer Logic
+       Xiaohongshu Note Detail Modal Logic
        ------------------------------------------------------------- */
-    function openDrawer() {
-      modalDetails.classList.add("drawer-open");
-      modalDrawerBackdrop.classList.add("show");
-      document.querySelectorAll(".modal-nav-btn").forEach(b => b.style.opacity = "0");
-    }
-
-    function closeDrawer() {
-      modalDetails.classList.remove("drawer-open");
-      modalDrawerBackdrop.classList.remove("show");
-      document.querySelectorAll(".modal-nav-btn").forEach(b => b.style.opacity = "");
-    }
-
-    function openModal(index) {
+    function openNoteDetail(index) {
       if (index < 0 || index >= currentFilteredRows.length) return;
       currentModalIndex = index;
       const x = currentFilteredRows[index];
@@ -2263,138 +1828,119 @@
       const displayName = x.city || x.title || x.name;
       const promptText = x.prompt || "";
       const liked = isLiked(x.output);
+      const seriesTitle = x.seriesTitle || col.title || "橡胶戳系列";
 
-      closeDrawer();
+      noteMainImg.src = x.output;
+      noteMainImg.alt = displayName;
+      noteAvatar.textContent = (seriesTitle && seriesTitle[0]) || "印";
+      noteAuthorName.textContent = "橡胶戳艺术印记";
+      noteAuthorSub.textContent = seriesTitle + ` · 第 ${String(x.id).padStart(2, "0")} 枚`;
 
-      modalImg.src = x.output;
-      modalImg.alt = displayName;
-      
-      // Desktop info
-      modalBadge.textContent = `${(x.seriesTitleEn || col.titleEn).toUpperCase()} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
-      modalTitle.textContent = displayName;
-      modalDesc.textContent = x.features || "";
-      modalColors.textContent = x.colors ? `印层配色：${x.colors}` : "";
-      modalPromptContent.textContent = promptText;
+      noteTitle.textContent = displayName;
+      noteDesc.textContent = x.features || (x.keywords || []).join(" · ") || "";
+      noteColorsTag.textContent = x.colors ? `印层配色：${x.colors}` : `所属系列：${seriesTitle}`;
+      notePromptText.textContent = promptText;
+      notePageIndicator.textContent = `${index + 1}/${currentFilteredRows.length}`;
 
-      // Mobile top info
-      modalTopBadge.textContent = `${x.seriesTitle || col.title} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
-      modalTopTitle.textContent = displayName;
+      syncNoteLikeUI(liked);
 
-      // Sync like state
-      syncModalLikeButtons(liked);
+      if (noteScrollBody) noteScrollBody.scrollTop = 0;
 
-      // Bind like button actions
-      btnModalLike.onclick = (e) => {
-        e.stopPropagation();
-        toggleLike(x);
-      };
-      btnMobileLike.onclick = (e) => {
-        e.stopPropagation();
-        toggleLike(x);
-      };
-
-      // Bind single download actions
-      btnModalDownload.onclick = (e) => {
-        e.stopPropagation();
-        downloadSingleStamp(x);
-      };
-
-      // Copy buttons
-      btnCopyModalPrompt.onclick = () => copyText(promptText, `已复制「${displayName}」完整作图 Prompt`);
-      btnMobileCopyPrompt.onclick = (e) => {
-        e.stopPropagation();
-        copyText(promptText, `已复制「${displayName}」作图 Prompt`);
-      };
-
-      lightboxEl.classList.add("open");
+      noteModal.classList.add("open");
+      document.body.style.overflow = "hidden";
     }
 
-    document.querySelector("#modal-close").onclick = () => lightboxEl.classList.remove("open");
-    modalTopClose.onclick = () => lightboxEl.classList.remove("open");
+    function closeNoteDetail() {
+      noteModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
 
-    lightboxEl.onclick = e => {
-      if (e.target.id === "lightbox" || e.target.id === "modal-img-wrap" || e.target.id === "modal-card") {
-        if (modalDetails.classList.contains("drawer-open")) {
-          closeDrawer();
-        } else {
-          lightboxEl.classList.remove("open");
-        }
+    function navNote(delta) {
+      let newIdx = currentModalIndex + delta;
+      if (newIdx < 0) newIdx = currentFilteredRows.length - 1;
+      else if (newIdx >= currentFilteredRows.length) newIdx = 0;
+      openNoteDetail(newIdx);
+    }
+
+    function toggleFollow() {
+      isFollowed = !isFollowed;
+      btnNoteFollow.classList.toggle("followed", isFollowed);
+      btnNoteFollow.textContent = isFollowed ? "已关注" : "关注";
+      showToast(isFollowed ? "已关注创作者 ❤️" : "已取消关注");
+    }
+
+    function copyCurrentPrompt() {
+      if (currentFilteredRows[currentModalIndex]) {
+        const item = currentFilteredRows[currentModalIndex];
+        const displayName = item.city || item.title || item.name;
+        copyText(item.prompt, `已复制「${displayName}」作图 Prompt`);
+      }
+    }
+
+    function toggleNoteLike() {
+      if (currentFilteredRows[currentModalIndex]) {
+        const item = currentFilteredRows[currentModalIndex];
+        toggleLike(item);
+      }
+    }
+
+    function downloadCurrentNote() {
+      if (currentFilteredRows[currentModalIndex]) {
+        downloadSingleStamp(currentFilteredRows[currentModalIndex]);
+      }
+    }
+
+    function shareCurrentNote() {
+      if (currentFilteredRows[currentModalIndex]) {
+        const item = currentFilteredRows[currentModalIndex];
+        const name = item.city || item.title || item.name;
+        const shareText = `【橡胶戳艺术印记】${name} - 附作图 Prompt\n${window.location.href}`;
+        copyText(shareText, `已复制「${name}」分享信息与链接`);
+      }
+    }
+
+    noteModal.onclick = (e) => {
+      if (e.target.id === "note-detail-modal") {
+        closeNoteDetail();
       }
     };
 
-    btnMobileOpenDetails.onclick = (e) => {
-      e.stopPropagation();
-      openDrawer();
-    };
-
-    btnDrawerClose.onclick = (e) => {
-      e.stopPropagation();
-      closeDrawer();
-    };
-
-    modalDrawerBackdrop.onclick = (e) => {
-      e.stopPropagation();
-      closeDrawer();
-    };
-
-    document.querySelector("#btn-prev").onclick = (e) => {
-      if (e) e.stopPropagation();
-      if (currentModalIndex > 0) openModal(currentModalIndex - 1);
-      else openModal(currentFilteredRows.length - 1);
-    };
-    document.querySelector("#btn-next").onclick = (e) => {
-      if (e) e.stopPropagation();
-      if (currentModalIndex < currentFilteredRows.length - 1) openModal(currentModalIndex + 1);
-      else openModal(0);
-    };
-
-    // Keyboard Arrow Navigation
     window.addEventListener("keydown", e => {
-      if (!lightboxEl.classList.contains("open")) return;
+      if (!noteModal.classList.contains("open")) return;
       if (e.key === "Escape") {
-        if (modalDetails.classList.contains("drawer-open")) {
-          closeDrawer();
-        } else {
-          lightboxEl.classList.remove("open");
-        }
+        closeNoteDetail();
       } else if (e.key === "ArrowLeft") {
-        document.querySelector("#btn-prev").click();
+        navNote(-1);
       } else if (e.key === "ArrowRight") {
-        document.querySelector("#btn-next").click();
+        navNote(1);
       }
     });
 
-    // Touch Swipe Gestures for Mobile
     let touchStartX = 0;
     let touchStartY = 0;
     let touchEndX = 0;
     let touchEndY = 0;
 
-    lightboxEl.addEventListener("touchstart", e => {
+    noteModal.addEventListener("touchstart", e => {
       if (e.touches.length === 1) {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
       }
     }, { passive: true });
 
-    lightboxEl.addEventListener("touchend", e => {
-      if (modalDetails.classList.contains("drawer-open")) return;
+    noteModal.addEventListener("touchend", e => {
       if (e.changedTouches.length === 1) {
         touchEndX = e.changedTouches[0].clientX;
         touchEndY = e.changedTouches[0].clientY;
         const dx = touchEndX - touchStartX;
         const dy = touchEndY - touchStartY;
-        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-          if (dx < 0) {
-            document.querySelector("#btn-next").click();
-          } else {
-            document.querySelector("#btn-prev").click();
-          }
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.8) {
+          if (dx < 0) navNote(1);
+          else navNote(-1);
         }
       }
     }, { passive: true });
 
-    // Color Palette Switcher
     document.querySelectorAll(".color-btn").forEach(btn => {
       btn.onclick = () => {
         document.querySelectorAll(".color-btn").forEach(b => b.classList.remove("active"));
@@ -2403,9 +1949,6 @@
       };
     });
 
-    /* -------------------------------------------------------------
-       App Bootstrap & Hash Routing
-       ------------------------------------------------------------- */
     const urlParams = new URLSearchParams(window.location.search);
     const inkParam = urlParams.get("ink");
     if (inkParam === "cinnabar" || inkParam === "charcoal") {
@@ -2431,7 +1974,6 @@
     if (hash && (window.COLLECTIONS[hash] || hash === "favorites")) {
       switchSeries(hash);
     } else {
-      updateHeader();
       buildCategoryOptions();
       render();
     }
@@ -2439,16 +1981,10 @@
     updateLikesUI();
 
     const modalParam = urlParams.get("modal");
-    const drawerParam = urlParams.get("drawer");
     if (modalParam !== null) {
       const idx = parseInt(modalParam, 10);
       if (!isNaN(idx) && idx >= 0) {
-        setTimeout(() => {
-          openModal(idx);
-          if (drawerParam === "1" || drawerParam === "true") {
-            openDrawer();
-          }
-        }, 50);
+        setTimeout(() => openNoteDetail(idx), 50);
       }
     }
   </script>
