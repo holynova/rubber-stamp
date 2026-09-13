@@ -58,10 +58,33 @@
     }
 
     /* Ink Palette Color Filter Overrides */
-    .ink-cinnabar .stamp-img, .ink-cinnabar .modal-img-wrap img {
-      filter: sepia(0.9) saturate(3.5) hue-rotate(-52deg) contrast(1.2);
+    .ink-cinnabar {
+      --paper: #f9f8f5;
+      --paper-card: #ffffff;
+      --paper-pop: #ffffff;
+      --ink: #2b2724;
+      --accent: #b9281e;
+      --accent-hover: #9e2017;
+      --tab-active: #b9281e;
+      --line: #e8e2d8;
+      --line-dark: #d6ccbe;
+      background: #f7f5f1;
+      background-image: radial-gradient(#b9281e0f .8px, transparent .8px);
     }
-    .ink-charcoal .stamp-img, .ink-charcoal .modal-img-wrap img {
+    .ink-cinnabar .card {
+      background: #ffffff;
+      border-color: #e5ded2;
+    }
+    .ink-cinnabar .card .frame {
+      background: #ffffff;
+      box-shadow: inset 0 0 0 1px rgba(185, 40, 30, 0.08);
+    }
+    .ink-cinnabar .stamp-img, 
+    .ink-cinnabar .modal-img-wrap img {
+      filter: url(#seal-cinnabar-filter);
+    }
+    .ink-charcoal .stamp-img, 
+    .ink-charcoal .modal-img-wrap img {
       filter: grayscale(1) contrast(1.25) brightness(0.95);
     }
 
@@ -987,9 +1010,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
+        overflow: visible;
         margin: 0;
         padding: 0;
+        z-index: 1030;
       }
       .modal-close {
         display: none;
@@ -1178,17 +1202,17 @@
         transform: scale(0.96);
       }
 
-      /* Slide-up Bottom Drawer for Mobile Details */
+      /* Slide-up Bottom Drawer for Mobile Details - Crystal Clear without Gray Overlay */
       .modal-details {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 1040;
-        background: var(--paper-pop);
-        border-radius: 18px 18px 0 0;
-        box-shadow: 0 -12px 40px rgba(0,0,0,0.6);
-        max-height: 80vh;
+        z-index: 1050;
+        background: #faf7f2;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -14px 45px rgba(0,0,0,0.65);
+        max-height: 82vh;
         padding: 0 20px max(24px, env(safe-area-inset-bottom, 24px));
         overflow-y: auto;
         transform: translateY(105%);
@@ -1205,24 +1229,24 @@
         justify-content: center;
         position: sticky;
         top: 0;
-        background: var(--paper-pop);
+        background: #faf7f2;
         padding: 12px 0 10px;
         z-index: 2;
         margin: 0 -20px 12px;
-        border-bottom: 1px solid rgba(0,0,0,0.06);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
       }
       .drawer-handle {
         width: 38px;
         height: 4px;
         border-radius: 2px;
-        background: rgba(0,0,0,0.22);
+        background: rgba(0,0,0,0.25);
       }
       .drawer-close-btn {
         position: absolute;
         right: 14px;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(0,0,0,0.06);
+        background: rgba(0,0,0,0.08);
         border: none;
         width: 28px;
         height: 28px;
@@ -1235,13 +1259,13 @@
         color: var(--ink);
       }
       .drawer-close-btn:active {
-        background: rgba(0,0,0,0.15);
+        background: rgba(0,0,0,0.18);
       }
       .modal-drawer-backdrop {
         display: block;
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.6);
+        background: rgba(0,0,0,0.55);
         z-index: 1035;
         opacity: 0;
         pointer-events: none;
@@ -1278,20 +1302,196 @@
       .modal-prev { left: 10px; }
       .modal-next { right: 10px; }
     }
+
+    /* Mobile First Screen Compact Optimization (<680px) */
     @media (max-width: 680px) {
-      header { padding: 24px 16px 16px; }
-      .series-nav { padding: 0 16px; }
-      .controls-wrap { padding: 0 16px; }
-      .category-pills-wrap { padding: 0 16px; }
-      main { padding: 0 16px; margin-top: 18px; }
-      .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); gap: 20px; }
-      .header-inner { flex-direction: column; }
-      .custom-filter { width: 100%; min-width: 100%; }
-      .count-indicator { width: 100%; text-align: right; }
+      header {
+        padding: 12px 14px 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .kicker {
+        display: none;
+      }
+      h1 {
+        font-size: 19px;
+        line-height: 1.2;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+      h1 br {
+        display: none;
+      }
+      header p {
+        display: none;
+      }
+      .header-actions {
+        margin: 0;
+      }
+      .btn-top {
+        padding: 4px 9px;
+        font-size: 11.5px;
+        height: 28px;
+        border-radius: 14px;
+        gap: 4px;
+      }
+
+      /* Single-line Scrollable Series Tabs */
+      .series-nav {
+        padding: 6px 14px 2px;
+        margin: 0 auto;
+        gap: 6px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .series-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .series-tab {
+        padding: 5px 10px;
+        font-size: 12px;
+        flex-shrink: 0;
+        white-space: nowrap;
+        border-radius: 4px;
+      }
+      .series-tab .count-badge {
+        padding: 1px 4px;
+        font-size: 10px;
+        margin-left: 2px;
+      }
+
+      /* Compact Controls & Filters Bar */
+      .controls-wrap {
+        padding: 0 14px;
+        margin-top: 6px;
+      }
+      .controls {
+        padding: 6px 8px;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .search-box {
+        flex: 1 1 100%;
+        height: 32px;
+        padding: 0 8px;
+      }
+      .search-box input {
+        font-size: 12.5px;
+      }
+      .custom-filter {
+        flex: 1 1 auto;
+        min-width: 120px;
+        width: auto;
+      }
+      .custom-filter-trigger {
+        height: 30px;
+        padding: 0 8px;
+        font-size: 11.5px;
+      }
+      .color-switcher {
+        display: flex;
+        gap: 2px;
+        padding: 2px;
+      }
+      .color-btn {
+        padding: 3px 8px;
+        font-size: 11px;
+      }
+      .btn-batch-download {
+        height: 30px;
+        padding: 0 10px;
+        font-size: 11.5px;
+      }
+      .count-indicator {
+        display: none;
+      }
+
+      /* Compact Category Pills */
+      .category-pills-wrap {
+        padding: 4px 14px 2px;
+        margin-top: 2px;
+        gap: 5px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .category-pills-wrap::-webkit-scrollbar {
+        display: none;
+      }
+      .cat-pill {
+        padding: 3px 8px;
+        font-size: 11px;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      /* Main Cards Grid - Fast Visual Access */
+      main {
+        padding: 0 14px;
+        margin-top: 8px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .card {
+        margin-bottom: 0;
+      }
+      .card-info {
+        padding: 10px 12px 12px;
+      }
+      .card-info h2 {
+        font-size: 17px;
+        margin-bottom: 2px;
+      }
+      .card-info .meta {
+        font-size: 12px;
+        margin-bottom: 6px;
+        line-height: 1.4;
+      }
+      .card-prompt-section {
+        padding-top: 8px;
+      }
+      .prompt-text {
+        max-height: 52px;
+        font-size: 11px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- SVG Filter for Authentic Seal Vermilion on Pure White Paper -->
+  <svg width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="seal-cinnabar-filter" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.3333 0.3333 0.3333 0 0
+          0.3333 0.3333 0.3333 0 0
+          0.3333 0.3333 0.3333 0 0
+          0      0      0      1 0"/>
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="2.2" intercept="-0.45"/>
+          <feFuncG type="linear" slope="2.2" intercept="-0.45"/>
+          <feFuncB type="linear" slope="2.2" intercept="-0.45"/>
+        </feComponentTransfer>
+        <feColorMatrix type="matrix" values="
+          0.26 0    0    0 0.74
+          0    0.85 0    0 0.15
+          0    0    0.88 0 0.12
+          0    0    0    1 0"/>
+      </filter>
+    </defs>
+  </svg>
 
   <!-- Top Header -->
   <header>
@@ -1372,6 +1572,9 @@
 
   <!-- Lightbox Modal -->
   <div id="lightbox">
+    <!-- Drawer Backdrop (for mobile) -->
+    <div class="modal-drawer-backdrop" id="modal-drawer-backdrop"></div>
+
     <!-- Floating Mobile Top Header -->
     <div class="modal-top-bar" id="modal-top-bar">
       <div class="modal-top-info">
@@ -1445,9 +1648,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Drawer Backdrop (for mobile) -->
-    <div class="modal-drawer-backdrop" id="modal-drawer-backdrop"></div>
   </div>
 
   <!-- Toast Notification -->
@@ -2251,6 +2451,14 @@
        App Bootstrap & Hash Routing
        ------------------------------------------------------------- */
     const urlParams = new URLSearchParams(window.location.search);
+    const inkParam = urlParams.get("ink");
+    if (inkParam === "cinnabar" || inkParam === "charcoal") {
+      document.body.className = inkParam === "cinnabar" ? "ink-cinnabar" : "ink-charcoal";
+      document.querySelectorAll(".color-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.ink === inkParam);
+      });
+    }
+
     if (urlParams.get("seedLikes") === "1" || urlParams.get("seedLikes") === "true") {
       const demoLikes = [
         "images/scenic_spots/01_故宫博物院.png",
