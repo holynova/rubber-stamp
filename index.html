@@ -470,30 +470,31 @@
       white-space: nowrap;
     }
 
-    /* Stamp Cards Grid */
+    /* Stamp Cards Grid - Xiaohongshu Waterfall & Card Style */
     main {
       max-width: 1240px;
-      margin: 24px auto 60px;
+      margin: 20px auto 60px;
       padding: 0 28px;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 28px 22px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px 14px;
     }
     .card {
       background: var(--paper-card);
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      box-shadow: 2px 3px 0 #cfc2ad55;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      cursor: pointer;
     }
     .card:hover {
       transform: translateY(-3px);
-      box-shadow: 3px 8px 18px rgba(40,30,20,0.09);
+      box-shadow: 0 8px 20px rgba(40,30,20,0.1);
       border-color: var(--line-dark);
     }
     .frame {
@@ -501,10 +502,10 @@
       background: #e8ded0;
       aspect-ratio: 4 / 5;
       overflow: hidden;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
     .frame img {
       width: 100%;
@@ -514,114 +515,114 @@
       transition: transform .3s ease;
     }
     .card:hover .frame img {
-      transform: scale(1.025);
+      transform: scale(1.03);
     }
     .badge {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 8px;
+      left: 8px;
       background: rgba(248, 241, 229, 0.92);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       border: 1px solid var(--line);
       color: var(--ink);
-      font: 10.5px/1 ui-monospace, SFMono-Regular, monospace;
-      padding: 4px 7px;
-      border-radius: 3px;
-      letter-spacing: .05em;
+      font: 10px/1 ui-monospace, SFMono-Regular, monospace;
+      padding: 3px 6px;
+      border-radius: 4px;
+      letter-spacing: .04em;
     }
 
     .card-info {
-      padding: 16px 16px 14px;
+      padding: 10px 10px 10px;
       display: flex;
       flex-direction: column;
+      gap: 6px;
       flex: 1;
     }
-    .card-info h2 {
-      font-size: 17px;
+    .card-title {
+      font-size: 14.5px;
       font-weight: 500;
-      margin: 0 0 6px;
       line-height: 1.35;
-      cursor: pointer;
       color: var(--ink);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
       transition: color .15s;
     }
-    .card-info h2:hover {
+    .card:hover .card-title {
       color: var(--accent);
     }
-    .card-info .meta {
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .card-info .keywords {
-      font-size: 11.5px;
-      color: #8c8374;
-      font-family: ui-monospace, monospace;
-      margin-bottom: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-    .keyword-tag {
-      background: rgba(0,0,0,0.04);
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
-    /* Prompt Box on Card */
-    .card-prompt-section {
-      margin-top: auto;
-      border-top: 1px dashed var(--line);
-      padding-top: 10px;
-    }
-    .prompt-header {
+    .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 6px;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 2px;
     }
-    .prompt-label {
-      font: 11px/1 ui-monospace, monospace;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: .06em;
+    .card-author {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .author-avatar {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #faf5eb;
+      font-size: 9.5px;
       font-weight: 600;
-    }
-    .btn-copy-prompt {
-      background: #ede2cf;
-      border: 1px solid var(--line-dark);
-      border-radius: 3px;
-      padding: 4px 8px;
-      font: 11px/1 ui-monospace, monospace;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all .15s ease;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .btn-copy-prompt:hover {
-      background: var(--ink);
-      color: #faf5eb;
-      border-color: var(--ink);
-      transform: translateY(-1px);
+    .author-name {
+      font: 11px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Songti SC", serif;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .btn-copy-prompt:active {
-      transform: translateY(0);
-    }
-    .prompt-text {
-      font: 11.5px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
-      color: #4a453d;
-      background: rgba(0,0,0,0.035);
-      padding: 7px 9px;
+    .card-like-btn {
+      background: transparent;
+      border: none;
+      padding: 2px 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      color: #8c8374;
+      cursor: pointer;
       border-radius: 4px;
-      max-height: 62px;
-      overflow-y: auto;
-      word-break: break-word;
-      white-space: pre-wrap;
-      scrollbar-width: thin;
-      border: 1px solid rgba(0,0,0,0.06);
+      transition: transform .15s ease, color .15s ease;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .card-like-btn:hover {
+      color: #c93b2b;
+      transform: scale(1.12);
+    }
+    .card-like-btn.liked {
+      color: #c93b2b;
+    }
+    .card-like-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      stroke: currentColor;
+    }
+    .card-like-btn.liked svg {
+      fill: #c93b2b;
+      stroke: #c93b2b;
+    }
+    .card-like-btn:active svg {
+      transform: scale(0.85);
     }
 
     /* Lightbox Modal */
@@ -762,53 +763,6 @@
       word-break: break-word;
       border: 1px solid var(--line);
       scrollbar-width: thin;
-    }
-
-    /* Card Like Button */
-    .card-like-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(248, 241, 229, 0.92);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid var(--line);
-      color: #8c8374;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s ease;
-      z-index: 5;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      user-select: none;
-    }
-    .card-like-btn:hover {
-      transform: scale(1.1);
-      color: #c93b2b;
-      background: #fff;
-    }
-    .card-like-btn.liked {
-      color: #c93b2b;
-      background: #fff;
-      border-color: #c93b2b44;
-      box-shadow: 0 2px 8px rgba(201, 59, 43, 0.25);
-    }
-    .card-like-btn svg {
-      width: 16px;
-      height: 16px;
-      transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      stroke: currentColor;
-    }
-    .card-like-btn.liked svg {
-      fill: #c93b2b;
-      stroke: #c93b2b;
-    }
-    .card-like-btn:active svg {
-      transform: scale(0.85);
     }
 
     /* Modal Desktop Actions Bar */
@@ -1434,36 +1388,43 @@
         white-space: nowrap;
       }
 
-      /* Main Cards Grid - Fast Visual Access */
+      /* Main Cards Grid - Fast Visual Access & Xiaohongshu 2-column Flow */
       main {
-        padding: 0 14px;
+        padding: 0 8px;
         margin-top: 8px;
+        margin-bottom: 40px;
       }
       .grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
       .card {
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         margin-bottom: 0;
       }
       .card-info {
-        padding: 10px 12px 12px;
+        padding: 7px 8px 8px;
+        gap: 4px;
       }
-      .card-info h2 {
-        font-size: 17px;
-        margin-bottom: 2px;
+      .card-title {
+        font-size: 13px;
+        line-height: 1.32;
       }
-      .card-info .meta {
-        font-size: 12px;
-        margin-bottom: 6px;
-        line-height: 1.4;
+      .author-avatar {
+        width: 16px;
+        height: 16px;
+        font-size: 9px;
       }
-      .card-prompt-section {
-        padding-top: 8px;
+      .author-name {
+        font-size: 10.5px;
       }
-      .prompt-text {
-        max-height: 52px;
-        font-size: 11px;
+      .card-like-btn {
+        padding: 1px 2px;
+      }
+      .card-like-btn svg {
+        width: 13px;
+        height: 13px;
       }
     }
   </style>
@@ -2221,32 +2182,27 @@
       gridEl.innerHTML = currentFilteredRows.map((x, idx) => {
         const displayName = x.city || x.title || x.name;
         const badgeLabel = col.badgeFormat ? col.badgeFormat.replace("{id}", String(x.id).padStart(2, "0")) : `NO. ${String(x.id).padStart(2, "0")}`;
-        const promptText = x.prompt || "";
         const liked = isLiked(x.output);
+        const seriesName = x.seriesTitle || col.title || "橡胶戳";
+        const tagText = x.region || x.season || x.category || x.province || x.author || seriesName;
+        const avatarChar = (seriesName && seriesName[0]) || "印";
 
         return `
-          <article class="card" data-index="${idx}">
-            <div class="frame" onclick="openModal(${idx})">
+          <article class="card" data-index="${idx}" onclick="openModal(${idx})">
+            <div class="frame">
               <img class="stamp-img" src="${x.output}" alt="${displayName}" onerror="this.src='placeholder.svg'" loading="lazy">
               <span class="badge">${badgeLabel}</span>
-              <button class="card-like-btn ${liked ? "liked" : ""}" data-output="${x.output}" onclick="event.stopPropagation(); handleCardLike('${x.output}')" title="${liked ? "取消点赞" : "点赞收藏"}">
-                ${getHeartSvg(liked)}
-              </button>
             </div>
             <div class="card-info">
-              <h2 onclick="openModal(${idx})">${displayName}</h2>
-              <div class="meta">${x.features || ""}</div>
-              <div class="keywords">
-                ${(x.keywords || []).map(k => `<span class="keyword-tag">${k}</span>`).join("")}
-              </div>
-
-              <!-- Prompt Box on Card -->
-              <div class="card-prompt-section">
-                <div class="prompt-header">
-                  <span class="prompt-label">Prompt</span>
-                  <button class="btn-copy-prompt" onclick="event.stopPropagation(); copyCardPrompt(${idx})" title="复制提示词">复制 Prompt</button>
+              <h2 class="card-title">${displayName}</h2>
+              <div class="card-footer">
+                <div class="card-author">
+                  <span class="author-avatar">${avatarChar}</span>
+                  <span class="author-name">${tagText}</span>
                 </div>
-                <div class="prompt-text" onclick="openModal(${idx})" title="点击卡片查看完整画廊与大图">${promptText}</div>
+                <button class="card-like-btn ${liked ? "liked" : ""}" data-output="${x.output}" onclick="event.stopPropagation(); handleCardLike('${x.output}')" title="${liked ? "取消点赞" : "点赞"}">
+                  ${getHeartSvg(liked)}
+                </button>
               </div>
             </div>
           </article>
