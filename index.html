@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover">
-  <title>橡胶戳艺术印记 · 世界城市 / 名胜风景 / 古诗名句 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异</title>
-  <meta name="description" content="30座世界城市、50处名胜风景、50句古诗名句、20种珍稀动物、20尊海洋生物、20种大气现象、十二生肖、二十四节气与山海神异的复古手工橡胶戳印艺术画廊，共236枚艺术印章。">
+  <title>橡胶戳艺术印记 · 名胜风景 / 古诗名句 / 世界城市 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异</title>
+  <meta name="description" content="精选名胜风景、古诗名句、世界城市、珍稀动物、海洋生物、大气奇观等9大系列共236枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
 
   <!-- Analytics -->
   <script
@@ -20,14 +20,18 @@
     :root {
       --paper: #eee5d5;
       --paper-card: #f8f1e5;
+      --paper-pop: #faf5eb;
       --ink: #292722;
       --muted: #746d60;
       --line: #cfc2ad;
+      --line-dark: #b8a78e;
       --accent: #8d4d39;
+      --accent-hover: #a63f26;
       --tab-bg: #e6dac6;
-      --card-bg: #ddd0bb;
-      --seal-red: #b83b26;
-      --seal-bg: #fff5eb;
+      --tab-active: #292722;
+      --tab-active-text: #faf5eb;
+      --code-bg: #2b2724;
+      --code-text: #e6dac6;
     }
     * {
       box-sizing: border-box;
@@ -50,10 +54,10 @@
       background-size: 7px 7px;
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
-      padding-bottom: env(safe-area-inset-bottom, 20px);
+      padding-bottom: env(safe-area-inset-bottom, 30px);
     }
 
-    /* Ink Palette Filters */
+    /* Ink Palette Color Filter Overrides */
     .ink-cinnabar .stamp-img, .ink-cinnabar .modal-img-wrap img {
       filter: sepia(0.9) saturate(3.5) hue-rotate(-52deg) contrast(1.2);
     }
@@ -65,7 +69,7 @@
       max-width: 1240px;
       width: 100%;
       margin: auto;
-      padding: 42px 28px 20px;
+      padding: 42px 28px 24px;
       border-bottom: 1px solid var(--line);
     }
     .header-inner {
@@ -74,57 +78,47 @@
       align-items: flex-start;
       gap: 20px;
       width: 100%;
-      min-width: 0;
     }
     .header-content {
       flex: 1;
       min-width: 0;
-      width: 100%;
     }
     .kicker {
       font: 11.5px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--accent);
-      transition: color .2s ease;
-      word-break: break-word;
-      overflow-wrap: break-word;
+      margin-bottom: 8px;
     }
     h1 {
-      font-size: clamp(26px, 4.8vw, 56px);
-      line-height: 1.12;
+      font-size: clamp(28px, 4.8vw, 56px);
+      line-height: 1.15;
       font-weight: 400;
-      margin: 10px 0 12px;
+      margin: 0 0 14px;
       max-width: 800px;
-      word-break: break-word;
-      overflow-wrap: break-word;
+      letter-spacing: -0.01em;
     }
     header p {
-      max-width: 720px;
+      max-width: 760px;
       color: var(--muted);
-      font-size: 14.5px;
-      line-height: 1.65;
+      font-size: 15px;
+      line-height: 1.68;
       margin: 0;
-      word-break: break-word;
-      overflow-wrap: break-word;
     }
     .header-actions {
       display: flex;
-      flex-direction: row;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-shrink: 0;
-      flex-wrap: wrap;
     }
     .btn-top {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 6px;
       background: #f7f0e4;
       border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 8px 12px;
+      border-radius: 4px;
+      padding: 9px 14px;
       color: var(--ink);
       text-decoration: none;
       font: 12.5px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -133,7 +127,6 @@
       box-shadow: 2px 2px 0 #c7b9a244;
       cursor: pointer;
       white-space: nowrap;
-      min-height: 38px;
     }
     .btn-top:hover {
       background: #ede3d0;
@@ -142,1886 +135,1080 @@
       transform: translateY(-1px);
       box-shadow: 3px 3px 0 #c7b9a288;
     }
-    .btn-top:active {
-      transform: translateY(1px);
-      box-shadow: 1px 1px 0 #c7b9a244;
-    }
-    .btn-top-accent {
-      background: #ede0cb;
-      border-color: var(--accent);
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .passport-badge {
-      background: var(--seal-red);
-      color: #fff;
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 10px;
-      margin-left: 2px;
-      line-height: 1;
-    }
 
-    /* Series Segmented Navigation */
-    .series-nav-wrapper {
-      max-width: 1240px;
-      width: 100%;
-      margin: auto;
-      padding: 14px 28px 0;
-      min-width: 0;
-    }
+    /* Series Nav Tabs */
     .series-nav {
+      max-width: 1240px;
+      margin: 20px auto 0;
+      padding: 0 28px;
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      border-bottom: 1px solid var(--line);
-      overflow-x: auto;
-      padding-bottom: 10px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      width: 100%;
-      min-width: 0;
     }
-    .series-nav::-webkit-scrollbar { display: none; }
     .series-tab {
-      background: #f7f0e4;
+      background: var(--tab-bg);
       border: 1px solid var(--line);
       border-radius: 4px;
       padding: 8px 14px;
+      font: 13.5px/1.3 Georgia, "Songti SC", serif;
+      color: var(--ink);
       cursor: pointer;
-      display: flex;
+      transition: all .15s ease;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--muted);
-      font-family: inherit;
-      transition: all .15s ease;
-      white-space: nowrap;
-      flex-shrink: 0;
-      min-height: 38px;
-      box-shadow: 1.5px 1.5px 0 #c7b9a233;
+      user-select: none;
     }
     .series-tab:hover {
-      color: var(--ink);
-      background: #fff8ee;
-      border-color: #bfae95;
-    }
-    .series-tab:active {
-      transform: translateY(1px);
+      background: #ded1bd;
+      border-color: var(--ink);
     }
     .series-tab.active {
-      background: #ede0cb;
-      border-color: var(--accent);
-      color: var(--accent);
-      font-weight: 600;
-      box-shadow: inset 1px 1px 0 #8d4d3922, 1.5px 1.5px 0 #8d4d3933;
+      background: var(--tab-active);
+      color: var(--tab-active-text);
+      border-color: var(--tab-active);
+      box-shadow: 2px 2px 0 #7e6f5c55;
     }
-    .tab-badge {
-      font: 11px ui-monospace, monospace;
+    .series-tab .count-badge {
+      font: 11px/1 ui-monospace, monospace;
       padding: 2px 5px;
-      background: #ddd1bd;
-      border-radius: 2px;
-      color: var(--ink);
-      line-height: 1;
+      border-radius: 3px;
+      background: rgba(0,0,0,0.08);
     }
-    .series-tab.active .tab-badge {
+    .series-tab.active .count-badge {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Controls Bar: Search, Custom UI Dropdown Filter, Colors & Count */
+    .controls-wrap {
+      max-width: 1240px;
+      margin: 18px auto 0;
+      padding: 0 28px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: #f5ede0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .search-box {
+      flex: 1 1 240px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      background: var(--paper-pop);
+      border: 1px solid var(--line-dark);
+      border-radius: 4px;
+      padding: 8px 12px 8px 32px;
+      font: 13.5px/1.4 inherit;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-box input:focus {
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+      font-size: 13px;
+    }
+
+    /* Custom UI Dropdown Filter (No Native Select) */
+    .custom-filter {
+      position: relative;
+      flex: 0 0 auto;
+      min-width: 190px;
+    }
+    .custom-filter-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      background: var(--paper-pop);
+      border: 1px solid var(--line-dark);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font: 13.5px/1.4 Georgia, "Songti SC", serif;
+      color: var(--ink);
+      cursor: pointer;
+      user-select: none;
+      transition: all .15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .custom-filter-trigger:hover {
+      background: #fff;
+      border-color: var(--accent);
+    }
+    .custom-filter-trigger.open {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(141, 77, 57, 0.15);
+    }
+    .custom-filter-trigger .arrow {
+      font-size: 10px;
+      color: var(--muted);
+      transition: transform .2s ease;
+    }
+    .custom-filter-trigger.open .arrow {
+      transform: rotate(180deg);
+    }
+    .custom-filter-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 100%;
+      width: max-content;
+      max-width: 320px;
+      background: #fdfbf7;
+      border: 1px solid var(--line-dark);
+      border-radius: 6px;
+      padding: 6px 0;
+      box-shadow: 0 8px 24px rgba(40, 30, 20, 0.15);
+      z-index: 100;
+      display: none;
+      max-height: 380px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .custom-filter-menu.open {
+      display: block;
+      animation: menuFadeIn .15s ease;
+    }
+    @keyframes menuFadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .custom-filter-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 14px;
+      font: 13.5px/1.4 Georgia, "Songti SC", serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background .12s;
+    }
+    .custom-filter-option:hover {
+      background: #f3ebd9;
+      color: var(--accent);
+    }
+    .custom-filter-option.active {
+      background: #ece0ca;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .custom-filter-option .opt-badge {
+      font: 11px/1 ui-monospace, monospace;
+      color: var(--muted);
+      background: rgba(0,0,0,0.06);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Category Pill Chips Row */
+    .category-pills-wrap {
+      max-width: 1240px;
+      margin: 10px auto 0;
+      padding: 0 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cat-pill {
+      background: #f2e9dc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 5px 11px;
+      font: 12.5px/1.3 Georgia, "Songti SC", serif;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      user-select: none;
+    }
+    .cat-pill:hover {
+      background: #e6dac6;
+      color: var(--ink);
+      border-color: var(--line-dark);
+    }
+    .cat-pill.active {
       background: var(--accent);
       color: #fff;
+      border-color: var(--accent);
+      font-weight: 500;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.15);
     }
-    .tab-title { font-size: 14.5px; }
-    .tab-sub {
-      font: 10.5px ui-monospace, monospace;
-      opacity: .75;
-      text-transform: uppercase;
+    .cat-pill .pill-count {
+      font: 10.5px/1 ui-monospace, monospace;
+      opacity: 0.85;
     }
 
-    /* Toolbar & Interactive Controls */
-    .toolbar {
-      max-width: 1240px;
-      width: 100%;
-      margin: auto;
-      padding: 14px 28px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      border-bottom: 1px solid var(--line);
-      min-width: 0;
-    }
-    .toolbar-search-row {
-      display: flex;
-      gap: 8px;
-      flex: 1 1 300px;
-      align-items: center;
-      min-width: 0;
-      width: 100%;
-    }
-    input, select {
-      background: #f7f0e4;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 8px 11px;
-      color: var(--ink);
-      font: 13px ui-monospace, monospace;
-      outline: none;
-      transition: border-color .15s ease;
-      height: 36px;
-    }
-    input:focus, select:focus {
-      border-color: var(--accent);
-    }
-    input {
-      flex: 1;
-      min-width: 110px;
-    }
-    select {
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-    .ink-selector-wrap {
+    /* Color Mode Switcher */
+    .color-switcher {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font: 12px ui-monospace, monospace;
-      color: var(--muted);
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      padding: 2px 0;
-      min-width: 0;
-    }
-    .ink-selector-wrap::-webkit-scrollbar { display: none; }
-    .ink-label {
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .ink-pill-group {
-      display: flex;
       gap: 4px;
-      background: #ede3d0;
-      padding: 3px;
-      border-radius: 4px;
+      background: var(--paper-pop);
       border: 1px solid var(--line);
-      flex-shrink: 0;
+      border-radius: 4px;
+      padding: 2px;
     }
-    .ink-pill {
-      border: 0;
+    .color-btn {
+      border: none;
       background: transparent;
-      padding: 4px 8px;
-      border-radius: 3px;
-      font: 11px ui-monospace, monospace;
-      cursor: pointer;
+      padding: 5px 9px;
+      font: 12px/1 ui-monospace, SFMono-Regular, monospace;
       color: var(--muted);
-      transition: all .15s ease;
-      white-space: nowrap;
-      min-height: 26px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .12s;
     }
-    .ink-pill:hover { color: var(--ink); background: #fdfaf4; }
-    .ink-pill.active {
-      background: #f7f0e4;
+    .color-btn:hover {
+      color: var(--ink);
+    }
+    .color-btn.active {
+      background: #ded1bd;
       color: var(--ink);
       font-weight: 600;
-      box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
-    .count {
-      margin-left: auto;
+
+    .count-indicator {
+      font: 12.5px/1 ui-monospace, SFMono-Regular, monospace;
       color: var(--muted);
-      font: 12px ui-monospace, monospace;
+      margin-left: auto;
       white-space: nowrap;
     }
 
-    /* Grid & Cards */
-    .grid {
+    /* Stamp Cards Grid */
+    main {
       max-width: 1240px;
-      margin: auto;
-      padding: 26px 28px 70px;
+      margin: 24px auto 60px;
+      padding: 0 28px;
+    }
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px 22px;
     }
     .card {
-      position: relative;
-      background: #f7f0e444;
-      border-radius: 4px;
-      transition: transform .18s ease;
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-width: 0;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 2px 3px 0 #cfc2ad55;
     }
     .card:hover {
       transform: translateY(-3px);
+      box-shadow: 3px 8px 18px rgba(40,30,20,0.09);
+      border-color: var(--line-dark);
     }
     .frame {
       position: relative;
-      aspect-ratio: 4/5;
-      background: var(--card-bg);
-      border: 1px solid #c7b9a2;
-      box-shadow: 3px 4px 0 #c7b9a244;
+      background: #e8ded0;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
       cursor: pointer;
-      transition: box-shadow .18s ease;
-    }
-    .card:hover .frame {
-      box-shadow: 4px 6px 0 #c7b9a277;
-    }
-    .stamp-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      transition: transform .25s ease, filter .2s ease;
-    }
-    .card:hover .stamp-img {
-      transform: scale(1.02);
-    }
-    .badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: #eee5d5ee;
-      border: 1px solid var(--line);
-      padding: 2px 5px;
-      font: 10px ui-monospace, monospace;
-      letter-spacing: .03em;
-      z-index: 2;
-      border-radius: 2px;
-    }
-    
-    /* Stamp Overlays */
-    .stamped-seal {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px dashed var(--seal-red);
-      color: var(--seal-red);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font: 8.5px/1.1 ui-monospace, monospace;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      background: rgba(255, 246, 238, 0.92);
-      box-shadow: inset 0 0 0 1px rgba(184, 59, 38, 0.25), 2px 2px 4px rgba(0,0,0,0.12);
-      transform: rotate(-10deg);
-      pointer-events: none;
-      z-index: 3;
-      animation: stampPop 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes stampPop {
-      0% { transform: scale(2.4) rotate(18deg); opacity: 0; }
-      70% { transform: scale(0.9) rotate(-12deg); opacity: 1; }
-      100% { transform: scale(1) rotate(-10deg); opacity: 1; }
-    }
-    .seal-inner-char {
-      font-size: 14px;
-      font-family: "Songti SC", "Noto Serif CJK SC", serif;
-      line-height: 1;
-      margin-bottom: 2px;
-    }
-
-    .card-info {
-      padding: 8px 2px 2px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      min-width: 0;
-    }
-    .card h2 {
-      font-size: 17px;
-      font-weight: 500;
-      margin: 0 0 3px;
-      line-height: 1.25;
-      cursor: pointer;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .card h2:hover { color: var(--accent); }
-    .meta {
-      font: 11px/1.45 ui-monospace, monospace;
-      color: var(--muted);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 4px;
-    }
-    .keywords {
-      color: var(--accent);
-      font-size: 11.5px;
-      line-height: 1.35;
-      margin-bottom: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    /* Card bottom action bar */
-    .card-actions {
-      display: flex;
-      gap: 5px;
-      margin-top: auto;
-      padding-top: 5px;
-      border-top: 1px dashed var(--line);
-    }
-    .btn-card-action {
-      flex: 1;
-      background: #f7f0e4;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 5px 4px;
-      font: 11px ui-monospace, monospace;
-      color: var(--ink);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      transition: all .15s ease;
-      white-space: nowrap;
-      min-height: 30px;
-      min-width: 0;
-    }
-    .btn-card-action:hover {
-      background: #ede0cb;
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .btn-card-action:active {
-      transform: scale(0.97);
-    }
-    .btn-card-stamp.stamped {
-      background: #fbeee8;
-      border-color: var(--seal-red);
-      color: var(--seal-red);
-      font-weight: 600;
-    }
-
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      color: var(--muted);
-      padding: 60px 20px;
-      font-size: 15px;
-    }
-
-    /* Lightbox Modal */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: #211f1bdd;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 50;
-      backdrop-filter: blur(4px);
-    }
-    .lightbox.open { display: flex; }
-    .modal {
-      max-width: 940px;
-      width: 100%;
-      max-height: 92vh;
-      display: grid;
-      grid-template-columns: minmax(280px, 1fr) minmax(260px, .8fr);
-      background: var(--paper);
-      padding: 18px;
-      gap: 20px;
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 40px rgba(0,0,0,.35);
-      position: relative;
-      border-radius: 4px;
-    }
-    .modal-img-wrap {
-      position: relative;
-      background: var(--card-bg);
-      border: 1px solid #c7b9a2;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      border-radius: 2px;
     }
-    .modal img {
-      width: 100%;
-      height: 100%;
-      max-height: 82vh;
-      object-fit: contain;
-      display: block;
-      transition: filter .2s ease;
-    }
-    .modal aside {
-      padding: 8px 6px;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-    .modal-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .modal h2 {
-      font-size: 28px;
-      font-weight: 400;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-    .close {
-      border: 0;
-      background: transparent;
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--muted);
-      line-height: 1;
-      padding: 0 6px;
-      min-width: 36px;
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-    .close:hover { color: var(--accent); background: rgba(0,0,0,0.04); }
-    .modal-meta {
-      font: 12px/1.55 ui-monospace, monospace;
-      color: var(--muted);
-      margin-bottom: 10px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
-    }
-    .modal-keywords {
-      color: var(--accent);
-      font-size: 13.5px;
-      margin-bottom: 8px;
-    }
-    .modal-colors {
-      font: 11px ui-monospace, monospace;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    
-    .modal-interactive-btns {
-      display: flex;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-    }
-    .btn-modal-action {
-      flex: 1;
-      background: #f7f0e4;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 9px 10px;
-      font: 12.5px ui-monospace, monospace;
-      color: var(--ink);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      transition: all .15s ease;
-      min-height: 38px;
-    }
-    .btn-modal-action:hover {
-      background: #ede0cb;
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .btn-modal-stamp.stamped {
-      background: #fbeee8;
-      border-color: var(--seal-red);
-      color: var(--seal-red);
-      font-weight: 600;
-    }
-    .btn-modal-exlibris {
-      background: #e8ede3;
-      border-color: #8fa389;
-      color: #3b5a3f;
-    }
-    .btn-modal-exlibris:hover {
-      background: #dbe4d5;
-      border-color: #3b5a3f;
-      color: #2b452f;
-    }
-
-    .modal-nav-btns {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .modal-btn {
-      flex: 1;
-      background: #f7f0e4;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 7px 10px;
-      font: 12px ui-monospace, monospace;
-      cursor: pointer;
-      color: var(--ink);
-      text-align: center;
-      min-height: 34px;
-    }
-    .modal-btn:hover {
-      background: #eee0cc;
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Modal 2: Stamp Passport Modal */
-    .passport-modal-inner {
-      max-width: 980px;
-      width: 100%;
-      max-height: 92vh;
-      background: var(--paper);
-      padding: 22px;
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 40px rgba(0,0,0,.35);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border-radius: 4px;
-    }
-    .passport-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 14px;
-      margin-bottom: 14px;
-    }
-    .passport-title {
-      font-size: 26px;
-      font-weight: 400;
-      margin: 0 0 4px;
-    }
-    .passport-stats {
-      font: 12.5px ui-monospace, monospace;
-      color: var(--muted);
-    }
-    .passport-toolbar {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-    .passport-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 12px;
-      overflow-y: auto;
-      max-height: 52vh;
-      padding: 8px;
-      background: #fdfaf4;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-    }
-    .passport-item {
-      position: relative;
-      aspect-ratio: 4/5;
-      background: var(--card-bg);
-      border: 1px solid #c7b9a2;
-      border-radius: 2px;
-      overflow: hidden;
-      box-shadow: 2px 3px 0 #c7b9a244;
-      cursor: pointer;
-      transition: transform .15s ease;
-    }
-    .passport-item:hover { transform: scale(1.03); }
-    .passport-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .passport-item-title {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(247, 240, 228, 0.92);
-      font: 10px/1.2 ui-monospace, monospace;
-      text-align: center;
-      padding: 3px 2px;
-      border-top: 1px solid var(--line);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Modal 3: Ex-Libris Generator Modal */
-    .exlibris-modal-inner {
-      max-width: 960px;
-      width: 100%;
-      max-height: 94vh;
-      background: var(--paper);
-      padding: 22px;
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 40px rgba(0,0,0,.35);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      position: relative;
-      overflow-y: auto;
-      border-radius: 4px;
-    }
-    .exlibris-preview-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #312e2b;
-      padding: 14px;
-      border-radius: 4px;
-      border: 1px solid #4a4540;
-    }
-    #exlibris-canvas {
-      max-width: 100%;
-      max-height: 62vh;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      background: #f4ecdc;
-    }
-    .exlibris-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .form-group label {
-      font: 11.5px ui-monospace, monospace;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .btn-top-puzzle {
-      background: #f5eedd;
-      border-color: #8d4d39;
-      color: #8d4d39;
-      font-weight: 600;
-    }
-    .btn-top-puzzle:hover {
-      background: #ebdcc7;
-      border-color: #b83b26;
-      color: #b83b26;
-    }
-
-    /* Floating Toast Notification */
-    .toast {
-      position: fixed;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-24px);
-      background: rgba(41, 39, 34, 0.94);
-      color: #fffaf2;
-      padding: 10px 20px;
-      border-radius: 24px;
-      font: 13px ui-monospace, SFMono-Regular, Menlo, monospace;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-      pointer-events: none;
-      opacity: 0;
-      transition: all .25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* Modal 4: Stamp Journal & Collage Book Modal */
-    .journal-modal-inner {
-      max-width: 1240px;
-      width: 96vw;
-      max-height: 94vh;
-      background: var(--paper);
-      padding: 22px;
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 50px rgba(0,0,0,.45);
-      display: grid;
-      grid-template-columns: 1.25fr 0.95fr;
-      gap: 20px;
-      position: relative;
-      overflow-y: auto;
-      border-radius: 6px;
-    }
-    #journal-close {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      z-index: 30;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      background: rgba(0,0,0,0.06);
-      border-radius: 50%;
-    }
-    #journal-close:hover {
-      background: rgba(0,0,0,0.12);
-      color: var(--accent);
-    }
-    .journal-preview-pane {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: #2b2724;
-      padding: 16px;
-      border-radius: 6px;
-      border: 1px solid #453f3a;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
-    }
-    .journal-toolbar-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #453f3a;
-    }
-    .journal-toolbar-title {
-      font: bold 12.5px ui-monospace, monospace;
-      color: #ebdcc7;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .journal-quick-actions {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .btn-journal-tool {
-      background: #3d3732;
-      border: 1px solid #5a524a;
-      color: #e6dac3;
-      padding: 5px 9px;
-      border-radius: 3px;
-      font: 11.5px ui-monospace, monospace;
-      cursor: pointer;
-      transition: all .15s ease;
-    }
-    .btn-journal-tool:hover {
-      background: #504842;
-      color: #fff;
-      border-color: #8d4d39;
-    }
-    .journal-canvas-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 320px;
-      padding: 8px;
-      background: #211e1b;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    #journal-canvas {
-      max-width: 100%;
-      height: auto;
-      aspect-ratio: 3/2;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.6);
-      border-radius: 4px;
-      background: #f4ecdc;
-      display: block;
-      cursor: pointer;
-    }
-    .journal-export-bar {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-top: 4px;
-    }
-    .btn-journal-export {
-      flex: 2;
-      padding: 12px 14px;
-      font-size: 13.5px;
-      font-weight: 600;
-      justify-content: center;
-    }
-    .btn-journal-print {
-      flex: 1;
-      padding: 12px 10px;
-      font-size: 12.5px;
-      justify-content: center;
-    }
-
-    /* Right: Sidebar & Picker */
-    .journal-sidebar-pane {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-width: 0;
-    }
-    .journal-sidebar-header h2 {
-      font-size: 21px;
-      color: var(--ink);
-      margin: 0 0 4px 0;
-      font-family: "Songti SC", Georgia, serif;
-    }
-    .journal-sidebar-header p {
-      font: 12px/1.4 ui-monospace, monospace;
-      color: var(--muted);
-      margin: 0;
-    }
-    .journal-config-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: #fdfaf4;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-    }
-    .stamp-picker-section {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-      min-height: 220px;
-      background: #fdfaf4;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-    }
-    .stamp-picker-header {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .stamp-picker-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font: 12px ui-monospace, monospace;
-      color: var(--ink);
-      font-weight: 600;
-    }
-    .stamp-slot-counter {
-      color: var(--accent);
-      background: #f4ecdc;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 11px;
-    }
-    .picker-tabs {
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding: 2px 0;
-    }
-    .picker-tabs::-webkit-scrollbar { display: none; }
-    .picker-tab {
-      background: #f0e6d6;
-      border: 1px solid var(--line);
-      color: var(--ink);
-      font: 11px ui-monospace, monospace;
-      padding: 4px 8px;
-      border-radius: 3px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all .15s ease;
-    }
-    .picker-tab.active {
-      background: var(--ink);
-      color: #fffaf2;
-      border-color: var(--ink);
-    }
-    .stamp-picker-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      max-height: 200px;
-      overflow-y: auto;
-      padding: 6px;
-      background: #f5eedd;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-    }
-    .picker-stamp-item {
-      position: relative;
-      height: 110px;
-      background: var(--card-bg);
-      border: 1.5px solid #c7b9a2;
-      border-radius: 3px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all .15s ease;
-      box-shadow: 1px 2px 0 #c7b9a244;
-      display: block;
-    }
-    .picker-stamp-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-    .picker-stamp-item.in-journal {
-      border-color: #2b7a4b;
-      box-shadow: 0 0 0 2px #2b7a4b;
-    }
-    .picker-stamp-item img {
+    .frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform .3s ease;
     }
-    .picker-stamp-item-label {
+    .card:hover .frame img {
+      transform: scale(1.025);
+    }
+    .badge {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(247, 240, 228, 0.95);
-      font: 10px/1.2 ui-monospace, monospace;
-      text-align: center;
-      padding: 3px 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      border-top: 1px solid var(--line);
-      z-index: 2;
+      top: 10px;
+      left: 10px;
+      background: rgba(248, 241, 229, 0.92);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font: 10.5px/1 ui-monospace, SFMono-Regular, monospace;
+      padding: 4px 7px;
+      border-radius: 3px;
+      letter-spacing: .05em;
     }
-    .picker-stamp-item-badge {
-      position: absolute;
-      top: 2px;
-      right: 2px;
-      background: #2b7a4b;
-      color: #fff;
-      font-size: 8px;
-      padding: 1px 4px;
-      border-radius: 8px;
-      font-weight: bold;
-      z-index: 3;
+
+    .card-info {
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
-    .journal-checkbox-wrap {
+    .card-info h2 {
+      font-size: 17px;
+      font-weight: 500;
+      margin: 0 0 6px;
+      line-height: 1.35;
+      cursor: pointer;
+      color: var(--ink);
+      transition: color .15s;
+    }
+    .card-info h2:hover {
+      color: var(--accent);
+    }
+    .card-info .meta {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .card-info .keywords {
+      font-size: 11.5px;
+      color: #8c8374;
+      font-family: ui-monospace, monospace;
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .keyword-tag {
+      background: rgba(0,0,0,0.04);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Prompt Box on Card */
+    .card-prompt-section {
+      margin-top: auto;
+      border-top: 1px dashed var(--line);
+      padding-top: 10px;
+    }
+    .prompt-header {
       display: flex;
       align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 12px;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .prompt-label {
+      font: 11px/1 ui-monospace, monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 600;
+    }
+    .btn-copy-prompt {
+      background: #ede2cf;
+      border: 1px solid var(--line-dark);
+      border-radius: 3px;
+      padding: 4px 8px;
+      font: 11px/1 ui-monospace, monospace;
       color: var(--ink);
-      user-select: none;
-      margin: 2px 0;
-    }
-    .journal-checkbox-wrap input {
-      width: 16px !important;
-      height: 16px !important;
-      min-width: 16px !important;
-      flex: 0 0 16px !important;
-      margin: 0 !important;
       cursor: pointer;
-      accent-color: #b83b26;
+      transition: all .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-copy-prompt:hover {
+      background: var(--ink);
+      color: #faf5eb;
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+    .btn-copy-prompt:active {
+      transform: translateY(0);
+    }
+    .prompt-text {
+      font: 11.5px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: #4a453d;
+      background: rgba(0,0,0,0.035);
+      padding: 7px 9px;
+      border-radius: 4px;
+      max-height: 62px;
+      overflow-y: auto;
+      word-break: break-word;
+      white-space: pre-wrap;
+      scrollbar-width: thin;
+      border: 1px solid rgba(0,0,0,0.06);
     }
 
-    /* Mobile Responsive Breakpoints */
-    @media(max-width: 768px) {
-      header { padding: 24px 16px 14px; }
-      .header-inner {
-        flex-direction: column-reverse;
-        gap: 12px;
-      }
-      .header-actions {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 8px;
-      }
-      .header-actions .btn-top {
-        flex: 1;
-      }
-      .series-nav-wrapper {
-        padding: 10px 16px 0;
-      }
-      .toolbar {
-        padding: 10px 16px;
-        gap: 8px;
-      }
-      .toolbar-search-row {
-        width: 100%;
-        flex: 1 1 100%;
-      }
-      .ink-selector-wrap {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      .count {
-        font-size: 11px;
-      }
-      .grid {
-        padding: 14px 16px 60px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-      .card h2 { font-size: 15px; }
-      .meta { -webkit-line-clamp: 1; font-size: 10.5px; }
-      .keywords { font-size: 10.5px; margin-bottom: 6px; }
-      .btn-card-action { font-size: 10px; padding: 4px 2px; }
-      .stamped-seal {
-        width: 40px;
-        height: 40px;
-        right: 6px;
-        bottom: 6px;
-        font-size: 7.5px;
-      }
-      .seal-inner-char { font-size: 13px; }
+    /* Lightbox Modal */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 23, 20, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #lightbox.open {
+      display: flex;
+      animation: modalFadeIn .18s ease;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-card {
+      position: relative;
+      background: var(--paper-pop);
+      max-width: 960px;
+      width: 100%;
+      max-height: 92vh;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 1px solid var(--line);
+    }
+    .modal-img-wrap {
+      flex: 1 1 50%;
+      background: #1e1c19;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+      max-height: 92vh;
+      overflow: hidden;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      display: block;
+    }
+    .modal-details {
+      flex: 1 1 50%;
+      padding: 32px 28px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .modal-badge {
+      font: 12px/1 ui-monospace, monospace;
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .modal-title {
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.25;
+      margin: 0;
+    }
+    .modal-meta {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .modal-colors {
+      font: 12.5px/1.5 ui-monospace, monospace;
+      color: var(--accent);
+      background: rgba(141, 77, 57, 0.08);
+      padding: 6px 10px;
+      border-radius: 4px;
+      border-left: 3px solid var(--accent);
+    }
 
-      /* Lightbox */
-      .lightbox { padding: 10px; }
-      .modal {
-        grid-template-columns: 1fr;
-        max-height: 92vh;
-        overflow-y: auto;
-        gap: 12px;
-        padding: 14px;
-        border-radius: 6px;
+    /* Modal Full Prompt Block */
+    .modal-prompt-box {
+      margin-top: 8px;
+      background: #f1e9dc;
+      border: 1px solid var(--line-dark);
+      border-radius: 6px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .modal-prompt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-prompt-title {
+      font: 12px/1 ui-monospace, monospace;
+      font-weight: bold;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .btn-modal-copy {
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      padding: 6px 12px;
+      font: 12px/1 ui-monospace, monospace;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .btn-modal-copy:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .modal-prompt-content {
+      font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: #3b3732;
+      background: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      max-height: 220px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      border: 1px solid var(--line);
+      scrollbar-width: thin;
+    }
+
+    /* Modal Navigation & Close */
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.1);
+      border: none;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+      z-index: 10;
+    }
+    .modal-close:hover {
+      background: rgba(0,0,0,0.2);
+    }
+    .modal-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(248, 241, 229, 0.9);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 10;
+    }
+    .modal-nav-btn:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.08);
+      color: var(--accent);
+    }
+    .modal-prev { left: 14px; }
+    .modal-next { right: 14px; }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(50px);
+      background: #2b2724;
+      color: #faf5eb;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font: 13px/1.3 Georgia, "Songti SC", serif;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: all .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 2000;
+      letter-spacing: .02em;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Empty state */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .modal-card {
+        flex-direction: column;
+        max-height: 90vh;
       }
       .modal-img-wrap {
-        max-height: 44vh;
-        aspect-ratio: 4/5;
-        margin: 0 auto;
-      }
-      .modal img { max-height: 44vh; }
-      .modal aside { padding: 4px 0 0; }
-      .modal h2 { font-size: 22px; margin-bottom: 8px; }
-      .modal-meta { font-size: 11px; padding-bottom: 8px; margin-bottom: 8px; }
-      .modal-keywords { font-size: 12px; margin-bottom: 8px; }
-      .modal-colors { font-size: 10.5px; margin-bottom: 10px; }
-      .modal-interactive-btns {
-        padding-top: 10px;
-        gap: 8px;
-      }
-      .btn-modal-action {
-        padding: 9px 8px;
-        font-size: 12px;
-        min-height: 40px;
-      }
-      .modal-nav-btns {
-        margin-top: 10px;
-        gap: 8px;
-      }
-      .modal-btn {
-        flex: 1;
-        padding: 8px;
-        text-align: center;
-        min-height: 38px;
-      }
-      .close {
-        width: 38px;
-        height: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        background: rgba(0,0,0,0.05);
-        border-radius: 50%;
-      }
-
-      /* Passport Modal */
-      .passport-modal-inner {
-        padding: 16px 12px;
-        max-height: 90vh;
-        border-radius: 6px;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-      }
-      .passport-header {
-        align-items: center;
-      }
-      .passport-title { font-size: 19px; }
-      .passport-toolbar { gap: 6px; width: 100%; }
-      .passport-toolbar button {
-        font-size: 12px;
-        padding: 7px 10px;
-        min-height: 36px;
-      }
-      #btn-export-postcard {
-        width: 100%;
-        order: -1;
-      }
-      .passport-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        max-height: 48vh;
-        padding: 6px;
-        width: 100%;
-        min-width: 0;
-      }
-      .passport-item {
-        width: 100%;
-        min-width: 0;
-      }
-      .passport-item-title { font-size: 9.5px; padding: 2px 1px; }
-
-      /* Ex-Libris Modal */
-      .exlibris-modal-inner {
-        grid-template-columns: 1fr;
-        padding: 14px 12px;
-        max-height: 92vh;
-        gap: 12px;
-        border-radius: 6px;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-      }
-      .exlibris-preview-wrap {
-        padding: 8px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #262320;
-      }
-      #exlibris-canvas {
-        max-height: 28vh;
-        max-width: 100%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        display: block;
-        margin: 0 auto;
-      }
-
-      /* Journal Modal Mobile */
-      .journal-modal-inner {
-        grid-template-columns: 1fr;
-        padding: 14px 10px;
-        max-height: 92vh;
-        gap: 12px;
-        border-radius: 6px;
-        width: 100%;
-        max-width: 100%;
-      }
-      .journal-preview-pane {
-        padding: 10px;
-      }
-      .journal-canvas-container {
+        flex: 0 0 45vh;
         min-height: auto;
-        padding: 4px;
       }
-      #journal-canvas {
-        max-height: 30vh;
-        width: 100%;
+      .modal-img-wrap img {
+        max-height: 45vh;
       }
-      .journal-export-bar {
-        flex-direction: column;
-      }
-      .btn-journal-export, .btn-journal-print {
-        width: 100%;
-        min-height: 42px;
-      }
-      .stamp-picker-grid {
-        grid-template-columns: repeat(4, 1fr);
-        max-height: 160px;
-      }
-      .journal-config-form input, .journal-config-form select {
-        font-size: 16px; /* iOS Safari zoom prevention */
-        height: 40px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .exlibris-form input, .exlibris-form select {
-        font-size: 16px; /* iOS Safari auto-zoom prevention */
-        height: 40px;
-        width: 100%;
-      }
-      #btn-download-exlibris {
-        min-height: 44px;
-        font-size: 13.5px;
+      .modal-details {
+        padding: 20px;
       }
     }
-
-    @media(max-width: 360px) {
-      .grid { gap: 8px; padding-left: 10px; padding-right: 10px; }
-      .card-actions { flex-direction: column; }
-      .passport-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 680px) {
+      header { padding: 24px 16px 16px; }
+      .series-nav { padding: 0 16px; }
+      .controls-wrap { padding: 0 16px; }
+      .category-pills-wrap { padding: 0 16px; }
+      main { padding: 0 16px; margin-top: 18px; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); gap: 20px; }
+      .header-inner { flex-direction: column; }
+      .custom-filter { width: 100%; min-width: 100%; }
+      .count-indicator { width: 100%; text-align: right; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Top Header -->
   <header>
     <div class="header-inner">
       <div class="header-content">
-        <div class="kicker" id="hero-kicker">field notes / rubber stamp travel posters / 2026</div>
-        <h1 id="hero-title">橡胶戳旅行实地笔记<br>世界城市</h1>
-        <p id="hero-desc">30 座城市，30 枚低调的多色橡胶戳。每一张只留下一个地点最易辨认的轮廓：建筑、山脉、海岸线与城市的呼吸。</p>
+        <div class="kicker" id="hero-kicker">china national scenic heritage / rubber stamp collection / 2026</div>
+        <h1 id="hero-title">橡胶戳华夏胜景<br>中国 5A 级景区名胜</h1>
+        <p id="hero-desc">精选 50 处中国最具代表性的 5A 级风景名胜与世界文化遗产。以极简手工线刻橡胶印章凝固华夏山河的壮丽画卷。</p>
       </div>
       <div class="header-actions">
-        <button class="btn-top btn-top-puzzle" id="btn-open-journal">
-          <span>手账拼贴</span>
-          <span class="passport-badge" id="journal-count-badge">0</span>
-        </button>
-        <button class="btn-top btn-top-accent" id="btn-open-passport">
-          <span>印记收集册</span>
-          <span class="passport-badge" id="passport-count-badge">0</span>
-        </button>
-        <a href="https://github.com/holynova/rubber-stamp-world-cities" target="_blank" rel="noopener noreferrer" class="btn-top" title="GitHub 源码仓库">
-          <svg style="width:15px;height:15px;fill:currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-          <span>GitHub</span>
+        <a class="btn-top" href="https://github.com/holynova/rubber-stamp-world-cities" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Collection Switcher Tabs -->
-  <div class="series-nav-wrapper">
-    <nav class="series-nav" id="series-nav">
-      <button class="series-tab active" data-series="cities">
-        <span class="tab-badge">30</span>
-        <span class="tab-title">世界城市</span>
-        <span class="tab-sub">Cities</span>
-      </button>
-      <button class="series-tab" data-series="scenic_spots">
-        <span class="tab-badge">50</span>
-        <span class="tab-title">名胜风景</span>
-        <span class="tab-sub">5A Scenic</span>
-      </button>
-      <button class="series-tab" data-series="poetry">
-        <span class="tab-badge">50</span>
-        <span class="tab-title">古诗名句</span>
-        <span class="tab-sub">Poetry</span>
-      </button>
-      <button class="series-tab" data-series="wildlife">
-        <span class="tab-badge">20</span>
-        <span class="tab-title">珍稀动物</span>
-        <span class="tab-sub">Wildlife</span>
-      </button>
-      <button class="series-tab" data-series="marine">
-        <span class="tab-badge">20</span>
-        <span class="tab-title">海洋生物</span>
-        <span class="tab-sub">Marine</span>
-      </button>
-      <button class="series-tab" data-series="atmosphere">
-        <span class="tab-badge">20</span>
-        <span class="tab-title">大气现象</span>
-        <span class="tab-sub">Atmosphere</span>
-      </button>
-      <button class="series-tab" data-series="zodiac">
-        <span class="tab-badge">12</span>
-        <span class="tab-title">十二生肖</span>
-        <span class="tab-sub">Zodiac</span>
-      </button>
-      <button class="series-tab" data-series="solar_terms">
-        <span class="tab-badge">24</span>
-        <span class="tab-title">二十四节气</span>
-        <span class="tab-sub">Solar Terms</span>
-      </button>
-      <button class="series-tab" data-series="shanhaijing">
-        <span class="tab-badge">10</span>
-        <span class="tab-title">山海神异</span>
-        <span class="tab-sub">Shan Hai Jing</span>
-      </button>
-    </nav>
-  </div>
+  <!-- 9 Series Navigation Tabs -->
+  <nav class="series-nav" id="series-nav">
+    <button class="series-tab active" data-series="scenic_spots">名胜风景 <span class="count-badge">50</span></button>
+    <button class="series-tab" data-series="poetry">古诗名句 <span class="count-badge">50</span></button>
+    <button class="series-tab" data-series="cities">世界城市 <span class="count-badge">30</span></button>
+    <button class="series-tab" data-series="wildlife">珍稀动物 <span class="count-badge">20</span></button>
+    <button class="series-tab" data-series="marine">海洋生物 <span class="count-badge">20</span></button>
+    <button class="series-tab" data-series="atmosphere">大气现象 <span class="count-badge">20</span></button>
+    <button class="series-tab" data-series="zodiac">十二生肖 <span class="count-badge">12</span></button>
+    <button class="series-tab" data-series="solar_terms">二十四节气 <span class="count-badge">24</span></button>
+    <button class="series-tab" data-series="shanhaijing">山海神异 <span class="count-badge">10</span></button>
+  </nav>
 
-  <div class="toolbar">
-    <div class="toolbar-search-row">
-      <input id="search" placeholder="搜索名称、特征或关键词…">
-      <select id="filter">
-        <!-- Populated dynamically -->
-      </select>
-    </div>
-
-    <!-- Ink Palette Switcher -->
-    <div class="ink-selector-wrap">
-      <span class="ink-label">配色:</span>
-      <div class="ink-pill-group">
-        <button class="ink-pill active" data-ink="original" title="原版天然配色">原色</button>
-        <button class="ink-pill" data-ink="charcoal" title="黑白木刻版画">黑白</button>
-        <button class="ink-pill" data-ink="cinnabar" title="朱砂红白印泥">红白</button>
+  <!-- Controls Bar: Search, Custom Styled Dropdown Filter, Color Modes -->
+  <div class="controls-wrap">
+    <div class="controls">
+      <!-- Search -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="搜索名称、特征、诗句或配色..." autocomplete="off">
       </div>
-    </div>
 
-    <span class="count" id="count"></span>
+      <!-- Custom UI Category Filter Dropdown -->
+      <div class="custom-filter" id="custom-filter-container">
+        <button class="custom-filter-trigger" id="custom-filter-trigger" type="button" aria-haspopup="true">
+          <span id="custom-filter-label">全部分类</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="custom-filter-menu" id="custom-filter-menu">
+          <!-- Dynamically populated options -->
+        </div>
+      </div>
+
+      <!-- Color Palette Filter -->
+      <div class="color-switcher">
+        <button class="color-btn active" data-ink="default">原色</button>
+        <button class="color-btn" data-ink="charcoal">墨黑</button>
+        <button class="color-btn" data-ink="cinnabar">朱砂</button>
+      </div>
+
+      <!-- Count Stats -->
+      <div class="count-indicator" id="count-indicator">50 / 50 名胜风景</div>
+    </div>
   </div>
 
-  <main class="grid" id="grid"></main>
+  <!-- Quick Category Filter Pills -->
+  <div class="category-pills-wrap" id="category-pills-wrap"></div>
+
+  <!-- Cards Grid -->
+  <main>
+    <div class="grid" id="grid"></div>
+  </main>
 
   <!-- Lightbox Modal -->
-  <div class="lightbox" id="lightbox">
-    <div class="modal">
+  <div id="lightbox">
+    <button class="modal-nav-btn modal-prev" id="btn-prev" title="上一张 (Left Arrow)">‹</button>
+    <button class="modal-nav-btn modal-next" id="btn-next" title="下一张 (Right Arrow)">›</button>
+
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" title="关闭 (Esc)">✕</button>
+
       <div class="modal-img-wrap">
-        <img id="big" alt="">
+        <img id="modal-img" src="" alt="印章大图">
       </div>
-      <aside>
-        <div class="modal-top-bar">
-          <div class="kicker" id="number"></div>
-          <button class="close" id="close" title="关闭 (Esc)">×</button>
-        </div>
-        <h2 id="title"></h2>
-        <div class="modal-meta" id="details"></div>
-        <div class="modal-keywords" id="desc"></div>
-        <div class="modal-colors" id="colors-info"></div>
-        
-        <div class="modal-interactive-btns">
-          <button class="btn-modal-action btn-modal-stamp" id="modal-stamp-btn">
-            <span>盖入收集册</span>
-          </button>
-          <button class="btn-modal-action" id="modal-journal-btn" style="background:#ede0cb;border-color:var(--accent);color:var(--accent);">
-            <span>贴入手账本</span>
-          </button>
-          <button class="btn-modal-action btn-modal-exlibris" id="modal-exlibris-btn">
-            <span>制作藏书票</span>
-          </button>
-        </div>
 
-        <div class="modal-nav-btns">
-          <button class="modal-btn" id="btn-prev">← 上一张</button>
-          <button class="modal-btn" id="btn-next">下一张 →</button>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- Stamp Passport Modal -->
-  <div class="lightbox" id="passport-lightbox">
-    <div class="passport-modal-inner">
-      <div class="passport-header">
+      <div class="modal-details">
         <div>
-          <h2 class="passport-title">印记收集册 · Stamp Passport</h2>
-          <div class="passport-stats" id="passport-stats-text">已收集 0 枚印章</div>
+          <div class="modal-badge" id="modal-badge">5A SCENIC SPOTS 01</div>
+          <h2 class="modal-title" id="modal-title">北京故宫</h2>
         </div>
-        <button class="close" id="passport-close" title="关闭 (Esc)">×</button>
-      </div>
-      <div class="passport-toolbar">
-        <button class="btn-top btn-top-accent" id="btn-export-postcard">导出明信片</button>
-        <button class="btn-top" id="btn-passport-to-journal">排入手账本</button>
-        <button class="btn-top" id="btn-stamp-all">全套盖印</button>
-        <button class="btn-top" id="btn-reset-passport" style="color:#b83b26;">清空记录</button>
-      </div>
-      <div class="passport-grid" id="passport-grid">
-        <!-- Filled dynamically -->
-      </div>
-    </div>
-  </div>
+        <div class="modal-meta" id="modal-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</div>
+        <div class="modal-colors" id="modal-colors">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
 
-  <!-- Stamp Journal & Collage Book Modal (手账拼图本) -->
-  <div class="lightbox" id="journal-lightbox">
-    <div class="journal-modal-inner">
-      <button class="close" id="journal-close" title="关闭 (Esc)">×</button>
-
-      <!-- Left: Interactive Journal Preview Pane -->
-      <div class="journal-preview-pane">
-        <div class="journal-toolbar-top">
-          <span class="journal-toolbar-title">手账跨页预览</span>
-          <div class="journal-quick-actions">
-            <button class="btn-journal-tool" id="btn-fill-collected" title="将已收集的作品自动排版入本">
-              填入已收集
-            </button>
-            <button class="btn-journal-tool" id="btn-random-journal" title="从全部 176 款印章中随机挑选">
-              随机排版
-            </button>
-            <button class="btn-journal-tool" id="btn-clear-journal" title="清空当前手账页中的印章">
-              清空本页
-            </button>
+        <!-- Full Prompt Block -->
+        <div class="modal-prompt-box">
+          <div class="modal-prompt-header">
+            <span class="modal-prompt-title">原始作图 Prompt</span>
+            <button class="btn-modal-copy" id="btn-copy-modal-prompt">复制完整提示词</button>
           </div>
-        </div>
-
-        <div class="journal-canvas-container" id="journal-container">
-          <canvas id="journal-canvas" width="1200" height="800"></canvas>
-        </div>
-
-        <div class="journal-export-bar">
-          <button class="btn-top btn-top-accent btn-journal-export" id="btn-download-journal">
-            导出高清跨页 (PNG 2400×1600)
-          </button>
-          <button class="btn-top btn-journal-print" id="btn-print-journal">
-            打印 / 导出 PDF
-          </button>
-        </div>
-      </div>
-
-      <!-- Right: Settings & Stamp Picker Drawer -->
-      <div class="journal-sidebar-pane">
-        <div class="journal-sidebar-header">
-          <h2>手账拼贴工坊</h2>
-          <p>自由组合印章并排版入对开手账书笺，支持自定版式、纸张质感与手作微倾角。</p>
-        </div>
-
-        <!-- Configuration Form -->
-        <div class="journal-config-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label>排版版式:</label>
-              <select id="journal-layout">
-                <option value="grid2x2">2 × 2 四宫格 (4 印章 · 经典对开)</option>
-                <option value="grid2x3" selected>2 × 3 六宫格 (6 印章 · 游历手账)</option>
-                <option value="grid3x3">3 × 3 八宫格 (8 印章 · 密集集锦)</option>
-                <option value="featured1p4">1 大 + 4 小 (5 印章 · 焦点版式)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>纸张材质:</label>
-              <select id="journal-paper">
-                <option value="warm_xuan" selected>暖米宣纸 (手工纤维质感)</option>
-                <option value="kraft">复古牛皮纸 (陈旧棕褐)</option>
-                <option value="dot_grid">点阵手账笺 (微黄浅点阵)</option>
-                <option value="sage_parchment">青墨水纹笺 (水墨淡青)</option>
-                <option value="clean_cream">象牙白笺 (极简典雅)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>主标题:</label>
-              <input id="journal-title-input" value="《四时风物 · 游历手账》" maxlength="24" placeholder="例如：游历实地手账">
-            </div>
-            <div class="form-group">
-              <label>题签 / 署名:</label>
-              <input id="journal-author-input" value="COLLECTED BY HOLY NOVA" maxlength="28" placeholder="你的署名">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>副标 / 日期:</label>
-              <input id="journal-subtitle-input" value="FIELD NOTES & SEALS • EDITION 2026" maxlength="40">
-            </div>
-            <div class="form-group">
-              <label>印泥色彩:</label>
-              <select id="journal-ink">
-                <option value="current" selected>跟随当前页面配色</option>
-                <option value="original">天然原色</option>
-                <option value="charcoal">水墨黑白</option>
-                <option value="cinnabar">朱砂红白</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row" style="margin-top:2px;">
-            <div class="form-group" style="grid-column: span 2;">
-              <label class="journal-checkbox-wrap">
-                <input type="checkbox" id="journal-natural-tilt" checked>
-                <span>启用手作微倾角（模拟手工盖印微偏角）</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stamp Picker Drawer -->
-        <div class="stamp-picker-section">
-          <div class="stamp-picker-header">
-            <div class="stamp-picker-title-row">
-              <span>印章库 (点击填入当前位):</span>
-              <span class="stamp-slot-counter" id="stamp-slot-counter">已选 0 / 6</span>
-            </div>
-            <div class="picker-tabs" id="picker-tabs">
-              <button class="picker-tab active" data-filter="all">全部 (236)</button>
-              <button class="picker-tab" data-filter="poetry">诗词 (50)</button>
-              <button class="picker-tab" data-filter="scenic_spots">胜景 (50)</button>
-              <button class="picker-tab" data-filter="cities">城市 (30)</button>
-              <button class="picker-tab" data-filter="wildlife">动物 (20)</button>
-              <button class="picker-tab" data-filter="marine">海洋 (20)</button>
-              <button class="picker-tab" data-filter="atmosphere">天象 (20)</button>
-              <button class="picker-tab" data-filter="zodiac">生肖 (12)</button>
-              <button class="picker-tab" data-filter="solar_terms">节气 (24)</button>
-              <button class="picker-tab" data-filter="shanhaijing">山海 (10)</button>
-              <button class="picker-tab" data-filter="collected">已收集 (<span id="picker-collected-count">0</span>)</button>
-            </div>
-          </div>
-
-          <div class="stamp-picker-grid" id="stamp-picker-grid">
-            <!-- Populated dynamically with stamps -->
-          </div>
+          <div class="modal-prompt-content" id="modal-prompt-content"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Ex-Libris Generator Modal -->
-  <div class="lightbox" id="exlibris-lightbox">
-    <div class="exlibris-modal-inner">
-      <div class="exlibris-preview-wrap">
-        <canvas id="exlibris-canvas" width="600" height="800"></canvas>
-      </div>
-      <div class="exlibris-form">
-        <div class="passport-header" style="margin-bottom:6px;padding-bottom:10px;">
-          <div>
-            <h2 class="passport-title" style="font-size:22px;">藏书票工坊 · Ex-Libris</h2>
-            <div class="passport-stats">Custom Bookplate Studio</div>
-          </div>
-          <button class="close" id="exlibris-close" title="关闭 (Esc)">×</button>
-        </div>
+  <!-- Toast Notification -->
+  <div id="toast">已复制到剪贴板</div>
 
-        <div class="form-group">
-          <label>书主姓名 / 藏书人:</label>
-          <input id="ex-owner" value="HOLY NOVA" placeholder="例如：HOLY NOVA 或 林夕">
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>藏书铭文 / 题头:</label>
-            <select id="ex-motto">
-              <option value="EX LIBRIS">EX LIBRIS (经典藏书票)</option>
-              <option value="私家藏书">私家藏书</option>
-              <option value="书斋珍藏">书斋珍藏</option>
-              <option value="BIBLIOTHECA">BIBLIOTHECA</option>
-              <option value="READ & CHERISH">READ & CHERISH</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>边框装饰风格:</label>
-            <select id="ex-border">
-              <option value="classical">复古双线花边 (Classical)</option>
-              <option value="oriental">东方回纹印框 (Oriental)</option>
-              <option value="minimal">极简典雅方框 (Minimal)</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>底纸材质色泽:</label>
-            <select id="ex-paper">
-              <option value="#f5eddc">暖旧米黄 (Antique Cream)</option>
-              <option value="#eee2cb">羊皮纸褐 (Parchment Ochre)</option>
-              <option value="#f8f4ea">冷白雪棉 (White Cotton)</option>
-              <option value="#e6dac3">茶染复古 (Tea-Stained)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>印章油墨配色:</label>
-            <select id="ex-ink">
-              <option value="current">跟随当前页面油墨</option>
-              <option value="original">天然原色</option>
-              <option value="charcoal">水墨黑白</option>
-              <option value="cinnabar">朱砂红白</option>
-            </select>
-          </div>
-        </div>
-
-        <button class="btn-top btn-top-accent" id="btn-download-exlibris" style="margin-top:10px;padding:12px;font-size:14px;justify-content:center;">
-          导出高清藏书票 (PNG 1200×1600)
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notification Element -->
-  <div id="toast" class="toast"></div>
-
+  <!-- Data Script -->
   <script src="data.js"></script>
+
   <script>
     /* -------------------------------------------------------------
-       1. Web Audio API Tactile Stamp Press Synthesizer
+       App State & Initialization
        ------------------------------------------------------------- */
-    let audioCtx = null;
-    function playStampSound() {
-      try {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === "suspended") {
-          audioCtx.resume();
-        }
-        const t = audioCtx.currentTime;
-
-        // 1. Low Thump (Rubber cushion hitting thick deckle paper)
-        const osc = audioCtx.createOscillator();
-        const oscGain = audioCtx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(140, t);
-        osc.frequency.exponentialRampToValueAtTime(32, t + 0.075);
-        oscGain.gain.setValueAtTime(0.75, t);
-        oscGain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
-        osc.connect(oscGain);
-        oscGain.connect(audioCtx.destination);
-        osc.start(t);
-        osc.stop(t + 0.08);
-
-        // 2. High Mechanical Click (Handle pressure transient)
-        const clickOsc = audioCtx.createOscillator();
-        const clickGain = audioCtx.createGain();
-        clickOsc.type = "triangle";
-        clickOsc.frequency.setValueAtTime(880, t);
-        clickOsc.frequency.exponentialRampToValueAtTime(90, t + 0.02);
-        clickGain.gain.setValueAtTime(0.4, t);
-        clickGain.gain.exponentialRampToValueAtTime(0.001, t + 0.02);
-        clickOsc.connect(clickGain);
-        clickGain.connect(audioCtx.destination);
-        clickOsc.start(t);
-        clickOsc.stop(t + 0.02);
-
-        // 3. Tactile Paper Friction Burst
-        const bufferSize = Math.floor(audioCtx.sampleRate * 0.04);
-        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-        const noise = audioCtx.createBufferSource();
-        noise.buffer = buffer;
-        const filter = audioCtx.createBiquadFilter();
-        filter.type = "bandpass";
-        filter.frequency.setValueAtTime(550, t);
-        filter.Q.setValueAtTime(1.5, t);
-        const noiseGain = audioCtx.createGain();
-        noiseGain.gain.setValueAtTime(0.3, t);
-        noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.035);
-        noise.connect(filter);
-        filter.connect(noiseGain);
-        noiseGain.connect(audioCtx.destination);
-        noise.start(t);
-        noise.stop(t + 0.035);
-      } catch (err) {
-        console.warn("Audio unavailable", err);
-      }
-    }
-
-    function initMobileAudio() {
-      try {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx && audioCtx.state === "suspended") {
-          audioCtx.resume();
-        }
-      } catch (e) {}
-    }
-    window.addEventListener("touchstart", initMobileAudio, { once: true, passive: true });
-    window.addEventListener("pointerdown", initMobileAudio, { once: true, passive: true });
-
-    /* -------------------------------------------------------------
-       2. State & Storage Management
-       ------------------------------------------------------------- */
-    const STORAGE_KEY = "rubber_stamp_passport_v2";
-    let collectedMap = {};
-    try {
-      collectedMap = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    } catch (e) {
-      collectedMap = {};
-    }
-
-    function saveCollected() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectedMap));
-      } catch (e) {}
-      updatePassportBadge();
-    }
-
-    function isStamped(seriesKey, id) {
-      return !!collectedMap[`${seriesKey}_${id}`];
-    }
-
-    function toggleStamp(seriesKey, id) {
-      const key = `${seriesKey}_${id}`;
-      if (collectedMap[key]) {
-        delete collectedMap[key];
-      } else {
-        collectedMap[key] = {
-          time: new Date().toISOString(),
-          dateStr: new Date().toLocaleDateString("zh-CN")
-        };
-        playStampSound();
-      }
-      saveCollected();
-      render();
-      if (document.querySelector("#lightbox").classList.contains("open")) {
-        updateModalStampBtn();
-      }
-    }
-
-    function getTotalCollectedCount() {
-      return Object.keys(collectedMap).length;
-    }
-
-    function updatePassportBadge() {
-      const count = getTotalCollectedCount();
-      document.querySelector("#passport-count-badge").textContent = count;
-    }
-
-    /* -------------------------------------------------------------
-       3. Ink Palette Management
-       ------------------------------------------------------------- */
-    let currentInk = "original";
-    const inkPills = document.querySelectorAll(".ink-pill");
-    inkPills.forEach(pill => {
-      pill.addEventListener("click", () => {
-        setInkPalette(pill.dataset.ink);
-      });
-    });
-
-    function setInkPalette(inkName) {
-      currentInk = inkName;
-      inkPills.forEach(p => p.classList.toggle("active", p.dataset.ink === inkName));
-      document.body.className = inkName === "original" ? "" : `ink-${inkName}`;
-    }
-
-    /* -------------------------------------------------------------
-       4. Gallery Navigation & Rendering
-       ------------------------------------------------------------- */
-    let currentSeriesKey = "cities";
-    let currentModalIndex = 0;
+    let currentSeriesKey = "scenic_spots";
+    let currentCategoryFilter = "all";
     let currentFilteredRows = [];
+    let currentModalIndex = 0;
 
-    const grid = document.querySelector("#grid");
-    const search = document.querySelector("#search");
-    const filter = document.querySelector("#filter");
-    const count = document.querySelector("#count");
-    const heroKicker = document.querySelector("#hero-kicker");
-    const heroTitle = document.querySelector("#hero-title");
-    const heroDesc = document.querySelector("#hero-desc");
-    const tabs = document.querySelectorAll(".series-tab");
+    const seriesTabs = document.querySelectorAll(".series-tab");
+    const searchInput = document.querySelector("#search-input");
+    const filterTrigger = document.querySelector("#custom-filter-trigger");
+    const filterMenu = document.querySelector("#custom-filter-menu");
+    const filterLabel = document.querySelector("#custom-filter-label");
+    const pillsWrap = document.querySelector("#category-pills-wrap");
+    const countIndicator = document.querySelector("#count-indicator");
+    const gridEl = document.querySelector("#grid");
+    const toastEl = document.querySelector("#toast");
+
+    // Modal elements
+    const lightboxEl = document.querySelector("#lightbox");
+    const modalImg = document.querySelector("#modal-img");
+    const modalBadge = document.querySelector("#modal-badge");
+    const modalTitle = document.querySelector("#modal-title");
+    const modalDesc = document.querySelector("#modal-desc");
+    const modalColors = document.querySelector("#modal-colors");
+    const modalPromptContent = document.querySelector("#modal-prompt-content");
+    const btnCopyModalPrompt = document.querySelector("#btn-copy-modal-prompt");
 
     function getCollection() {
-      return window.COLLECTIONS[currentSeriesKey] || window.COLLECTIONS.cities;
+      return window.COLLECTIONS[currentSeriesKey] || window.COLLECTIONS.scenic_spots;
     }
 
-    function initFilterOptions() {
-      if (currentSeriesKey === "scenic_spots") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部名胜风景 (50)</option>
-          <option value="region-华北">华北名胜 (9)</option>
-          <option value="region-华东">华东名胜 (11)</option>
-          <option value="region-西南">西南名胜 (10)</option>
-          <option value="region-西北">西北名胜 (9)</option>
-          <option value="region-华中">华中名胜 (6)</option>
-          <option value="region-华南">华南名胜 (2)</option>
-          <option value="region-东北">东北名胜 (3)</option>
-        `;
-      } else if (currentSeriesKey === "poetry") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部古诗名句 (50)</option>
-          <option value="category-春生·花木">春生·花木 (10)</option>
-          <option value="category-夏盛·清荷">夏盛·清荷 (10)</option>
-          <option value="category-秋思·枫江">秋思·枫江 (10)</option>
-          <option value="category-冬藏·飞雪">冬藏·飞雪 (10)</option>
-          <option value="category-天地·旷野">天地·旷野 (10)</option>
-        `;
-      } else if (currentSeriesKey === "solar_terms") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部节气 (24)</option>
-          <option value="season-春">春季物候 (6)</option>
-          <option value="season-夏">夏季物候 (6)</option>
-          <option value="season-秋">秋季物候 (6)</option>
-          <option value="season-冬">冬季物候 (6)</option>
-        `;
-      } else if (currentSeriesKey === "shanhaijing") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部山海神异 (10)</option>
-        `;
-      } else if (currentSeriesKey === "zodiac") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部生肖瑞兽 (12)</option>
-        `;
-      } else if (currentSeriesKey === "wildlife") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部珍稀动物 (20)</option>
-        `;
-      } else if (currentSeriesKey === "marine") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部海洋生物 (20)</option>
-        `;
-      } else if (currentSeriesKey === "atmosphere") {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部大气现象 (20)</option>
-        `;
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      setTimeout(() => toastEl.classList.remove("show"), 2000);
+    }
+
+    function copyText(text, successMsg = "已复制作图 Prompt 到剪贴板") {
+      if (!text) {
+        showToast("暂无可复制的 Prompt");
+        return;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => {
+          fallbackCopy(text, successMsg);
+        });
       } else {
-        filter.style.display = "";
-        filter.innerHTML = `
-          <option value="all">全部世界城市 (30)</option>
-        `;
+        fallbackCopy(text, successMsg);
       }
     }
 
+    function fallbackCopy(text, successMsg) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast(successMsg);
+      } catch (e) {
+        showToast("复制失败，请手动选取");
+      }
+      document.body.removeChild(ta);
+    }
+
+    /* -------------------------------------------------------------
+       Custom UI Filter & Quick Pills Builder
+       ------------------------------------------------------------- */
+    function buildCategoryOptions() {
+      const col = getCollection();
+      const items = col.items;
+      let categories = [{ key: "all", label: `全部${col.title}`, count: items.length }];
+
+      if (currentSeriesKey === "scenic_spots") {
+        const regions = ["华北", "华东", "西南", "西北", "华中", "华南", "东北"];
+        regions.forEach(r => {
+          const c = items.filter(x => x.region && x.region.includes(r)).length;
+          if (c > 0) categories.push({ key: `region-${r}`, label: `${r}名胜`, count: c });
+        });
+      } else if (currentSeriesKey === "poetry") {
+        const cats = ["春生·花木", "夏盛·清荷", "秋思·枫江", "冬藏·飞雪", "天地·旷野"];
+        cats.forEach(k => {
+          const c = items.filter(x => x.category === k).length;
+          if (c > 0) categories.push({ key: `category-${k}`, label: k, count: c });
+        });
+      } else if (currentSeriesKey === "wildlife") {
+        const map = {
+          "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
+          "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
+          "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
+          "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"]
+        };
+        Object.keys(map).forEach(group => {
+          const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
+          if (c > 0) categories.push({ key: `wildlife-${group}`, label: group, count: c });
+        });
+      } else if (currentSeriesKey === "marine") {
+        const map = {
+          "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
+          "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
+          "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
+          "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"]
+        };
+        Object.keys(map).forEach(group => {
+          const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
+          if (c > 0) categories.push({ key: `marine-${group}`, label: group, count: c });
+        });
+      } else if (currentSeriesKey === "atmosphere") {
+        const map = {
+          "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
+          "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
+          "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
+          "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
+        };
+        Object.keys(map).forEach(group => {
+          const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
+          if (c > 0) categories.push({ key: `atmo-${group}`, label: group, count: c });
+        });
+      } else if (currentSeriesKey === "solar_terms") {
+        ["春", "夏", "秋", "冬"].forEach(s => {
+          const c = items.filter(x => x.season === s).length;
+          if (c > 0) categories.push({ key: `season-${s}`, label: `${s}季物候`, count: c });
+        });
+      }
+
+      // Populate Custom Dropdown Menu
+      filterMenu.innerHTML = categories.map(opt => `
+        <div class="custom-filter-option ${opt.key === currentCategoryFilter ? "active" : ""}" data-key="${opt.key}">
+          <span>${opt.label}</span>
+          <span class="opt-badge">${opt.count}</span>
+        </div>
+      `).join("");
+
+      // Populate Quick Filter Pills
+      if (categories.length > 1) {
+        pillsWrap.style.display = "flex";
+        pillsWrap.innerHTML = categories.map(opt => `
+          <button class="cat-pill ${opt.key === currentCategoryFilter ? "active" : ""}" data-key="${opt.key}">
+            <span>${opt.label}</span>
+            <span class="pill-count">(${opt.count})</span>
+          </button>
+        `).join("");
+      } else {
+        pillsWrap.style.display = "none";
+        pillsWrap.innerHTML = "";
+      }
+
+      // Update trigger label
+      const activeOpt = categories.find(o => o.key === currentCategoryFilter) || categories[0];
+      filterLabel.textContent = `${activeOpt.label} (${activeOpt.count})`;
+
+      // Bind dropdown option clicks
+      filterMenu.querySelectorAll(".custom-filter-option").forEach(el => {
+        el.onclick = () => selectCategory(el.dataset.key);
+      });
+
+      // Bind pill clicks
+      pillsWrap.querySelectorAll(".cat-pill").forEach(el => {
+        el.onclick = () => selectCategory(el.dataset.key);
+      });
+    }
+
+    function selectCategory(key) {
+      currentCategoryFilter = key;
+
+      // Sync Dropdown Active
+      filterMenu.querySelectorAll(".custom-filter-option").forEach(o => {
+        o.classList.toggle("active", o.dataset.key === key);
+      });
+      const activeOpt = filterMenu.querySelector(`.custom-filter-option[data-key="${key}"]`);
+      if (activeOpt) {
+        filterLabel.textContent = `${activeOpt.querySelector("span").textContent} (${activeOpt.querySelector(".opt-badge").textContent})`;
+      }
+
+      // Sync Pills Active
+      pillsWrap.querySelectorAll(".cat-pill").forEach(p => {
+        p.classList.toggle("active", p.dataset.key === key);
+      });
+
+      closeFilterDropdown();
+      render();
+    }
+
+    function toggleFilterDropdown() {
+      const isOpen = filterMenu.classList.contains("open");
+      if (isOpen) closeFilterDropdown();
+      else openFilterDropdown();
+    }
+    function openFilterDropdown() {
+      filterMenu.classList.add("open");
+      filterTrigger.classList.add("open");
+    }
+    function closeFilterDropdown() {
+      filterMenu.classList.remove("open");
+      filterTrigger.classList.remove("open");
+    }
+
+    filterTrigger.onclick = (e) => {
+      e.stopPropagation();
+      toggleFilterDropdown();
+    };
+
+    document.addEventListener("click", (e) => {
+      if (!document.querySelector("#custom-filter-container").contains(e.target)) {
+        closeFilterDropdown();
+      }
+    });
+
+    /* -------------------------------------------------------------
+       Header & Render Core
+       ------------------------------------------------------------- */
     function updateHeader() {
       const col = getCollection();
-      heroKicker.textContent = col.kicker;
-      heroTitle.innerHTML = col.headline;
-      heroDesc.textContent = col.desc;
+      document.querySelector("#hero-kicker").textContent = col.kicker;
+      document.querySelector("#hero-title").innerHTML = col.headline;
+      document.querySelector("#hero-desc").textContent = col.desc;
       document.title = `${col.title} · 橡胶戳艺术印记`;
     }
 
     function render() {
       const col = getCollection();
-      const q = search.value.trim().toLowerCase();
-      const f = filter.value;
+      const q = searchInput.value.trim().toLowerCase();
+      const f = currentCategoryFilter;
 
       currentFilteredRows = col.items.filter(x => {
         const titleStr = (x.city || x.title || x.name || "") + " " + (x.animal || "") + " " + (x.season || "") + " " + (x.region || "") + " " + (x.province || "") + " " + (x.author || "") + " " + (x.work || "") + " " + (x.category || "");
-        const textToMatch = (titleStr + " " + (x.features || "") + " " + (x.keywords || []).join(" ")).toLowerCase();
+        const textToMatch = (titleStr + " " + (x.features || "") + " " + (x.keywords || []).join(" ") + " " + (x.colors || "")).toLowerCase();
         const matchesQuery = !q || textToMatch.includes(q);
-        
+
         let matchesFilter = true;
-        if (f && f.startsWith("category-")) matchesFilter = (x.category === f.replace("category-", ""));
-        if (f && f.startsWith("season-")) matchesFilter = (x.season === f.replace("season-", ""));
-        if (f && f.startsWith("region-")) matchesFilter = (x.region && x.region.includes(f.replace("region-", "")));
+        if (f !== "all") {
+          if (f.startsWith("region-")) {
+            const reg = f.replace("region-", "");
+            matchesFilter = x.region && x.region.includes(reg);
+          } else if (f.startsWith("category-")) {
+            const cat = f.replace("category-", "");
+            matchesFilter = x.category === cat;
+          } else if (f.startsWith("season-")) {
+            const s = f.replace("season-", "");
+            matchesFilter = x.season === s;
+          } else if (f.startsWith("wildlife-") || f.startsWith("marine-") || f.startsWith("atmo-")) {
+            const activeEl = filterMenu.querySelector(`.custom-filter-option[data-key="${f}"]`);
+            if (activeEl) {
+              const grpName = activeEl.querySelector("span").textContent;
+              const groups = {
+                "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
+                "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
+                "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
+                "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"],
+                "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
+                "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
+                "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
+                "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"],
+                "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
+                "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
+                "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
+                "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
+              };
+              if (groups[grpName]) {
+                matchesFilter = groups[grpName].some(n => x.name.includes(n));
+              }
+            }
+          }
+        }
 
         return matchesQuery && matchesFilter;
       });
 
-      count.textContent = `${currentFilteredRows.length} / ${col.items.length} ${col.title}`;
+      countIndicator.textContent = `${currentFilteredRows.length} / ${col.items.length} ${col.title}`;
 
       if (!currentFilteredRows.length) {
-        grid.innerHTML = '<div class="empty">没有找到匹配的橡胶戳印记。</div>';
+        gridEl.innerHTML = '<div class="empty">没有找到符合条件的印章作品。</div>';
         return;
       }
 
-      grid.innerHTML = currentFilteredRows.map((x, idx) => {
+      gridEl.innerHTML = currentFilteredRows.map((x, idx) => {
         const displayName = x.city || x.title || x.name;
         const badgeLabel = col.badgeFormat ? col.badgeFormat.replace("{id}", String(x.id).padStart(2, "0")) : `NO. ${String(x.id).padStart(2, "0")}`;
-        const stamped = isStamped(currentSeriesKey, x.id);
+        const promptText = x.prompt || "";
 
         return `
-          <article class="card" data-id="${x.id}" data-index="${idx}">
+          <article class="card" data-index="${idx}">
             <div class="frame" onclick="openModal(${idx})">
-              <img class="stamp-img" src="${x.output}" alt="${displayName} 橡胶戳海报" onerror="this.src='placeholder.svg'">
+              <img class="stamp-img" src="${x.output}" alt="${displayName}" onerror="this.src='placeholder.svg'" loading="lazy">
               <span class="badge">${badgeLabel}</span>
-              ${stamped ? `
-                <div class="stamped-seal">
-                  <span class="seal-inner-char">印</span>
-                  <span>COLLECTED</span>
-                </div>
-              ` : ""}
             </div>
             <div class="card-info">
               <h2 onclick="openModal(${idx})">${displayName}</h2>
               <div class="meta">${x.features || ""}</div>
-              <div class="keywords">${(x.keywords || []).join(" · ")}</div>
-              <div class="card-actions">
-                <button class="btn-card-action btn-card-stamp ${stamped ? "stamped" : ""}" onclick="toggleStamp('${currentSeriesKey}', ${x.id})" title="在印记收集册中盖章">
-                  ${stamped ? "已盖印" : "盖章"}
-                </button>
-                <button class="btn-card-action" onclick="addToJournalDirect('${currentSeriesKey}', ${x.id})" title="将此印章贴入手账本">
-                  贴入手账
-                </button>
-                <button class="btn-card-action" onclick="openExLibrisFor(${idx})" title="制作专属藏书票">
-                  藏书票
-                </button>
+              <div class="keywords">
+                ${(x.keywords || []).map(k => `<span class="keyword-tag">${k}</span>`).join("")}
+              </div>
+
+              <!-- Prompt Box on Card -->
+              <div class="card-prompt-section">
+                <div class="prompt-header">
+                  <span class="prompt-label">Prompt</span>
+                  <button class="btn-copy-prompt" onclick="event.stopPropagation(); copyCardPrompt(${idx})" title="复制提示词">复制 Prompt</button>
+                </div>
+                <div class="prompt-text" onclick="openModal(${idx})" title="点击卡片查看完整画廊与大图">${promptText}</div>
               </div>
             </div>
           </article>
@@ -2029,83 +1216,69 @@
       }).join("");
     }
 
+    function copyCardPrompt(index) {
+      if (index >= 0 && index < currentFilteredRows.length) {
+        const item = currentFilteredRows[index];
+        copyText(item.prompt, `已复制「${item.city || item.title || item.name}」作图 Prompt`);
+      }
+    }
+
     function switchSeries(key) {
-      if (currentSeriesKey === key) return;
+      if (currentSeriesKey === key && currentCategoryFilter === "all") return;
       currentSeriesKey = key;
-      tabs.forEach(t => {
+      currentCategoryFilter = "all";
+
+      seriesTabs.forEach(t => {
         const isAct = t.dataset.series === key;
         t.classList.toggle("active", isAct);
-        if (isAct) {
-          try {
-            t.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-          } catch(e) {}
-        }
       });
+
       window.location.hash = key;
       updateHeader();
-      initFilterOptions();
-      search.value = "";
+      buildCategoryOptions();
+      searchInput.value = "";
       render();
     }
 
-    tabs.forEach(t => {
+    seriesTabs.forEach(t => {
       t.addEventListener("click", () => switchSeries(t.dataset.series));
     });
 
-    search.oninput = render;
-    filter.onchange = render;
+    searchInput.oninput = render;
 
     /* -------------------------------------------------------------
-       5. Lightbox Modal
+       Lightbox Modal with Full Prompt
        ------------------------------------------------------------- */
-    function updateModalStampBtn() {
-      if (currentModalIndex < 0 || currentModalIndex >= currentFilteredRows.length) return;
-      const x = currentFilteredRows[currentModalIndex];
-      const stamped = isStamped(currentSeriesKey, x.id);
-      const btn = document.querySelector("#modal-stamp-btn");
-      btn.className = `btn-modal-action btn-modal-stamp ${stamped ? "stamped" : ""}`;
-      btn.innerHTML = stamped ? "<span>已盖入收集册</span>" : "<span>盖入收集册</span>";
-    }
-
     function openModal(index) {
       if (index < 0 || index >= currentFilteredRows.length) return;
       currentModalIndex = index;
       const x = currentFilteredRows[index];
       const col = getCollection();
       const displayName = x.city || x.title || x.name;
+      const promptText = x.prompt || "";
 
-      document.querySelector("#big").src = x.output;
-      document.querySelector("#big").alt = displayName;
-      document.querySelector("#number").textContent = `${col.titleEn.toUpperCase()} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
-      document.querySelector("#title").textContent = displayName;
-      document.querySelector("#details").textContent = x.features || "";
-      document.querySelector("#desc").textContent = (x.keywords || []).join(" · ");
-      document.querySelector("#colors-info").textContent = x.colors ? `印层配色：${x.colors}` : "";
-      
-      updateModalStampBtn();
-      document.querySelector("#lightbox").classList.add("open");
+      modalImg.src = x.output;
+      modalImg.alt = displayName;
+      modalBadge.textContent = `${col.titleEn.toUpperCase()} ${String(x.id).padStart(2, "0")} / ${col.items.length}`;
+      modalTitle.textContent = displayName;
+      modalDesc.textContent = x.features || "";
+      modalColors.textContent = x.colors ? `印层配色：${x.colors}` : "";
+      modalPromptContent.textContent = promptText;
+
+      btnCopyModalPrompt.onclick = () => copyText(promptText, `已复制「${displayName}」完整作图 Prompt 到剪贴板`);
+
+      lightboxEl.classList.add("open");
     }
 
-    document.querySelector("#modal-stamp-btn").onclick = () => {
-      const x = currentFilteredRows[currentModalIndex];
-      toggleStamp(currentSeriesKey, x.id);
-    };
-
-    document.querySelector("#modal-exlibris-btn").onclick = () => {
-      document.querySelector("#lightbox").classList.remove("open");
-      openExLibrisFor(currentModalIndex);
-    };
-
-    document.querySelector("#close").onclick = () => document.querySelector("#lightbox").classList.remove("open");
-    document.querySelector("#lightbox").onclick = e => {
-      if (e.target.id === "lightbox") e.currentTarget.classList.remove("open");
+    document.querySelector("#modal-close").onclick = () => lightboxEl.classList.remove("open");
+    lightboxEl.onclick = e => {
+      if (e.target.id === "lightbox") lightboxEl.classList.remove("open");
     };
 
     document.querySelector("#btn-prev").onclick = () => {
       if (currentModalIndex > 0) openModal(currentModalIndex - 1);
       else openModal(currentFilteredRows.length - 1);
     };
-
     document.querySelector("#btn-next").onclick = () => {
       if (currentModalIndex < currentFilteredRows.length - 1) openModal(currentModalIndex + 1);
       else openModal(0);
@@ -2113,1118 +1286,32 @@
 
     // Keyboard Arrow Navigation
     window.addEventListener("keydown", e => {
-      if (!document.querySelector("#lightbox").classList.contains("open")) return;
-      if (e.key === "Escape") document.querySelector("#lightbox").classList.remove("open");
+      if (!lightboxEl.classList.contains("open")) return;
+      if (e.key === "Escape") lightboxEl.classList.remove("open");
       else if (e.key === "ArrowLeft") document.querySelector("#btn-prev").click();
       else if (e.key === "ArrowRight") document.querySelector("#btn-next").click();
     });
 
-    // Mobile Touch Swipe Gesture Support
-    let touchStartX = 0;
-    let touchStartY = 0;
-    const lightboxEl = document.querySelector("#lightbox");
-    lightboxEl.addEventListener("touchstart", e => {
-      if (e.touches.length === 1) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }
-    }, { passive: true });
-
-    lightboxEl.addEventListener("touchend", e => {
-      if (e.changedTouches.length === 1) {
-        const diffX = e.changedTouches[0].clientX - touchStartX;
-        const diffY = e.changedTouches[0].clientY - touchStartY;
-        // Horizontal swipe gesture threshold
-        if (Math.abs(diffX) > 40 && Math.abs(diffY) < 65) {
-          if (diffX < 0) {
-            document.querySelector("#btn-next").click();
-          } else {
-            document.querySelector("#btn-prev").click();
-          }
-        }
-      }
-    }, { passive: true });
-
-    /* -------------------------------------------------------------
-       6. Stamp Passport Modal & Postcard Canvas Exporter
-       ------------------------------------------------------------- */
-    const passportLightbox = document.querySelector("#passport-lightbox");
-    document.querySelector("#btn-open-passport").onclick = openPassportModal;
-    document.querySelector("#passport-close").onclick = () => passportLightbox.classList.remove("open");
-    passportLightbox.onclick = e => {
-      if (e.target.id === "passport-lightbox") passportLightbox.classList.remove("open");
-    };
-
-    function openPassportModal() {
-      renderPassportGrid();
-      passportLightbox.classList.add("open");
-    }
-
-    function renderPassportGrid() {
-      const pGrid = document.querySelector("#passport-grid");
-      const totalCount = getTotalCollectedCount();
-      document.querySelector("#passport-stats-text").textContent = `已盖章收集 ${totalCount} 枚印记`;
-
-      const collectedKeys = Object.keys(collectedMap);
-      if (!collectedKeys.length) {
-        pGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--muted);">您的收集册还是空的。在画廊中点击任意印章下方的【盖章】即可在此收录！</div>`;
-        return;
-      }
-
-      pGrid.innerHTML = collectedKeys.map(key => {
-        const [sKey, idStr] = key.split("_");
-        const id = parseInt(idStr, 10);
-        const col = window.COLLECTIONS[sKey];
-        if (!col) return "";
-        const item = col.items.find(x => x.id === id);
-        if (!item) return "";
-        const displayName = item.city || item.title || item.name;
-
-        return `
-          <div class="passport-item" onclick="switchSeries('${sKey}'); passportLightbox.classList.remove('open');">
-            <img class="stamp-img" src="${item.output}" alt="${displayName}">
-            <div class="passport-item-title">${displayName}</div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    document.querySelector("#btn-stamp-all").onclick = () => {
-      Object.keys(window.COLLECTIONS).forEach(sKey => {
-        window.COLLECTIONS[sKey].items.forEach(x => {
-          collectedMap[`${sKey}_${x.id}`] = {
-            time: new Date().toISOString(),
-            dateStr: new Date().toLocaleDateString("zh-CN")
-          };
-        });
-      });
-      playStampSound();
-      saveCollected();
-      render();
-      renderPassportGrid();
-    };
-
-    document.querySelector("#btn-reset-passport").onclick = () => {
-      if (confirm("确定要清空所有已收集的印章记录吗？")) {
-        collectedMap = {};
-        saveCollected();
-        render();
-        renderPassportGrid();
-      }
-    };
-
-    // Canvas Postcard Exporter
-    document.querySelector("#btn-export-postcard").onclick = () => {
-      const keys = Object.keys(collectedMap);
-      if (!keys.length) {
-        alert("收集册中还没有印章，请先在画廊中点击【盖章】收集！");
-        return;
-      }
-
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      const w = 1200;
-      const h = 800;
-      canvas.width = w;
-      canvas.height = h;
-
-      // Draw postcard paper
-      ctx.fillStyle = "#f5eddc";
-      ctx.fillRect(0, 0, w, h);
-
-      // Postcard deckle border
-      ctx.strokeStyle = "#cfc2ad";
-      ctx.lineWidth = 4;
-      ctx.strokeRect(20, 20, w - 40, h - 40);
-
-      ctx.strokeStyle = "#b83b26";
-      ctx.lineWidth = 1;
-      ctx.strokeRect(28, 28, w - 56, h - 56);
-
-      // Postcard Airmail top stripes
-      ctx.fillStyle = "#8d4d39";
-      ctx.font = "bold 26px Georgia, serif";
-      ctx.fillText("RUBBER STAMP TRAVEL PASSPORT", 50, 75);
-
-      ctx.fillStyle = "#746d60";
-      ctx.font = "14px ui-monospace, monospace";
-      ctx.fillText("OFFICIAL TRAVEL FIELD-NOTE ARCHIVE • COLLECTOR'S SHEET", 50, 100);
-
-      // Postmark stamp circle
-      ctx.save();
-      ctx.translate(w - 140, 100);
-      ctx.rotate(-0.15);
-      ctx.strokeStyle = "#b83b26";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(0, 0, 48, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(0, 0, 42, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.fillStyle = "#b83b26";
-      ctx.font = "bold 9px ui-monospace, monospace";
-      ctx.textAlign = "center";
-      ctx.fillText("RUBBER STAMP ARCHIVE", 0, -22);
-      ctx.font = "bold 13px ui-monospace, monospace";
-      ctx.fillText(new Date().toISOString().slice(0, 10), 0, 4);
-      ctx.font = "bold 9px ui-monospace, monospace";
-      ctx.fillText("★ CERTIFIED ★", 0, 26);
-      ctx.restore();
-
-      // Draw collected stamps collage
-      const maxStamps = Math.min(keys.length, 12);
-      const cols = 6;
-      const rows = 2;
-      const stampW = 145;
-      const stampH = 180;
-      const startX = 60;
-      const startY = 160;
-      const gapX = 35;
-      const gapY = 40;
-
-      let loadedImages = 0;
-      const itemsToDraw = [];
-
-      for (let i = 0; i < maxStamps; i++) {
-        const [sKey, idStr] = keys[i].split("_");
-        const col = window.COLLECTIONS[sKey];
-        if (!col) continue;
-        const item = col.items.find(x => x.id === parseInt(idStr, 10));
-        if (item) itemsToDraw.push({ item, sKey });
-      }
-
-      if (!itemsToDraw.length) return;
-
-      itemsToDraw.forEach((entry, idx) => {
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.src = entry.item.output;
-        img.onload = () => {
-          loadedImages++;
-          const colIdx = idx % cols;
-          const rowIdx = Math.floor(idx / cols);
-          const x = startX + colIdx * (stampW + gapX);
-          const y = startY + rowIdx * (stampH + gapY);
-
-          // Stamp frame
-          ctx.save();
-          ctx.fillStyle = "#ebdcc7";
-          ctx.fillRect(x - 6, y - 6, stampW + 12, stampH + 30);
-          ctx.strokeStyle = "#c2b39c";
-          ctx.lineWidth = 1;
-          ctx.strokeRect(x - 6, y - 6, stampW + 12, stampH + 30);
-
-          // Apply current ink filter if needed
-          if (currentInk === "cinnabar") ctx.filter = "sepia(0.9) saturate(3.5) hue-rotate(-52deg) contrast(1.2)";
-          else if (currentInk === "charcoal") ctx.filter = "grayscale(1) contrast(1.25) brightness(0.95)";
-          else ctx.filter = "none";
-
-          ctx.drawImage(img, x, y, stampW, stampH);
-          ctx.restore();
-
-          // Title
-          ctx.fillStyle = "#292722";
-          ctx.font = "12px 'Songti SC', serif";
-          ctx.textAlign = "center";
-          const title = entry.item.city || entry.item.title || entry.item.name;
-          ctx.fillText(title, x + stampW / 2, y + stampH + 16);
-
-          if (loadedImages === itemsToDraw.length) {
-            // Footer text
-            ctx.fillStyle = "#746d60";
-            ctx.font = "12px ui-monospace, monospace";
-            ctx.textAlign = "left";
-            ctx.fillText(`TOTAL COLLECTED: ${keys.length} STAMPS • CREATED ON XIAOSANG.CC`, 50, h - 45);
-
-            // Download
-            const link = document.createElement("a");
-            link.download = `Stamp_Passport_Postcard_${new Date().toISOString().slice(0,10)}.png`;
-            link.href = canvas.toDataURL("image/png");
-            link.click();
-          }
-        };
-        img.onerror = () => {
-          loadedImages++;
-        };
-      });
-    };
-
-    /* -------------------------------------------------------------
-       7. Ex-Libris Custom Bookplate Studio
-       ------------------------------------------------------------- */
-    const exlibrisLightbox = document.querySelector("#exlibris-lightbox");
-    const exCanvas = document.querySelector("#exlibris-canvas");
-    const exCtx = exCanvas.getContext("2d");
-    let exlibrisTargetItem = null;
-
-    document.querySelector("#exlibris-close").onclick = () => exlibrisLightbox.classList.remove("open");
-    exlibrisLightbox.onclick = e => {
-      if (e.target.id === "exlibris-lightbox") exlibrisLightbox.classList.remove("open");
-    };
-
-    function openExLibrisFor(index) {
-      if (index < 0 || index >= currentFilteredRows.length) return;
-      exlibrisTargetItem = currentFilteredRows[index];
-      exlibrisLightbox.classList.add("open");
-      drawExLibris();
-    }
-
-    const exInputs = ["#ex-owner", "#ex-motto", "#ex-border", "#ex-paper", "#ex-ink"];
-    exInputs.forEach(sel => {
-      document.querySelector(sel).oninput = () => drawExLibris();
-      document.querySelector(sel).onchange = () => drawExLibris();
-    });
-
-    async function drawExLibris(exportMode = false, targetCanvas = null) {
-      if (!exlibrisTargetItem) return;
-
-      const cvs = targetCanvas || exCanvas;
-      const ctx = cvs.getContext("2d");
-
-      const cw = exportMode ? 1200 : 600;
-      const ch = exportMode ? 1600 : 800;
-      const scale = exportMode ? 2 : 1;
-
-      cvs.width = cw;
-      cvs.height = ch;
-
-      const owner = document.querySelector("#ex-owner").value.trim() || "HOLY NOVA";
-      const motto = document.querySelector("#ex-motto").value;
-      const borderStyle = document.querySelector("#ex-border").value;
-      const paperColor = document.querySelector("#ex-paper").value;
-      const inkSetting = document.querySelector("#ex-ink").value;
-
-      // 1. Paper Background
-      ctx.fillStyle = paperColor;
-      ctx.fillRect(0, 0, cw, ch);
-
-      // Subtle paper texture speckles
-      ctx.fillStyle = "rgba(100, 80, 60, 0.03)";
-      for (let i = 0; i < 800 * scale; i++) {
-        ctx.fillRect(Math.random() * cw, Math.random() * ch, 1.5 * scale, 1.5 * scale);
-      }
-
-      // 2. Borders
-      const margin = 28 * scale;
-      ctx.strokeStyle = "#292722";
-      if (borderStyle === "classical") {
-        ctx.lineWidth = 3 * scale;
-        ctx.strokeRect(margin, margin, cw - margin * 2, ch - margin * 2);
-        ctx.lineWidth = 1 * scale;
-        ctx.strokeRect(margin + 6 * scale, margin + 6 * scale, cw - (margin + 6 * scale) * 2, ch - (margin + 6 * scale) * 2);
-        
-        // Corner rosettes
-        const cs = 14 * scale;
-        [
-          [margin, margin], [cw - margin, margin],
-          [margin, ch - margin], [cw - margin, ch - margin]
-        ].forEach(([cx, cy]) => {
-          ctx.fillStyle = "#b83b26";
-          ctx.fillRect(cx - cs / 2, cy - cs / 2, cs, cs);
-        });
-      } else if (borderStyle === "oriental") {
-        ctx.lineWidth = 4 * scale;
-        ctx.strokeRect(margin, margin, cw - margin * 2, ch - margin * 2);
-        ctx.strokeStyle = "#b83b26";
-        ctx.lineWidth = 1.5 * scale;
-        ctx.strokeRect(margin + 8 * scale, margin + 8 * scale, cw - (margin + 8 * scale) * 2, ch - (margin + 8 * scale) * 2);
-      } else {
-        ctx.lineWidth = 1.5 * scale;
-        ctx.strokeRect(margin, margin, cw - margin * 2, ch - margin * 2);
-      }
-
-      // 3. Top Motto (EX LIBRIS)
-      ctx.fillStyle = "#8d4d39";
-      ctx.font = `bold ${28 * scale}px Georgia, serif`;
-      ctx.textAlign = "center";
-      ctx.fillText(motto, cw / 2, 85 * scale);
-
-      // 4. Center Stamp Artwork
-      const img = await getCachedStampImage(exlibrisTargetItem.output);
-      if (img) {
-        const stampW = 360 * scale;
-        const stampH = 450 * scale;
-        const stampX = (cw - stampW) / 2;
-        const stampY = 120 * scale;
-
-        ctx.save();
-        ctx.fillStyle = "#ebdcc7";
-        ctx.fillRect(stampX - 8 * scale, stampY - 8 * scale, stampW + 16 * scale, stampH + 16 * scale);
-        ctx.strokeStyle = "#cfc2ad";
-        ctx.lineWidth = 1 * scale;
-        ctx.strokeRect(stampX - 8 * scale, stampY - 8 * scale, stampW + 16 * scale, stampH + 16 * scale);
-
-        let effectiveInk = inkSetting === "current" ? currentInk : inkSetting;
-        if (effectiveInk === "cinnabar") ctx.filter = "sepia(0.9) saturate(3.5) hue-rotate(-52deg) contrast(1.2)";
-        else if (effectiveInk === "charcoal") ctx.filter = "grayscale(1) contrast(1.25) brightness(0.95)";
-        else ctx.filter = "none";
-
-        ctx.drawImage(img, stampX, stampY, stampW, stampH);
-        ctx.restore();
-      }
-
-      // 5. Subject Title Banner
-      const displayName = exlibrisTargetItem.city || exlibrisTargetItem.title || exlibrisTargetItem.name;
-      ctx.fillStyle = "#292722";
-      ctx.font = `${18 * scale}px "Songti SC", Georgia, serif`;
-      ctx.textAlign = "center";
-      ctx.fillText(`— ${displayName} —`, cw / 2, 620 * scale);
-
-      // 6. Owner Name Box
-      const boxY = 660 * scale;
-      const boxW = 380 * scale;
-      const boxH = 55 * scale;
-      const boxX = (cw - boxW) / 2;
-
-      ctx.fillStyle = "#fffaf2";
-      ctx.fillRect(boxX, boxY, boxW, boxH);
-      ctx.strokeStyle = "#8d4d39";
-      ctx.lineWidth = 1.5 * scale;
-      ctx.strokeRect(boxX, boxY, boxW, boxH);
-
-      ctx.fillStyle = "#8d4d39";
-      ctx.font = `bold ${20 * scale}px "Songti SC", Georgia, serif`;
-      ctx.textAlign = "center";
-      ctx.fillText(owner, cw / 2, boxY + 36 * scale);
-
-      // 7. Micro footer
-      ctx.fillStyle = "#746d60";
-      ctx.font = `${11 * scale}px ui-monospace, monospace`;
-      ctx.fillText("RUBBER STAMP EX-LIBRIS • EDITION 2026", cw / 2, ch - 40 * scale);
-    }
-
-    document.querySelector("#btn-download-exlibris").onclick = async () => {
-      const exportCanvas = document.createElement("canvas");
-      await drawExLibris(true, exportCanvas);
-      const owner = (document.querySelector("#ex-owner").value.trim() || "HOLY_NOVA").replace(/\s+/g, "_");
-      const displayName = exlibrisTargetItem.city || exlibrisTargetItem.title || exlibrisTargetItem.name;
-      const link = document.createElement("a");
-      link.download = `ExLibris_${owner}_${displayName}.png`;
-      link.href = exportCanvas.toDataURL("image/png");
-      link.click();
-      showToast("藏书票导出成功");
-    };
-
-    /* -------------------------------------------------------------
-       8. Toast Notification Utility
-       ------------------------------------------------------------- */
-    function showToast(msg) {
-      const toast = document.getElementById("toast");
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.classList.add("show");
-      clearTimeout(toast._timer);
-      toast._timer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2200);
-    }
-
-    /* -------------------------------------------------------------
-       9. Stamp Journal & Collage Book Studio (盖章手账拼图本)
-       ------------------------------------------------------------- */
-    const journalLightbox = document.querySelector("#journal-lightbox");
-    const journalCanvas = document.querySelector("#journal-canvas");
-    const journalCtx = journalCanvas.getContext("2d");
-    let journalStamps = []; // Items in current journal page
-    let activeSlotIndex = 0; // Currently focused slot for insertion / swap
-    let journalPickerCategory = "all";
-
-    const stampImgCache = new Map();
-    function getCachedStampImage(url) {
-      if (!url) return Promise.resolve(null);
-      if (stampImgCache.has(url)) {
-        const cached = stampImgCache.get(url);
-        if (cached && cached.complete && cached.naturalWidth > 0) return Promise.resolve(cached);
-      }
-      return new Promise((resolve) => {
-        const img = new Image();
-        if (url.startsWith("http://") || url.startsWith("https://")) {
-          img.crossOrigin = "anonymous";
-        }
-        img.src = url;
-        img.onload = () => {
-          stampImgCache.set(url, img);
-          resolve(img);
-        };
-        img.onerror = () => {
-          console.warn("Failed to load image:", url);
-          resolve(null);
-        };
-      });
-    }
-
-    function getAllStampsList() {
-      const list = [];
-      if (!window.COLLECTIONS) return list;
-      Object.keys(window.COLLECTIONS).forEach(seriesKey => {
-        const col = window.COLLECTIONS[seriesKey];
-        (col.items || []).forEach(item => {
-          list.push({
-            ...item,
-            seriesKey: seriesKey,
-            seriesTitle: col.title,
-            badgeLabel: col.badgeFormat ? col.badgeFormat.replace("{id}", String(item.id).padStart(2, "0")) : `NO. ${String(item.id).padStart(2, "0")}`
-          });
-        });
-      });
-      return list;
-    }
-
-    function getLayoutCapacity(layoutKey) {
-      switch (layoutKey) {
-        case "grid2x2": return 4;
-        case "grid2x3": return 6;
-        case "grid3x3": return 8;
-        case "featured1p4": return 5;
-        default: return 6;
-      }
-    }
-
-    function updateJournalBadge() {
-      const badge = document.querySelector("#journal-count-badge");
-      if (badge) badge.textContent = journalStamps.length;
-      const counter = document.querySelector("#stamp-slot-counter");
-      const cap = getLayoutCapacity(document.querySelector("#journal-layout").value);
-      if (counter) counter.textContent = `已选 ${journalStamps.length} / ${cap}`;
-      const pickerCollCount = document.querySelector("#picker-collected-count");
-      if (pickerCollCount) pickerCollCount.textContent = getTotalCollectedCount();
-    }
-
-    function openJournalModal() {
-      // If journal is empty and user has collected stamps, prefill with collected stamps!
-      if (journalStamps.length === 0) {
-        const all = getAllStampsList();
-        const collected = all.filter(x => isStamped(x.seriesKey, x.id));
-        const cap = getLayoutCapacity(document.querySelector("#journal-layout").value);
-        if (collected.length > 0) {
-          journalStamps = collected.slice(0, cap);
-        } else {
-          // Default prefill with 6 iconic prints (Shanghai, Rat, Lichun, Jiuweihu, Beijing, Dragon)
-          const defaults = [
-            all.find(x => x.name === "上海" || x.city === "上海") || all[0],
-            all.find(x => x.name === "子鼠") || all[30],
-            all.find(x => x.name === "立春") || all[42],
-            all.find(x => x.name === "九尾狐") || all[66],
-            all.find(x => x.name === "北京" || x.city === "北京") || all[1],
-            all.find(x => x.name === "辰龙") || all[34],
-          ].filter(Boolean);
-          journalStamps = defaults.slice(0, cap);
-        }
-      }
-
-      journalLightbox.classList.add("open");
-      updateJournalBadge();
-      renderPickerGrid();
-      drawJournal();
-    }
-
-    document.querySelector("#btn-open-journal").onclick = openJournalModal;
-    document.querySelector("#journal-close").onclick = () => journalLightbox.classList.remove("open");
-    journalLightbox.onclick = e => {
-      if (e.target.id === "journal-lightbox") journalLightbox.classList.remove("open");
-    };
-
-    // Modal Action inside Lightbox
-    document.querySelector("#modal-journal-btn").onclick = () => {
-      if (currentModalIndex < 0 || currentModalIndex >= currentFilteredRows.length) return;
-      const item = currentFilteredRows[currentModalIndex];
-      addToJournalDirect(currentSeriesKey, item.id);
-      document.querySelector("#lightbox").classList.remove("open");
-      openJournalModal();
-    };
-
-    // Passport Action
-    document.querySelector("#btn-passport-to-journal").onclick = () => {
-      document.querySelector("#passport-lightbox").classList.remove("open");
-      fillWithCollectedStamps();
-      openJournalModal();
-    };
-
-    window.addToJournalDirect = function(seriesKey, id) {
-      const all = getAllStampsList();
-      const target = all.find(x => x.seriesKey === seriesKey && x.id === id);
-      if (!target) return;
-
-      const cap = getLayoutCapacity(document.querySelector("#journal-layout").value);
-      const existingIdx = journalStamps.findIndex(x => x.output === target.output);
-
-      if (existingIdx >= 0) {
-        journalStamps.splice(existingIdx, 1);
-        showToast(`已从手账移出「${target.city || target.title || target.name}」`);
-      } else {
-        if (journalStamps.length < cap) {
-          journalStamps.push(target);
-          activeSlotIndex = journalStamps.length % cap;
-        } else {
-          journalStamps[activeSlotIndex] = target;
-          activeSlotIndex = (activeSlotIndex + 1) % cap;
-        }
-        playStampSound();
-        showToast(`已将「${target.city || target.title || target.name}」填入手账`);
-      }
-
-      updateJournalBadge();
-      renderPickerGrid();
-      if (journalLightbox.classList.contains("open")) {
-        drawJournal();
-      }
-    };
-
-    function renderPickerGrid() {
-      const gridEl = document.querySelector("#stamp-picker-grid");
-      if (!gridEl) return;
-      const all = getAllStampsList();
-      let filtered = all;
-
-      if (journalPickerCategory === "poetry") filtered = all.filter(x => x.seriesKey === "poetry");
-      else if (journalPickerCategory === "scenic_spots") filtered = all.filter(x => x.seriesKey === "scenic_spots");
-      else if (journalPickerCategory === "cities") filtered = all.filter(x => x.seriesKey === "cities");
-      else if (journalPickerCategory === "wildlife") filtered = all.filter(x => x.seriesKey === "wildlife");
-      else if (journalPickerCategory === "marine") filtered = all.filter(x => x.seriesKey === "marine");
-      else if (journalPickerCategory === "atmosphere") filtered = all.filter(x => x.seriesKey === "atmosphere");
-      else if (journalPickerCategory === "zodiac") filtered = all.filter(x => x.seriesKey === "zodiac");
-      else if (journalPickerCategory === "solar_terms") filtered = all.filter(x => x.seriesKey === "solar_terms");
-      else if (journalPickerCategory === "shanhaijing") filtered = all.filter(x => x.seriesKey === "shanhaijing");
-      else if (journalPickerCategory === "collected") filtered = all.filter(x => isStamped(x.seriesKey, x.id));
-
-      if (!filtered.length) {
-        gridEl.innerHTML = '<div style="grid-column:span 4;text-align:center;padding:24px 8px;font-size:12px;color:var(--muted);">暂无符合条件的印章</div>';
-        return;
-      }
-
-      gridEl.innerHTML = filtered.map(item => {
-        const inJournal = journalStamps.some(x => x.output === item.output);
-        const displayName = item.city || item.title || item.name;
-        return `
-          <div class="picker-stamp-item ${inJournal ? "in-journal" : ""}" data-output="${item.output}" title="点击贴入或移除手账本">
-            <img src="${item.output}" alt="${displayName}" loading="lazy">
-            <div class="picker-stamp-item-label">${displayName}</div>
-            ${inJournal ? '<span class="picker-stamp-item-badge">已选</span>' : ""}
-          </div>
-        `;
-      }).join("");
-
-      gridEl.querySelectorAll(".picker-stamp-item").forEach(el => {
-        el.onclick = () => {
-          const out = el.dataset.output;
-          const target = all.find(x => x.output === out);
-          if (!target) return;
-          addToJournalDirect(target.seriesKey, target.id);
-        };
-      });
-    }
-
-    // Picker Category Tabs
-    document.querySelectorAll(".picker-tab").forEach(tab => {
-      tab.onclick = () => {
-        document.querySelectorAll(".picker-tab").forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-        journalPickerCategory = tab.dataset.filter;
-        renderPickerGrid();
+    // Color Palette Switcher
+    document.querySelectorAll(".color-btn").forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll(".color-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.body.className = btn.dataset.ink === "cinnabar" ? "ink-cinnabar" : btn.dataset.ink === "charcoal" ? "ink-charcoal" : "";
       };
     });
 
-    // Quick Action: Fill with collected stamps
-    function fillWithCollectedStamps() {
-      const all = getAllStampsList();
-      const collected = all.filter(x => isStamped(x.seriesKey, x.id));
-      const cap = getLayoutCapacity(document.querySelector("#journal-layout").value);
-      if (collected.length === 0) {
-        showToast("收集册暂无印章，已随机挑选");
-        randomJournalPage();
-        return;
-      }
-      journalStamps = collected.slice(0, cap);
-      activeSlotIndex = 0;
-      playStampSound();
-      updateJournalBadge();
-      renderPickerGrid();
-      drawJournal();
-      showToast(`已自动填入 ${journalStamps.length} 枚已收集印章`);
-    }
-
-    function randomJournalPage() {
-      const all = getAllStampsList();
-      const cap = getLayoutCapacity(document.querySelector("#journal-layout").value);
-      const shuffled = [...all].sort(() => 0.5 - Math.random());
-      journalStamps = shuffled.slice(0, cap);
-      activeSlotIndex = 0;
-      playStampSound();
-      updateJournalBadge();
-      renderPickerGrid();
-      drawJournal();
-      showToast(`已随机生成一页 ${journalStamps.length} 款印章手账`);
-    }
-
-    function clearJournalPage() {
-      journalStamps = [];
-      activeSlotIndex = 0;
-      updateJournalBadge();
-      renderPickerGrid();
-      drawJournal();
-      showToast("已清空当前手账页");
-    }
-
-    document.querySelector("#btn-fill-collected").onclick = fillWithCollectedStamps;
-    document.querySelector("#btn-random-journal").onclick = randomJournalPage;
-    document.querySelector("#btn-clear-journal").onclick = clearJournalPage;
-
-    // Canvas click to select slot
-    journalCanvas.onclick = (e) => {
-      const rect = journalCanvas.getBoundingClientRect();
-      const scaleX = journalCanvas.width / rect.width;
-      const scaleY = journalCanvas.height / rect.height;
-      const clickX = (e.clientX - rect.left) * scaleX;
-      const clickY = (e.clientY - rect.top) * scaleY;
-
-      const layoutKey = document.querySelector("#journal-layout").value;
-      const slots = computeSlotRects(layoutKey, 1, 1200, 800);
-
-      slots.forEach((slot, idx) => {
-        if (clickX >= slot.x - 10 && clickX <= slot.x + slot.w + 10 &&
-            clickY >= slot.y - 10 && clickY <= slot.y + slot.h + 30) {
-          activeSlotIndex = idx;
-          drawJournal();
-          showToast(`当前选中第 ${idx + 1} 个印位，点击右侧印章填入`);
-        }
-      });
-    };
-
-    // Form inputs triggers
-    const journalInputs = ["#journal-layout", "#journal-paper", "#journal-title-input", "#journal-author-input", "#journal-subtitle-input", "#journal-ink", "#journal-natural-tilt"];
-    journalInputs.forEach(sel => {
-      const el = document.querySelector(sel);
-      if (el) {
-        el.oninput = () => {
-          if (sel === "#journal-layout") {
-            const cap = getLayoutCapacity(el.value);
-            if (journalStamps.length > cap) journalStamps = journalStamps.slice(0, cap);
-            updateJournalBadge();
-          }
-          drawJournal();
-        };
-        el.onchange = () => {
-          if (sel === "#journal-layout") {
-            const cap = getLayoutCapacity(el.value);
-            if (journalStamps.length > cap) journalStamps = journalStamps.slice(0, cap);
-            updateJournalBadge();
-          }
-          drawJournal();
-        };
-      }
-    });
-
-    // Slot Coordinate Engine
-    function computeSlotRects(layoutKey, scale, cw, ch) {
-      const margin = 28 * scale;
-      const spineX = cw / 2;
-      const topY = 95 * scale;
-      const leftX = margin + 28 * scale;
-      const rightX = spineX + 24 * scale;
-
-      const slots = [];
-
-      if (layoutKey === "grid2x2") {
-        // 4 slots: 2 on Left Page, 2 on Right Page
-        const w = 210 * scale;
-        const h = 262 * scale;
-        const y = topY + 115 * scale;
-        // Left Page
-        slots.push({ x: leftX + 25 * scale, y: y, w: w, h: h });
-        slots.push({ x: leftX + 265 * scale, y: y, w: w, h: h });
-        // Right Page
-        slots.push({ x: rightX + 25 * scale, y: y, w: w, h: h });
-        slots.push({ x: rightX + 265 * scale, y: y, w: w, h: h });
-      } else if (layoutKey === "grid2x3") {
-        // 6 slots: 3 on Left, 3 on Right (Staggered artistic balance)
-        const w = 200 * scale;
-        const h = 250 * scale;
-        // Left Page
-        slots.push({ x: leftX + 145 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: leftX + 25 * scale, y: topY + 310 * scale, w: w, h: h });
-        slots.push({ x: leftX + 265 * scale, y: topY + 310 * scale, w: w, h: h });
-        // Right Page
-        slots.push({ x: rightX + 25 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: rightX + 265 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: rightX + 145 * scale, y: topY + 310 * scale, w: w, h: h });
-      } else if (layoutKey === "grid3x3") {
-        // 8 slots: 4 on Left (2x2), 4 on Right (2x2)
-        const w = 200 * scale;
-        const h = 250 * scale;
-        // Left Page
-        slots.push({ x: leftX + 25 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: leftX + 265 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: leftX + 25 * scale, y: topY + 310 * scale, w: w, h: h });
-        slots.push({ x: leftX + 265 * scale, y: topY + 310 * scale, w: w, h: h });
-        // Right Page
-        slots.push({ x: rightX + 25 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: rightX + 265 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: rightX + 25 * scale, y: topY + 310 * scale, w: w, h: h });
-        slots.push({ x: rightX + 265 * scale, y: topY + 310 * scale, w: w, h: h });
-      } else if (layoutKey === "featured1p4") {
-        // 5 slots: 1 Feature Hero on Left + 4 on Right (2x2)
-        const heroW = 360 * scale;
-        const heroH = 450 * scale;
-        slots.push({ x: leftX + 70 * scale, y: topY + 60 * scale, w: heroW, h: heroH, isHero: true });
-
-        const w = 200 * scale;
-        const h = 250 * scale;
-        slots.push({ x: rightX + 25 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: rightX + 265 * scale, y: topY + 10 * scale, w: w, h: h });
-        slots.push({ x: rightX + 25 * scale, y: topY + 310 * scale, w: w, h: h });
-        slots.push({ x: rightX + 265 * scale, y: topY + 310 * scale, w: w, h: h });
-      }
-
-      return slots;
-    }
-
-    // Canvas Journal Renderer
-    const FIXED_TILT_ANGLES = [-1.8, 1.4, -1.1, 1.7, -1.5, 0.9, -1.2, 1.6];
-
-    async function drawJournal(exportMode = false, targetCanvas = null) {
-      const cvs = targetCanvas || journalCanvas;
-      const ctx = cvs.getContext("2d");
-
-      const cw = exportMode ? 2400 : 1200;
-      const ch = exportMode ? 1600 : 800;
-      const scale = exportMode ? 2 : 1;
-
-      cvs.width = cw;
-      cvs.height = ch;
-
-      const layoutKey = document.querySelector("#journal-layout").value;
-      const paperKey = document.querySelector("#journal-paper").value;
-      const titleText = document.querySelector("#journal-title-input").value.trim() || "《四时风物 · 游历手账》";
-      const authorText = document.querySelector("#journal-author-input").value.trim() || "COLLECTED BY HOLY NOVA";
-      const subtitleText = document.querySelector("#journal-subtitle-input").value.trim() || "FIELD NOTES & SEALS • EDITION 2026";
-      const inkSetting = document.querySelector("#journal-ink").value;
-      const naturalTilt = document.querySelector("#journal-natural-tilt").checked;
-
-      // 1. Desk Background
-      ctx.fillStyle = "#1e1b18";
-      ctx.fillRect(0, 0, cw, ch);
-
-      // 2. Open Book Spread
-      const margin = 24 * scale;
-      const bw = cw - margin * 2;
-      const bh = ch - margin * 2;
-      const radius = 10 * scale;
-
-      // Soft Book Shadow
-      ctx.save();
-      ctx.shadowColor = "rgba(0,0,0,0.55)";
-      ctx.shadowBlur = 28 * scale;
-      ctx.shadowOffsetY = 14 * scale;
-
-      // Paper Background Base
-      let paperBg = "#f5eedd";
-      if (paperKey === "kraft") paperBg = "#d8ba8b";
-      else if (paperKey === "dot_grid") paperBg = "#f8f5eb";
-      else if (paperKey === "sage_parchment") paperBg = "#e1e9e2";
-      else if (paperKey === "clean_cream") paperBg = "#fffef9";
-
-      ctx.fillStyle = paperBg;
-      ctx.beginPath();
-      ctx.roundRect(margin, margin, bw, bh, radius);
-      ctx.fill();
-      ctx.restore();
-
-      // Subtle Paper Texture Specks
-      ctx.fillStyle = paperKey === "kraft" ? "rgba(70, 45, 20, 0.04)" : "rgba(100, 80, 50, 0.035)";
-      for (let i = 0; i < 1500 * scale; i++) {
-        const px = margin + Math.random() * bw;
-        const py = margin + Math.random() * bh;
-        ctx.fillRect(px, py, 1.5 * scale, 1.5 * scale);
-      }
-
-      // If Dot Grid Paper: draw dot matrix
-      if (paperKey === "dot_grid") {
-        ctx.fillStyle = "rgba(160, 140, 110, 0.28)";
-        const step = 24 * scale;
-        for (let x = margin + 30 * scale; x < cw - margin - 30 * scale; x += step) {
-          if (Math.abs(x - cw / 2) < 25 * scale) continue; // skip center fold
-          for (let y = margin + 70 * scale; y < ch - margin - 50 * scale; y += step) {
-            ctx.beginPath();
-            ctx.arc(x, y, 1.2 * scale, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-      }
-
-      // 3. Center Spine Fold & Book Depth
-      const spineX = cw / 2;
-
-      // Spine shadow gradient
-      const spineGrad = ctx.createLinearGradient(spineX - 35 * scale, 0, spineX + 35 * scale, 0);
-      spineGrad.addColorStop(0, "rgba(0,0,0,0)");
-      spineGrad.addColorStop(0.35, "rgba(0,0,0,0.06)");
-      spineGrad.addColorStop(0.5, "rgba(0,0,0,0.18)");
-      spineGrad.addColorStop(0.65, "rgba(0,0,0,0.06)");
-      spineGrad.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = spineGrad;
-      ctx.fillRect(spineX - 35 * scale, margin, 70 * scale, bh);
-
-      // Spine Center Crease Line
-      ctx.strokeStyle = "rgba(120, 100, 75, 0.4)";
-      ctx.lineWidth = 1 * scale;
-      ctx.beginPath();
-      ctx.moveTo(spineX, margin);
-      ctx.lineTo(spineX, ch - margin);
-      ctx.stroke();
-
-      // Stitch Thread / Hole Marks along spine
-      const stitchY = [65, 180, 310, 440, 570, 700, 750];
-      stitchY.forEach(sy => {
-        const y = sy * scale;
-        ctx.fillStyle = "#3a3229";
-        ctx.beginPath();
-        ctx.arc(spineX, y, 2.5 * scale, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = "#8d7962";
-        ctx.lineWidth = 1 * scale;
-        ctx.beginPath();
-        ctx.moveTo(spineX - 4 * scale, y);
-        ctx.lineTo(spineX + 4 * scale, y);
-        ctx.stroke();
-      });
-
-      // 4. Inner Margins & Border Ornaments
-      ctx.strokeStyle = "rgba(140, 120, 95, 0.35)";
-      ctx.lineWidth = 1 * scale;
-
-      // Left Page inner frame
-      const leftInnerX = margin + 18 * scale;
-      const leftInnerW = spineX - leftInnerX - 18 * scale;
-      const innerY = margin + 18 * scale;
-      const innerH = bh - 36 * scale;
-      ctx.strokeRect(leftInnerX, innerY, leftInnerW, innerH);
-
-      // Right Page inner frame
-      const rightInnerX = spineX + 18 * scale;
-      const rightInnerW = cw - margin - 18 * scale - rightInnerX;
-      ctx.strokeRect(rightInnerX, innerY, rightInnerW, innerH);
-
-      // 5. Header Typography & Book Title
-      // Left Header: Book Title
-      ctx.fillStyle = "#292722";
-      ctx.font = `bold ${21 * scale}px "Songti SC", Georgia, serif`;
-      ctx.textAlign = "left";
-      ctx.fillText(titleText, leftInnerX + 16 * scale, innerY + 32 * scale);
-
-      // Subtitle under Title
-      ctx.fillStyle = "#7c7263";
-      ctx.font = `${10 * scale}px ui-monospace, SFMono-Regular, Menlo, monospace`;
-      ctx.fillText(subtitleText, leftInnerX + 16 * scale, innerY + 48 * scale);
-
-      // Right Header: Author Signature & Stamp Seal
-      ctx.textAlign = "right";
-      ctx.fillStyle = "#5c5346";
-      ctx.font = `bold ${12 * scale}px "Songti SC", Georgia, serif`;
-      ctx.fillText(authorText, rightInnerX + rightInnerW - 48 * scale, innerY + 34 * scale);
-
-      // Decorative Seal Stamp in Top-Right
-      const sealX = rightInnerX + rightInnerW - 36 * scale;
-      const sealY = innerY + 18 * scale;
-      const sealS = 24 * scale;
-      ctx.strokeStyle = "#b83b26";
-      ctx.lineWidth = 1.5 * scale;
-      ctx.strokeRect(sealX, sealY, sealS, sealS);
-      ctx.fillStyle = "rgba(184, 59, 38, 0.08)";
-      ctx.fillRect(sealX, sealY, sealS, sealS);
-      ctx.fillStyle = "#b83b26";
-      ctx.font = `bold ${13 * scale}px "Songti SC", serif`;
-      ctx.textAlign = "center";
-      ctx.fillText("印", sealX + sealS / 2, sealY + sealS / 2 + 5 * scale);
-
-      // 6. Footer Information
-      ctx.fillStyle = "#8a7f70";
-      ctx.font = `${9.5 * scale}px ui-monospace, SFMono-Regular, monospace`;
-      ctx.textAlign = "left";
-      ctx.fillText("RUBBER STAMP FIELD JOURNAL • PAGE 01", leftInnerX + 16 * scale, innerY + innerH - 12 * scale);
-
-      ctx.textAlign = "right";
-      ctx.fillText("HAND-CARVED WOODBLOCK PRINTS • EDITION 2026", rightInnerX + rightInnerW - 16 * scale, innerY + innerH - 12 * scale);
-
-      // 7. Calculate Slots & Preload Images
-      const slots = computeSlotRects(layoutKey, scale, cw, ch);
-      const cap = slots.length;
-
-      // Preload images for current items
-      const loadPromises = journalStamps.slice(0, cap).map(item => item ? getCachedStampImage(item.output) : Promise.resolve(null));
-      const loadedImgs = await Promise.all(loadPromises);
-
-      // 8. Render Each Slot
-      slots.forEach((slot, idx) => {
-        const item = journalStamps[idx];
-        const img = loadedImgs[idx];
-        const isOccupied = !!(item && img);
-
-        const cx = slot.x + slot.w / 2;
-        const cy = slot.y + slot.h / 2;
-        const tilt = (naturalTilt ? (FIXED_TILT_ANGLES[idx % FIXED_TILT_ANGLES.length] || 0) : 0) * (Math.PI / 180);
-
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(tilt);
-
-        if (isOccupied) {
-          // Soft Stamp Drop Shadow
-          ctx.shadowColor = "rgba(45, 35, 25, 0.22)";
-          ctx.shadowBlur = 8 * scale;
-          ctx.shadowOffsetY = 4 * scale;
-
-          // Backing Deckle Mount
-          const pad = 4 * scale;
-          ctx.fillStyle = "#fffdf7";
-          ctx.fillRect(-slot.w / 2 - pad, -slot.h / 2 - pad, slot.w + pad * 2, slot.h + pad * 2);
-          ctx.strokeStyle = "rgba(180, 160, 130, 0.5)";
-          ctx.lineWidth = 1 * scale;
-          ctx.strokeRect(-slot.w / 2 - pad, -slot.h / 2 - pad, slot.w + pad * 2, slot.h + pad * 2);
-
-          // Apply Ink Filter to Canvas
-          let effectiveInk = inkSetting === "current" ? currentInk : inkSetting;
-          if (effectiveInk === "cinnabar") ctx.filter = "sepia(0.9) saturate(3.5) hue-rotate(-52deg) contrast(1.2)";
-          else if (effectiveInk === "charcoal") ctx.filter = "grayscale(1) contrast(1.25) brightness(0.95)";
-          else ctx.filter = "none";
-
-          // Draw Stamp Art
-          ctx.drawImage(img, -slot.w / 2, -slot.h / 2, slot.w, slot.h);
-
-          // Reset Filter & Shadow for Captions
-          ctx.filter = "none";
-          ctx.shadowColor = "transparent";
-
-          // Stamp Caption Underneath
-          const displayName = item.city || item.title || item.name;
-          const badge = item.badgeLabel || `NO. ${String(item.id).padStart(2, "0")}`;
-
-          ctx.fillStyle = "#292722";
-          ctx.font = `bold ${slot.isHero ? 15 * scale : 11 * scale}px "Songti SC", Georgia, serif`;
-          ctx.textAlign = "center";
-          ctx.fillText(displayName, 0, slot.h / 2 + (slot.isHero ? 20 * scale : 14 * scale));
-
-          ctx.fillStyle = "#7c7263";
-          ctx.font = `${slot.isHero ? 10 * scale : 8.5 * scale}px ui-monospace, monospace`;
-          ctx.fillText(badge, 0, slot.h / 2 + (slot.isHero ? 34 * scale : 24 * scale));
-        } else {
-          // Empty Slot: Dashed Stamp Frame + Typographic Prompt
-          ctx.strokeStyle = (idx === activeSlotIndex && !exportMode) ? "#8d4d39" : "rgba(160, 140, 110, 0.5)";
-          ctx.lineWidth = (idx === activeSlotIndex && !exportMode) ? 2 * scale : 1.5 * scale;
-          ctx.setLineDash([5 * scale, 4 * scale]);
-          ctx.strokeRect(-slot.w / 2, -slot.h / 2, slot.w, slot.h);
-          ctx.setLineDash([]);
-
-          ctx.fillStyle = (idx === activeSlotIndex && !exportMode) ? "rgba(141, 77, 57, 0.06)" : "rgba(160, 140, 110, 0.04)";
-          ctx.fillRect(-slot.w / 2, -slot.h / 2, slot.w, slot.h);
-
-          ctx.fillStyle = (idx === activeSlotIndex && !exportMode) ? "#8d4d39" : "rgba(140, 120, 95, 0.65)";
-          ctx.font = `300 ${22 * scale}px ui-monospace, monospace`;
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText("+", 0, -8 * scale);
-
-          ctx.font = `${10 * scale}px ui-monospace, monospace`;
-          ctx.fillText(idx === activeSlotIndex && !exportMode ? "当前编辑位" : "点击填入印章", 0, 14 * scale);
-        }
-
-        // Highlight Active Slot with golden focus indicator
-        if (idx === activeSlotIndex && !exportMode) {
-          ctx.strokeStyle = "#b83b26";
-          ctx.lineWidth = 2 * scale;
-          ctx.strokeRect(-slot.w / 2 - 6 * scale, -slot.h / 2 - 6 * scale, slot.w + 12 * scale, slot.h + 12 * scale);
-        }
-
-        ctx.restore();
-      });
-    }
-
-    // High-Resolution Export
-    document.querySelector("#btn-download-journal").onclick = async () => {
-      showToast("正在导出 2400×1600 高清手账跨页…");
-      const exportCanvas = document.createElement("canvas");
-      await drawJournal(true, exportCanvas);
-
-      const titleText = document.querySelector("#journal-title-input").value.trim() || "四时风物手账";
-      const cleanTitle = titleText.replace(/[《》\s]/g, "_");
-      const link = document.createElement("a");
-      link.download = `Stamp_Journal_${cleanTitle}_${Date.now()}.png`;
-      link.href = exportCanvas.toDataURL("image/png");
-      link.click();
-      showToast("手账跨页导出成功");
-    };
-
-    // Print / PDF
-    document.querySelector("#btn-print-journal").onclick = async () => {
-      const exportCanvas = document.createElement("canvas");
-      await drawJournal(true, exportCanvas);
-      const imgData = exportCanvas.toDataURL("image/png");
-      const printWin = window.open("", "_blank");
-      if (!printWin) {
-        alert("请允许弹出窗口以打印手账页");
-        return;
-      }
-      printWin.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>打印印章手账页</title>
-          <style>
-            @page { size: landscape; margin: 0; }
-            body { margin: 0; display: flex; align-items: center; justify-content: center; background: #fff; height: 100vh; }
-            img { width: 100vw; height: auto; max-height: 100vh; object-fit: contain; }
-          </style>
-        </head>
-        <body>
-          <img src="${imgData}" onload="window.print();">
-        </body>
-        </html>
-      `);
-      printWin.document.close();
-    };
-
     /* -------------------------------------------------------------
-       10. Initial Application Bootstrap & Hash Routing
+       App Bootstrap & Hash Routing
        ------------------------------------------------------------- */
     const hash = window.location.hash.replace("#", "");
-    if (hash === "journal" || hash === "puzzle") {
-      updateHeader();
-      initFilterOptions();
-      render();
-      setTimeout(() => openJournalModal(), 80);
-    } else if (hash === "passport") {
-      updateHeader();
-      initFilterOptions();
-      render();
-      setTimeout(() => document.querySelector("#btn-open-passport").click(), 80);
-    } else if (hash && window.COLLECTIONS[hash]) {
+    if (hash && window.COLLECTIONS[hash]) {
       switchSeries(hash);
     } else {
       updateHeader();
-      initFilterOptions();
+      buildCategoryOptions();
       render();
     }
-
-    updatePassportBadge();
-    updateJournalBadge();
-
-    window.addEventListener("keydown", e => {
-      const lb = document.querySelector("#lightbox");
-      const pb = document.querySelector("#passport-lightbox");
-      const eb = document.querySelector("#exlibris-lightbox");
-      const jb = document.querySelector("#journal-lightbox");
-
-      if (e.key === "Escape") {
-        if (jb && jb.classList.contains("open")) jb.classList.remove("open");
-        else if (eb.classList.contains("open")) eb.classList.remove("open");
-        else if (pb.classList.contains("open")) pb.classList.remove("open");
-        else if (lb.classList.contains("open")) lb.classList.remove("open");
-      }
-      if (lb && lb.classList.contains("open")) {
-        if (e.key === "ArrowLeft") document.querySelector("#btn-prev").click();
-        if (e.key === "ArrowRight") document.querySelector("#btn-next").click();
-      }
-    });
   </script>
 </body>
 </html>
