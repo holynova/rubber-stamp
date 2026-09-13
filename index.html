@@ -477,7 +477,7 @@
 
     /* Note Top Bar (Back, Author Avatar, Follow, Share) */
     .note-header {
-      height: 52px;
+      min-height: 52px;
       padding: 0 14px;
       background: #ffffff;
       border-bottom: 1px solid #f0ece6;
@@ -487,6 +487,7 @@
       gap: 12px;
       flex-shrink: 0;
       z-index: 10;
+      box-sizing: border-box;
     }
     .note-btn-back {
       background: transparent;
@@ -620,28 +621,6 @@
       display: block;
     }
 
-    /* Xiaohongshu Top Badges on Image */
-    .note-badge-ai {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: rgba(255,255,255,0.92);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      pointer-events: none;
-    }
-    .note-badge-ai svg {
-      width: 11px;
-      height: 11px;
-      fill: currentColor;
-    }
     .note-page-indicator {
       position: absolute;
       top: 10px;
@@ -683,16 +662,6 @@
     .note-desc {
       margin: 0;
       color: #444444;
-    }
-    .note-colors-tag {
-      margin: 0;
-      font-size: 13.5px;
-      color: #b9281e;
-      background: #fcf6f4;
-      padding: 6px 10px;
-      border-radius: 6px;
-      border-left: 3px solid #b9281e;
-      display: inline-block;
     }
 
     /* Prompt section inside Note */
@@ -1006,11 +975,15 @@
       /* Mobile Note Detail Page Fullscreen overlay */
       #note-detail-modal {
         background: #ffffff;
+        align-items: stretch;
+        justify-content: flex-start;
       }
       .note-window {
         max-width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
+        width: 100vw;
+        height: 100%;
+        height: 100dvh;
+        max-height: 100dvh;
         border-radius: 0;
         box-shadow: none;
       }
@@ -1018,15 +991,17 @@
         display: none; /* Swipe gesture instead */
       }
       .note-header {
-        padding-top: var(--safe-top);
-        height: calc(50px + var(--safe-top));
+        padding: max(10px, var(--safe-top)) 14px 10px;
+        min-height: 52px;
+        height: auto;
       }
       .note-bottom-bar {
-        padding-bottom: var(--safe-bottom);
-        height: calc(54px + var(--safe-bottom));
+        padding: 8px 14px max(10px, var(--safe-bottom));
+        height: auto;
+        min-height: calc(54px + var(--safe-bottom));
       }
       .note-scroll-body {
-        padding-bottom: calc(64px + var(--safe-bottom));
+        padding-bottom: calc(70px + var(--safe-bottom));
       }
     }
   </style>
@@ -1144,10 +1119,6 @@
         <div class="note-media-wrap">
           <div class="note-img-container">
             <img class="note-main-img" id="note-main-img" src="" alt="印章作品大图">
-            <div class="note-badge-ai">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
-              <span>可能含AI生成内容</span>
-            </div>
             <div class="note-page-indicator" id="note-page-indicator">1/1</div>
           </div>
         </div>
@@ -1158,7 +1129,6 @@
 
           <div class="note-text-body">
             <p class="note-desc" id="note-desc">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏。</p>
-            <div class="note-colors-tag" id="note-colors-tag">印层配色：故宫朱红 · 琉璃金黄 · 汉白玉米白</div>
 
             <!-- Inline Xiaohongshu Prompt Block -->
             <div class="note-prompt-section">
@@ -1249,7 +1219,6 @@
     const btnNoteFollow = document.querySelector("#btn-note-follow");
     const noteTitle = document.querySelector("#note-title");
     const noteDesc = document.querySelector("#note-desc");
-    const noteColorsTag = document.querySelector("#note-colors-tag");
     const notePromptText = document.querySelector("#note-prompt-text");
     const notePageIndicator = document.querySelector("#note-page-indicator");
     const btnNoteLike = document.querySelector("#btn-note-like");
@@ -1761,7 +1730,6 @@
 
       noteTitle.textContent = displayName;
       noteDesc.textContent = x.features || (x.keywords || []).join(" · ") || "";
-      noteColorsTag.textContent = x.colors ? `印层配色：${x.colors}` : `所属系列：${seriesTitle}`;
       notePromptText.textContent = promptText;
       notePageIndicator.textContent = `${index + 1}/${currentFilteredRows.length}`;
 
