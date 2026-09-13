@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "python3 -m http.server 8080",
     "serve": "npx serve .",
+    "thumbnails": "node scripts/generate_thumbnails.js",
     "start": "open index.html"
   },
   "keywords": [
@@ -27,6 +28,7 @@
     "url": "https://github.com/holynova/rubber-stamp-world-cities/issues"
   },
   "dependencies": {
-    "jszip": "^3.10.2"
+    "jszip": "^3.10.2",
+    "sharp": "^0.35.4"
   }
 }
