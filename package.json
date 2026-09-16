@@ -7,6 +7,7 @@
     "dev": "python3 -m http.server 8080",
     "serve": "npx serve .",
     "thumbnails": "node scripts/generate_thumbnails.js",
+    "deploy": "npx wrangler deploy",
     "start": "open index.html"
   },
   "keywords": [
