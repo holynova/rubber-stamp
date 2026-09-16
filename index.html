@@ -473,47 +473,18 @@
     .note-author-info {
       display: flex;
       align-items: center;
-      gap: 8px;
       flex: 1 1 auto;
       min-width: 0;
       overflow: hidden;
-    }
-    .note-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #b9281e;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-    .note-author-meta {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      flex: 0 1 auto;
-      overflow: hidden;
+      margin-left: 6px;
     }
     .note-author-name {
-      font-size: 13.5px;
+      font-size: 14.5px;
       font-weight: 600;
       color: #222222;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 140px;
-    }
-    .note-author-sub {
-      font-size: 11px;
-      color: #888888;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 200px;
     }
 
     /* Scrollable Note Body */
@@ -531,19 +502,20 @@
     /* Media showcase with Continuous Touch Swiper Track */
     .note-media-wrap {
       width: 100%;
+      aspect-ratio: 4 / 5;
+      max-height: 65vh;
       background: #f4eee3;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      min-height: 260px;
       overflow: hidden;
-      transition: background 0.28s ease, min-height 0.28s ease;
+      transition: background 0.28s ease;
+      margin: 0 auto;
     }
     .note-swiper-wrap {
       width: 100%;
       height: 100%;
-      min-height: 260px;
       position: relative;
       overflow: hidden;
       touch-action: pan-y;
@@ -560,7 +532,6 @@
     .note-swiper-track {
       width: 100%;
       height: 100%;
-      min-height: 260px;
       display: flex;
       position: relative;
       will-change: transform;
@@ -591,8 +562,8 @@
 
     .swiper-img {
       width: 100%;
-      height: auto;
-      max-height: 58vh;
+      height: 100%;
+      max-height: 100%;
       object-fit: contain;
       display: block;
       margin: auto;
@@ -606,82 +577,6 @@
     .swiper-img.is-hires {
       filter: blur(0);
       opacity: 1;
-    }
-
-    .note-hires-badge {
-      position: absolute;
-      bottom: 10px;
-      left: 12px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: rgba(255,255,255,0.92);
-      font-size: 10.5px;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-family: ui-monospace, monospace;
-      pointer-events: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all .25s ease;
-      z-index: 10;
-    }
-    .note-hires-badge.loaded {
-      background: rgba(30, 120, 60, 0.75);
-      color: #ffffff;
-    }
-    .note-hires-badge .hires-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #f5a623;
-      display: inline-block;
-      animation: pulseDot 1s infinite alternate;
-    }
-    .note-hires-badge.loaded .hires-dot {
-      background: #52c41a;
-      animation: none;
-    }
-    @keyframes pulseDot {
-      from { opacity: 0.4; }
-      to { opacity: 1; }
-    }
-
-    .note-page-indicator {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: rgba(255,255,255,0.92);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-family: ui-monospace, monospace;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .immersive-hint-badge {
-      position: absolute;
-      bottom: 10px;
-      right: 12px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: rgba(255,255,255,0.92);
-      font-size: 10.5px;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
-      pointer-events: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all .25s ease;
-      z-index: 10;
     }
 
     /* Immersive Mode (Fullscreen Hide UI) */
@@ -735,6 +630,8 @@
       flex: 1 1 100%;
       height: 100%;
       min-height: 100%;
+      aspect-ratio: auto;
+      max-height: 100vh;
       background: #000000;
     }
     #note-detail-modal.immersive-mode .note-swiper-wrap {
@@ -783,53 +680,51 @@
       color: #444444;
     }
 
-    /* Prompt section inside Note */
+    /* Prompt section inside Note (Pure Text, No extra border) */
     .note-prompt-section {
       margin-top: 6px;
-      background: #f9f7f3;
-      border: 1px solid #ebd9c8;
-      border-radius: 8px;
-      padding: 12px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
     .prompt-section-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 10px;
     }
     .prompt-title-tag {
       font-size: 13.5px;
       font-weight: 600;
-      color: #222222;
+      color: #333333;
     }
     .btn-copy-inline-prompt {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: #222222;
-      color: #ffffff;
-      border: none;
-      padding: 4px 10px;
-      border-radius: 4px;
+      background: #f0ece3;
+      color: #444444;
+      border: 1px solid #dfd5c4;
+      padding: 3px 9px;
+      border-radius: 6px;
       font-size: 11.5px;
       cursor: pointer;
       transition: all .15s ease;
     }
     .btn-copy-inline-prompt:hover {
-      background: var(--accent);
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
     }
     .prompt-full-text {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 12px;
-      line-height: 1.55;
-      color: #3b3732;
-      background: #ffffff;
-      border: 1px solid #e8dfd2;
-      border-radius: 6px;
-      padding: 10px;
-      max-height: 180px;
+      line-height: 1.6;
+      color: #555555;
+      background: transparent;
+      border: none;
+      padding: 2px 0 0;
+      max-height: 200px;
       overflow-y: auto;
       white-space: pre-wrap;
       word-break: break-word;
@@ -837,59 +732,52 @@
       scrollbar-width: thin;
     }
     .prompt-full-text:hover {
-      border-color: #b9281e;
+      color: #111111;
     }
 
-    .note-date-location {
-      font-size: 12px;
-      color: #999999;
-      margin-top: 4px;
-    }
-
-    /* Bottom Fixed Action Bar */
+    /* Bottom Fixed Action Bar (Icon-only) */
     .note-bottom-bar {
       flex: 0 0 auto;
       width: 100%;
-      min-height: 54px;
+      min-height: 52px;
       padding: 8px 16px;
       background: #ffffff;
       border-top: 1px solid #f0ece6;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 24px;
       z-index: 20;
       box-sizing: border-box;
       position: relative;
     }
 
     .note-bottom-action {
-      flex: 1 1 0;
-      max-width: 130px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       background: #f7f4ee;
       border: 1px solid #ede5d8;
-      border-radius: 20px;
-      padding: 0 12px;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 500;
       color: #333333;
       cursor: pointer;
       transition: all .15s ease;
-      white-space: nowrap;
+      flex-shrink: 0;
     }
     .note-bottom-action:hover {
       background: #eee6d8;
       color: #111111;
+      transform: translateY(-1px);
     }
     .note-bottom-action:active {
-      transform: scale(0.96);
+      transform: scale(0.92);
     }
     .note-bottom-action svg {
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
       stroke: currentColor;
     }
@@ -897,7 +785,6 @@
       background: #fff0f2;
       border-color: #ffcdd4;
       color: var(--accent);
-      font-weight: 600;
     }
     .note-bottom-action.liked svg {
       fill: var(--accent);
@@ -1429,26 +1316,23 @@
         gap: 6px;
       }
       .note-bottom-bar {
-        padding: 8px 12px max(10px, var(--safe-bottom));
+        padding: 8px 16px max(12px, var(--safe-bottom));
         height: auto;
         min-height: calc(52px + var(--safe-bottom));
-        gap: 8px;
+        gap: 28px;
       }
       .note-bottom-action {
-        height: 36px;
-        padding: 0 8px;
-        font-size: 12px;
-        gap: 4px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
       }
       .note-bottom-action svg {
-        width: 16px;
-        height: 16px;
+        width: 22px;
+        height: 22px;
       }
       .note-scroll-body {
         padding-bottom: 24px;
-      }
-      .note-main-img {
-        max-height: 62vh;
       }
     }
   </style>
@@ -1540,11 +1424,7 @@
         </button>
 
         <div class="note-author-info">
-          <div class="note-avatar" id="note-avatar">印</div>
-          <div class="note-author-meta">
-            <div class="note-author-name" id="note-author-name">橡胶戳艺术印记</div>
-            <div class="note-author-sub" id="note-author-sub">华夏胜景系列</div>
-          </div>
+          <div class="note-author-name" id="note-author-name">名胜风景 · 第 01 枚</div>
         </div>
       </div>
 
@@ -1565,23 +1445,11 @@
               <!-- Current Active Slide Slot -->
               <div class="swiper-slide swiper-slide-curr" id="slide-curr">
                 <img class="swiper-img" id="note-main-img" src="" alt="当前印章作品">
-                <div class="note-hires-badge" id="note-hires-badge">
-                  <span class="hires-dot"></span>
-                  <span id="note-hires-text">原图载入中</span>
-                </div>
               </div>
               <!-- Next Slide Slot -->
               <div class="swiper-slide swiper-slide-next" id="slide-next">
                 <img class="swiper-img" id="img-next" src="" alt="下一张印章">
               </div>
-            </div>
-
-            <!-- Page count indicator -->
-            <div class="note-page-indicator" id="note-page-indicator">1/1</div>
-            <!-- Immersive mode toggle badge -->
-            <div class="immersive-hint-badge" id="immersive-hint-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-              <span>点击全屏</span>
             </div>
           </div>
         </div>
@@ -1596,17 +1464,13 @@
             <!-- Inline Xiaohongshu Prompt Block -->
             <div class="note-prompt-section">
               <div class="prompt-section-header">
-                <span class="prompt-title-tag">提示词：</span>
+                <span class="prompt-title-tag">提示词</span>
                 <button class="btn-copy-inline-prompt" onclick="copyCurrentPrompt()" title="点击复制 Prompt">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                  <span>复制 Prompt</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>复制</span>
                 </button>
               </div>
               <div class="prompt-full-text" id="note-prompt-text" onclick="copyCurrentPrompt()" title="点击一键复制作图 Prompt"></div>
-            </div>
-
-            <div class="note-date-location">
-              <span id="note-date">2026-09-13</span> · <span>中国</span>
             </div>
           </div>
         </div>
@@ -1616,20 +1480,17 @@
       <div class="note-bottom-bar">
         <!-- Like Button -->
         <button class="note-bottom-action" id="btn-note-like" onclick="toggleNoteLike()" title="点赞">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          <span id="note-like-text">点赞</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
 
         <!-- Download Single PNG Button -->
         <button class="note-bottom-action" id="btn-note-download" onclick="downloadCurrentNote()" title="下载高清原图">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>下载原图</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         </button>
 
         <!-- Share Button -->
         <button class="note-bottom-action" id="btn-note-share" onclick="shareCurrentNote()" title="生成分享海报">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-          <span>分享卡片</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
         </button>
       </div>
     </div>
@@ -1739,18 +1600,11 @@
     const imgPrev = document.querySelector("#img-prev");
     const noteMainImg = document.querySelector("#note-main-img");
     const imgNext = document.querySelector("#img-next");
-    const noteHiresBadge = document.querySelector("#note-hires-badge");
-    const noteHiresText = document.querySelector("#note-hires-text");
-    const immersiveHintBadge = document.querySelector("#immersive-hint-badge");
-    const noteAvatar = document.querySelector("#note-avatar");
     const noteAuthorName = document.querySelector("#note-author-name");
-    const noteAuthorSub = document.querySelector("#note-author-sub");
     const noteTitle = document.querySelector("#note-title");
     const noteDesc = document.querySelector("#note-desc");
     const notePromptText = document.querySelector("#note-prompt-text");
-    const notePageIndicator = document.querySelector("#note-page-indicator");
     const btnNoteLike = document.querySelector("#btn-note-like");
-    const noteLikeText = document.querySelector("#note-like-text");
 
     // Share Card Modal elements
     const shareModal = document.querySelector("#share-card-modal");
@@ -1887,7 +1741,7 @@
     function syncNoteLikeUI(isL) {
       if (btnNoteLike) {
         btnNoteLike.classList.toggle("liked", isL);
-        noteLikeText.textContent = isL ? "已点赞" : "点赞";
+        btnNoteLike.title = isL ? "取消点赞" : "点赞";
       }
     }
 
@@ -2141,11 +1995,6 @@
 
       noteModal.classList.toggle("immersive-mode", isImmersive);
 
-      if (immersiveHintBadge) {
-        immersiveHintBadge.innerHTML = isImmersive
-          ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg><span>退出全屏</span>`
-          : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg><span>点击全屏</span>`;
-      }
     }
 
     function populateSwiperSlides(centerIndex) {
@@ -2198,11 +2047,6 @@
       noteMainImg.classList.add("is-thumb");
       noteMainImg.classList.remove("is-hires");
 
-      if (noteHiresBadge) {
-        noteHiresBadge.classList.remove("loaded");
-        if (noteHiresText) noteHiresText.textContent = "原图载入中";
-      }
-
       // Background high-res loader
       const hiresLoader = new Image();
       hiresLoader.src = origUrl;
@@ -2211,33 +2055,22 @@
           noteMainImg.src = origUrl;
           noteMainImg.classList.remove("is-thumb");
           noteMainImg.classList.add("is-hires");
-          if (noteHiresBadge) {
-            noteHiresBadge.classList.add("loaded");
-            if (noteHiresText) noteHiresText.textContent = "4K 原图";
-          }
         }
       };
       hiresLoader.onerror = () => {
         if (currentHiresToken === thisToken && currentModalIndex === index) {
           noteMainImg.classList.remove("is-thumb");
-          if (noteHiresBadge) {
-            noteHiresBadge.classList.add("loaded");
-            if (noteHiresText) noteHiresText.textContent = "已就绪";
-          }
         }
       };
 
       // Populate adjacent prev & next slides
       populateSwiperSlides(index);
 
-      noteAvatar.textContent = (seriesTitle && seriesTitle[0]) || "印";
-      noteAuthorName.textContent = "橡胶戳艺术印记";
-      noteAuthorSub.textContent = seriesTitle + ` · 第 ${String(x.id).padStart(2, "0")} 枚`;
+      noteAuthorName.textContent = seriesTitle + ` · 第 ${String(x.id).padStart(2, "0")} 枚`;
 
       noteTitle.textContent = displayName;
       noteDesc.textContent = x.features || (x.keywords || []).join(" · ") || "";
       notePromptText.textContent = promptText;
-      notePageIndicator.textContent = `${index + 1}/${currentFilteredRows.length}`;
 
       syncNoteLikeUI(liked);
     }
