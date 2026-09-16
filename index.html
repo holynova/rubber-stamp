@@ -576,45 +576,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 140px;
-    }
-    .note-btn-follow {
-      background: #ffffff;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 3px 12px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .15s;
-      flex-shrink: 0;
-    }
-    .note-btn-follow:hover {
-      background: rgba(255, 36, 66, 0.06);
-    }
-    .note-btn-follow.followed {
-      border-color: #d6ccbe;
-      color: #888888;
-      background: #f5f0e8;
-    }
-
-    .note-btn-share {
-      background: transparent;
-      border: none;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333333;
-      cursor: pointer;
-      transition: background .15s;
-      flex-shrink: 0;
-    }
-    .note-btn-share:hover {
-      background: #f5f0e8;
+      max-width: 200px;
     }
 
     /* Scrollable Note Body */
@@ -629,7 +591,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* Media showcase with natural height */
+    /* Media showcase with Continuous Touch Swiper Track */
     .note-media-wrap {
       width: 100%;
       background: #f4eee3;
@@ -637,33 +599,75 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      min-height: 240px;
+      min-height: 260px;
+      overflow: hidden;
+      transition: background 0.28s ease, min-height 0.28s ease;
     }
-    .note-img-container {
+    .note-swiper-wrap {
       width: 100%;
+      height: 100%;
+      min-height: 260px;
       position: relative;
+      overflow: hidden;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: grab;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f4eee3;
-      overflow: hidden;
     }
-    .note-main-img {
+    .note-swiper-wrap:active {
+      cursor: grabbing;
+    }
+    .note-swiper-track {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      display: flex;
+      position: relative;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+    .swiper-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      will-change: transform;
+      cursor: pointer;
+    }
+    .swiper-slide-prev {
+      transform: translate3d(-100%, 0, 0);
+    }
+    .swiper-slide-curr {
+      transform: translate3d(0, 0, 0);
+    }
+    .swiper-slide-next {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    .swiper-img {
       width: 100%;
       height: auto;
-      max-height: 60vh;
+      max-height: 58vh;
       object-fit: contain;
       display: block;
-      transition: filter 0.28s ease, opacity 0.22s ease, transform 0.28s ease;
+      margin: auto;
+      pointer-events: none;
+      transition: filter 0.28s ease, opacity 0.22s ease;
     }
-    .note-main-img.is-thumb {
+    .swiper-img.is-thumb {
       filter: blur(8px);
-      transform: scale(1.02);
       opacity: 0.92;
     }
-    .note-main-img.is-hires {
+    .swiper-img.is-hires {
       filter: blur(0);
-      transform: scale(1);
       opacity: 1;
     }
 
@@ -721,6 +725,97 @@
       font-family: ui-monospace, monospace;
       pointer-events: none;
       z-index: 10;
+    }
+
+    .immersive-hint-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: rgba(255,255,255,0.92);
+      font-size: 10.5px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all .25s ease;
+      z-index: 10;
+    }
+
+    /* Immersive Mode (Fullscreen Hide UI) */
+    #note-detail-modal.immersive-mode {
+      background: #000000;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    #note-detail-modal.immersive-mode .note-window {
+      background: #000000;
+      box-shadow: none;
+      border-radius: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-width: 100vw;
+      max-height: 100dvh;
+      transition: background .28s ease;
+    }
+    #note-detail-modal.immersive-mode .note-header {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+    #note-detail-modal.immersive-mode .note-bottom-bar {
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+    #note-detail-modal.immersive-mode .note-content-container {
+      opacity: 0;
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+      pointer-events: none;
+      overflow: hidden;
+      transition: opacity 0.28s ease, max-height 0.28s ease;
+    }
+    #note-detail-modal.immersive-mode .note-scroll-body {
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+    #note-detail-modal.immersive-mode .note-media-wrap {
+      flex: 1 1 100%;
+      height: 100%;
+      min-height: 100%;
+      background: #000000;
+    }
+    #note-detail-modal.immersive-mode .note-swiper-wrap {
+      min-height: 100%;
+      height: 100%;
+    }
+    #note-detail-modal.immersive-mode .swiper-img {
+      max-height: 90vh;
+      max-height: 90dvh;
+      max-width: 96vw;
+    }
+    #note-detail-modal.immersive-mode .note-nav-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    #note-detail-modal.immersive-mode .note-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
     }
 
     /* Text & Note Content */
@@ -818,92 +913,58 @@
     .note-bottom-bar {
       flex: 0 0 auto;
       width: 100%;
-      min-height: 56px;
-      padding: 8px 14px;
+      min-height: 54px;
+      padding: 8px 16px;
       background: #ffffff;
       border-top: 1px solid #f0ece6;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      justify-content: center;
+      gap: 12px;
       z-index: 20;
       box-sizing: border-box;
       position: relative;
     }
 
-    .note-comment-capsule {
-      flex: 1 1 auto;
-      min-width: 0;
-      height: 36px;
-      background: #f4f0e8;
-      border: none;
-      border-radius: 18px;
+    .note-bottom-action {
+      flex: 1 1 0;
+      max-width: 130px;
+      height: 38px;
+      background: #f7f4ee;
+      border: 1px solid #ede5d8;
+      border-radius: 20px;
       padding: 0 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      color: #777777;
-      font-size: 12.5px;
-      cursor: pointer;
-      transition: background .15s ease;
-      overflow: hidden;
-    }
-    .note-comment-capsule:hover {
-      background: #ede6d8;
-      color: var(--ink);
-    }
-    .note-comment-capsule span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      min-width: 0;
-    }
-
-    .note-actions-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .note-action-btn {
-      background: transparent;
-      border: none;
-      padding: 0 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      gap: 2px;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
       color: #333333;
       cursor: pointer;
-      transition: transform .12s ease;
-      min-width: 32px;
+      transition: all .15s ease;
+      white-space: nowrap;
+    }
+    .note-bottom-action:hover {
+      background: #eee6d8;
+      color: #111111;
+    }
+    .note-bottom-action:active {
+      transform: scale(0.96);
+    }
+    .note-bottom-action svg {
       flex-shrink: 0;
-    }
-    .note-action-btn:active {
-      transform: scale(0.9);
-    }
-    .note-action-btn svg {
-      width: 20px;
-      height: 20px;
       stroke: currentColor;
-      flex-shrink: 0;
     }
-    .note-action-btn.liked svg {
-      fill: var(--accent);
-      stroke: var(--accent);
-      color: var(--accent);
-    }
-    .note-action-btn.liked .action-num {
+    .note-bottom-action.liked {
+      background: #fff0f2;
+      border-color: #ffcdd4;
       color: var(--accent);
       font-weight: 600;
     }
-    .action-num {
-      font-size: 11px;
-      color: #666666;
-      line-height: 1;
-      font-family: -apple-system, sans-serif;
-      white-space: nowrap;
+    .note-bottom-action.liked svg {
+      fill: var(--accent);
+      stroke: var(--accent);
     }
 
     /* Prev & Next Floating Arrow Buttons */
@@ -1005,6 +1066,339 @@
     }
 
     /* -------------------------------------------------------------
+       Share Card Poster Modal (文创艺术分享卡片)
+       ------------------------------------------------------------- */
+    #share-card-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 12px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    #share-card-modal.open {
+      display: flex;
+    }
+
+    .share-modal-container {
+      position: relative;
+      max-width: 320px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+      box-sizing: border-box;
+      margin: auto;
+    }
+
+    .share-modal-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      padding: 0 4px;
+      box-sizing: border-box;
+    }
+    .share-modal-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .share-modal-close {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background .15s ease;
+      flex-shrink: 0;
+    }
+    .share-modal-close:hover {
+      background: rgba(255,255,255,0.35);
+    }
+
+    .share-card-scroll-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 2px 0;
+      box-sizing: border-box;
+    }
+
+    /* Physical Art Card Paper Aesthetic */
+    .share-card-paper {
+      width: 100%;
+      background: #fbf8f2;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+      border: 1px solid #e5dbcb;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .share-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .share-brand-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+    .share-seal-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--seal-red);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(185, 40, 30, 0.3);
+    }
+    .share-brand-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .share-brand-main {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #222222;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .share-brand-sub {
+      font-size: 9px;
+      color: #888888;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .share-card-id {
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--seal-red);
+      background: rgba(185, 40, 30, 0.08);
+      padding: 1.5px 6px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    /* Artwork image frame */
+    .share-card-art-box {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 220px;
+      background: #ede6d8;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2d7c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .share-card-art-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .share-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      box-sizing: border-box;
+    }
+    .share-card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #222222;
+      margin: 0;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .share-card-features {
+      font-size: 10.5px;
+      color: #555555;
+      margin: 0;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .share-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 1px;
+    }
+    .share-card-tag {
+      font-size: 9px;
+      background: #efe7d9;
+      color: #666666;
+      padding: 1px 5px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Card Footer & QR Code */
+    .share-card-footer {
+      border-top: 1px dashed #dcd1c0;
+      padding-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+    .share-footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5px;
+      min-width: 0;
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+    .share-qr-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: #222222;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .share-qr-desc {
+      font-size: 8.5px;
+      color: #777777;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .share-qr-site {
+      font-size: 8px;
+      color: #999999;
+      font-family: ui-monospace, monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .share-qr-right {
+      flex-shrink: 0;
+      background: #ffffff;
+      padding: 2px;
+      border-radius: 5px;
+      border: 1px solid #e5ddcf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .share-qr-right canvas {
+      display: block;
+      width: 44px;
+      height: 44px;
+    }
+
+    /* Bottom Action Buttons */
+    .share-modal-actions {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+    .btn-share-save {
+      flex: 1 1 auto;
+      background: linear-gradient(135deg, #ff2442, #e01b37);
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      box-shadow: 0 4px 12px rgba(255, 36, 66, 0.35);
+      transition: all .15s ease;
+      white-space: nowrap;
+    }
+    .btn-share-save:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 36, 66, 0.45);
+    }
+    .btn-share-save:active {
+      transform: translateY(0);
+    }
+    .btn-share-link {
+      flex: 0 0 auto;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 11.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      backdrop-filter: blur(4px);
+      transition: all .15s ease;
+      white-space: nowrap;
+    }
+    .btn-share-link:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    /* -------------------------------------------------------------
        Mobile Responsive Specifications (<680px)
        ------------------------------------------------------------- */
     @media (max-width: 680px) {
@@ -1103,10 +1497,20 @@
         gap: 6px;
       }
       .note-bottom-bar {
-        padding: 8px 10px max(10px, var(--safe-bottom));
+        padding: 8px 12px max(10px, var(--safe-bottom));
         height: auto;
         min-height: calc(52px + var(--safe-bottom));
-        gap: 6px;
+        gap: 8px;
+      }
+      .note-bottom-action {
+        height: 36px;
+        padding: 0 8px;
+        font-size: 12px;
+        gap: 4px;
+      }
+      .note-bottom-action svg {
+        width: 16px;
+        height: 16px;
       }
       .note-scroll-body {
         padding-bottom: 24px;
@@ -1212,12 +1616,7 @@
             <div class="note-author-name" id="note-author-name">橡胶戳艺术印记</div>
             <div class="note-author-sub" id="note-author-sub">华夏胜景系列</div>
           </div>
-          <button class="note-btn-follow" id="btn-note-follow" onclick="toggleFollow()">关注</button>
         </div>
-
-        <button class="note-btn-share" id="btn-note-share" onclick="shareCurrentNote()" title="分享">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-        </button>
       </div>
 
       <!-- Desktop Nav Arrows -->
@@ -1226,15 +1625,35 @@
 
       <!-- Scrollable Note Body -->
       <div class="note-scroll-body" id="note-scroll-body">
-        <!-- Natural Image Display (Uncropped) -->
+        <!-- Swiper Media Container with Continuous Touch Translation -->
         <div class="note-media-wrap">
-          <div class="note-img-container">
-            <img class="note-main-img" id="note-main-img" src="" alt="印章作品大图">
-            <div class="note-hires-badge" id="note-hires-badge">
-              <span class="hires-dot"></span>
-              <span id="note-hires-text">原图载入中</span>
+          <div class="note-swiper-wrap" id="note-swiper-wrap" title="点击切换全屏 / 左右滑动切换">
+            <div class="note-swiper-track" id="note-swiper-track">
+              <!-- Prev Slide Slot -->
+              <div class="swiper-slide swiper-slide-prev" id="slide-prev">
+                <img class="swiper-img" id="img-prev" src="" alt="上一张印章">
+              </div>
+              <!-- Current Active Slide Slot -->
+              <div class="swiper-slide swiper-slide-curr" id="slide-curr">
+                <img class="swiper-img" id="note-main-img" src="" alt="当前印章作品">
+                <div class="note-hires-badge" id="note-hires-badge">
+                  <span class="hires-dot"></span>
+                  <span id="note-hires-text">原图载入中</span>
+                </div>
+              </div>
+              <!-- Next Slide Slot -->
+              <div class="swiper-slide swiper-slide-next" id="slide-next">
+                <img class="swiper-img" id="img-next" src="" alt="下一张印章">
+              </div>
             </div>
+
+            <!-- Page count indicator -->
             <div class="note-page-indicator" id="note-page-indicator">1/1</div>
+            <!-- Immersive mode toggle badge -->
+            <div class="immersive-hint-badge" id="immersive-hint-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              <span>点击全屏</span>
+            </div>
           </div>
         </div>
 
@@ -1249,7 +1668,7 @@
             <div class="note-prompt-section">
               <div class="prompt-section-header">
                 <span class="prompt-title-tag">提示词：</span>
-                <button class="btn-copy-inline-prompt" onclick="copyCurrentPrompt()">
+                <button class="btn-copy-inline-prompt" onclick="copyCurrentPrompt()" title="点击复制 Prompt">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                   <span>复制 Prompt</span>
                 </button>
@@ -1266,31 +1685,90 @@
 
       <!-- Bottom Fixed Action Bar -->
       <div class="note-bottom-bar">
-        <!-- Capsule Prompt Copy Shortcut -->
-        <button class="note-comment-capsule" onclick="copyCurrentPrompt()" title="点击复制作图 Prompt">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-          <span>点击复制作图 Prompt...</span>
+        <!-- Like Button -->
+        <button class="note-bottom-action" id="btn-note-like" onclick="toggleNoteLike()" title="点赞">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span id="note-like-text">点赞</span>
         </button>
 
-        <div class="note-actions-right">
-          <!-- Like Button -->
-          <button class="note-action-btn" id="btn-note-like" onclick="toggleNoteLike()" title="点赞">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            <span class="action-num" id="note-like-text">点赞</span>
-          </button>
+        <!-- Download Single PNG Button -->
+        <button class="note-bottom-action" id="btn-note-download" onclick="downloadCurrentNote()" title="下载高清原图">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>下载原图</span>
+        </button>
 
-          <!-- Download Single PNG Button -->
-          <button class="note-action-btn" id="btn-note-download" onclick="downloadCurrentNote()" title="下载高清原图">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span class="action-num">下载</span>
-          </button>
+        <!-- Share Button -->
+        <button class="note-bottom-action" id="btn-note-share" onclick="shareCurrentNote()" title="生成分享海报">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          <span>分享卡片</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
-          <!-- Share Button -->
-          <button class="note-action-btn" onclick="shareCurrentNote()" title="分享">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-            <span class="action-num">分享</span>
-          </button>
+  <!-- Share Card Modal (文创艺术分享海报) -->
+  <div id="share-card-modal" class="share-modal" aria-modal="true" role="dialog">
+    <div class="share-modal-container">
+      <!-- Top Close / Title bar -->
+      <div class="share-modal-header">
+        <span class="share-modal-title">分享印章卡片</span>
+        <button class="share-modal-close" onclick="closeShareCard()" title="关闭">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Scrollable Preview Wrapper -->
+      <div class="share-card-scroll-wrap">
+        <!-- Physical Card DOM Preview -->
+        <div class="share-card-paper" id="share-card-paper">
+          <!-- Card Top Brand & Series Tag -->
+          <div class="share-card-header">
+            <div class="share-brand-tag">
+              <span class="share-seal-avatar" id="share-card-avatar">印</span>
+              <div class="share-brand-text">
+                <div class="share-brand-main">橡胶戳艺术印记</div>
+                <div class="share-brand-sub" id="share-card-series-tag">华夏胜景系列</div>
+              </div>
+            </div>
+            <div class="share-card-id" id="share-card-id-tag">NO. 01</div>
+          </div>
+
+          <!-- Card Artwork Frame -->
+          <div class="share-card-art-box">
+            <img id="share-card-img" class="share-card-img" src="" alt="印章作品">
+          </div>
+
+          <!-- Card Info & Description -->
+          <div class="share-card-meta">
+            <h2 class="share-card-title" id="share-card-title">北京故宫 · 太和红墙</h2>
+            <p class="share-card-features" id="share-card-features">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</p>
+            <div class="share-card-tags" id="share-card-tags"></div>
+          </div>
+
+          <!-- Card Footer with QR Code & Call to Action -->
+          <div class="share-card-footer">
+            <div class="share-footer-left">
+              <div class="share-qr-title">扫码在线鉴赏与获取 Prompt</div>
+              <div class="share-qr-desc">236 枚极简多色橡胶戳印艺术作品</div>
+              <div class="share-qr-site">rubber-stamp-world-cities</div>
+            </div>
+            <div class="share-qr-right">
+              <canvas id="share-card-qr" width="60" height="60"></canvas>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Action Buttons (Save Poster & Copy Link) -->
+      <div class="share-modal-actions">
+        <button class="btn-share-save" id="btn-share-save-poster" onclick="downloadShareCardPoster()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>保存分享海报 (PNG)</span>
+        </button>
+        <button class="btn-share-link" onclick="copyShareCardLink()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          <span>复制链接</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1298,7 +1776,8 @@
   <!-- Toast Notification -->
   <div id="toast">已复制作图 Prompt 到剪贴板</div>
 
-  <!-- JSZip & Data Scripts -->
+  <!-- Scripts: QR Code, JSZip & Data -->
+  <script src="qrcode.min.js"></script>
   <script src="jszip.min.js"></script>
   <script src="data.js"></script>
 
@@ -1310,8 +1789,6 @@
     let currentCategoryFilter = "all";
     let currentFilteredRows = [];
     let currentModalIndex = 0;
-    let isFollowed = false;
-
     const LIKES_STORAGE_KEY = "rubber_stamp_likes_v1";
 
     const seriesTabs = document.querySelectorAll(".xhs-tab");
@@ -1327,13 +1804,20 @@
     const noteModal = document.querySelector("#note-detail-modal");
     const noteWindow = document.querySelector("#note-window");
     const noteScrollBody = document.querySelector("#note-scroll-body");
+    const noteSwiperWrap = document.querySelector("#note-swiper-wrap");
+    const noteSwiperTrack = document.querySelector("#note-swiper-track");
+    const slidePrev = document.querySelector("#slide-prev");
+    const slideCurr = document.querySelector("#slide-curr");
+    const slideNext = document.querySelector("#slide-next");
+    const imgPrev = document.querySelector("#img-prev");
     const noteMainImg = document.querySelector("#note-main-img");
+    const imgNext = document.querySelector("#img-next");
     const noteHiresBadge = document.querySelector("#note-hires-badge");
     const noteHiresText = document.querySelector("#note-hires-text");
+    const immersiveHintBadge = document.querySelector("#immersive-hint-badge");
     const noteAvatar = document.querySelector("#note-avatar");
     const noteAuthorName = document.querySelector("#note-author-name");
     const noteAuthorSub = document.querySelector("#note-author-sub");
-    const btnNoteFollow = document.querySelector("#btn-note-follow");
     const noteTitle = document.querySelector("#note-title");
     const noteDesc = document.querySelector("#note-desc");
     const notePromptText = document.querySelector("#note-prompt-text");
@@ -1341,6 +1825,20 @@
     const btnNoteLike = document.querySelector("#btn-note-like");
     const noteLikeText = document.querySelector("#note-like-text");
 
+    // Share Card Modal elements
+    const shareModal = document.querySelector("#share-card-modal");
+    const shareCardPaper = document.querySelector("#share-card-paper");
+    const shareCardAvatar = document.querySelector("#share-card-avatar");
+    const shareCardSeriesTag = document.querySelector("#share-card-series-tag");
+    const shareCardIdTag = document.querySelector("#share-card-id-tag");
+    const shareCardImg = document.querySelector("#share-card-img");
+    const shareCardTitle = document.querySelector("#share-card-title");
+    const shareCardFeatures = document.querySelector("#share-card-features");
+    const shareCardTags = document.querySelector("#share-card-tags");
+    const shareCardQrCanvas = document.querySelector("#share-card-qr");
+    const btnShareSavePoster = document.querySelector("#btn-share-save-poster");
+
+    let currentShareItem = null;
     let currentHiresToken = 0;
 
     /* -------------------------------------------------------------
@@ -1850,9 +2348,65 @@
     };
 
     /* -------------------------------------------------------------
-       Xiaohongshu Note Detail Modal Logic (Progressive Loading)
+       Xiaohongshu Note Detail Swiper & Immersive Engine
        ------------------------------------------------------------- */
-    function openNoteDetail(index) {
+    let isImmersive = false;
+    let isSwiperDragging = false;
+    let swiperStartX = 0;
+    let swiperStartY = 0;
+    let swiperCurrentX = 0;
+    let swiperDeltaX = 0;
+    let swiperDeltaY = 0;
+    let isHorizontalSwipe = null;
+    let isAnimatingSlide = false;
+
+    function toggleImmersiveMode(forceState) {
+      if (typeof forceState === "boolean") {
+        isImmersive = forceState;
+      } else {
+        isImmersive = !isImmersive;
+      }
+
+      noteModal.classList.toggle("immersive-mode", isImmersive);
+
+      if (immersiveHintBadge) {
+        immersiveHintBadge.innerHTML = isImmersive
+          ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg><span>退出全屏</span>`
+          : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg><span>点击全屏</span>`;
+      }
+    }
+
+    function populateSwiperSlides(centerIndex) {
+      if (!currentFilteredRows || currentFilteredRows.length === 0) return;
+      const len = currentFilteredRows.length;
+      const curr = currentFilteredRows[centerIndex];
+      const prevIdx = (centerIndex - 1 + len) % len;
+      const nextIdx = (centerIndex + 1) % len;
+      const prev = currentFilteredRows[prevIdx];
+      const next = currentFilteredRows[nextIdx];
+
+      if (imgPrev && prev) {
+        imgPrev.src = getThumbnailUrl(prev.output);
+        imgPrev.alt = prev.city || prev.title || prev.name || "上一张";
+      }
+
+      if (imgNext && next) {
+        imgNext.src = getThumbnailUrl(next.output);
+        imgNext.alt = next.city || next.title || next.name || "下一张";
+      }
+
+      // Preload adjacent images
+      if (prev && prev.output) {
+        const pImg = new Image();
+        pImg.src = prev.output;
+      }
+      if (next && next.output) {
+        const nImg = new Image();
+        nImg.src = next.output;
+      }
+    }
+
+    function updateModalToSlide(index) {
       if (index < 0 || index >= currentFilteredRows.length) return;
       currentModalIndex = index;
       const x = currentFilteredRows[index];
@@ -1866,7 +2420,7 @@
       const thumbUrl = getThumbnailUrl(x.output);
       const origUrl = x.output;
 
-      // 1. Instantly display thumbnail placeholder (zero latency from cache)
+      // 1. Current slide main image
       noteMainImg.src = thumbUrl;
       noteMainImg.alt = displayName;
       noteMainImg.classList.add("is-thumb");
@@ -1877,7 +2431,7 @@
         if (noteHiresText) noteHiresText.textContent = "原图载入中";
       }
 
-      // 2. Load high-resolution PNG in background
+      // Background high-res loader
       const hiresLoader = new Image();
       hiresLoader.src = origUrl;
       hiresLoader.onload = () => {
@@ -1901,6 +2455,9 @@
         }
       };
 
+      // Populate adjacent prev & next slides
+      populateSwiperSlides(index);
+
       noteAvatar.textContent = (seriesTitle && seriesTitle[0]) || "印";
       noteAuthorName.textContent = "橡胶戳艺术印记";
       noteAuthorSub.textContent = seriesTitle + ` · 第 ${String(x.id).padStart(2, "0")} 枚`;
@@ -1911,46 +2468,55 @@
       notePageIndicator.textContent = `${index + 1}/${currentFilteredRows.length}`;
 
       syncNoteLikeUI(liked);
-
-      if (noteScrollBody) noteScrollBody.scrollTop = 0;
-
-      noteModal.classList.add("open");
-      document.body.style.overflow = "hidden";
-
-      // Preload adjacent notes thumbnails for instant flipping
-      setTimeout(() => {
-        if (currentModalIndex === index && noteModal.classList.contains("open")) {
-          const nextItem = currentFilteredRows[index + 1] || currentFilteredRows[0];
-          const prevItem = currentFilteredRows[index - 1] || currentFilteredRows[currentFilteredRows.length - 1];
-          if (nextItem && nextItem.output) {
-            const nextThumb = new Image();
-            nextThumb.src = getThumbnailUrl(nextItem.output);
-          }
-          if (prevItem && prevItem.output) {
-            const prevThumb = new Image();
-            prevThumb.src = getThumbnailUrl(prevItem.output);
-          }
-        }
-      }, 100);
     }
 
-    function closeNoteDetail() {
-      noteModal.classList.remove("open");
-      document.body.style.overflow = "";
+    function finishSlide(direction, currentOffset, wrapWidth) {
+      if (isAnimatingSlide) return;
+      isAnimatingSlide = true;
+      const targetX = direction === 1 ? -wrapWidth : wrapWidth;
+
+      noteSwiperTrack.style.transition = "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)";
+      noteSwiperTrack.style.transform = `translate3d(${targetX}px, 0, 0)`;
+
+      setTimeout(() => {
+        let newIdx = currentModalIndex + direction;
+        if (newIdx < 0) newIdx = currentFilteredRows.length - 1;
+        else if (newIdx >= currentFilteredRows.length) newIdx = 0;
+
+        noteSwiperTrack.style.transition = "none";
+        noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+
+        updateModalToSlide(newIdx);
+        isAnimatingSlide = false;
+      }, 280);
     }
 
     function navNote(delta) {
-      let newIdx = currentModalIndex + delta;
-      if (newIdx < 0) newIdx = currentFilteredRows.length - 1;
-      else if (newIdx >= currentFilteredRows.length) newIdx = 0;
-      openNoteDetail(newIdx);
+      if (isAnimatingSlide || !noteModal.classList.contains("open")) return;
+      const wrapWidth = noteSwiperWrap ? noteSwiperWrap.clientWidth : 400;
+      finishSlide(delta, 0, wrapWidth);
     }
 
-    function toggleFollow() {
-      isFollowed = !isFollowed;
-      btnNoteFollow.classList.toggle("followed", isFollowed);
-      btnNoteFollow.textContent = isFollowed ? "已关注" : "关注";
-      showToast(isFollowed ? "已关注创作者 ❤️" : "已取消关注");
+    function openNoteDetail(index) {
+      if (index < 0 || index >= currentFilteredRows.length) return;
+      isImmersive = false;
+      noteModal.classList.remove("immersive-mode");
+      if (noteSwiperTrack) {
+        noteSwiperTrack.style.transition = "none";
+        noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+      }
+      updateModalToSlide(index);
+      if (noteScrollBody) noteScrollBody.scrollTop = 0;
+      noteModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeNoteDetail() {
+      if (isImmersive) {
+        toggleImmersiveMode(false);
+      }
+      noteModal.classList.remove("open");
+      document.body.style.overflow = "";
     }
 
     function copyCurrentPrompt() {
@@ -1974,56 +2540,470 @@
       }
     }
 
-    function shareCurrentNote() {
-      if (currentFilteredRows[currentModalIndex]) {
-        const item = currentFilteredRows[currentModalIndex];
-        const name = item.city || item.title || item.name;
-        const shareText = `【橡胶戳艺术印记】${name} - 附作图 Prompt\n${window.location.href}`;
-        copyText(shareText, `已复制「${name}」分享信息与链接`);
+    /* -------------------------------------------------------------
+       Share Card (文创艺术分享海报) Logic
+       ------------------------------------------------------------- */
+    function getShareUrl(item) {
+      const base = window.location.origin + window.location.pathname;
+      const seriesKey = item.seriesKey || currentSeriesKey || "scenic_spots";
+      const idOrName = item.name || item.city || item.title || item.id;
+      return `${base}?item=${encodeURIComponent(idOrName)}#${seriesKey}`;
+    }
+
+    function openShareCard(item) {
+      if (!item) {
+        if (currentFilteredRows[currentModalIndex]) {
+          item = currentFilteredRows[currentModalIndex];
+        } else {
+          return;
+        }
+      }
+      currentShareItem = item;
+      const col = getCollection();
+      const displayName = item.city || item.title || item.name || "橡胶戳作品";
+      const seriesTitle = item.seriesTitle || col.title || "华夏胜景系列";
+      const thumbUrl = getThumbnailUrl(item.output);
+
+      if (shareCardAvatar) shareCardAvatar.textContent = (seriesTitle && seriesTitle[0]) || "印";
+      if (shareCardSeriesTag) shareCardSeriesTag.textContent = `${seriesTitle} · 橡胶戳`;
+      if (shareCardIdTag) shareCardIdTag.textContent = `NO. ${String(item.id || 1).padStart(2, "0")}`;
+      if (shareCardImg) {
+        shareCardImg.src = thumbUrl;
+        shareCardImg.alt = displayName;
+      }
+      if (shareCardTitle) shareCardTitle.textContent = displayName;
+      if (shareCardFeatures) shareCardFeatures.textContent = item.features || (item.keywords || []).join(" · ") || "";
+
+      // Render tags
+      if (shareCardTags) {
+        const tags = [
+          item.region || item.season || item.category || item.province || "",
+          ...(item.keywords || []).slice(0, 3)
+        ].filter(Boolean);
+        shareCardTags.innerHTML = tags.map(t => `<span class="share-card-tag">${t}</span>`).join("");
+      }
+
+      // Generate QR Code onto DOM canvas
+      const shareUrl = getShareUrl(item);
+      if (shareCardQrCanvas && typeof QRCode !== "undefined" && QRCode.toCanvas) {
+        QRCode.toCanvas(shareCardQrCanvas, shareUrl, {
+          width: 60,
+          margin: 0,
+          color: {
+            dark: "#222222",
+            light: "#ffffff"
+          }
+        }, err => {
+          if (err) console.error("QRCode canvas error", err);
+        });
+      }
+
+      if (shareModal) {
+        shareModal.style.display = "flex";
+        shareModal.classList.add("open");
       }
     }
 
+    function closeShareCard() {
+      if (shareModal) {
+        shareModal.classList.remove("open");
+        shareModal.style.display = "none";
+      }
+    }
+
+    function copyShareCardLink() {
+      if (!currentShareItem) return;
+      const name = currentShareItem.city || currentShareItem.title || currentShareItem.name;
+      const shareUrl = getShareUrl(currentShareItem);
+      const text = `【橡胶戳艺术印记】${name} - 236枚极简多色橡胶戳印艺术作品\n${shareUrl}`;
+      copyText(text, `已复制「${name}」分享链接到剪贴板`);
+    }
+
+    async function downloadShareCardPoster() {
+      if (!currentShareItem) return;
+      const item = currentShareItem;
+      const col = getCollection();
+      const displayName = item.city || item.title || item.name || "橡胶戳作品";
+      const seriesTitle = item.seriesTitle || col.title || "华夏胜景系列";
+      const shareUrl = getShareUrl(item);
+
+      const origBtnHtml = btnShareSavePoster.innerHTML;
+      btnShareSavePoster.innerHTML = `<span>⏳ 正在生成高清海报...</span>`;
+      btnShareSavePoster.disabled = true;
+
+      try {
+        // High-res 2x canvas (840x1320)
+        const W = 840;
+        const H = 1320;
+        const canvas = document.createElement("canvas");
+        canvas.width = W;
+        canvas.height = H;
+        const ctx = canvas.getContext("2d");
+
+        // 1. Draw Background (Warm Xuan paper tone)
+        ctx.fillStyle = "#fbf8f2";
+        ctx.fillRect(0, 0, W, H);
+
+        // 2. Draw Decorative Borders
+        ctx.strokeStyle = "#e5dbcb";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(16, 16, W - 32, H - 32);
+
+        ctx.strokeStyle = "#eedecb";
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(26, 26, W - 52, H - 52);
+
+        // 3. Top Header: Seal circle + Brand name + Series + ID
+        ctx.fillStyle = "#b9281e";
+        ctx.beginPath();
+        ctx.arc(68, 76, 24, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText((seriesTitle && seriesTitle[0]) || "印", 68, 76);
+
+        // Brand & series text
+        ctx.textAlign = "left";
+        ctx.fillStyle = "#222222";
+        ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.fillText("橡胶戳艺术印记", 106, 68);
+
+        ctx.fillStyle = "#888888";
+        ctx.font = "16px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        ctx.fillText(`${seriesTitle} · 2026`, 106, 92);
+
+        // Serial tag pill
+        const serialText = `NO. ${String(item.id || 1).padStart(2, "0")}`;
+        ctx.fillStyle = "rgba(185, 40, 30, 0.1)";
+        if (ctx.roundRect) {
+          ctx.beginPath();
+          ctx.roundRect(W - 170, 56, 110, 36, 18);
+          ctx.fill();
+        } else {
+          ctx.fillRect(W - 170, 56, 110, 36);
+        }
+
+        ctx.fillStyle = "#b9281e";
+        ctx.font = "bold 18px ui-monospace, SFMono-Regular, monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(serialText, W - 115, 75);
+
+        // 4. Draw Stamp Artwork Image (Centered 4:5 box)
+        const imgBoxX = 56;
+        const imgBoxY = 124;
+        const imgBoxW = W - 112; // 728
+        const imgBoxH = 740;
+
+        ctx.fillStyle = "#ede6d8";
+        if (ctx.roundRect) {
+          ctx.beginPath();
+          ctx.roundRect(imgBoxX, imgBoxY, imgBoxW, imgBoxH, 16);
+          ctx.fill();
+        } else {
+          ctx.fillRect(imgBoxX, imgBoxY, imgBoxW, imgBoxH);
+        }
+
+        // Load image into canvas
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        await new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = () => {
+            img.src = getThumbnailUrl(item.output);
+            img.onload = resolve;
+            img.onerror = resolve;
+          };
+          img.src = item.output;
+        });
+
+        // Clip and draw image
+        ctx.save();
+        if (ctx.roundRect) {
+          ctx.beginPath();
+          ctx.roundRect(imgBoxX, imgBoxY, imgBoxW, imgBoxH, 16);
+          ctx.clip();
+        }
+        const imgRatio = (img.width || 4) / (img.height || 5);
+        const boxRatio = imgBoxW / imgBoxH;
+        let dw, dh, dx, dy;
+        if (imgRatio > boxRatio) {
+          dw = imgBoxW;
+          dh = imgBoxW / imgRatio;
+          dx = imgBoxX;
+          dy = imgBoxY + (imgBoxH - dh) / 2;
+        } else {
+          dh = imgBoxH;
+          dw = imgBoxH * imgRatio;
+          dx = imgBoxX + (imgBoxW - dw) / 2;
+          dy = imgBoxY;
+        }
+        ctx.drawImage(img, dx, dy, dw, dh);
+        ctx.restore();
+
+        // 5. Artwork Title & Features
+        ctx.textAlign = "left";
+        ctx.fillStyle = "#1a1a1a";
+        ctx.font = "bold 32px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.fillText(displayName, 56, 915);
+
+        ctx.fillStyle = "#555555";
+        ctx.font = "20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        const features = item.features || (item.keywords || []).join(" · ") || "";
+        ctx.fillText(features.length > 34 ? features.slice(0, 33) + "..." : features, 56, 955);
+
+        // Tags pills
+        const tags = [
+          item.region || item.season || item.category || item.province || "",
+          ...(item.keywords || []).slice(0, 3)
+        ].filter(Boolean);
+
+        let tagX = 56;
+        const tagY = 985;
+        tags.forEach(t => {
+          ctx.font = "16px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+          const tw = ctx.measureText(t).width;
+          ctx.fillStyle = "#eee6d7";
+          if (ctx.roundRect) {
+            ctx.beginPath();
+            ctx.roundRect(tagX, tagY, tw + 20, 32, 6);
+            ctx.fill();
+          } else {
+            ctx.fillRect(tagX, tagY, tw + 20, 32);
+          }
+          ctx.fillStyle = "#666666";
+          ctx.fillText(t, tagX + 10, tagY + 22);
+          tagX += tw + 30;
+        });
+
+        // 6. Dashed Separator Line
+        ctx.beginPath();
+        ctx.setLineDash([8, 6]);
+        ctx.strokeStyle = "#ded3c2";
+        ctx.lineWidth = 1.5;
+        ctx.moveTo(56, 1055);
+        ctx.lineTo(W - 56, 1055);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 7. Footer Left Typography & Right QR Code
+        ctx.fillStyle = "#222222";
+        ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        ctx.fillText("扫码在线鉴赏与获取 Prompt", 56, 1110);
+
+        ctx.fillStyle = "#666666";
+        ctx.font = "17px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        ctx.fillText("236 枚极简多色手工橡胶戳印艺术作品", 56, 1144);
+
+        ctx.fillStyle = "#999999";
+        ctx.font = "16px ui-monospace, SFMono-Regular, monospace";
+        ctx.fillText("rubber-stamp-world-cities", 56, 1175);
+
+        // Right QR Code
+        const qrCanvas = document.createElement("canvas");
+        await QRCode.toCanvas(qrCanvas, shareUrl, {
+          width: 140,
+          margin: 1,
+          color: { dark: "#222222", light: "#ffffff" }
+        });
+
+        const qrBoxX = W - 196;
+        const qrBoxY = 1076;
+        ctx.fillStyle = "#ffffff";
+        ctx.strokeStyle = "#e5ddcf";
+        ctx.lineWidth = 1.5;
+        if (ctx.roundRect) {
+          ctx.beginPath();
+          ctx.roundRect(qrBoxX - 6, qrBoxY - 6, 152, 152, 10);
+          ctx.fill();
+          ctx.stroke();
+        } else {
+          ctx.fillRect(qrBoxX - 6, qrBoxY - 6, 152, 152);
+          ctx.strokeRect(qrBoxX - 6, qrBoxY - 6, 152, 152);
+        }
+        ctx.drawImage(qrCanvas, qrBoxX, qrBoxY, 140, 140);
+
+        // 8. Download Generated Poster Blob
+        const cleanTitle = displayName.replace(/[\/:*?"<>|]/g, "_");
+        canvas.toBlob(blob => {
+          if (!blob) throw new Error("Canvas export failed");
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `橡胶戳分享海报_${cleanTitle}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showToast(`🎉 成功保存「${displayName}」分享海报！`);
+        }, "image/png");
+
+      } catch (err) {
+        console.error("Share card poster error:", err);
+        showToast("海报生成失败，请稍后重试");
+      } finally {
+        btnShareSavePoster.innerHTML = origBtnHtml;
+        btnShareSavePoster.disabled = false;
+      }
+    }
+
+    function shareCurrentNote() {
+      if (currentFilteredRows[currentModalIndex]) {
+        openShareCard(currentFilteredRows[currentModalIndex]);
+      }
+    }
+
+    if (shareModal) {
+      shareModal.onclick = (e) => {
+        if (e.target.id === "share-card-modal") {
+          closeShareCard();
+        }
+      };
+    }
+
+    function setupSwiperGestures() {
+      if (!noteSwiperWrap || !noteSwiperTrack) return;
+
+      // Touch events (Mobile)
+      noteSwiperWrap.addEventListener("touchstart", e => {
+        if (isAnimatingSlide || e.touches.length !== 1) return;
+        isSwiperDragging = true;
+        swiperStartX = e.touches[0].clientX;
+        swiperStartY = e.touches[0].clientY;
+        swiperCurrentX = swiperStartX;
+        swiperDeltaX = 0;
+        swiperDeltaY = 0;
+        isHorizontalSwipe = null;
+        noteSwiperTrack.style.transition = "none";
+      }, { passive: true });
+
+      noteSwiperWrap.addEventListener("touchmove", e => {
+        if (!isSwiperDragging || e.touches.length !== 1) return;
+        swiperCurrentX = e.touches[0].clientX;
+        const curY = e.touches[0].clientY;
+        swiperDeltaX = swiperCurrentX - swiperStartX;
+        swiperDeltaY = curY - swiperStartY;
+
+        if (isHorizontalSwipe === null) {
+          if (Math.abs(swiperDeltaX) > 6 || Math.abs(swiperDeltaY) > 6) {
+            isHorizontalSwipe = Math.abs(swiperDeltaX) > Math.abs(swiperDeltaY) * 1.1;
+          }
+        }
+
+        if (isHorizontalSwipe) {
+          if (e.cancelable) e.preventDefault();
+          noteSwiperTrack.style.transform = `translate3d(${swiperDeltaX}px, 0, 0)`;
+        }
+      }, { passive: false });
+
+      noteSwiperWrap.addEventListener("touchend", () => {
+        if (!isSwiperDragging) return;
+        isSwiperDragging = false;
+
+        // Clean tap without drag (<8px) -> Toggle Immersive Mode!
+        if (isHorizontalSwipe !== true && Math.abs(swiperDeltaX) < 8 && Math.abs(swiperDeltaY) < 8) {
+          toggleImmersiveMode();
+          return;
+        }
+
+        if (!isHorizontalSwipe) {
+          noteSwiperTrack.style.transition = "transform 0.24s cubic-bezier(0.22, 1, 0.36, 1)";
+          noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+          return;
+        }
+
+        const wrapWidth = noteSwiperWrap.clientWidth || 360;
+        const threshold = Math.min(wrapWidth * 0.16, 60);
+
+        if (swiperDeltaX < -threshold) {
+          finishSlide(1, swiperDeltaX, wrapWidth);
+        } else if (swiperDeltaX > threshold) {
+          finishSlide(-1, swiperDeltaX, wrapWidth);
+        } else {
+          noteSwiperTrack.style.transition = "transform 0.24s cubic-bezier(0.22, 1, 0.36, 1)";
+          noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+        }
+      }, { passive: true });
+
+      // Mouse Drag support (Desktop)
+      let isPointerDown = false;
+      let pointerStartX = 0;
+      let pointerDeltaX = 0;
+
+      noteSwiperWrap.addEventListener("mousedown", e => {
+        if (isAnimatingSlide || e.button !== 0) return;
+        isPointerDown = true;
+        pointerStartX = e.clientX;
+        pointerDeltaX = 0;
+        noteSwiperTrack.style.transition = "none";
+      });
+
+      window.addEventListener("mousemove", e => {
+        if (!isPointerDown) return;
+        pointerDeltaX = e.clientX - pointerStartX;
+        if (Math.abs(pointerDeltaX) > 4) {
+          noteSwiperTrack.style.transform = `translate3d(${pointerDeltaX}px, 0, 0)`;
+        }
+      });
+
+      window.addEventListener("mouseup", e => {
+        if (!isPointerDown) return;
+        isPointerDown = false;
+        const wrapWidth = noteSwiperWrap.clientWidth || 360;
+        const threshold = Math.min(wrapWidth * 0.16, 60);
+
+        if (Math.abs(pointerDeltaX) < 6) {
+          if (e.target && e.target.closest("#note-swiper-wrap")) {
+            toggleImmersiveMode();
+          }
+          return;
+        }
+
+        if (pointerDeltaX < -threshold) {
+          finishSlide(1, pointerDeltaX, wrapWidth);
+        } else if (pointerDeltaX > threshold) {
+          finishSlide(-1, pointerDeltaX, wrapWidth);
+        } else {
+          noteSwiperTrack.style.transition = "transform 0.24s cubic-bezier(0.22, 1, 0.36, 1)";
+          noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+        }
+      });
+    }
+
+    setupSwiperGestures();
+
     noteModal.onclick = (e) => {
       if (e.target.id === "note-detail-modal") {
-        closeNoteDetail();
+        if (isImmersive) {
+          toggleImmersiveMode(false);
+        } else {
+          closeNoteDetail();
+        }
       }
     };
 
     window.addEventListener("keydown", e => {
+      if (shareModal && shareModal.classList.contains("open")) {
+        if (e.key === "Escape") {
+          closeShareCard();
+          return;
+        }
+      }
       if (!noteModal.classList.contains("open")) return;
       if (e.key === "Escape") {
-        closeNoteDetail();
+        if (isImmersive) {
+          toggleImmersiveMode(false);
+        } else {
+          closeNoteDetail();
+        }
       } else if (e.key === "ArrowLeft") {
         navNote(-1);
       } else if (e.key === "ArrowRight") {
         navNote(1);
       }
     });
-
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-
-    noteModal.addEventListener("touchstart", e => {
-      if (e.touches.length === 1) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }
-    }, { passive: true });
-
-    noteModal.addEventListener("touchend", e => {
-      if (e.changedTouches.length === 1) {
-        touchEndX = e.changedTouches[0].clientX;
-        touchEndY = e.changedTouches[0].clientY;
-        const dx = touchEndX - touchStartX;
-        const dy = touchEndY - touchStartY;
-        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.8) {
-          if (dx < 0) navNote(1);
-          else navNote(-1);
-        }
-      }
-    }, { passive: true });
 
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -2039,9 +3019,10 @@
       localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify(demoLikes));
     }
 
-    const hash = window.location.hash.replace("#", "");
-    if (hash && (window.COLLECTIONS[hash] || hash === "favorites")) {
-      switchSeries(hash);
+    const rawHash = window.location.hash.replace("#", "");
+    const cleanHash = rawHash.split("?")[0];
+    if (cleanHash && (window.COLLECTIONS[cleanHash] || cleanHash === "favorites")) {
+      switchSeries(cleanHash);
     } else {
       buildCategoryOptions();
       render();
@@ -2052,8 +3033,42 @@
     const modalParam = urlParams.get("modal");
     if (modalParam !== null) {
       const idx = parseInt(modalParam, 10);
-      if (!isNaN(idx) && idx >= 0) {
-        setTimeout(() => openNoteDetail(idx), 50);
+      if (!isNaN(idx) && idx >= 0 && currentFilteredRows[idx]) {
+        openNoteDetail(idx);
+      }
+    }
+
+    const shareParam = urlParams.get("share");
+    if (shareParam !== null) {
+      const sIdx = parseInt(shareParam, 10);
+      if (!isNaN(sIdx) && currentFilteredRows[sIdx]) {
+        openShareCard(currentFilteredRows[sIdx]);
+      }
+    }
+
+    const immersiveParam = urlParams.get("immersive");
+    if (immersiveParam === "1" || immersiveParam === "true") {
+      toggleImmersiveMode(true);
+    }
+
+    const itemParam = urlParams.get("item") || (rawHash.includes("item=") ? new URLSearchParams(rawHash.split("?")[1] || "").get("item") : null);
+    if (itemParam) {
+      let targetItem = currentFilteredRows.find(x => (x.name === itemParam || x.city === itemParam || x.title === itemParam || String(x.id) === itemParam));
+      if (!targetItem) {
+        for (const [sKey, sCol] of Object.entries(window.COLLECTIONS)) {
+          const itm = sCol.data.find(x => (x.name === itemParam || x.city === itemParam || x.title === itemParam || String(x.id) === itemParam));
+          if (itm) {
+            switchSeries(sKey);
+            targetItem = itm;
+            break;
+          }
+        }
+      }
+      if (targetItem) {
+        const foundIdx = currentFilteredRows.indexOf(targetItem);
+        if (foundIdx !== -1) {
+          openNoteDetail(foundIdx);
+        }
       }
     }
   </script>
