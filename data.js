@@ -4178,9 +4178,9 @@ window.COLLECTIONS = {
           "灵狐",
           "祥瑞"
         ],
-        "colors": "朱砂赤红 · 杏黄 · 宣纸暖米",
+        "colors": "朱砂赤红 · 杏黄 · 焦黑",
         "output": "images/shanhaijing/01_九尾狐.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Nine-Tailed Fox (Jiu Wei Hu) from Classic of Mountains and Seas (Shan Hai Jing). Mythical elegant fox beast sitting proudly on a mossy boulder, its nine voluminous arched fluffy tails fanning out majestically like a celestial halo, surrounded by swirling auspicious cloud wisps and curling mist ribbons. Traditional Chinese woodblock linocut aesthetic, bold carved relief lines, 2-3 muted dry stamp ink colors: vermilion cinnabar red, warm apricot ochre, and soot black. Natural textured handmade paper with visible fibers, rough dry ink stamp impression. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Nine-Tailed Fox (Jiuweihu) from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a graceful mythical nine-tailed fox sitting in profile with nine arched voluminous fluffy tails, subtle curling auspicious mist ribbons. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: cinnabar vermilion red, warm apricot ochre, and soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 2,
@@ -4193,9 +4193,9 @@ window.COLLECTIONS = {
           "昼夜",
           "神祇"
         ],
-        "colors": "赤红 · 宇宙靛蓝 · 砂金",
+        "colors": "朱砂赤红 · 宇宙靛蓝 · 古金",
         "output": "images/shanhaijing/02_烛九阴.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Torch Dragon (Zhulong / Zhu Jiuyin) deity from Classic of Mountains and Seas. Ancient colossal cosmic serpent dragon coiled powerfully around rugged Zhongshan mountain peaks, carrying a glowing celestial sun-torch stone in its jaws, parting stormy midnight clouds and illuminating day and night. Ancient Chinese linocut woodblock aesthetic, 2-3 muted spot colors: deep temple crimson red, cosmic indigo blue, and antique gold ink. Aged handmade paper with visible grain, dry ink imprint. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Torch Dragon (Zhu Jiuyin / Zhulong) from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a colossal mythical serpent dragon coiled majestically around a jagged mountain peak, holding a glowing celestial sun-torch stone in its jaws, with subtle curling night cloud wisps. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: temple cinnabar red, cosmic indigo blue, and antique gold. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 3,
@@ -4208,9 +4208,9 @@ window.COLLECTIONS = {
           "歌舞",
           "浑敦"
         ],
-        "colors": "丹火红 · 姜黄 · 焦茶褐",
+        "colors": "丹火红 · 姜黄 · 炭墨黑",
         "output": "images/shanhaijing/03_帝江.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Divine Entity Dijiang from Classic of Mountains and Seas. Mythical sacred being shaped like a round plump celestial pouch glowing with cinnabar flame color, possessing six avian legs and four divine feathered wings spread wide in mid-air dancing joy, accompanied by harmonic spiral energy waves and mountain flowers, mystical and faceless. Chinese woodblock stamp print style, bold carved contours, 2-3 muted ink colors: cinnabar fire red, warm turmeric yellow, and deep umber. Textured paper with dry stamp edge. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Sacred Being Dijiang from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a plump round celestial sacred creature like a glowing cinnabar pouch, with six slender bird feet and four divine feathered wings spread in mid-air dancing joy, faceless and mystical. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: cinnabar flame red, warm turmeric ochre, and charcoal ink. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 4,
@@ -4223,9 +4223,9 @@ window.COLLECTIONS = {
           "辟邪",
           "知万物"
         ],
-        "colors": "石绿 · 翡翠青 · 暖赭",
+        "colors": "石绿 · 翡翠青 · 暖赭石",
         "output": "images/shanhaijing/04_白泽.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Auspicious Divine Beast Baize from Chinese mythology. Noble celestial beast with magnificent horns, wise feline-bovine silhouette, standing serenely on a jagged cliff overlook under gnarled ancient pine branches with swirling qi ribbons and auspicious vapours. Traditional Chinese linocut woodblock relief aesthetic, 2-3 spot colors: mineral malachite green, jade turquoise, and warm terracotta ochre. Coarse fibrous paper texture, dry rubber stamp mark. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Auspicious Divine Beast Baize from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a noble horned celestial beast standing serenely on a jagged cliff overlook, framed by a delicate gnarled pine branch and subtle swirling cloud ribbons. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: mineral malachite green, jade turquoise, and warm terracotta ochre. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 5,
@@ -4240,7 +4240,7 @@ window.COLLECTIONS = {
         ],
         "colors": "青金蓝 · 烈焰朱红 · 炭黑",
         "output": "images/shanhaijing/05_毕方.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Divine Fire Bird Bifang from Classic of Mountains and Seas. Elegant crane-like mythical bird standing proudly on a single long slender leg, with cyan-blue patterned plumage and flaming vermilion fire crest, surrounded by curling smoke swirls, floating ember sparks, and river reed silhouettes. Chinese woodcut stamp aesthetic, bold gouged lines, 2-3 muted spot colors: vibrant cyan-blue, fiery vermilion red, and ink charcoal. Natural deckle paper, dry stamp imprint. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Divine Fire Bird Bifang from Classic of Mountains and Seas. Extremely simplified iconic silhouette of an elegant mythical crane standing proudly on a single long slender leg, with bold patterned wings, holding a flaming spark, framed by curling smoke wisps. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: vibrant cyan blue, fiery cinnabar red, and charcoal black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 6,
@@ -4253,9 +4253,9 @@ window.COLLECTIONS = {
           "垂天之翼",
           "扶摇"
         ],
-        "colors": "普鲁士深蓝 · 浪花米白 · 暖金",
+        "colors": "北冥深蓝 · 浪花乳白 · 暖琥珀金",
         "output": "images/shanhaijing/06_鲲鹏.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Kunpeng transformation from Classic of Mountains and Seas. Majestic mythical metamorphosis of a massive ancient deep-sea whale leaping upwards from towering crested ocean billows and transforming into a titanic giant roc bird with colossal spread wings ascending into typhoon cloud vortexes. Traditional Chinese woodblock linocut style, 2-3 muted spot colors: deep ocean indigo blue, wave foam cream, and warm amber gold. Handmade textured paper with stamp grain. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Kunpeng Metamorphosis from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a massive mythical sea whale leaping upwards from gentle water ripples and transforming into a titanic roc bird with majestic spread wings rising into mist. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: deep ocean indigo blue, wave foam cream, and warm amber gold. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 7,
@@ -4268,9 +4268,9 @@ window.COLLECTIONS = {
           "神威",
           "图腾"
         ],
-        "colors": "古青铜绿 · 赭石 · 炭墨",
+        "colors": "青铜铜绿 · 朱砂红 · 古墨黑",
         "output": "images/shanhaijing/07_饕餮.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Ancient Mythical Beast Taotie from Classic of Mountains and Seas. Fierce and formidable ceremonial beast with powerful tiger claws and intricate archaic bronze-ware totem motifs, staring intensely with wide divine eyes amongst swirling ritual incense clouds and geometric scroll borders. Chinese archaic woodcut stamp aesthetic, bold carved contours, 2-3 spot colors: patinated bronze verdigris green, warm cinnabar red, and antique lamp black. Aged fibrous Xuan paper. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Archaic Mythical Beast Taotie from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a powerful ritual beast with iconic archaic bronze-ware totemic mask patterns, piercing divine eyes, and bold crouching claws framed by subtle spiral cloud scrolls. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: patinated bronze verdigris green, cinnabar red, and antique lamp black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 8,
@@ -4283,9 +4283,9 @@ window.COLLECTIONS = {
           "御风",
           "神煞"
         ],
-        "colors": "焦茶虎赤 · 墨黑 · 苍石灰",
+        "colors": "焦茶虎赤 · 墨黑条纹 · 苍石灰",
         "output": "images/shanhaijing/08_穷奇.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Winged Tiger Beast Qiongqi from Classic of Mountains and Seas. Powerful muscular mythical tiger with grand feathered eagle wings leaping dynamically across jagged mountain crags under a dramatic stormy sky with swirling gale winds. Traditional Chinese linocut woodblock aesthetic, 2-3 muted spot colors: burnt tiger sienna, ink black stripes, and stony ash grey. Rough textured deckle paper with dry ink stamp texture. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Winged Tiger Beast Qiongqi from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a muscular mythical tiger with grand feathered eagle wings leaping dynamically in profile across a stylized mountain ridge line. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: burnt tiger sienna, ink black stripes, and stony slate grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 9,
@@ -4298,9 +4298,9 @@ window.COLLECTIONS = {
           "昆仑之丘",
           "九尾虎神"
         ],
-        "colors": "宫廷赭金 · 陶土朱红 · 翠玉",
+        "colors": "宫廷赭金 · 陶土朱红 · 翠石绿",
         "output": "images/shanhaijing/09_陆吾.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Mount Kunlun Guardian God Luwu from Classic of Mountains and Seas. Noble divine beast with muscular tiger body, majestic noble face, sharp claws, and nine fan-shaped feline tails arching gracefully upward like a grand sunburst, standing watch before a celestial mountain gate wrapped in swirling clouds. Chinese woodcut relief stamp style, 2-3 spot colors: imperial ochre gold, terracotta cinnabar, and jade green. Fibrous handmade paper with dry stamp edge. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Kunlun Mountain Guardian God Luwu from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a noble divine tiger with nine fan-shaped feline tails arching upward like a grand halo, sitting vigilantly before a minimalist mountain arch gate. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial ochre gold, terracotta cinnabar, and jade green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       },
       {
         "id": 10,
@@ -4313,9 +4313,9 @@ window.COLLECTIONS = {
           "踏水",
           "灵鹿"
         ],
-        "colors": "宣纸素白 · 远山淡黛 · 水蓝",
+        "colors": "青岚水蓝 · 宣纸素白 · 黛石灰",
         "output": "images/shanhaijing/10_夫诸.png",
-        "prompt": "4:5 vertical vintage handmade multi-color rubber stamp print artwork on warm textured off-white aged Xuan paper. Theme: Ethereal Four-Horned Water Deer Fuzhu from Classic of Mountains and Seas. Slender graceful white stag with four majestic branched crystalline antlers, lightly treading upon clear concentric ripples of a sacred mountain lake, surrounded by floating lotus blossoms and curling morning mist ribbons. Traditional Chinese woodblock linocut aesthetic, 2-3 muted spot colors: celestial misty blue, delicate rose ochre, and soot grey. Warm aged paper grain with dry stamp impression. Pure graphic stamp art, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+        "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Ethereal Four-Horned Water Deer Fuzhu from Classic of Mountains and Seas. Extremely simplified iconic silhouette of a slender graceful white stag with four majestic branched crystalline antlers, lightly treading upon subtle concentric water ripples with lotus motifs. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: celestial misty blue, delicate rose ochre, and soot grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
       }
     ]
   }
