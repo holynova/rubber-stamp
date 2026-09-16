@@ -9,7 +9,7 @@ function getFiles(dir) {
   let results = [];
   const list = fs.readdirSync(dir);
   for (const file of list) {
-    if (file === 'thumbnails' || file.startsWith('.')) continue;
+    if (file === 'thumbnails' || file.startsWith('.') || file.includes('backup')) continue;
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat && stat.isDirectory()) {
