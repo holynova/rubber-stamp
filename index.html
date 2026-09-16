@@ -1338,6 +1338,7 @@
   <!-- Feed Waterfall Container -->
   <main class="feed-container">
     <div class="feed-grid" id="grid"></div>
+    <div id="feed-sentinel" style="height: 20px; margin-top: 10px; visibility: hidden;"></div>
   </main>
 
   <!-- Xiaohongshu Note Detail Page Modal -->
@@ -1483,9 +1484,7 @@
   <!-- Toast Notification -->
   <div id="toast">已复制作图 Prompt 到剪贴板</div>
 
-  <!-- Scripts: QR Code, JSZip & Data -->
-  <script src="qrcode.min.js"></script>
-  <script src="jszip.min.js"></script>
+  <!-- Scripts: Data -->
   <script src="data.js"></script>
 
   <script>
@@ -1535,6 +1534,23 @@
 
     let currentShareItem = null;
     let currentHiresToken = 0;
+
+    /* -------------------------------------------------------------
+       On-Demand Dynamic Script Loader (Reduces Initial JS Payload)
+       ------------------------------------------------------------- */
+    const loadedScriptsMap = new Map();
+    function loadScriptOnce(src) {
+      if (loadedScriptsMap.has(src)) return loadedScriptsMap.get(src);
+      const p = new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error("Failed to load script: " + src));
+        document.head.appendChild(s);
+      });
+      loadedScriptsMap.set(src, p);
+      return p;
+    }
 
     /* -------------------------------------------------------------
        Image Thumbnail Helper (98.8% Size Optimization)
@@ -1678,6 +1694,10 @@
       btnBatchDownload.disabled = true;
 
       try {
+        btnBatchDownload.innerHTML = `<span>加载组件...</span>`;
+        if (typeof JSZip === "undefined") {
+          await loadScriptOnce("jszip.min.js");
+        }
         showToast(`准备打包 ${likedItems.length} 张高清原图...`);
         const zip = new JSZip();
         const folder = zip.folder("rubber-stamps-favorites");
@@ -1796,8 +1816,80 @@
     }
 
     /* -------------------------------------------------------------
-       Gallery Feed Render
+       Gallery Feed Render (Progressive Chunked Stream + Eager LCP)
        ------------------------------------------------------------- */
+    const FEED_CHUNK_SIZE = 12;
+    let feedRenderedCount = 0;
+    let feedSentinelObserver = null;
+    const feedSentinel = document.querySelector("#feed-sentinel");
+
+    function renderCardHtml(x, idx, col) {
+      const displayName = x.city || x.title || x.name;
+      const liked = isLiked(x.output);
+      const seriesName = x.seriesTitle || col.title || "橡胶戳";
+      const tagText = x.region || x.season || x.category || x.province || x.author || seriesName;
+      const thumbUrl = getThumbnailUrl(x.output);
+      const isLcpCandidate = idx < 4;
+
+      return `
+        <article class="feed-card" data-index="${idx}" onclick="openNoteDetail(${idx})">
+          <div class="feed-card-media">
+            <img class="stamp-img"
+                 src="${thumbUrl}"
+                 alt="${displayName}"
+                 width="400"
+                 height="500"
+                 loading="${isLcpCandidate ? "eager" : "lazy"}"
+                 ${isLcpCandidate ? 'fetchpriority="high"' : 'decoding="async"'}
+                 onload="this.classList.add('loaded'); this.closest('.feed-card-media').classList.add('has-loaded');"
+                 onerror="if(this.src!=='${x.output}'){this.src='${x.output}';}else{this.src='placeholder.svg';}">
+          </div>
+          <div class="feed-card-info">
+            <h2 class="feed-card-title">${displayName}</h2>
+            <div class="feed-card-footer">
+              <div class="card-author">
+                <span class="author-name">${tagText}</span>
+              </div>
+              <button class="card-like-btn ${liked ? "liked" : ""}" data-output="${x.output}" onclick="event.stopPropagation(); handleCardLike('${x.output}')" title="${liked ? "取消点赞" : "点赞"}">
+                ${getHeartSvg(liked)}
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function appendNextFeedChunk() {
+      if (feedRenderedCount >= currentFilteredRows.length) {
+        if (feedSentinel) feedSentinel.style.display = "none";
+        return;
+      }
+      const col = getCollection();
+      const nextBatch = currentFilteredRows.slice(feedRenderedCount, feedRenderedCount + FEED_CHUNK_SIZE);
+      const htmlChunk = nextBatch.map((x, i) => renderCardHtml(x, feedRenderedCount + i, col)).join("");
+      gridEl.insertAdjacentHTML("beforeend", htmlChunk);
+      feedRenderedCount += nextBatch.length;
+
+      if (feedSentinel) {
+        feedSentinel.style.display = feedRenderedCount < currentFilteredRows.length ? "block" : "none";
+      }
+    }
+
+    function setupFeedSentinelObserver() {
+      if (feedSentinelObserver) {
+        feedSentinelObserver.disconnect();
+      }
+      if (!feedSentinel || !("IntersectionObserver" in window)) return;
+      feedSentinelObserver = new IntersectionObserver((entries) => {
+        if (entries[0] && entries[0].isIntersecting) {
+          appendNextFeedChunk();
+        }
+      }, {
+        rootMargin: "300px 0px"
+      });
+      feedSentinelObserver.observe(feedSentinel);
+    }
+
     function render() {
       const col = getCollection();
       const q = searchInput.value.trim().toLowerCase();
@@ -1809,6 +1901,7 @@
       });
 
       if (!currentFilteredRows.length) {
+        if (feedSentinel) feedSentinel.style.display = "none";
         if (currentSeriesKey === "favorites") {
           gridEl.innerHTML = `
             <div class="empty empty-favorites">
@@ -1824,40 +1917,13 @@
         return;
       }
 
-      gridEl.innerHTML = currentFilteredRows.map((x, idx) => {
-        const displayName = x.city || x.title || x.name;
-        const liked = isLiked(x.output);
-        const seriesName = x.seriesTitle || col.title || "橡胶戳";
-        const tagText = x.region || x.season || x.category || x.province || x.author || seriesName;
-        const thumbUrl = getThumbnailUrl(x.output);
+      // Reset and render initial chunk
+      gridEl.innerHTML = "";
+      feedRenderedCount = 0;
+      appendNextFeedChunk();
 
-        return `
-          <article class="feed-card" data-index="${idx}" onclick="openNoteDetail(${idx})">
-            <div class="feed-card-media">
-              <img class="stamp-img"
-                   src="${thumbUrl}"
-                   alt="${displayName}"
-                   width="400"
-                   height="500"
-                   loading="lazy"
-                   decoding="async"
-                   onload="this.classList.add('loaded'); this.closest('.feed-card-media').classList.add('has-loaded');"
-                   onerror="if(this.src!=='${x.output}'){this.src='${x.output}';}else{this.src='placeholder.svg';}">
-            </div>
-            <div class="feed-card-info">
-              <h2 class="feed-card-title">${displayName}</h2>
-              <div class="feed-card-footer">
-                <div class="card-author">
-                  <span class="author-name">${tagText}</span>
-                </div>
-                <button class="card-like-btn ${liked ? "liked" : ""}" data-output="${x.output}" onclick="event.stopPropagation(); handleCardLike('${x.output}')" title="${liked ? "取消点赞" : "点赞"}">
-                  ${getHeartSvg(liked)}
-                </button>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join("");
+      // Observe scroll sentinel
+      setupFeedSentinelObserver();
     }
 
     function switchSeries(key) {
@@ -1930,14 +1996,14 @@
         imgNext.alt = next.city || next.title || next.name || "下一张";
       }
 
-      // Preload adjacent images
+      // Preload adjacent lightweight thumbnails only (avoids multi-MB burst downloads)
       if (prev && prev.output) {
         const pImg = new Image();
-        pImg.src = prev.output;
+        pImg.src = getThumbnailUrl(prev.output);
       }
       if (next && next.output) {
         const nImg = new Image();
-        nImg.src = next.output;
+        nImg.src = getThumbnailUrl(next.output);
       }
     }
 
@@ -2069,7 +2135,7 @@
       return `${base}?item=${encodeURIComponent(idOrName)}#${seriesKey}`;
     }
 
-    function openShareCard(item) {
+    async function openShareCard(item) {
       if (!item) {
         if (currentFilteredRows[currentModalIndex]) {
           item = currentFilteredRows[currentModalIndex];
@@ -2091,24 +2157,31 @@
       if (shareCardTitle) shareCardTitle.textContent = displayName;
       if (shareCardFeatures) shareCardFeatures.textContent = item.features || (item.keywords || []).join(" · ") || "";
 
-      // Generate QR Code onto DOM canvas
-      const shareUrl = getShareUrl(item);
-      if (shareCardQrCanvas && typeof QRCode !== "undefined" && QRCode.toCanvas) {
-        QRCode.toCanvas(shareCardQrCanvas, shareUrl, {
-          width: 60,
-          margin: 0,
-          color: {
-            dark: "#222222",
-            light: "#ffffff"
-          }
-        }, err => {
-          if (err) console.error("QRCode canvas error", err);
-        });
-      }
-
       if (shareModal) {
         shareModal.style.display = "flex";
         shareModal.classList.add("open");
+      }
+
+      // Generate QR Code onto DOM canvas (dynamic script loading)
+      const shareUrl = getShareUrl(item);
+      try {
+        if (typeof QRCode === "undefined") {
+          await loadScriptOnce("qrcode.min.js");
+        }
+        if (shareCardQrCanvas && typeof QRCode !== "undefined" && QRCode.toCanvas) {
+          QRCode.toCanvas(shareCardQrCanvas, shareUrl, {
+            width: 60,
+            margin: 0,
+            color: {
+              dark: "#222222",
+              light: "#ffffff"
+            }
+          }, err => {
+            if (err) console.error("QRCode canvas error", err);
+          });
+        }
+      } catch (err) {
+        console.error("QRCode script load failed", err);
       }
     }
 
@@ -2251,6 +2324,9 @@
         ctx.fillText("鉴赏与获取 Prompt", 56, 1110);
 
         // Right QR Code
+        if (typeof QRCode === "undefined") {
+          await loadScriptOnce("qrcode.min.js");
+        }
         const qrCanvas = document.createElement("canvas");
         await QRCode.toCanvas(qrCanvas, shareUrl, {
           width: 140,
