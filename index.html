@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover">
-  <title>橡胶戳艺术印记 · 名胜风景 / 古诗名句 / 世界城市 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异</title>
-  <meta name="description" content="精选名胜风景、古诗名句、世界城市、珍稀动物、海洋生物、大气奇观等9大系列共236枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
+  <title>橡胶戳艺术印记 · 名胜风景 / 古诗名句 / 世界城市 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异 / 游戏神作</title>
+  <meta name="description" content="精选名胜风景、古诗名句、世界城市、珍稀动物、海洋生物、大气奇观、游戏神作等10大系列共252枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
 
   <!-- Analytics -->
   <script
@@ -1327,6 +1327,10 @@
           <span class="tab-text">山海神异</span>
           <span class="tab-indicator"></span>
         </button>
+        <button class="xhs-tab" data-series="games">
+          <span class="tab-text">游戏神作</span>
+          <span class="tab-indicator"></span>
+        </button>
         <button class="xhs-tab" data-series="favorites">
           <span class="tab-text">我的点赞 <span class="fav-badge" id="fav-tab-badge">0</span></span>
           <span class="tab-indicator"></span>
@@ -1587,7 +1591,7 @@
     function getAllLikedItems() {
       const set = getLikedSet();
       const allLiked = [];
-      const seriesOrder = ["scenic_spots", "poetry", "cities", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+      const seriesOrder = ["scenic_spots", "poetry", "cities", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing", "games"];
       seriesOrder.forEach(sKey => {
         const col = window.COLLECTIONS[sKey];
         if (col && col.items) {
