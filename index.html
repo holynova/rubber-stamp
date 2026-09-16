@@ -572,15 +572,6 @@
       display: block;
       margin: auto;
       pointer-events: none;
-      transition: filter 0.28s ease, opacity 0.22s ease;
-    }
-    .swiper-img.is-thumb {
-      filter: blur(8px);
-      opacity: 0.92;
-    }
-    .swiper-img.is-hires {
-      filter: blur(0);
-      opacity: 1;
     }
 
     /* Immersive Mode (Fullscreen Hide UI) */
@@ -1488,7 +1479,8 @@
   <!-- Toast Notification -->
   <div id="toast">已复制作图 Prompt 到剪贴板</div>
 
-  <!-- Scripts: Data -->
+  <!-- Scripts: Dependencies & Data -->
+  <script src="jszip.min.js"></script>
   <script src="data.js"></script>
 
   <script>
@@ -1686,11 +1678,6 @@
       const likedItems = getAllLikedItems();
       if (likedItems.length === 0) {
         showToast("您还没有点赞任何印章作品，请先点赞！");
-        return;
-      }
-
-      if (typeof JSZip === "undefined") {
-        showToast("下载打包模块加载中，请稍候重试");
         return;
       }
 
@@ -2025,27 +2012,23 @@
       const thumbUrl = getThumbnailUrl(x.output);
       const origUrl = x.output;
 
-      // 1. Current slide main image
+      // 1. Current slide main image: render sharp thumbnail immediately (no blur)
       noteMainImg.src = thumbUrl;
       noteMainImg.alt = displayName;
-      noteMainImg.classList.add("is-thumb");
-      noteMainImg.classList.remove("is-hires");
 
-      // Background high-res loader
+      // Background high-res loader: decode in memory, then swap seamlessly
       const hiresLoader = new Image();
       hiresLoader.src = origUrl;
-      hiresLoader.onload = () => {
+      const swapToHires = () => {
         if (currentHiresToken === thisToken && currentModalIndex === index) {
           noteMainImg.src = origUrl;
-          noteMainImg.classList.remove("is-thumb");
-          noteMainImg.classList.add("is-hires");
         }
       };
-      hiresLoader.onerror = () => {
-        if (currentHiresToken === thisToken && currentModalIndex === index) {
-          noteMainImg.classList.remove("is-thumb");
-        }
-      };
+      if (hiresLoader.decode) {
+        hiresLoader.decode().then(swapToHires).catch(swapToHires);
+      } else {
+        hiresLoader.onload = swapToHires;
+      }
 
       // Populate adjacent prev & next slides
       populateSwiperSlides(index);
@@ -2584,7 +2567,8 @@
       let targetItem = currentFilteredRows.find(x => (x.name === itemParam || x.city === itemParam || x.title === itemParam || String(x.id) === itemParam));
       if (!targetItem) {
         for (const [sKey, sCol] of Object.entries(window.COLLECTIONS)) {
-          const itm = sCol.data.find(x => (x.name === itemParam || x.city === itemParam || x.title === itemParam || String(x.id) === itemParam));
+          const list = sCol.items || sCol.data || [];
+          const itm = list.find(x => (x.name === itemParam || x.city === itemParam || x.title === itemParam || String(x.id) === itemParam));
           if (itm) {
             switchSeries(sKey);
             targetItem = itm;

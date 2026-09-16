@@ -13,6 +13,7 @@ if (!fs.existsSync(TMP_DIR)) {
 }
 
 const ITEMS = [
+  // 1. 黑神话：悟空
   {
     id: 1,
     file: "01_黑神话_黄风岭.png",
@@ -40,6 +41,47 @@ const ITEMS = [
     colorPrompt: "frozen indigo blue, mineral white, and ink black"
   },
   {
+    id: 17,
+    file: "17_黑神话_观音禅院.png",
+    game: "黑神话：悟空",
+    name: "观音禅院",
+    title: "黑神话 · 禅院焦土残钟",
+    features: "残破古刹山门、持棍天命人伫立石阶、火后焦黑残柱、古钟楼、肃杀苍凉",
+    keywords: ["黑神话", "悟空", "观音禅院", "黑风山", "金池长老"],
+    colors: "朱砂赤 · 焦茶褐 · 墨黑",
+    theme: "Black Myth Wukong, Black Wind Mountain Guanyin Temple Ruins",
+    silhouette: "the Destined One monkey warrior standing resolutely on weathered stone steps holding his dark iron staff, facing the burnt grand pavilion arches and a tall ancient bell tower silhouette of a ruined Buddhist temple amidst scorched embers",
+    colorPrompt: "vermilion red, burnt sienna brown, and deep soot black"
+  },
+  {
+    id: 18,
+    file: "18_黑神话_紫云山.png",
+    game: "黑神话：悟空",
+    name: "紫云山",
+    title: "黑神话 · 紫云花落回眸",
+    features: "落英幽径、提灯四妹与天命人相向、古木奇峰、漫天飘落花瓣、凄美幽邃",
+    keywords: ["黑神话", "悟空", "盘丝岭", "紫云山", "四妹"],
+    colors: "胭脂红 · 丁香紫 · 浅墨",
+    theme: "Black Myth Wukong, Purple Cloud Mountain Falling Petals",
+    silhouette: "the Destined One monkey warrior pausing on a rustic mountain stone path, glancing toward the graceful silhouette of the Fourth Sister holding a glowing paper lantern beneath ancient twisted blossoming trees with drifting fallen flower petals",
+    colorPrompt: "carmine red, muted lilac purple, and soft charcoal ink"
+  },
+  {
+    id: 19,
+    file: "19_黑神话_水帘洞.png",
+    game: "黑神话：悟空",
+    name: "水帘洞",
+    title: "黑神话 · 齐天绝顶傲苍穹",
+    features: "花果山绝顶石矶、大圣披挂天命人、如意金箍棒指天、翻腾云海瀑布、霸气盖世",
+    keywords: ["黑神话", "悟空", "花果山", "齐天大圣", "金箍棒"],
+    colors: "帝王金 · 霞红 · 焦墨",
+    theme: "Black Myth Wukong, Mount Huaguo Peak Great Sage",
+    silhouette: "the monkey warrior fully adorned in majestic golden armor with fluttering crimson pheasant tail feathers atop his helmet, holding the legendary Ruyi Jingu Bang golden staff slanting upward upon an epic mountain cliff overlooking cascading waterfalls and rolling sea of clouds",
+    colorPrompt: "imperial golden yellow, sunset crimson, and dense ink black"
+  },
+
+  // 2. 艾尔登法环
+  {
     id: 3,
     file: "03_艾尔登法环_黄金树.png",
     game: "艾尔登法环",
@@ -65,6 +107,47 @@ const ITEMS = [
     silhouette: "the four-armed doll witch Ranni wearing her iconic oversized pointed witch hat, sitting serenely on a gothic stone balcony chair, framed by a gigantic glowing full moon in a starry night sky above mist-veiled Liurnia spires",
     colorPrompt: "celestial ultramarine blue, glintstone teal, and soft ivory"
   },
+  {
+    id: 20,
+    file: "20_艾尔登法环_盖利德.png",
+    game: "艾尔登法环",
+    name: "红狮子原野",
+    title: "法环 · 碎星陨石长空",
+    features: "猩红荒原插满折断巨剑、半神碎星拉塔恩跨骑小马、双持重力曲剑、长空陨石、悲壮雄浑",
+    keywords: ["艾尔登法环", "拉塔恩", "碎星", "盖利德", "红狮子"],
+    colors: "铁锈红 · 重力紫 · 炭黑",
+    theme: "Elden Ring, Caelid Starscourge Radahn Wastes",
+    silhouette: "the colossal Demigod General Radahn brandishing paired massive curved gravity greatswords while mounted on his diminutive loyal horse upon a crimson battlefield spiked with shattered swords, beneath a twilight sky pierced by falling meteors",
+    colorPrompt: "rust red, gravity indigo violet, and charred black"
+  },
+  {
+    id: 21,
+    file: "21_艾尔登法环_玛莲妮亚.png",
+    game: "艾尔登法环",
+    name: "圣树根底",
+    title: "法环 · 腐败之花绝尘",
+    features: "圣树幽邃根底、女武神玛莲妮亚金甲义手持刀、背后悬空绽放的巨大猩红之花、凄美孤绝",
+    keywords: ["艾尔登法环", "玛莲妮亚", "女武神", "圣树", "猩红腐败"],
+    colors: "琥珀金 · 浅桃红 · 墨黑",
+    theme: "Elden Ring, Malenia Blade of Miquella at the Haligtree",
+    silhouette: "Malenia the Severed standing poised in winged golden helm with prosthetic blade extended gracefully, framed behind by the ethereal silhouette of an enormous blossoming Scarlet Aeonia lotus flower in an ancient underground flooded cavern",
+    colorPrompt: "unalloyed amber gold, pale coral pink, and deep lacquer black"
+  },
+  {
+    id: 22,
+    file: "22_艾尔登法环_法姆亚兹拉.png",
+    game: "艾尔登法环",
+    name: "法姆·亚兹拉",
+    title: "法环 · 龙王时空暴风",
+    features: "静止崩解的浮空古神殿、褪色者手持大剑、庞大双头古龙王盘踞风暴中心、金色雷霆、神话史诗",
+    keywords: ["艾尔登法环", "龙王", "普拉顿桑克斯", "法姆亚兹拉", "古龙"],
+    colors: "晴山蓝 · 闪电金 · 铅灰",
+    theme: "Elden Ring, Dragonlord Placidusax at Crumbling Farum Azula",
+    silhouette: "the solitary Tarnished knight raising a greatsword before the titanic two-headed Dragonlord Placidusax resting coiled at the eye of a colossal timeless vortex among drifting architectural debris and streaks of golden lightning",
+    colorPrompt: "pale storm blue, lightning gold, and weathered lead grey"
+  },
+
+  // 3. 塞尔达传说
   {
     id: 5,
     file: "05_塞尔达传说_双子山.png",
@@ -92,6 +175,47 @@ const ITEMS = [
     colorPrompt: "ginkgo yellow-gold, sky cerulean, and linocut iron black"
   },
   {
+    id: 23,
+    file: "23_塞尔达传说_拔剑台.png",
+    game: "塞尔达传说",
+    name: "迷失森林",
+    title: "塞尔达 · 迷林神剑初醒",
+    features: "盘根错节古木森林、石台之上退魔之剑、小林克双手握剑、围绕跳跃克洛格、神圣灵动",
+    keywords: ["塞尔达传说", "大师之剑", "迷失森林", "拔剑台", "克洛格"],
+    colors: "翡翠绿 · 晨曦金 · 铁线黑",
+    theme: "The Legend of Zelda Breath of the Wild, Master Sword Korok Forest",
+    silhouette: "Link grasping the hilt of the sacred Master Sword embedded in an ornate stone pedestal, surrounded by curious little leaf-masked Korok spirits among giant mossy tree roots under beams of filtered woodland sunlight",
+    colorPrompt: "moss emerald green, dawn sunlight gold, and woodcut black"
+  },
+  {
+    id: 24,
+    file: "24_塞尔达传说_米法雕像.png",
+    game: "塞尔达传说",
+    name: "卓拉领地",
+    title: "塞尔达 · 灵水轻抚思念",
+    features: "卓拉层叠碧蓝水榭、林克背弓伫立、手执三叉戟米法雕像、微波荡漾、深情温润",
+    keywords: ["塞尔达传说", "米法", "卓拉领地", "雕像", "林克"],
+    colors: "碧水蓝 · 晚霞粉 · 墨蓝",
+    theme: "The Legend of Zelda Breath of the Wild, Zora's Domain Mipha Statue",
+    silhouette: "Link standing quietly with bow on back at the edge of a tiered aqueduct plaza, gazing upward at the elegant stone statue of Zora princess Mipha holding her trident against luminous tiered waterfalls",
+    colorPrompt: "aquamarine cyan, twilight petal pink, and deep indigo navy"
+  },
+  {
+    id: 25,
+    file: "25_塞尔达传说_海拉鲁城堡.png",
+    game: "塞尔达传说",
+    name: "海拉鲁城堡",
+    title: "塞尔达 · 灾厄红月破晓",
+    features: "悬空高耸城堡尖塔、林克与萨尔达背靠背持剑携弓、天际赤红血月、怨念黑气升腾、宿命抗争",
+    keywords: ["塞尔达传说", "海拉鲁城堡", "萨尔达", "红月", "林克"],
+    colors: "猩红 · 皇家靛蓝 · 浓墨",
+    theme: "The Legend of Zelda, Hyrule Castle Blood Moon",
+    silhouette: "Link brandishing the glowing Master Sword and Princess Zelda holding her light bow standing back-to-back atop the castle ramparts, silhouetted against a monstrous crimson Blood Moon and swirling malice tendrils around the gothic spires",
+    colorPrompt: "blood crimson red, royal navy blue, and pitch ink black"
+  },
+
+  // 4. 荒野大镖客：救赎 2
+  {
     id: 7,
     file: "07_荒野大镖客_夕阳断崖.png",
     game: "荒野大镖客2",
@@ -117,6 +241,47 @@ const ITEMS = [
     silhouette: "Arthur Morgan walking with a rifle slung over his shoulder on wet cobblestone streets beneath an ornate Victorian gas streetlight, casting a long diagonal shadow towards a foggy trolley car and brick industrial smokestacks",
     colorPrompt: "iron rust red, smoky slate grey, and lamp black"
   },
+  {
+    id: 26,
+    file: "26_荒野大镖客_雪山营地.png",
+    game: "荒野大镖客2",
+    name: "雪山营地",
+    title: "大镖客 · 飞雪围炉夜话",
+    features: "漫天鹅毛大雪松林、简陋木棚与篷车、达奇与亚瑟围坐跳跃篝火、压低牛仔帽、孤胆避难",
+    keywords: ["荒野大镖客", "柯尔特", "范德林德帮", "雪山", "篝火"],
+    colors: "炉火橙 · 飞雪白 · 墨黑",
+    theme: "Red Dead Redemption 2, Colter Snow Campfire",
+    silhouette: "outlaws Arthur Morgan and Dutch van der Linde in heavy winter wool coats and hats sitting around a crackling campfire beside a canvas wagon, amidst drifting snowfall and stark pine trees in the snowy northern mountains",
+    colorPrompt: "ember orange, snow white, and midnight charcoal black"
+  },
+  {
+    id: 27,
+    file: "27_荒野大镖客_瓦伦丁.png",
+    game: "荒野大镖客2",
+    name: "瓦伦丁小镇",
+    title: "大镖客 · 泥泞长街推门",
+    features: "泥泞主街木板马道、亚瑟推开酒馆双开弹簧木门、腰间左轮低垂、远处木头钟楼与山峦、原汁原味西部",
+    keywords: ["荒野大镖客", "瓦伦丁", "酒馆", "亚瑟摩根", "西部小镇"],
+    colors: "焦茶褐 · 驼黄 · 炭黑",
+    theme: "Red Dead Redemption 2, Valentine Saloon Doors",
+    silhouette: "Arthur Morgan pushing through the wooden swinging batwing doors of a rustic western saloon onto the muddy wooden boardwalk, holster at his hip, overlooking horses tied to hitching posts and wooden frontier storefronts",
+    colorPrompt: "weathered timber brown, saddle tan, and iron soot black"
+  },
+  {
+    id: 28,
+    file: "28_荒野大镖客_绝壁鹿影.png",
+    game: "荒野大镖客2",
+    name: "山巅朝阳",
+    title: "大镖客 · 绝壁长风沐日",
+    features: "绝壁山巅晨曦、负伤亚瑟倚石而坐远眺日出、金色朝霞初升、雄鹿剪影在晨雾中静立、生命挽歌",
+    keywords: ["荒野大镖客", "亚瑟摩根", "日出", "雄鹿", "救赎"],
+    colors: "晨曦金 · 雾灰 · 焦褐",
+    theme: "Red Dead Redemption 2, Arthur's Mountain Sunrise Redemption",
+    silhouette: "Arthur Morgan resting peacefully against a rocky mountaintop precipice overlooking the vast golden morning horizon as the sunrise breaks, with the ethereal silhouette of a solitary majestic buck standing in the morning mist",
+    colorPrompt: "radiant sunrise gold, morning mist grey, and warm chestnut brown"
+  },
+
+  // 5. 原神
   {
     id: 9,
     file: "09_原神_望舒客栈.png",
@@ -144,6 +309,47 @@ const ITEMS = [
     colorPrompt: "sakura violet-pink, vermilion red, and lacquer black"
   },
   {
+    id: 29,
+    file: "29_原神_风起地.png",
+    game: "原神",
+    name: "风起地",
+    title: "原神 · 巨树林风抚琴",
+    features: "风起地千年巨橡树、诗人温迪靠在树根拨动诗琴、旅行者仰望飞扬蒲公英、蒙德城与风神像远景、自由宁静",
+    keywords: ["原神", "温迪", "蒙德", "风起地", "蒲公英"],
+    colors: "苹果绿 · 澄空蓝 · 墨黑",
+    theme: "Genshin Impact, Mondstadt Windrise Oak Tree",
+    silhouette: "the bard Venti sitting casually against the massive trunk of the ancient Windrise oak tree strumming his wooden lyre, as the traveler watches dandelion seeds floating in the breeze toward the distant silhouette of the Cathedral of Mondstadt",
+    colorPrompt: "meadow green, clear sky cyan, and ink black"
+  },
+  {
+    id: 30,
+    file: "30_原神_净善宫.png",
+    game: "原神",
+    name: "净善宫",
+    title: "原神 · 绿蔓灵枝入梦",
+    features: "须弥大树净善宫苍翠枝叶、小草神纳西妲荡着秋千、背后悬浮梦境般的世界树绿叶与神殿穹顶、智慧生机",
+    keywords: ["原神", "纳西妲", "须弥", "净善宫", "世界树"],
+    colors: "嫩草绿 · 荧光白 · 浅黛",
+    theme: "Genshin Impact, Sumeru Sanctuary of Surasthana",
+    silhouette: "the gentle young Archon Nahida swinging happily on a floral vine swing in an airy sanctuary, framed by translucent glowing emerald leaves of Irminsul and intricate organic dome architecture",
+    colorPrompt: "fresh sprout green, luminous warm white, and slate ink grey"
+  },
+  {
+    id: 31,
+    file: "31_原神_欧庇克莱歌剧院.png",
+    game: "原神",
+    name: "欧庇克莱歌剧院",
+    title: "原神 · 华幕水幕鞠躬",
+    features: "华丽歌剧院舞台、聚光灯下水神芙宁娜手执手杖致意行礼、身后水流瀑布与审判裁决枢机、戏剧张力",
+    keywords: ["原神", "芙宁娜", "枫丹", "欧庇克莱歌剧院", "水神"],
+    colors: "宝石蓝 · 珠光白 · 曜黑",
+    theme: "Genshin Impact, Fontaine Opera Epiclese",
+    silhouette: "Furina in her stylish top hat and tailored coat taking a dramatic curtain call bow with her cane under stage spotlights in the grand opera house, backed by soaring neoclassical arches and graceful cascading water fountains",
+    colorPrompt: "sapphire blue, pearl white, and rich velvet black"
+  },
+
+  // 6. 巫师 3：狂猎
+  {
     id: 11,
     file: "11_巫师3_吊人树.png",
     game: "巫师3",
@@ -169,6 +375,47 @@ const ITEMS = [
     silhouette: "Geralt and Ciri resting side by side on a stone terrace bench beside a small wine table, overlooking terraced lush green vineyards rolling toward the fairytale spires of Beauclair Palace bathed in warm golden sunlight",
     colorPrompt: "vineyard olive green, warm champagne gold, and royal azure"
   },
+  {
+    id: 32,
+    file: "32_巫师3_凯尔莫罕.png",
+    game: "巫师3",
+    name: "凯尔莫罕",
+    title: "巫师 · 狼堡雪峰伫立",
+    features: "群山绝壁中的狼派残堡、杰洛特与叶奈法在城垛并肩而立、寒风吹拂银发黑袍、险峰积雪、宿命温情",
+    keywords: ["巫师3", "杰洛特", "叶奈法", "凯尔莫罕", "狼堡"],
+    colors: "苍雪蓝 · 石青灰 · 墨黑",
+    theme: "The Witcher 3, Kaer Morhen Fortress Battlements",
+    silhouette: "witcher Geralt with twin swords and sorceress Yennefer standing together on the stone battlements of the ancient mountain stronghold Kaer Morhen, looking out over snow-veiled alpine peaks and rugged pine valleys",
+    colorPrompt: "frost blue, mountain stone grey, and deep raven black"
+  },
+  {
+    id: 33,
+    file: "33_巫师3_史凯利格.png",
+    game: "巫师3",
+    name: "大史凯利格海",
+    title: "巫师 · 寒海长船破浪",
+    features: "狂风巨浪中的维京龙头长船、杰洛特手把风帆立于船头、远方海面巨大的白鲸跃空翻尾、崖顶古堡、苍茫壮阔",
+    keywords: ["巫师3", "史凯利格", "长船", "白鲸", "杰洛特"],
+    colors: "沧海深蓝 · 浪花白 · 铁灰",
+    theme: "The Witcher 3, Skellige Isles Whale and Longship",
+    silhouette: "Geralt standing braced at the dragon-headed prow of a wooden Viking drakkar boat cutting through choppy ocean waves, as a colossal white whale breaches majestically on the horizon near dramatic sea cliff ruins",
+    colorPrompt: "ocean deep indigo, foaming sea white, and weathered iron grey"
+  },
+  {
+    id: 34,
+    file: "34_巫师3_诺维格瑞.png",
+    game: "巫师3",
+    name: "诺维格瑞",
+    title: "巫师 · 繁华暗巷反手拔剑",
+    features: "密集的哥特式木石坡顶房屋、特莉丝披斗篷回眸疾行、杰洛特在暗巷拐角反手抽出银剑、飞鸟惊起、悬念丛生",
+    keywords: ["巫师3", "诺维格瑞", "特莉丝", "杰洛特", "银剑"],
+    colors: "砖石红 · 斗篷褐 · 浓墨",
+    theme: "The Witcher 3, Novigrad City Alleyway",
+    silhouette: "sorceress Triss Merigold in hooded cloak walking briskly through a narrow medieval cobblestone alleyway while Geralt stealthily draws his silver sword from behind a corner beneath timber-framed townhouses and spires",
+    colorPrompt: "terracotta brick red, weathered cloak brown, and pitch ink black"
+  },
+
+  // 7. 赛博朋克 2077
   {
     id: 13,
     file: "13_赛博朋克_夜之城.png",
@@ -196,6 +443,47 @@ const ITEMS = [
     colorPrompt: "desert ochre, rusted iron red, and deep twilight brown"
   },
   {
+    id: 35,
+    file: "35_赛博朋克_来生酒吧.png",
+    game: "赛博朋克2077",
+    name: "来生酒吧",
+    title: "赛博朋克 · 来生独酌敬传奇",
+    features: "昏暗暗红的来生酒吧、罗格在吧台后擦拭酒杯、主角V独自坐在高脚凳举杯向空位致敬、冷酷传奇氛围",
+    keywords: ["赛博朋克2077", "来生酒吧", "V", "罗格", "杰克威尔斯"],
+    colors: "霓虹红 · 威士忌金 · 炭黑",
+    theme: "Cyberpunk 2077, The Afterlife Bar",
+    silhouette: "mercenary V sitting at the illuminated curved bar counter raising a cocktail glass in a toast, as queen of fixers Rogue watches thoughtfully from behind the bar beneath suspended neon signs and holographic bottle shelves",
+    colorPrompt: "neon crimson red, whiskey amber gold, and carbon matte black"
+  },
+  {
+    id: 36,
+    file: "36_赛博朋克_歌舞伎町.png",
+    game: "赛博朋克2077",
+    name: "歌舞伎町",
+    title: "赛博朋克 · 雨夜全息金鱼",
+    features: "层叠逼仄的集市过街天桥、朱迪坐在潮湿台阶上调试超梦头盔、上方游弋巨大的全息发光鲤鱼、雨水反光、赛博市井",
+    keywords: ["赛博朋克2077", "歌舞伎町", "朱迪", "全息金鱼", "超梦"],
+    colors: "荧光青 · 霓虹紫 · 曜黑",
+    theme: "Cyberpunk 2077, Kabuki Market Rainy Night",
+    silhouette: "braindance technician Judy Alvarez sitting casually on wet fire escape stairs adjusting a neural headset, beneath a massive swimming holographic koi fish glowing through misty rain amidst cluttered vertical neon street signs",
+    colorPrompt: "fluorescent cyan, neon violet, and wet asphalt black"
+  },
+  {
+    id: 37,
+    file: "37_赛博朋克_露西月球.png",
+    game: "赛博朋克2077",
+    name: "轨道航天港",
+    title: "赛博朋克 · 荒坂高塔遥望明月",
+    features: "高耸航天发射塔架平台、彩发露西独自伫立冷风中、仰望空中巨大清冷的月球、大卫夹克背影相伴、无尽浪漫与怅惘",
+    keywords: ["赛博朋克2077", "边缘行者", "露西", "大卫", "月球"],
+    colors: "冰月白 · 浅天蓝 · 极夜黑",
+    theme: "Cyberpunk Edgerunners, Lucy Looking at the Moon",
+    silhouette: "netrunner Lucy with multicolored hair standing alone at the observation edge of a towering spaceport gantry, looking up at the gigantic glowing pale moon hanging in the starry void, with the faint spectral memory of David's yellow jacket beside her",
+    colorPrompt: "luminescent moon white, soft electric blue, and deep void black"
+  },
+
+  // 8. 最终幻想 7
+  {
     id: 15,
     file: "15_最终幻想7_魔晄炉.png",
     game: "最终幻想7",
@@ -220,6 +508,45 @@ const ITEMS = [
     theme: "Final Fantasy VII Remake, Sector 5 Slums Church",
     silhouette: "Aerith Gainsborough in her pink dress kneeling gently beside a basket in a patch of delicate yellow flowers growing through the broken wooden floorboards, bathed in a dramatic diagonal beam of sunlight through the ruined church roof, while Cloud watches from a shadowy timber pillar",
     colorPrompt: "flower petal yellow, soft blossom pink, and antique charcoal"
+  },
+  {
+    id: 38,
+    file: "38_最终幻想7_第七天堂.png",
+    game: "最终幻想7",
+    name: "第七天堂",
+    title: "最终幻想 · 贫民铁皮暖灯",
+    features: "铁皮搭成的第七天堂酒吧、蒂法扎马尾在木吧台递出调酒、身后弹球机与暗门通道、贫民窟一隅的温存",
+    keywords: ["最终幻想7", "蒂法", "第七天堂", "第七区贫民窟", "雪崩"],
+    colors: "枫木黄 · 绯红 · 墨黑",
+    theme: "Final Fantasy VII Remake, Seventh Heaven Bar",
+    silhouette: "Tifa Lockhart with tied hair standing warmly behind the wooden bar counter sliding a glass forward, surrounded by rustic bar stools, vintage pinball machine, and overhead hanging warm pendant lamps in the slum hideout",
+    colorPrompt: "warm maple wood, crimson accent, and soft charcoal black"
+  },
+  {
+    id: 39,
+    file: "39_最终幻想7_萨菲罗斯.png",
+    game: "最终幻想7",
+    name: "尼福尔海姆",
+    title: "最终幻想 · 烈焰狂澜刀芒回眸",
+    features: "熊熊燃烧的村庄火海、银色长发单翼萨菲罗斯拖着修长正宗武士刀、在烈火浓烟中缓缓侧首回眸、绝望压迫感",
+    keywords: ["最终幻想7", "萨菲罗斯", "正宗", "火海", "尼福尔海姆"],
+    colors: "烈火赤 · 银霜灰 · 焦墨",
+    theme: "Final Fantasy VII, Sephiroth in Flames at Nibelheim",
+    silhouette: "the menacing legendary villain Sephiroth with long flowing silver hair dragging his iconic eight-foot Masamune katana, turning his head amidst raging inferno flames and collapsing burning wooden houses",
+    colorPrompt: "raging inferno scarlet, silver platinum grey, and scorched soot black"
+  },
+  {
+    id: 40,
+    file: "40_最终幻想7_忘却之都.png",
+    game: "最终幻想7",
+    name: "忘却之都",
+    title: "最终幻想 · 幽潭祈祷命途",
+    features: "幽蓝通透的水上水晶神殿、石台上双手合十闭目祈祷的爱丽丝、发光的白魔石、克劳德在水晶拱桥上奔跑守候、宿命之美",
+    keywords: ["最终幻想7", "爱丽丝", "忘却之都", "白魔石", "克劳德"],
+    colors: "圣洁幽蓝 · 珠白 · 墨黑",
+    theme: "Final Fantasy VII, City of the Ancients Forgotten Capital",
+    silhouette: "Aerith kneeling in peaceful prayer with hands clasped upon a glowing carved stone altar in a flooded spiral crystal sanctuary, as Cloud reaches forward from a curving nautilus ramp above shimmering tranquil water",
+    colorPrompt: "mystic cerulean blue, luminescent pearl white, and abyssal black"
   }
 ];
 
