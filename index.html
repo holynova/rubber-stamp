@@ -259,55 +259,6 @@
       margin-left: 2px;
     }
 
-    /* Sub-category Quick Filter Pills */
-    .category-pills-wrap {
-      width: 100%;
-      max-width: 1200px;
-      margin: 4px auto 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 2px;
-      box-sizing: border-box;
-    }
-    .category-pills-wrap::-webkit-scrollbar {
-      display: none;
-    }
-    .cat-pill {
-      background: #eae1d1;
-      border: 1px solid transparent;
-      border-radius: 14px;
-      padding: 3px 9px;
-      font-size: 11.5px;
-      color: #666;
-      cursor: pointer;
-      transition: all .12s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      user-select: none;
-    }
-    .cat-pill:hover {
-      background: #dfd5c3;
-      color: var(--ink);
-    }
-    .cat-pill.active {
-      background: var(--ink);
-      color: #ffffff;
-      font-weight: 500;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-    }
-    .cat-pill .pill-count {
-      font-size: 10px;
-      opacity: 0.8;
-      font-family: ui-monospace, monospace;
-    }
-
     /* -------------------------------------------------------------
        Xiaohongshu Dual-Column Waterfall / Card Feed
        ------------------------------------------------------------- */
@@ -406,22 +357,8 @@
     .card-author {
       display: flex;
       align-items: center;
-      gap: 5px;
       min-width: 0;
       overflow: hidden;
-    }
-    .author-avatar {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #b9281e;
-      color: #ffffff;
-      font-size: 9.5px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
     }
     .author-name {
       font-size: 11px;
@@ -1455,11 +1392,6 @@
         font-size: 13px;
         line-height: 1.32;
       }
-      .author-avatar {
-        width: 16px;
-        height: 16px;
-        font-size: 9px;
-      }
       .author-name {
         font-size: 10.5px;
       }
@@ -1591,9 +1523,6 @@
         </button>
       </nav>
     </div>
-
-    <!-- Quick Sub-Category Filter Pills -->
-    <div class="category-pills-wrap" id="category-pills-wrap"></div>
   </header>
 
   <!-- Feed Waterfall Container -->
@@ -1786,14 +1715,12 @@
        App State & Initialization
        ------------------------------------------------------------- */
     let currentSeriesKey = "scenic_spots";
-    let currentCategoryFilter = "all";
     let currentFilteredRows = [];
     let currentModalIndex = 0;
     const LIKES_STORAGE_KEY = "rubber_stamp_likes_v1";
 
     const seriesTabs = document.querySelectorAll(".xhs-tab");
     const searchInput = document.querySelector("#search-input");
-    const pillsWrap = document.querySelector("#category-pills-wrap");
     const gridEl = document.querySelector("#grid");
     const toastEl = document.querySelector("#toast");
     const favTabBadge = document.querySelector("#fav-tab-badge");
@@ -1940,7 +1867,6 @@
 
       // If currently viewing favorites series tab, re-render
       if (currentSeriesKey === "favorites") {
-        buildCategoryOptions();
         render();
       }
 
@@ -2102,166 +2028,16 @@
     }
 
     /* -------------------------------------------------------------
-       Quick Sub-Category Filter Pills Builder
-       ------------------------------------------------------------- */
-    function buildCategoryOptions() {
-      const col = getCollection();
-      const items = col.items;
-      let categories = [{ key: "all", label: `全部${col.title}`, count: items.length }];
-
-      if (currentSeriesKey === "favorites") {
-        const seriesNames = {
-          scenic_spots: "名胜风景",
-          poetry: "古诗名句",
-          cities: "世界城市",
-          wildlife: "珍稀动物",
-          marine: "海洋生物",
-          atmosphere: "大气现象",
-          zodiac: "十二生肖",
-          solar_terms: "二十四节气",
-          shanhaijing: "山海神异"
-        };
-        Object.keys(seriesNames).forEach(sKey => {
-          const c = items.filter(x => x.seriesKey === sKey).length;
-          if (c > 0) categories.push({ key: `fav-series-${sKey}`, label: seriesNames[sKey], count: c });
-        });
-      } else {
-        const currentLikedCount = items.filter(x => isLiked(x.output)).length;
-        if (currentLikedCount > 0) {
-          categories.push({ key: "current-liked", label: "❤️ 已点赞", count: currentLikedCount });
-        }
-
-        if (currentSeriesKey === "scenic_spots") {
-          const regions = ["华北", "华东", "西南", "西北", "华中", "华南", "东北"];
-          regions.forEach(r => {
-            const c = items.filter(x => x.region && x.region.includes(r)).length;
-            if (c > 0) categories.push({ key: `region-${r}`, label: `${r}名胜`, count: c });
-          });
-        } else if (currentSeriesKey === "poetry") {
-          const cats = ["春生·花木", "夏盛·清荷", "秋思·枫江", "冬藏·飞雪", "天地·旷野"];
-          cats.forEach(k => {
-            const c = items.filter(x => x.category === k).length;
-            if (c > 0) categories.push({ key: `category-${k}`, label: k, count: c });
-          });
-        } else if (currentSeriesKey === "wildlife") {
-          const map = {
-            "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
-            "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
-            "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
-            "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"]
-          };
-          Object.keys(map).forEach(group => {
-            const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
-            if (c > 0) categories.push({ key: `wildlife-${group}`, label: group, count: c });
-          });
-        } else if (currentSeriesKey === "marine") {
-          const map = {
-            "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
-            "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
-            "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
-            "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"]
-          };
-          Object.keys(map).forEach(group => {
-            const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
-            if (c > 0) categories.push({ key: `marine-${group}`, label: group, count: c });
-          });
-        } else if (currentSeriesKey === "atmosphere") {
-          const map = {
-            "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
-            "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
-            "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
-            "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
-          };
-          Object.keys(map).forEach(group => {
-            const c = items.filter(x => map[group].some(n => x.name.includes(n))).length;
-            if (c > 0) categories.push({ key: `atmo-${group}`, label: group, count: c });
-          });
-        } else if (currentSeriesKey === "solar_terms") {
-          ["春", "夏", "秋", "冬"].forEach(s => {
-            const c = items.filter(x => x.season === s).length;
-            if (c > 0) categories.push({ key: `season-${s}`, label: `${s}季物候`, count: c });
-          });
-        }
-      }
-
-      if (categories.length > 1) {
-        pillsWrap.style.display = "flex";
-        pillsWrap.innerHTML = categories.map(opt => `
-          <button class="cat-pill ${opt.key === currentCategoryFilter ? "active" : ""}" data-key="${opt.key}">
-            <span>${opt.label}</span>
-            <span class="pill-count">(${opt.count})</span>
-          </button>
-        `).join("");
-      } else {
-        pillsWrap.style.display = "none";
-        pillsWrap.innerHTML = "";
-      }
-
-      pillsWrap.querySelectorAll(".cat-pill").forEach(el => {
-        el.onclick = () => selectCategory(el.dataset.key);
-      });
-    }
-
-    function selectCategory(key) {
-      currentCategoryFilter = key;
-      pillsWrap.querySelectorAll(".cat-pill").forEach(p => {
-        p.classList.toggle("active", p.dataset.key === key);
-      });
-      render();
-    }
-
-    /* -------------------------------------------------------------
        Gallery Feed Render
        ------------------------------------------------------------- */
     function render() {
       const col = getCollection();
       const q = searchInput.value.trim().toLowerCase();
-      const f = currentCategoryFilter;
 
       currentFilteredRows = col.items.filter(x => {
         const titleStr = (x.city || x.title || x.name || "") + " " + (x.animal || "") + " " + (x.season || "") + " " + (x.region || "") + " " + (x.province || "") + " " + (x.author || "") + " " + (x.work || "") + " " + (x.category || "") + " " + (x.seriesTitle || "");
         const textToMatch = (titleStr + " " + (x.features || "") + " " + (x.keywords || []).join(" ") + " " + (x.colors || "")).toLowerCase();
-        const matchesQuery = !q || textToMatch.includes(q);
-
-        let matchesFilter = true;
-        if (f !== "all") {
-          if (f === "current-liked") {
-            matchesFilter = isLiked(x.output);
-          } else if (f.startsWith("fav-series-")) {
-            const sKey = f.replace("fav-series-", "");
-            matchesFilter = x.seriesKey === sKey;
-          } else if (f.startsWith("region-")) {
-            const reg = f.replace("region-", "");
-            matchesFilter = x.region && x.region.includes(reg);
-          } else if (f.startsWith("category-")) {
-            const cat = f.replace("category-", "");
-            matchesFilter = x.category === cat;
-          } else if (f.startsWith("season-")) {
-            const s = f.replace("season-", "");
-            matchesFilter = x.season === s;
-          } else if (f.startsWith("wildlife-") || f.startsWith("marine-") || f.startsWith("atmo-")) {
-            const grpKey = f.split("-")[1];
-            const groups = {
-              "珍稀陆生": ["大熊猫", "金丝猴", "亚洲象", "麋鹿", "普氏野马", "中华穿山甲", "扬子鳄"],
-              "顶级掠食": ["东北虎", "雪豹", "荒漠猫", "藏狐", "兔狲"],
-              "飞禽珍灵": ["朱鹮", "丹顶鹤", "绿孔雀", "黑颈鹤"],
-              "高原及水生": ["藏羚羊", "长江江豚", "羚牛", "中华白海豚"],
-              "巨鲸齿鲸": ["蓝鲸", "虎鲸", "抹香鲸", "一角鲸"],
-              "鲨鱼软骨": ["蝠鲼", "锤头鲨", "鲸鲨", "大白鲨"],
-              "深海发光": ["发光水母", "巨型章鱼", "鹦鹉螺"],
-              "极地海灵": ["绿海龟", "斑海豹", "海马", "飞鱼", "帝企鹅", "旗鱼", "海獭", "小丑鱼", "翻车鱼"],
-              "天空光学": ["极光", "双彩虹", "日全食", "幻日", "晚霞", "佛光", "丁达尔光"],
-              "天体星空": ["彗星", "流星雨", "夜光云", "午夜太阳"],
-              "天气风暴": ["龙卷风", "雷暴闪电", "沙尘暴", "冰雹", "雨幡", "红色精灵"],
-              "水汽凝结": ["平流雾", "海市蜃楼", "雾凇"]
-            };
-            if (groups[grpKey]) {
-              matchesFilter = groups[grpKey].some(n => x.name.includes(n));
-            }
-          }
-        }
-
-        return matchesQuery && matchesFilter;
+        return !q || textToMatch.includes(q);
       });
 
       if (!currentFilteredRows.length) {
@@ -2285,7 +2061,6 @@
         const liked = isLiked(x.output);
         const seriesName = x.seriesTitle || col.title || "橡胶戳";
         const tagText = x.region || x.season || x.category || x.province || x.author || seriesName;
-        const avatarChar = (seriesName && seriesName[0]) || "印";
         const thumbUrl = getThumbnailUrl(x.output);
 
         return `
@@ -2305,7 +2080,6 @@
               <h2 class="feed-card-title">${displayName}</h2>
               <div class="feed-card-footer">
                 <div class="card-author">
-                  <span class="author-avatar">${avatarChar}</span>
                   <span class="author-name">${tagText}</span>
                 </div>
                 <button class="card-like-btn ${liked ? "liked" : ""}" data-output="${x.output}" onclick="event.stopPropagation(); handleCardLike('${x.output}')" title="${liked ? "取消点赞" : "点赞"}">
@@ -2319,9 +2093,8 @@
     }
 
     function switchSeries(key) {
-      if (currentSeriesKey === key && currentCategoryFilter === "all" && currentFilteredRows.length > 0) return;
+      if (currentSeriesKey === key && currentFilteredRows.length > 0) return;
       currentSeriesKey = key;
-      currentCategoryFilter = "all";
 
       seriesTabs.forEach(t => {
         const isAct = t.dataset.series === key;
@@ -2332,7 +2105,6 @@
       });
 
       window.location.hash = key;
-      buildCategoryOptions();
       searchInput.value = "";
       render();
     }
@@ -3024,7 +2796,6 @@
     if (cleanHash && (window.COLLECTIONS[cleanHash] || cleanHash === "favorites")) {
       switchSeries(cleanHash);
     } else {
-      buildCategoryOptions();
       render();
     }
 
