@@ -495,8 +495,12 @@
       overflow-x: hidden;
       background: #ffffff;
       padding-bottom: 24px;
-      scrollbar-width: thin;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       -webkit-overflow-scrolling: touch;
+    }
+    .note-scroll-body::-webkit-scrollbar {
+      display: none;
     }
 
     /* Media showcase with Continuous Touch Swiper Track */
@@ -718,18 +722,15 @@
     }
     .prompt-full-text {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      line-height: 1.6;
+      font-size: 12.5px;
+      line-height: 1.65;
       color: #555555;
       background: transparent;
       border: none;
       padding: 2px 0 0;
-      max-height: 200px;
-      overflow-y: auto;
       white-space: pre-wrap;
       word-break: break-word;
       cursor: pointer;
-      scrollbar-width: thin;
     }
     .prompt-full-text:hover {
       color: #111111;
@@ -986,73 +987,23 @@
     .share-card-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 6px;
+      justify-content: center;
       width: 100%;
+      padding: 2px 0 4px;
       box-sizing: border-box;
     }
-    .share-brand-tag {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      min-width: 0;
-      flex: 1 1 auto;
-      overflow: hidden;
-    }
-    .share-seal-avatar {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--seal-red);
-      color: #ffffff;
-      font-size: 10.5px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 1px 3px rgba(185, 40, 30, 0.3);
-    }
-    .share-brand-text {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      overflow: hidden;
-    }
-    .share-brand-main {
-      font-size: 11.5px;
+    .share-card-series {
+      font-size: 12px;
       font-weight: 600;
-      color: #222222;
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .share-brand-sub {
-      font-size: 9px;
-      color: #888888;
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .share-card-id {
-      font-family: ui-monospace, monospace;
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--seal-red);
-      background: rgba(185, 40, 30, 0.08);
-      padding: 1.5px 6px;
-      border-radius: 8px;
-      letter-spacing: 0.5px;
-      flex-shrink: 0;
+      color: #666666;
+      letter-spacing: 0.8px;
     }
 
     /* Artwork image frame */
     .share-card-art-box {
       width: 100%;
-      aspect-ratio: 1 / 1;
-      max-height: 220px;
+      aspect-ratio: 4 / 5;
+      max-height: 280px;
       background: #ede6d8;
       border-radius: 8px;
       overflow: hidden;
@@ -1066,7 +1017,7 @@
     .share-card-art-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
@@ -1075,9 +1026,10 @@
       flex-direction: column;
       gap: 3px;
       box-sizing: border-box;
+      padding: 2px 0;
     }
     .share-card-title {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 600;
       color: #222222;
       margin: 0;
@@ -1087,8 +1039,8 @@
       text-overflow: ellipsis;
     }
     .share-card-features {
-      font-size: 10.5px;
-      color: #555555;
+      font-size: 11px;
+      color: #666666;
       margin: 0;
       line-height: 1.4;
       display: -webkit-box;
@@ -1096,67 +1048,41 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .share-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 1px;
-    }
-    .share-card-tag {
-      font-size: 9px;
-      background: #efe7d9;
-      color: #666666;
-      padding: 1px 5px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
 
     /* Card Footer & QR Code */
     .share-card-footer {
       border-top: 1px dashed #dcd1c0;
-      padding-top: 6px;
+      padding-top: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
       box-sizing: border-box;
     }
     .share-footer-left {
       display: flex;
       flex-direction: column;
-      gap: 1.5px;
+      gap: 2px;
       min-width: 0;
       flex: 1 1 auto;
       overflow: hidden;
     }
     .share-qr-title {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       color: #222222;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .share-qr-desc {
-      font-size: 8.5px;
+      font-size: 9.5px;
       color: #777777;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .share-qr-site {
-      font-size: 8px;
-      color: #999999;
-      font-family: ui-monospace, monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .share-qr-right {
       flex-shrink: 0;
       background: #ffffff;
-      padding: 2px;
-      border-radius: 5px;
+      padding: 3px;
+      border-radius: 6px;
       border: 1px solid #e5ddcf;
       display: flex;
       align-items: center;
@@ -1164,8 +1090,8 @@
     }
     .share-qr-right canvas {
       display: block;
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
     }
 
     /* Bottom Action Buttons */
@@ -1349,7 +1275,7 @@
 
       <!-- Search Capsule -->
       <div class="search-capsule">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
         <input type="text" id="search-input" placeholder="搜索名胜、诗句、动物或配色..." autocomplete="off">
       </div>
 
@@ -1402,7 +1328,7 @@
           <span class="tab-indicator"></span>
         </button>
         <button class="xhs-tab" data-series="favorites">
-          <span class="tab-text">❤️ 我的点赞 <span class="fav-badge" id="fav-tab-badge">0</span></span>
+          <span class="tab-text">我的点赞 <span class="fav-badge" id="fav-tab-badge">0</span></span>
           <span class="tab-indicator"></span>
         </button>
       </nav>
@@ -1511,16 +1437,9 @@
       <div class="share-card-scroll-wrap">
         <!-- Physical Card DOM Preview -->
         <div class="share-card-paper" id="share-card-paper">
-          <!-- Card Top Brand & Series Tag -->
+          <!-- Card Top Series Tag -->
           <div class="share-card-header">
-            <div class="share-brand-tag">
-              <span class="share-seal-avatar" id="share-card-avatar">印</span>
-              <div class="share-brand-text">
-                <div class="share-brand-main">橡胶戳艺术印记</div>
-                <div class="share-brand-sub" id="share-card-series-tag">华夏胜景系列</div>
-              </div>
-            </div>
-            <div class="share-card-id" id="share-card-id-tag">NO. 01</div>
+            <span class="share-card-series" id="share-card-series-tag">名胜风景系列</span>
           </div>
 
           <!-- Card Artwork Frame -->
@@ -1532,18 +1451,16 @@
           <div class="share-card-meta">
             <h2 class="share-card-title" id="share-card-title">北京故宫 · 太和红墙</h2>
             <p class="share-card-features" id="share-card-features">太和殿重檐庑殿顶、红墙金瓦、汉白玉雕栏</p>
-            <div class="share-card-tags" id="share-card-tags"></div>
           </div>
 
-          <!-- Card Footer with QR Code & Call to Action -->
+          <!-- Card Footer with QR Code -->
           <div class="share-card-footer">
             <div class="share-footer-left">
-              <div class="share-qr-title">扫码在线鉴赏与获取 Prompt</div>
-              <div class="share-qr-desc">236 枚极简多色橡胶戳印艺术作品</div>
-              <div class="share-qr-site">rubber-stamp-world-cities</div>
+              <div class="share-qr-title">长按识别二维码</div>
+              <div class="share-qr-desc">鉴赏与获取 Prompt</div>
             </div>
             <div class="share-qr-right">
-              <canvas id="share-card-qr" width="60" height="60"></canvas>
+              <canvas id="share-card-qr" width="46" height="46"></canvas>
             </div>
           </div>
         </div>
@@ -1609,13 +1526,10 @@
     // Share Card Modal elements
     const shareModal = document.querySelector("#share-card-modal");
     const shareCardPaper = document.querySelector("#share-card-paper");
-    const shareCardAvatar = document.querySelector("#share-card-avatar");
     const shareCardSeriesTag = document.querySelector("#share-card-series-tag");
-    const shareCardIdTag = document.querySelector("#share-card-id-tag");
     const shareCardImg = document.querySelector("#share-card-img");
     const shareCardTitle = document.querySelector("#share-card-title");
     const shareCardFeatures = document.querySelector("#share-card-features");
-    const shareCardTags = document.querySelector("#share-card-tags");
     const shareCardQrCanvas = document.querySelector("#share-card-qr");
     const btnShareSavePoster = document.querySelector("#btn-share-save-poster");
 
@@ -1689,7 +1603,7 @@
       } else {
         set.add(item.output);
         saveLikedSet(set);
-        showToast(`已点赞「${name}」❤️`);
+        showToast(`已点赞「${name}」`);
       }
 
       updateLikesUI();
@@ -1751,7 +1665,7 @@
     async function downloadLikedStamps() {
       const likedItems = getAllLikedItems();
       if (likedItems.length === 0) {
-        showToast("您还没有点赞任何印章作品，请先点击 ❤️ 点赞！");
+        showToast("您还没有点赞任何印章作品，请先点赞！");
         return;
       }
 
@@ -1770,7 +1684,7 @@
 
         for (let i = 0; i < likedItems.length; i++) {
           const item = likedItems[i];
-          btnBatchDownload.innerHTML = `<span>⏳ ${i + 1}/${likedItems.length}</span>`;
+          btnBatchDownload.innerHTML = `<span>${i + 1}/${likedItems.length}</span>`;
 
           const response = await fetch(item.output);
           if (!response.ok) throw new Error(`无法获取图片: ${item.output}`);
@@ -1781,7 +1695,7 @@
           folder.file(filename, blob);
         }
 
-        btnBatchDownload.innerHTML = `<span>⚡ 压缩中</span>`;
+        btnBatchDownload.innerHTML = `<span>压缩中...</span>`;
         const zipBlob = await zip.generateAsync({
           type: "blob",
           compression: "DEFLATE",
@@ -1797,7 +1711,7 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(downloadUrl);
 
-        showToast(`🎉 成功打包下载 ${likedItems.length} 张高清原图！`);
+        showToast(`成功打包下载 ${likedItems.length} 张高清原图！`);
       } catch (err) {
         console.error("Batch download error:", err);
         showToast("下载遇到问题，请检查网络后重试");
@@ -1898,9 +1812,9 @@
         if (currentSeriesKey === "favorites") {
           gridEl.innerHTML = `
             <div class="empty empty-favorites">
-              <div class="empty-icon">🤍</div>
+              <div class="empty-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
               <h3>暂无已点赞的印章作品</h3>
-              <p>在画廊中浏览喜欢的印章作品时，点击 ❤️ 点赞，即可收藏至此处并支持一键批量打包下载！</p>
+              <p>在画廊中浏览喜欢的印章作品时，点击点赞收藏至此处，即可一键批量打包下载！</p>
               <button class="btn-goto-gallery" onclick="switchSeries('scenic_spots')">去浏览印章画廊</button>
             </div>
           `;
@@ -2169,24 +2083,13 @@
       const seriesTitle = item.seriesTitle || col.title || "华夏胜景系列";
       const thumbUrl = getThumbnailUrl(item.output);
 
-      if (shareCardAvatar) shareCardAvatar.textContent = (seriesTitle && seriesTitle[0]) || "印";
-      if (shareCardSeriesTag) shareCardSeriesTag.textContent = `${seriesTitle} · 橡胶戳`;
-      if (shareCardIdTag) shareCardIdTag.textContent = `NO. ${String(item.id || 1).padStart(2, "0")}`;
+      if (shareCardSeriesTag) shareCardSeriesTag.textContent = seriesTitle;
       if (shareCardImg) {
         shareCardImg.src = thumbUrl;
         shareCardImg.alt = displayName;
       }
       if (shareCardTitle) shareCardTitle.textContent = displayName;
       if (shareCardFeatures) shareCardFeatures.textContent = item.features || (item.keywords || []).join(" · ") || "";
-
-      // Render tags
-      if (shareCardTags) {
-        const tags = [
-          item.region || item.season || item.category || item.province || "",
-          ...(item.keywords || []).slice(0, 3)
-        ].filter(Boolean);
-        shareCardTags.innerHTML = tags.map(t => `<span class="share-card-tag">${t}</span>`).join("");
-      }
 
       // Generate QR Code onto DOM canvas
       const shareUrl = getShareUrl(item);
@@ -2220,7 +2123,7 @@
       if (!currentShareItem) return;
       const name = currentShareItem.city || currentShareItem.title || currentShareItem.name;
       const shareUrl = getShareUrl(currentShareItem);
-      const text = `【橡胶戳艺术印记】${name} - 236枚极简多色橡胶戳印艺术作品\n${shareUrl}`;
+      const text = `【橡胶戳艺术印记】${name}\n${shareUrl}`;
       copyText(text, `已复制「${name}」分享链接到剪贴板`);
     }
 
@@ -2233,13 +2136,13 @@
       const shareUrl = getShareUrl(item);
 
       const origBtnHtml = btnShareSavePoster.innerHTML;
-      btnShareSavePoster.innerHTML = `<span>⏳ 正在生成高清海报...</span>`;
+      btnShareSavePoster.innerHTML = `<span>正在生成高清海报...</span>`;
       btnShareSavePoster.disabled = true;
 
       try {
-        // High-res 2x canvas (840x1320)
+        // High-res 2x canvas (840x1260)
         const W = 840;
-        const H = 1320;
+        const H = 1260;
         const canvas = document.createElement("canvas");
         canvas.width = W;
         canvas.height = H;
@@ -2258,47 +2161,16 @@
         ctx.lineWidth = 1.5;
         ctx.strokeRect(26, 26, W - 52, H - 52);
 
-        // 3. Top Header: Seal circle + Brand name + Series + ID
-        ctx.fillStyle = "#b9281e";
-        ctx.beginPath();
-        ctx.arc(68, 76, 24, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 22px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        // 3. Top Header: Minimal Series Title Centered
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText((seriesTitle && seriesTitle[0]) || "印", 68, 76);
-
-        // Brand & series text
-        ctx.textAlign = "left";
-        ctx.fillStyle = "#222222";
-        ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
-        ctx.fillText("橡胶戳艺术印记", 106, 68);
-
-        ctx.fillStyle = "#888888";
-        ctx.font = "16px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText(`${seriesTitle} · 2026`, 106, 92);
-
-        // Serial tag pill
-        const serialText = `NO. ${String(item.id || 1).padStart(2, "0")}`;
-        ctx.fillStyle = "rgba(185, 40, 30, 0.1)";
-        if (ctx.roundRect) {
-          ctx.beginPath();
-          ctx.roundRect(W - 170, 56, 110, 36, 18);
-          ctx.fill();
-        } else {
-          ctx.fillRect(W - 170, 56, 110, 36);
-        }
-
-        ctx.fillStyle = "#b9281e";
-        ctx.font = "bold 18px ui-monospace, SFMono-Regular, monospace";
-        ctx.textAlign = "center";
-        ctx.fillText(serialText, W - 115, 75);
+        ctx.fillStyle = "#666666";
+        ctx.font = "500 20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        ctx.fillText(seriesTitle, W / 2, 70);
 
         // 4. Draw Stamp Artwork Image (Centered 4:5 box)
         const imgBoxX = 56;
-        const imgBoxY = 124;
+        const imgBoxY = 110;
         const imgBoxW = W - 112; // 728
         const imgBoxH = 740;
 
@@ -2352,59 +2224,31 @@
         ctx.textAlign = "left";
         ctx.fillStyle = "#1a1a1a";
         ctx.font = "bold 32px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
-        ctx.fillText(displayName, 56, 915);
+        ctx.fillText(displayName, 56, 905);
 
-        ctx.fillStyle = "#555555";
+        ctx.fillStyle = "#666666";
         ctx.font = "20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
         const features = item.features || (item.keywords || []).join(" · ") || "";
-        ctx.fillText(features.length > 34 ? features.slice(0, 33) + "..." : features, 56, 955);
-
-        // Tags pills
-        const tags = [
-          item.region || item.season || item.category || item.province || "",
-          ...(item.keywords || []).slice(0, 3)
-        ].filter(Boolean);
-
-        let tagX = 56;
-        const tagY = 985;
-        tags.forEach(t => {
-          ctx.font = "16px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-          const tw = ctx.measureText(t).width;
-          ctx.fillStyle = "#eee6d7";
-          if (ctx.roundRect) {
-            ctx.beginPath();
-            ctx.roundRect(tagX, tagY, tw + 20, 32, 6);
-            ctx.fill();
-          } else {
-            ctx.fillRect(tagX, tagY, tw + 20, 32);
-          }
-          ctx.fillStyle = "#666666";
-          ctx.fillText(t, tagX + 10, tagY + 22);
-          tagX += tw + 30;
-        });
+        ctx.fillText(features.length > 34 ? features.slice(0, 33) + "..." : features, 56, 946);
 
         // 6. Dashed Separator Line
         ctx.beginPath();
         ctx.setLineDash([8, 6]);
         ctx.strokeStyle = "#ded3c2";
         ctx.lineWidth = 1.5;
-        ctx.moveTo(56, 1055);
-        ctx.lineTo(W - 56, 1055);
+        ctx.moveTo(56, 1005);
+        ctx.lineTo(W - 56, 1005);
         ctx.stroke();
         ctx.setLineDash([]);
 
         // 7. Footer Left Typography & Right QR Code
         ctx.fillStyle = "#222222";
         ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText("扫码在线鉴赏与获取 Prompt", 56, 1110);
+        ctx.fillText("长按识别二维码", 56, 1070);
 
-        ctx.fillStyle = "#666666";
-        ctx.font = "17px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText("236 枚极简多色手工橡胶戳印艺术作品", 56, 1144);
-
-        ctx.fillStyle = "#999999";
-        ctx.font = "16px ui-monospace, SFMono-Regular, monospace";
-        ctx.fillText("rubber-stamp-world-cities", 56, 1175);
+        ctx.fillStyle = "#777777";
+        ctx.font = "18px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        ctx.fillText("鉴赏与获取 Prompt", 56, 1110);
 
         // Right QR Code
         const qrCanvas = document.createElement("canvas");
@@ -2415,7 +2259,7 @@
         });
 
         const qrBoxX = W - 196;
-        const qrBoxY = 1076;
+        const qrBoxY = 1030;
         ctx.fillStyle = "#ffffff";
         ctx.strokeStyle = "#e5ddcf";
         ctx.lineWidth = 1.5;
@@ -2442,7 +2286,7 @@
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
-          showToast(`🎉 成功保存「${displayName}」分享海报！`);
+          showToast(`成功保存「${displayName}」分享海报！`);
         }, "image/png");
 
       } catch (err) {
