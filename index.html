@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover">
-  <title>橡胶戳艺术印记 · 名胜风景 / 古诗名句 / 世界城市 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异 / 游戏神作</title>
-  <meta name="description" content="精选名胜风景、古诗名句、世界城市、珍稀动物、海洋生物、大气奇观、游戏神作等10大系列共252枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
+  <title>rubber world · 极简橡胶戳艺术印记</title>
+  <meta name="description" content="rubber world · 精选名胜风景、古诗名句、世界城市、游戏神作、珍稀动物、海洋生物、大气奇观等全站共276枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
 
   <!-- Analytics -->
   <script
@@ -1143,21 +1143,29 @@
        ------------------------------------------------------------- */
     @media (max-width: 680px) {
       .app-header {
-        padding: max(8px, var(--safe-top)) 10px 0;
+        padding: max(13px, calc(var(--safe-top) + 8px)) 12px 0;
       }
       .brand-title {
-        display: none;
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+      @media (max-width: 360px) {
+        .brand-title {
+          display: none;
+        }
       }
       .header-main-row {
         gap: 8px;
-        padding-bottom: 6px;
+        padding-bottom: 9px;
       }
       .search-capsule {
         flex: 1 1 auto;
         max-width: none;
       }
       .search-capsule input {
-        height: 32px;
+        height: 33px;
         font-size: 12.5px;
       }
       .btn-top-download {
@@ -1166,7 +1174,8 @@
         font-size: 11px;
       }
       .xhs-tabs-nav {
-        gap: 14px;
+        gap: 16px;
+        padding: 2px 2px 6px;
       }
       .xhs-tab .tab-text {
         font-size: 14px;
@@ -1175,17 +1184,17 @@
         font-size: 15px;
       }
 
-      /* Fixed 2-column mobile feed */
+      /* Fixed 2-column mobile feed with comfortable breathing room */
       .feed-container {
-        padding: 0 8px;
-        margin-top: 8px;
+        padding: 0 10px;
+        margin-top: 13px;
       }
       .feed-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        gap: 10px;
       }
       .feed-card {
-        border-radius: 8px;
+        border-radius: 10px;
       }
       .feed-card-info {
         padding: 6px 8px 8px;
@@ -1260,13 +1269,13 @@
     <div class="header-main-row">
       <div class="brand-area">
         <span class="brand-logo">印</span>
-        <span class="brand-title">橡胶戳印记</span>
+        <span class="brand-title">rubber world</span>
       </div>
 
       <!-- Search Capsule -->
       <div class="search-capsule">
         <span class="search-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-        <input type="text" id="search-input" placeholder="搜索名胜、诗句、动物或配色..." autocomplete="off">
+        <input type="text" id="search-input" placeholder="搜索印章、诗句、配色或游戏..." autocomplete="off">
       </div>
 
       <!-- Right Tools: Batch Download -->
@@ -1281,7 +1290,11 @@
     <!-- Xiaohongshu Scrollable Channel Tabs -->
     <div class="xhs-tabs-wrap">
       <nav class="xhs-tabs-nav" id="series-nav">
-        <button class="xhs-tab active" data-series="scenic_spots">
+        <button class="xhs-tab active" data-series="all">
+          <span class="tab-text">全部</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="scenic_spots">
           <span class="tab-text">名胜风景</span>
           <span class="tab-indicator"></span>
         </button>
@@ -1291,6 +1304,10 @@
         </button>
         <button class="xhs-tab" data-series="cities">
           <span class="tab-text">世界城市</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="xhs-tab" data-series="games">
+          <span class="tab-text">游戏神作</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="xhs-tab" data-series="wildlife">
@@ -1315,10 +1332,6 @@
         </button>
         <button class="xhs-tab" data-series="shanhaijing">
           <span class="tab-text">山海神异</span>
-          <span class="tab-indicator"></span>
-        </button>
-        <button class="xhs-tab" data-series="games">
-          <span class="tab-text">游戏神作</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="xhs-tab" data-series="favorites">
@@ -1486,7 +1499,7 @@
     /* -------------------------------------------------------------
        App State & Initialization
        ------------------------------------------------------------- */
-    let currentSeriesKey = "scenic_spots";
+    let currentSeriesKey = "all";
     let currentFilteredRows = [];
     let currentModalIndex = 0;
     const LIKES_STORAGE_KEY = "rubber_stamp_likes_v1";
@@ -1587,7 +1600,7 @@
     function getAllLikedItems() {
       const set = getLikedSet();
       const allLiked = [];
-      const seriesOrder = ["scenic_spots", "poetry", "cities", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing", "games"];
+      const seriesOrder = ["scenic_spots", "poetry", "cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
       seriesOrder.forEach(sKey => {
         const col = window.COLLECTIONS[sKey];
         if (col && col.items) {
@@ -1761,6 +1774,29 @@
        Collection Resolver
        ------------------------------------------------------------- */
     function getCollection() {
+      if (currentSeriesKey === "all") {
+        const order = ["scenic_spots", "poetry", "cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+        const allItems = [];
+        order.forEach(k => {
+          const col = window.COLLECTIONS[k];
+          if (col && col.items) {
+            col.items.forEach(it => {
+              allItems.push({
+                ...it,
+                seriesKey: k,
+                seriesTitle: it.seriesTitle || col.title || col.name
+              });
+            });
+          }
+        });
+        return {
+          id: "all",
+          title: "全部",
+          titleEn: "All",
+          count: allItems.length,
+          items: allItems
+        };
+      }
       if (currentSeriesKey === "favorites") {
         const likedItems = getAllLikedItems();
         return {
@@ -1903,7 +1939,7 @@
               <div class="empty-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
               <h3>暂无已点赞的印章作品</h3>
               <p>在画廊中浏览喜欢的印章作品时，点击点赞收藏至此处，即可一键批量打包下载！</p>
-              <button class="btn-goto-gallery" onclick="switchSeries('scenic_spots')">去浏览印章画廊</button>
+              <button class="btn-goto-gallery" onclick="switchSeries('all')">去浏览印章画廊</button>
             </div>
           `;
         } else {
@@ -2243,7 +2279,7 @@
       if (!currentShareItem) return;
       const name = currentShareItem.city || currentShareItem.title || currentShareItem.name;
       const shareUrl = getShareUrl(currentShareItem);
-      const text = `【橡胶戳艺术印记】${name}\n${shareUrl}`;
+      const text = `【rubber world】${name}\n${shareUrl}`;
       copyText(text, `已复制「${name}」分享链接到剪贴板`);
     }
 
@@ -2693,7 +2729,7 @@
 
     const rawHash = window.location.hash.replace("#", "");
     const cleanHash = rawHash.split("?")[0];
-    if (cleanHash && (window.COLLECTIONS[cleanHash] || cleanHash === "favorites")) {
+    if (cleanHash && (window.COLLECTIONS[cleanHash] || cleanHash === "favorites" || cleanHash === "all")) {
       switchSeries(cleanHash);
     } else {
       render();
