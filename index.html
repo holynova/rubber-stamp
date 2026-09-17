@@ -909,8 +909,11 @@
 
     .share-modal-container {
       position: relative;
-      max-width: 320px;
-      width: 100%;
+      max-width: 330px;
+      width: 90vw;
+      max-height: 92vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -918,6 +921,7 @@
       z-index: 10;
       box-sizing: border-box;
       margin: auto;
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
     }
 
     .share-modal-header {
@@ -965,7 +969,7 @@
       width: 100%;
       background: #fbf8f2;
       border-radius: 14px;
-      padding: 12px;
+      padding: 12px 12px 10px;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
       border: 1px solid #e5dbcb;
       display: flex;
@@ -990,26 +994,21 @@
       letter-spacing: 0.8px;
     }
 
-    /* Artwork image frame */
+    /* Artwork image frame: fills width, zero letterboxing/side gutters, adaptive height */
     .share-card-art-box {
       width: 100%;
-      aspect-ratio: 4 / 5;
-      max-height: 280px;
-      background: #ede6d8;
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #e2d7c5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       position: relative;
       box-sizing: border-box;
+      line-height: 0;
     }
     .share-card-art-box img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      height: auto;
       display: block;
+      object-fit: cover;
     }
 
     .share-card-meta {
@@ -1556,6 +1555,11 @@
       return origPath.replace(/^images\//, "images/thumbnails/").replace(/\.png$/i, ".webp");
     }
 
+    function getDetailWebpUrl(origPath) {
+      if (!origPath) return "placeholder.svg";
+      return origPath.replace(/^images\//, "images/detail_webp/").replace(/\.png$/i, ".webp");
+    }
+
     /* -------------------------------------------------------------
        Likes & Favorites System (LocalStorage)
        ------------------------------------------------------------- */
@@ -2010,24 +2014,34 @@
 
       const thisToken = ++currentHiresToken;
       const thumbUrl = getThumbnailUrl(x.output);
+      const detailWebpUrl = getDetailWebpUrl(x.output);
       const origUrl = x.output;
 
       // 1. Current slide main image: render sharp thumbnail immediately (no blur)
       noteMainImg.src = thumbUrl;
       noteMainImg.alt = displayName;
 
-      // Background high-res loader: decode in memory, then swap seamlessly
+      // Background high-res loader: decode lightweight high-res WebP (~280KB) in memory, then swap seamlessly
       const hiresLoader = new Image();
-      hiresLoader.src = origUrl;
+      hiresLoader.src = detailWebpUrl;
       const swapToHires = () => {
         if (currentHiresToken === thisToken && currentModalIndex === index) {
-          noteMainImg.src = origUrl;
+          noteMainImg.src = hiresLoader.src;
         }
       };
       if (hiresLoader.decode) {
-        hiresLoader.decode().then(swapToHires).catch(swapToHires);
+        hiresLoader.decode().then(swapToHires).catch(() => {
+          // Fallback to origUrl if detail webp failed
+          hiresLoader.src = origUrl;
+          if (hiresLoader.decode) hiresLoader.decode().then(swapToHires).catch(swapToHires);
+          else hiresLoader.onload = swapToHires;
+        });
       } else {
         hiresLoader.onload = swapToHires;
+        hiresLoader.onerror = () => {
+          hiresLoader.src = origUrl;
+          hiresLoader.onload = swapToHires;
+        };
       }
 
       // Populate adjacent prev & next slides
@@ -2069,7 +2083,7 @@
       finishSlide(delta, 0, wrapWidth);
     }
 
-    function openNoteDetail(index) {
+    function openNoteDetail(index, fromPopState) {
       if (index < 0 || index >= currentFilteredRows.length) return;
       isImmersive = false;
       noteModal.classList.remove("immersive-mode");
@@ -2077,17 +2091,43 @@
         noteSwiperTrack.style.transition = "none";
         noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
       }
+      const noteWindow = noteModal.querySelector(".note-window");
+      if (noteWindow) {
+        noteWindow.style.transform = "";
+        noteWindow.style.transition = "";
+        noteWindow.style.opacity = "";
+      }
+      noteModal.style.backgroundColor = "";
       updateModalToSlide(index);
       if (noteScrollBody) noteScrollBody.scrollTop = 0;
       noteModal.classList.add("open");
       document.body.style.overflow = "hidden";
+
+      if (!fromPopState) {
+        if (!history.state || history.state.modal !== "detail") {
+          history.pushState({ modal: "detail", index: index }, "");
+        } else {
+          history.replaceState({ modal: "detail", index: index }, "");
+        }
+      }
     }
 
-    function closeNoteDetail() {
+    function closeNoteDetail(fromPopState) {
+      if (!fromPopState && history.state && (history.state.modal === "detail" || history.state.modal === "share")) {
+        history.back();
+        return;
+      }
       if (isImmersive) {
         toggleImmersiveMode(false);
       }
       noteModal.classList.remove("open");
+      const noteWindow = noteModal.querySelector(".note-window");
+      if (noteWindow) {
+        noteWindow.style.transform = "";
+        noteWindow.style.transition = "";
+        noteWindow.style.opacity = "";
+      }
+      noteModal.style.backgroundColor = "";
       document.body.style.overflow = "";
     }
 
@@ -2122,7 +2162,7 @@
       return `${base}?item=${encodeURIComponent(idOrName)}#${seriesKey}`;
     }
 
-    async function openShareCard(item) {
+    async function openShareCard(item, fromPopState) {
       if (!item) {
         if (currentFilteredRows[currentModalIndex]) {
           item = currentFilteredRows[currentModalIndex];
@@ -2147,6 +2187,16 @@
       if (shareModal) {
         shareModal.style.display = "flex";
         shareModal.classList.add("open");
+        const shareContainer = shareModal.querySelector(".share-modal-container");
+        if (shareContainer) {
+          shareContainer.style.transform = "";
+          shareContainer.style.transition = "";
+          shareContainer.style.opacity = "";
+        }
+      }
+
+      if (!fromPopState) {
+        history.pushState({ modal: "share" }, "");
       }
 
       // Generate QR Code onto DOM canvas (dynamic script loading)
@@ -2172,10 +2222,20 @@
       }
     }
 
-    function closeShareCard() {
+    function closeShareCard(fromPopState) {
+      if (!fromPopState && history.state && history.state.modal === "share") {
+        history.back();
+        return;
+      }
       if (shareModal) {
         shareModal.classList.remove("open");
         shareModal.style.display = "none";
+        const shareContainer = shareModal.querySelector(".share-modal-container");
+        if (shareContainer) {
+          shareContainer.style.transform = "";
+          shareContainer.style.transition = "";
+          shareContainer.style.opacity = "";
+        }
       }
     }
 
@@ -2200,9 +2260,37 @@
       btnShareSavePoster.disabled = true;
 
       try {
-        // High-res 2x canvas (840x1260)
+        // 1. Load image first to read natural aspect ratio
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        await new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = () => {
+            img.src = getThumbnailUrl(item.output);
+            img.onload = resolve;
+            img.onerror = resolve;
+          };
+          img.src = item.output;
+        });
+
+        const imgW = img.naturalWidth || img.width || 4;
+        const imgH = img.naturalHeight || img.height || 5;
+        const imgRatio = imgW / imgH;
+
+        // Dynamic Poster Canvas Sizing (Zero letterboxing, fills width)
         const W = 840;
-        const H = 1260;
+        const pad = 48;
+        const artW = W - pad * 2; // 744
+        const artH = Math.round(artW / imgRatio);
+
+        const artY = 96;
+        const titleY = artY + artH + 46;
+        const featuresY = titleY + 40;
+        const lineY = featuresY + 36;
+        const qrSize = 136;
+        const qrBoxY = lineY + 22;
+        const H = qrBoxY + qrSize + 48;
+
         const canvas = document.createElement("canvas");
         canvas.width = W;
         canvas.height = H;
@@ -2226,89 +2314,47 @@
         ctx.textBaseline = "middle";
         ctx.fillStyle = "#666666";
         ctx.font = "500 20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText(seriesTitle, W / 2, 70);
+        ctx.fillText(seriesTitle, W / 2, 58);
 
-        // 4. Draw Stamp Artwork Image (Centered 4:5 box)
-        const imgBoxX = 56;
-        const imgBoxY = 110;
-        const imgBoxW = W - 112; // 728
-        const imgBoxH = 740;
-
-        ctx.fillStyle = "#ede6d8";
-        if (ctx.roundRect) {
-          ctx.beginPath();
-          ctx.roundRect(imgBoxX, imgBoxY, imgBoxW, imgBoxH, 16);
-          ctx.fill();
-        } else {
-          ctx.fillRect(imgBoxX, imgBoxY, imgBoxW, imgBoxH);
-        }
-
-        // Load image into canvas
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        await new Promise((resolve) => {
-          img.onload = resolve;
-          img.onerror = () => {
-            img.src = getThumbnailUrl(item.output);
-            img.onload = resolve;
-            img.onerror = resolve;
-          };
-          img.src = item.output;
-        });
-
-        // Clip and draw image
+        // 4. Draw Stamp Artwork Image (completely fills width, no side gutters)
         ctx.save();
         if (ctx.roundRect) {
           ctx.beginPath();
-          ctx.roundRect(imgBoxX, imgBoxY, imgBoxW, imgBoxH, 16);
+          ctx.roundRect(pad, artY, artW, artH, 14);
           ctx.clip();
         }
-        const imgRatio = (img.width || 4) / (img.height || 5);
-        const boxRatio = imgBoxW / imgBoxH;
-        let dw, dh, dx, dy;
-        if (imgRatio > boxRatio) {
-          dw = imgBoxW;
-          dh = imgBoxW / imgRatio;
-          dx = imgBoxX;
-          dy = imgBoxY + (imgBoxH - dh) / 2;
-        } else {
-          dh = imgBoxH;
-          dw = imgBoxH * imgRatio;
-          dx = imgBoxX + (imgBoxW - dw) / 2;
-          dy = imgBoxY;
-        }
-        ctx.drawImage(img, dx, dy, dw, dh);
+        ctx.drawImage(img, pad, artY, artW, artH);
         ctx.restore();
 
         // 5. Artwork Title & Features
         ctx.textAlign = "left";
         ctx.fillStyle = "#1a1a1a";
         ctx.font = "bold 32px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
-        ctx.fillText(displayName, 56, 905);
+        ctx.fillText(displayName, pad, titleY);
 
         ctx.fillStyle = "#666666";
         ctx.font = "20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
         const features = item.features || (item.keywords || []).join(" · ") || "";
-        ctx.fillText(features.length > 34 ? features.slice(0, 33) + "..." : features, 56, 946);
+        ctx.fillText(features.length > 34 ? features.slice(0, 33) + "..." : features, pad, featuresY);
 
         // 6. Dashed Separator Line
         ctx.beginPath();
         ctx.setLineDash([8, 6]);
         ctx.strokeStyle = "#ded3c2";
         ctx.lineWidth = 1.5;
-        ctx.moveTo(56, 1005);
-        ctx.lineTo(W - 56, 1005);
+        ctx.moveTo(pad, lineY);
+        ctx.lineTo(W - pad, lineY);
         ctx.stroke();
         ctx.setLineDash([]);
 
         // 7. Footer Left Typography & Right QR Code
         ctx.fillStyle = "#222222";
         ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText("长按识别二维码", 56, 1070);
+        ctx.fillText("长按识别二维码", pad, qrBoxY + 36);
 
         ctx.fillStyle = "#777777";
         ctx.font = "18px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText("鉴赏与获取 Prompt", 56, 1110);
+        ctx.fillText("鉴赏与获取 Prompt", pad, qrBoxY + 76);
 
         // Right QR Code
         if (typeof QRCode === "undefined") {
@@ -2316,26 +2362,25 @@
         }
         const qrCanvas = document.createElement("canvas");
         await QRCode.toCanvas(qrCanvas, shareUrl, {
-          width: 140,
+          width: qrSize,
           margin: 1,
           color: { dark: "#222222", light: "#ffffff" }
         });
 
-        const qrBoxX = W - 196;
-        const qrBoxY = 1030;
+        const qrBoxX = W - pad - qrSize;
         ctx.fillStyle = "#ffffff";
         ctx.strokeStyle = "#e5ddcf";
         ctx.lineWidth = 1.5;
         if (ctx.roundRect) {
           ctx.beginPath();
-          ctx.roundRect(qrBoxX - 6, qrBoxY - 6, 152, 152, 10);
+          ctx.roundRect(qrBoxX - 6, qrBoxY - 6, qrSize + 12, qrSize + 12, 10);
           ctx.fill();
           ctx.stroke();
         } else {
-          ctx.fillRect(qrBoxX - 6, qrBoxY - 6, 152, 152);
-          ctx.strokeRect(qrBoxX - 6, qrBoxY - 6, 152, 152);
+          ctx.fillRect(qrBoxX - 6, qrBoxY - 6, qrSize + 12, qrSize + 12);
+          ctx.strokeRect(qrBoxX - 6, qrBoxY - 6, qrSize + 12, qrSize + 12);
         }
-        ctx.drawImage(qrCanvas, qrBoxX, qrBoxY, 140, 140);
+        ctx.drawImage(qrCanvas, qrBoxX, qrBoxY, qrSize, qrSize);
 
         // 8. Download Generated Poster Blob
         const cleanTitle = displayName.replace(/[\/:*?"<>|]/g, "_");
@@ -2377,12 +2422,31 @@
 
     function setupSwiperGestures() {
       if (!noteSwiperWrap || !noteSwiperTrack) return;
+      const noteWindow = noteModal.querySelector(".note-window");
+
+      let isEdgeSwipeBack = false;
+      let edgeStartX = 0;
+      let edgeCurrentX = 0;
 
       // Touch events (Mobile)
       noteSwiperWrap.addEventListener("touchstart", e => {
         if (isAnimatingSlide || e.touches.length !== 1) return;
+        const startX = e.touches[0].clientX;
+
+        // Mobile Left-Edge Swipe Guard:
+        // If gesture starts within 44px of the left screen edge, treat as "Return to List" gesture
+        if (startX <= 44) {
+          isEdgeSwipeBack = true;
+          isSwiperDragging = false;
+          edgeStartX = startX;
+          edgeCurrentX = startX;
+          if (noteWindow) noteWindow.style.transition = "none";
+          return;
+        }
+
+        isEdgeSwipeBack = false;
         isSwiperDragging = true;
-        swiperStartX = e.touches[0].clientX;
+        swiperStartX = startX;
         swiperStartY = e.touches[0].clientY;
         swiperCurrentX = swiperStartX;
         swiperDeltaX = 0;
@@ -2392,6 +2456,20 @@
       }, { passive: true });
 
       noteSwiperWrap.addEventListener("touchmove", e => {
+        if (isEdgeSwipeBack) {
+          edgeCurrentX = e.touches[0].clientX;
+          const dx = edgeCurrentX - edgeStartX;
+          if (dx > 0) {
+            if (e.cancelable) e.preventDefault();
+            if (noteWindow) {
+              noteWindow.style.transform = `translate3d(${dx}px, 0, 0)`;
+              const progress = Math.min(dx / 280, 1);
+              noteModal.style.backgroundColor = `rgba(0, 0, 0, ${0.85 * (1 - progress * 0.7)})`;
+            }
+          }
+          return;
+        }
+
         if (!isSwiperDragging || e.touches.length !== 1) return;
         swiperCurrentX = e.touches[0].clientX;
         const curY = e.touches[0].clientY;
@@ -2411,6 +2489,28 @@
       }, { passive: false });
 
       noteSwiperWrap.addEventListener("touchend", () => {
+        if (isEdgeSwipeBack) {
+          isEdgeSwipeBack = false;
+          const dx = edgeCurrentX - edgeStartX;
+          if (dx > 75) {
+            if (noteWindow) {
+              noteWindow.style.transition = "transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease-out";
+              noteWindow.style.transform = `translate3d(${window.innerWidth || 360}px, 0, 0)`;
+              noteWindow.style.opacity = "0";
+            }
+            setTimeout(() => {
+              closeNoteDetail();
+            }, 200);
+          } else {
+            if (noteWindow) {
+              noteWindow.style.transition = "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1)";
+              noteWindow.style.transform = "translate3d(0, 0, 0)";
+            }
+            noteModal.style.backgroundColor = "";
+          }
+          return;
+        }
+
         if (!isSwiperDragging) return;
         isSwiperDragging = false;
 
@@ -2484,7 +2584,67 @@
       });
     }
 
+    function setupShareModalGestures() {
+      if (!shareModal) return;
+      const shareContainer = shareModal.querySelector(".share-modal-container");
+      let startX = 0, currentX = 0, isDragging = false;
+
+      shareModal.addEventListener("touchstart", e => {
+        if (e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isDragging = true;
+        if (shareContainer) shareContainer.style.transition = "none";
+      }, { passive: true });
+
+      shareModal.addEventListener("touchmove", e => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+        const dx = currentX - startX;
+        if (dx > 0) {
+          if (e.cancelable) e.preventDefault();
+          if (shareContainer) {
+            shareContainer.style.transform = `translate3d(${dx}px, 0, 0)`;
+            shareContainer.style.opacity = `${Math.max(0.15, 1 - dx / 240)}`;
+          }
+        }
+      }, { passive: false });
+
+      shareModal.addEventListener("touchend", () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const dx = currentX - startX;
+        if (dx > 75) {
+          if (shareContainer) {
+            shareContainer.style.transition = "transform 0.2s ease-out, opacity 0.2s ease-out";
+            shareContainer.style.transform = `translate3d(${window.innerWidth || 360}px, 0, 0)`;
+            shareContainer.style.opacity = "0";
+          }
+          setTimeout(() => {
+            closeShareCard();
+          }, 180);
+        } else {
+          if (shareContainer) {
+            shareContainer.style.transition = "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease-out";
+            shareContainer.style.transform = "translate3d(0, 0, 0)";
+            shareContainer.style.opacity = "1";
+          }
+        }
+      }, { passive: true });
+    }
+
     setupSwiperGestures();
+    setupShareModalGestures();
+
+    window.addEventListener("popstate", () => {
+      if (shareModal && shareModal.classList.contains("open")) {
+        closeShareCard(true);
+        return;
+      }
+      if (noteModal && noteModal.classList.contains("open")) {
+        closeNoteDetail(true);
+      }
+    });
 
     noteModal.onclick = (e) => {
       if (e.target.id === "note-detail-modal") {
