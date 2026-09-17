@@ -2008,26 +2008,75 @@
 
     }
 
+    /* -------------------------------------------------------------
+       Intelligent Detail Image Preloader (Lookahead Buffer Pipeline)
+       ------------------------------------------------------------- */
+    const preloadedDetailUrls = new Set();
+    let detailPreloadTimer = null;
+
+    function preloadAdjacentDetails(centerIndex) {
+      clearTimeout(detailPreloadTimer);
+      if (!currentFilteredRows || currentFilteredRows.length <= 1) return;
+
+      // Small debounce (60ms) so rapid continuous swipes settle before queuing requests
+      detailPreloadTimer = setTimeout(() => {
+        const len = currentFilteredRows.length;
+        // High-probability browse path: next 1, 2, 3, 4 slides, and previous 1 slide
+        const targetOffsets = [1, 2, 3, 4, -1];
+
+        targetOffsets.forEach((offset, idx) => {
+          const targetIdx = (centerIndex + offset + len) % len;
+          const targetItem = currentFilteredRows[targetIdx];
+          if (!targetItem || !targetItem.output) return;
+
+          const detailUrl = getDetailWebpUrl(targetItem.output);
+          if (preloadedDetailUrls.has(detailUrl)) return;
+
+          preloadedDetailUrls.add(detailUrl);
+
+          // Stagger slightly (40ms interval) to prioritize current slide network activity
+          setTimeout(() => {
+            const preloader = new Image();
+            if ("fetchPriority" in preloader) {
+              preloader.fetchPriority = "low";
+            }
+            preloader.src = detailUrl;
+            if (preloader.decode) {
+              preloader.decode().then(() => {
+                // If slide is directly adjacent on track, promote to high-res immediately
+                if (offset === 1 && imgNext && currentFilteredRows[(centerIndex + 1) % len] === targetItem) {
+                  imgNext.src = detailUrl;
+                } else if (offset === -1 && imgPrev && currentFilteredRows[(centerIndex - 1 + len) % len] === targetItem) {
+                  imgPrev.src = detailUrl;
+                }
+              }).catch(() => {});
+            }
+          }, idx * 40);
+        });
+      }, 60);
+    }
+
     function populateSwiperSlides(centerIndex) {
       if (!currentFilteredRows || currentFilteredRows.length === 0) return;
       const len = currentFilteredRows.length;
-      const curr = currentFilteredRows[centerIndex];
       const prevIdx = (centerIndex - 1 + len) % len;
       const nextIdx = (centerIndex + 1) % len;
       const prev = currentFilteredRows[prevIdx];
       const next = currentFilteredRows[nextIdx];
 
       if (imgPrev && prev) {
-        imgPrev.src = getThumbnailUrl(prev.output);
+        const prevDetail = getDetailWebpUrl(prev.output);
+        imgPrev.src = preloadedDetailUrls.has(prevDetail) ? prevDetail : getThumbnailUrl(prev.output);
         imgPrev.alt = prev.city || prev.title || prev.name || "上一张";
       }
 
       if (imgNext && next) {
-        imgNext.src = getThumbnailUrl(next.output);
+        const nextDetail = getDetailWebpUrl(next.output);
+        imgNext.src = preloadedDetailUrls.has(nextDetail) ? nextDetail : getThumbnailUrl(next.output);
         imgNext.alt = next.city || next.title || next.name || "下一张";
       }
 
-      // Preload adjacent lightweight thumbnails only (avoids multi-MB burst downloads)
+      // Preload adjacent lightweight thumbnails as baseline fallback
       if (prev && prev.output) {
         const pImg = new Image();
         pImg.src = getThumbnailUrl(prev.output);
@@ -2053,35 +2102,47 @@
       const detailWebpUrl = getDetailWebpUrl(x.output);
       const origUrl = x.output;
 
-      // 1. Current slide main image: render sharp thumbnail immediately (no blur)
-      noteMainImg.src = thumbUrl;
-      noteMainImg.alt = displayName;
+      const isAlreadyCached = preloadedDetailUrls.has(detailWebpUrl);
 
-      // Background high-res loader: decode lightweight high-res WebP (~280KB) in memory, then swap seamlessly
-      const hiresLoader = new Image();
-      hiresLoader.src = detailWebpUrl;
-      const swapToHires = () => {
-        if (currentHiresToken === thisToken && currentModalIndex === index) {
-          noteMainImg.src = hiresLoader.src;
-        }
-      };
-      if (hiresLoader.decode) {
-        hiresLoader.decode().then(swapToHires).catch(() => {
-          // Fallback to origUrl if detail webp failed
-          hiresLoader.src = origUrl;
-          if (hiresLoader.decode) hiresLoader.decode().then(swapToHires).catch(swapToHires);
-          else hiresLoader.onload = swapToHires;
-        });
+      if (isAlreadyCached) {
+        // High-res detail WebP is already preloaded into memory/disk cache! Direct instant render without thumbnail flash
+        noteMainImg.src = detailWebpUrl;
+        noteMainImg.alt = displayName;
       } else {
-        hiresLoader.onload = swapToHires;
-        hiresLoader.onerror = () => {
-          hiresLoader.src = origUrl;
-          hiresLoader.onload = swapToHires;
+        // 1. Current slide main image: render sharp thumbnail immediately (no blur)
+        noteMainImg.src = thumbUrl;
+        noteMainImg.alt = displayName;
+
+        // Background high-res loader: decode lightweight high-res WebP (~280KB) in memory, then swap seamlessly
+        const hiresLoader = new Image();
+        hiresLoader.src = detailWebpUrl;
+        const swapToHires = () => {
+          if (currentHiresToken === thisToken && currentModalIndex === index) {
+            preloadedDetailUrls.add(detailWebpUrl);
+            noteMainImg.src = hiresLoader.src;
+          }
         };
+        if (hiresLoader.decode) {
+          hiresLoader.decode().then(swapToHires).catch(() => {
+            // Fallback to origUrl if detail webp failed
+            hiresLoader.src = origUrl;
+            if (hiresLoader.decode) hiresLoader.decode().then(swapToHires).catch(swapToHires);
+            else hiresLoader.onload = swapToHires;
+          });
+        } else {
+          hiresLoader.onload = swapToHires;
+          hiresLoader.onerror = () => {
+            hiresLoader.src = origUrl;
+            hiresLoader.onload = swapToHires;
+          };
+        }
       }
 
       // Populate adjacent prev & next slides
       populateSwiperSlides(index);
+
+      // Trigger lookahead preloader for subsequent slides (focus on +1, +2, +3, +4, -1)
+      preloadAdjacentDetails(index);
 
       noteAuthorName.textContent = seriesTitle + ` · 第 ${String(x.id).padStart(2, "0")} 枚`;
 
@@ -2149,6 +2210,7 @@
     }
 
     function closeNoteDetail(fromPopState) {
+      clearTimeout(detailPreloadTimer);
       if (!fromPopState && history.state && (history.state.modal === "detail" || history.state.modal === "share")) {
         history.back();
         return;
