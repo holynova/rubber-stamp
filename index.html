@@ -157,33 +157,83 @@
     }
 
     .btn-top-download {
+      position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      height: 26px;
-      padding: 0 10px;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      background: #eae2d3;
+      color: #92887a;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+      box-shadow: none;
+    }
+    .btn-top-download:not(:disabled) {
       background: #b9281e;
       color: #ffffff;
-      border: none;
-      border-radius: 13px;
-      font-size: 11px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .15s ease;
-      white-space: nowrap;
-      box-shadow: 0 2px 6px rgba(185, 40, 30, 0.2);
+      border-color: transparent;
+      box-shadow: 0 2px 8px rgba(185, 40, 30, 0.28);
     }
-    .btn-top-download:hover {
+    .btn-top-download:hover:not(:disabled) {
       background: #9e2017;
-      transform: translateY(-1px);
+      transform: translateY(-1px) scale(1.05);
+      box-shadow: 0 4px 12px rgba(185, 40, 30, 0.35);
+    }
+    .btn-top-download:active:not(:disabled) {
+      transform: translateY(0) scale(0.96);
     }
     .btn-top-download:disabled {
-      background: #dbd3c6;
-      color: #9c9383;
+      background: #eae2d3;
+      color: #a39887;
+      border-color: transparent;
       box-shadow: none;
       cursor: not-allowed;
+      opacity: 0.72;
       transform: none;
-      opacity: 0.8;
+    }
+    .btn-top-download.loading {
+      cursor: wait;
+    }
+    .btn-top-download.loading .btn-download-icon svg {
+      animation: spin 1s linear infinite;
+    }
+    .btn-download-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-download-badge {
+      position: absolute;
+      top: -3px;
+      right: -4px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: #231b15;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1.5px solid #faf6ee;
+      box-sizing: border-box;
+      pointer-events: none;
+      animation: badgePop .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes badgePop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
     }
 
     /* Xiaohongshu Top Channel Tabs (Horizontally Scrollable) */
@@ -1169,9 +1219,9 @@
         font-size: 12.5px;
       }
       .btn-top-download {
-        height: 26px;
-        padding: 0 8px;
-        font-size: 11px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
       }
       .xhs-tabs-nav {
         gap: 16px;
@@ -1275,14 +1325,16 @@
       <!-- Search Capsule -->
       <div class="search-capsule">
         <span class="search-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-        <input type="text" id="search-input" placeholder="搜索印章、诗句、配色或游戏..." autocomplete="off">
+        <input type="text" id="search-input" placeholder="搜索" autocomplete="off">
       </div>
 
       <!-- Right Tools: Batch Download -->
       <div class="header-tools">
-        <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载所有已点赞的高清原图" disabled>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>下载 (<span id="batch-download-count">0</span>)</span>
+        <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载（点赞印章后可下载）" aria-label="批量下载" disabled>
+          <span class="btn-download-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </span>
+          <span class="btn-download-badge" id="batch-download-count" style="display: none;">0</span>
         </button>
       </div>
     </div>
@@ -1650,8 +1702,17 @@
       const count = set.size;
 
       if (favTabBadge) favTabBadge.textContent = count;
-      if (batchDownloadCount) batchDownloadCount.textContent = count;
-      if (btnBatchDownload) btnBatchDownload.disabled = count === 0;
+      if (batchDownloadCount) {
+        batchDownloadCount.textContent = count;
+        batchDownloadCount.style.display = count > 0 ? "inline-flex" : "none";
+      }
+      if (btnBatchDownload) {
+        btnBatchDownload.disabled = count === 0;
+        btnBatchDownload.title = count > 0 
+          ? `批量下载已点赞的 ${count} 张高清原图` 
+          : "批量下载（点赞印章后可下载）";
+        btnBatchDownload.setAttribute("aria-label", btnBatchDownload.title);
+      }
 
       // Update like buttons in current grid
       document.querySelectorAll(".card-like-btn").forEach(btn => {
@@ -1698,11 +1759,11 @@
         return;
       }
 
-      const origHtml = btnBatchDownload.innerHTML;
       btnBatchDownload.disabled = true;
+      btnBatchDownload.classList.add("loading");
 
       try {
-        btnBatchDownload.innerHTML = `<span>加载组件...</span>`;
+        showToast("正在准备打包组件...");
         if (typeof JSZip === "undefined") {
           await loadScriptOnce("jszip.min.js");
         }
@@ -1712,7 +1773,7 @@
 
         for (let i = 0; i < likedItems.length; i++) {
           const item = likedItems[i];
-          btnBatchDownload.innerHTML = `<span>${i + 1}/${likedItems.length}</span>`;
+          showToast(`正在打包 (${i + 1}/${likedItems.length})...`);
 
           const response = await fetch(item.output);
           if (!response.ok) throw new Error(`无法获取图片: ${item.output}`);
@@ -1723,7 +1784,7 @@
           folder.file(filename, blob);
         }
 
-        btnBatchDownload.innerHTML = `<span>压缩中...</span>`;
+        showToast("正在压缩原图合集，请稍候...");
         const zipBlob = await zip.generateAsync({
           type: "blob",
           compression: "DEFLATE",
@@ -1744,8 +1805,8 @@
         console.error("Batch download error:", err);
         showToast("下载遇到问题，请检查网络后重试");
       } finally {
-        btnBatchDownload.innerHTML = origHtml;
-        btnBatchDownload.disabled = getLikedSet().size === 0;
+        btnBatchDownload.classList.remove("loading");
+        updateLikesUI();
       }
     }
 
