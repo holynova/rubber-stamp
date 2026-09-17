@@ -7,3 +7,11 @@ node_modules/
 package-lock.json
 .wrangler/
 images/backup_cities/
+
+# Impeccable
+**/skills/impeccable/scripts/bin/
+.impeccable/config.local.json
+.impeccable/live/
+.impeccable/history/
+**/.impeccable/hook.*.json
+
