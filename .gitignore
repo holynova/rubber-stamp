@@ -7,6 +7,8 @@ node_modules/
 package-lock.json
 .wrangler/
 images/backup_cities/
+images/backup_solar_terms/
+images/backup_zodiac/
 
 # Impeccable
 **/skills/impeccable/scripts/bin/
