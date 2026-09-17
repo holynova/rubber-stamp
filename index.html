@@ -316,12 +316,15 @@
       max-width: 1200px;
       margin: 10px auto 40px;
       padding: 0 12px;
+      overflow-x: hidden;
+      touch-action: pan-y;
     }
     .feed-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
       gap: 12px 10px;
       align-items: start;
+      will-change: transform, opacity;
     }
 
     .feed-card {
@@ -2890,8 +2893,251 @@
       }, { passive: true });
     }
 
+    function setupFeedGestures() {
+      const feedContainer = document.querySelector(".feed-container");
+      if (!feedContainer || !gridEl) return;
+
+      let startX = 0, startY = 0;
+      let currentX = 0;
+      let deltaX = 0, deltaY = 0;
+      let isHorizontal = null;
+      let lastTouchX = 0, lastTouchTime = 0, velocityX = 0;
+      let isSwitching = false;
+      let hasDragged = false;
+
+      function getTabs() {
+        return Array.from(document.querySelectorAll("#series-nav .xhs-tab")).map(t => t.dataset.series);
+      }
+
+      let switchTimer = null;
+
+      function performTabSwitch(direction) {
+        const keys = getTabs();
+        const currentIdx = keys.indexOf(currentSeriesKey);
+        if (currentIdx === -1) return;
+        const targetIdx = currentIdx + direction;
+        if (targetIdx < 0 || targetIdx >= keys.length) {
+          snapBack();
+          return;
+        }
+
+        isSwitching = true;
+        const slideOutX = direction === 1 ? -80 : 80;
+        const slideInX = direction === 1 ? 60 : -60;
+
+        gridEl.style.transition = "transform 0.12s ease-out, opacity 0.12s ease-out";
+        gridEl.style.transform = `translate3d(${slideOutX}px, 0, 0)`;
+        gridEl.style.opacity = "0.2";
+
+        clearTimeout(switchTimer);
+        switchTimer = setTimeout(() => {
+          switchSeries(keys[targetIdx]);
+          window.scrollTo({ top: 0, behavior: "instant" });
+
+          gridEl.style.transition = "none";
+          gridEl.style.transform = `translate3d(${slideInX}px, 0, 0)`;
+          gridEl.style.opacity = "0.2";
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              gridEl.style.transition = "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease-out";
+              gridEl.style.transform = "translate3d(0, 0, 0)";
+              gridEl.style.opacity = "1";
+              switchTimer = setTimeout(() => {
+                isSwitching = false;
+              }, 180);
+            });
+          });
+        }, 120);
+      }
+
+      function snapBack() {
+        gridEl.style.transition = "transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease-out";
+        gridEl.style.transform = "translate3d(0, 0, 0)";
+        gridEl.style.opacity = "1";
+      }
+
+      // Touch Events (Mobile)
+      feedContainer.addEventListener("touchstart", e => {
+        if ((noteModal && noteModal.classList.contains("open")) || (shareModal && shareModal.classList.contains("open"))) return;
+        if (e.touches.length !== 1) return;
+        if (e.target.closest("button") || e.target.closest("input") || e.target.closest(".card-like-btn")) return;
+
+        if (isSwitching) {
+          isSwitching = false;
+          clearTimeout(switchTimer);
+          gridEl.style.transition = "none";
+          gridEl.style.transform = "translate3d(0, 0, 0)";
+          gridEl.style.opacity = "1";
+        }
+
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        currentX = startX;
+        deltaX = 0;
+        deltaY = 0;
+        isHorizontal = null;
+        lastTouchX = startX;
+        lastTouchTime = Date.now();
+        velocityX = 0;
+        hasDragged = false;
+        gridEl.style.transition = "none";
+      }, { passive: true });
+
+      feedContainer.addEventListener("touchmove", e => {
+        if ((noteModal && noteModal.classList.contains("open")) || (shareModal && shareModal.classList.contains("open"))) return;
+        if (e.touches.length !== 1) return;
+
+        currentX = e.touches[0].clientX;
+        const curY = e.touches[0].clientY;
+        deltaX = currentX - startX;
+        deltaY = curY - startY;
+
+        const absX = Math.abs(deltaX);
+        const absY = Math.abs(deltaY);
+
+        const now = Date.now();
+        const dt = now - lastTouchTime;
+        if (dt > 10) {
+          velocityX = (currentX - lastTouchX) / dt;
+          lastTouchX = currentX;
+          lastTouchTime = now;
+        }
+
+        if (isHorizontal === null) {
+          if (absX >= 8 || absY >= 8) {
+            if (absX >= absY * 1.05) {
+              isHorizontal = true;
+            } else if (absY > absX * 1.3 && absY >= 12) {
+              isHorizontal = false;
+            }
+          }
+        }
+
+        if (isHorizontal === true) {
+          if (e.cancelable) e.preventDefault();
+          hasDragged = true;
+          const keys = getTabs();
+          const currentIdx = keys.indexOf(currentSeriesKey);
+          let moveX = deltaX;
+          if ((currentIdx === 0 && deltaX > 0) || (currentIdx === keys.length - 1 && deltaX < 0)) {
+            moveX = deltaX * 0.26;
+          }
+          gridEl.style.transform = `translate3d(${moveX}px, 0, 0)`;
+        }
+      }, { passive: false });
+
+      feedContainer.addEventListener("touchend", () => {
+        if (isHorizontal !== true) return;
+        isHorizontal = null;
+
+        const keys = getTabs();
+        const currentIdx = keys.indexOf(currentSeriesKey);
+        const distThreshold = Math.min(window.innerWidth * 0.14, 48);
+
+        const isFlickNext = (velocityX < -0.22 || deltaX < -distThreshold) && deltaX < -15;
+        const isFlickPrev = (velocityX > 0.22 || deltaX > distThreshold) && deltaX > 15;
+
+        if (isFlickNext && currentIdx < keys.length - 1) {
+          performTabSwitch(1);
+        } else if (isFlickPrev && currentIdx > 0) {
+          performTabSwitch(-1);
+        } else {
+          snapBack();
+        }
+      }, { passive: true });
+
+      feedContainer.addEventListener("touchcancel", () => {
+        isHorizontal = null;
+        snapBack();
+      }, { passive: true });
+
+      // Mouse drag support (Desktop)
+      let isMouseDown = false;
+      let mouseStartX = 0;
+      let mouseDeltaX = 0;
+      let lastMouseX = 0, lastMouseTime = 0, mouseVelocityX = 0;
+
+      feedContainer.addEventListener("mousedown", e => {
+        if (e.button !== 0 || (noteModal && noteModal.classList.contains("open")) || (shareModal && shareModal.classList.contains("open"))) return;
+        if (e.target.closest("button") || e.target.closest("input") || e.target.closest(".card-like-btn")) return;
+
+        if (isSwitching) {
+          isSwitching = false;
+          clearTimeout(switchTimer);
+          gridEl.style.transition = "none";
+          gridEl.style.transform = "translate3d(0, 0, 0)";
+          gridEl.style.opacity = "1";
+        }
+
+        isMouseDown = true;
+        mouseStartX = e.clientX;
+        mouseDeltaX = 0;
+        lastMouseX = e.clientX;
+        lastMouseTime = Date.now();
+        mouseVelocityX = 0;
+        gridEl.style.transition = "none";
+      });
+
+      window.addEventListener("mousemove", e => {
+        if (!isMouseDown) return;
+        mouseDeltaX = e.clientX - mouseStartX;
+        const now = Date.now();
+        const dt = now - lastMouseTime;
+        if (dt > 10) {
+          mouseVelocityX = (e.clientX - lastMouseX) / dt;
+          lastMouseX = e.clientX;
+          lastMouseTime = now;
+        }
+
+        if (Math.abs(mouseDeltaX) > 6) {
+          hasDragged = true;
+          document.body.style.userSelect = "none";
+          const keys = getTabs();
+          const currentIdx = keys.indexOf(currentSeriesKey);
+          let moveX = mouseDeltaX;
+          if ((currentIdx === 0 && mouseDeltaX > 0) || (currentIdx === keys.length - 1 && mouseDeltaX < 0)) {
+            moveX = mouseDeltaX * 0.26;
+          }
+          gridEl.style.transform = `translate3d(${moveX}px, 0, 0)`;
+        }
+      });
+
+      window.addEventListener("mouseup", e => {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        document.body.style.userSelect = "";
+
+        const keys = getTabs();
+        const currentIdx = keys.indexOf(currentSeriesKey);
+        const distThreshold = Math.min(window.innerWidth * 0.14, 48);
+
+        const isFlickNext = (mouseVelocityX < -0.22 || mouseDeltaX < -distThreshold) && mouseDeltaX < -15;
+        const isFlickPrev = (mouseVelocityX > 0.22 || mouseDeltaX > distThreshold) && mouseDeltaX > 15;
+
+        if (isFlickNext && currentIdx < keys.length - 1) {
+          performTabSwitch(1);
+        } else if (isFlickPrev && currentIdx > 0) {
+          performTabSwitch(-1);
+        } else {
+          snapBack();
+        }
+
+        setTimeout(() => { hasDragged = false; }, 50);
+      });
+
+      // Prevent accidental card opening after dragging
+      feedContainer.addEventListener("click", e => {
+        if (hasDragged) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      }, true);
+    }
+
     setupSwiperGestures();
     setupShareModalGestures();
+    setupFeedGestures();
 
     window.addEventListener("popstate", () => {
       if (shareModal && shareModal.classList.contains("open")) {
