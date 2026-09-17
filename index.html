@@ -2057,6 +2057,8 @@
     let swiperDeltaY = 0;
     let isHorizontalSwipe = null;
     let isAnimatingSlide = false;
+    let animatingDirection = 0;
+    let slideAnimationTimer = null;
 
     function toggleImmersiveMode(forceState) {
       if (typeof forceState === "boolean") {
@@ -2214,35 +2216,60 @@
       syncNoteLikeUI(liked);
     }
 
-    function finishSlide(direction, currentOffset, wrapWidth) {
-      if (isAnimatingSlide) return;
+    function finishSlide(direction, currentOffset, wrapWidth, velocity) {
+      if (isAnimatingSlide) {
+        completeSlideTransition(animatingDirection);
+      }
       isAnimatingSlide = true;
+      animatingDirection = direction;
       const targetX = direction === 1 ? -wrapWidth : wrapWidth;
 
-      noteSwiperTrack.style.transition = "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)";
+      const remainingDistance = Math.abs(targetX - (currentOffset || 0));
+      let durationMs = Math.round(Math.min(220, Math.max(140, (remainingDistance / wrapWidth) * 220)));
+      if (velocity && Math.abs(velocity) > 0.4) {
+        durationMs = Math.round(Math.max(120, durationMs * 0.75));
+      }
+
+      noteSwiperTrack.style.transition = `transform ${durationMs}ms cubic-bezier(0.16, 1, 0.3, 1)`;
       noteSwiperTrack.style.transform = `translate3d(${targetX}px, 0, 0)`;
 
-      setTimeout(() => {
-        let newIdx = currentModalIndex + direction;
-        if (newIdx < 0) newIdx = currentFilteredRows.length - 1;
-        else if (newIdx >= currentFilteredRows.length) newIdx = 0;
+      slideAnimationTimer = setTimeout(() => {
+        completeSlideTransition(direction);
+      }, durationMs);
+    }
 
-        noteSwiperTrack.style.transition = "none";
-        noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+    function completeSlideTransition(direction) {
+      if (slideAnimationTimer) {
+        clearTimeout(slideAnimationTimer);
+        slideAnimationTimer = null;
+      }
+      let newIdx = currentModalIndex + direction;
+      if (newIdx < 0) newIdx = currentFilteredRows.length - 1;
+      else if (newIdx >= currentFilteredRows.length) newIdx = 0;
 
-        updateModalToSlide(newIdx);
-        isAnimatingSlide = false;
-      }, 280);
+      noteSwiperTrack.style.transition = "none";
+      noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
+
+      updateModalToSlide(newIdx);
+      isAnimatingSlide = false;
+      animatingDirection = 0;
     }
 
     function navNote(delta) {
-      if (isAnimatingSlide || !noteModal.classList.contains("open")) return;
+      if (!noteModal.classList.contains("open")) return;
       const wrapWidth = noteSwiperWrap ? noteSwiperWrap.clientWidth : 400;
-      finishSlide(delta, 0, wrapWidth);
+      finishSlide(delta, 0, wrapWidth, 0);
     }
 
     function openNoteDetail(index, fromPopState) {
       if (index < 0 || index >= currentFilteredRows.length) return;
+      if (slideAnimationTimer) {
+        clearTimeout(slideAnimationTimer);
+        slideAnimationTimer = null;
+      }
+      isAnimatingSlide = false;
+      animatingDirection = 0;
+      isSwiperDragging = false;
       isImmersive = false;
       noteModal.classList.remove("immersive-mode");
       if (noteSwiperTrack) {
@@ -2272,6 +2299,13 @@
 
     function closeNoteDetail(fromPopState) {
       clearTimeout(detailPreloadTimer);
+      if (slideAnimationTimer) {
+        clearTimeout(slideAnimationTimer);
+        slideAnimationTimer = null;
+      }
+      isAnimatingSlide = false;
+      animatingDirection = 0;
+      isSwiperDragging = false;
       if (!fromPopState && history.state && (history.state.modal === "detail" || history.state.modal === "share")) {
         history.back();
         return;
@@ -2587,14 +2621,24 @@
       let edgeStartX = 0;
       let edgeCurrentX = 0;
 
+      let lastTouchX = 0;
+      let lastTouchTime = 0;
+      let touchVelocityX = 0;
+
       // Touch events (Mobile)
       noteSwiperWrap.addEventListener("touchstart", e => {
-        if (isAnimatingSlide || e.touches.length !== 1) return;
-        const startX = e.touches[0].clientX;
+        if (e.touches.length !== 1) return;
 
-        // Mobile Left-Edge Swipe Guard:
-        // If gesture starts within 44px of the left screen edge, treat as "Return to List" gesture
-        if (startX <= 44) {
+        // If slide transition is still settling, instantly fast-forward so this touch is never missed
+        if (isAnimatingSlide) {
+          completeSlideTransition(animatingDirection);
+        }
+
+        const startX = e.touches[0].clientX;
+        const startY = e.touches[0].clientY;
+
+        // Screen edge guard (only screen edge <= 20px)
+        if (startX <= 20) {
           isEdgeSwipeBack = true;
           isSwiperDragging = false;
           edgeStartX = startX;
@@ -2606,11 +2650,16 @@
         isEdgeSwipeBack = false;
         isSwiperDragging = true;
         swiperStartX = startX;
-        swiperStartY = e.touches[0].clientY;
-        swiperCurrentX = swiperStartX;
+        swiperStartY = startY;
+        swiperCurrentX = startX;
         swiperDeltaX = 0;
         swiperDeltaY = 0;
         isHorizontalSwipe = null;
+
+        lastTouchX = startX;
+        lastTouchTime = Date.now();
+        touchVelocityX = 0;
+
         noteSwiperTrack.style.transition = "none";
       }, { passive: true });
 
@@ -2635,25 +2684,43 @@
         swiperDeltaX = swiperCurrentX - swiperStartX;
         swiperDeltaY = curY - swiperStartY;
 
+        const absX = Math.abs(swiperDeltaX);
+        const absY = Math.abs(swiperDeltaY);
+
+        // Calculate real-time instantaneous touch velocity (px/ms)
+        const now = Date.now();
+        const dt = now - lastTouchTime;
+        if (dt > 10) {
+          touchVelocityX = (swiperCurrentX - lastTouchX) / dt;
+          lastTouchX = swiperCurrentX;
+          lastTouchTime = now;
+        }
+
+        // Direction lock with tolerant angle:
         if (isHorizontalSwipe === null) {
-          if (Math.abs(swiperDeltaX) > 6 || Math.abs(swiperDeltaY) > 6) {
-            isHorizontalSwipe = Math.abs(swiperDeltaX) > Math.abs(swiperDeltaY) * 1.1;
+          if (absX >= 7 || absY >= 7) {
+            if (absX >= absY * 0.75) {
+              isHorizontalSwipe = true;
+            } else if (absY > absX * 1.4 && absY >= 12) {
+              // Clearly vertical scroll
+              isHorizontalSwipe = false;
+            }
           }
         }
 
-        if (isHorizontalSwipe) {
+        if (isHorizontalSwipe === true) {
           if (e.cancelable) e.preventDefault();
           noteSwiperTrack.style.transform = `translate3d(${swiperDeltaX}px, 0, 0)`;
         }
       }, { passive: false });
 
-      noteSwiperWrap.addEventListener("touchend", () => {
+      const handleTouchEnd = () => {
         if (isEdgeSwipeBack) {
           isEdgeSwipeBack = false;
           const dx = edgeCurrentX - edgeStartX;
           if (dx > 75) {
             if (noteWindow) {
-              noteWindow.style.transition = "transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease-out";
+              noteWindow.style.transition = "transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease-out";
               noteWindow.style.transform = `translate3d(${window.innerWidth || 360}px, 0, 0)`;
               noteWindow.style.opacity = "0";
             }
@@ -2662,7 +2729,7 @@
             }, 200);
           } else {
             if (noteWindow) {
-              noteWindow.style.transition = "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1)";
+              noteWindow.style.transition = "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)";
               noteWindow.style.transform = "translate3d(0, 0, 0)";
             }
             noteModal.style.backgroundColor = "";
@@ -2680,50 +2747,78 @@
         }
 
         if (!isHorizontalSwipe) {
-          noteSwiperTrack.style.transition = "transform 0.24s cubic-bezier(0.22, 1, 0.36, 1)";
+          noteSwiperTrack.style.transition = "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)";
           noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
           return;
         }
 
         const wrapWidth = noteSwiperWrap.clientWidth || 360;
-        const threshold = Math.min(wrapWidth * 0.16, 60);
+        const distThreshold = Math.min(wrapWidth * 0.15, 52);
 
-        if (swiperDeltaX < -threshold) {
-          finishSlide(1, swiperDeltaX, wrapWidth);
-        } else if (swiperDeltaX > threshold) {
-          finishSlide(-1, swiperDeltaX, wrapWidth);
+        // Responsive flick condition: velocity > 0.25 px/ms with min 15px movement OR displacement > threshold
+        const isFlickNext = (touchVelocityX < -0.25 || swiperDeltaX < -distThreshold) && swiperDeltaX < -15;
+        const isFlickPrev = (touchVelocityX > 0.25 || swiperDeltaX > distThreshold) && swiperDeltaX > 15;
+
+        if (isFlickNext) {
+          finishSlide(1, swiperDeltaX, wrapWidth, touchVelocityX);
+        } else if (isFlickPrev) {
+          finishSlide(-1, swiperDeltaX, wrapWidth, touchVelocityX);
         } else {
-          noteSwiperTrack.style.transition = "transform 0.24s cubic-bezier(0.22, 1, 0.36, 1)";
+          // Snap back smoothly with spring curve
+          noteSwiperTrack.style.transition = "transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)";
           noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
         }
+      };
+
+      noteSwiperWrap.addEventListener("touchend", handleTouchEnd, { passive: true });
+      noteSwiperWrap.addEventListener("touchcancel", () => {
+        isEdgeSwipeBack = false;
+        isSwiperDragging = false;
+        isHorizontalSwipe = null;
+        noteSwiperTrack.style.transition = "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)";
+        noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
       }, { passive: true });
 
       // Mouse Drag support (Desktop)
       let isPointerDown = false;
       let pointerStartX = 0;
       let pointerDeltaX = 0;
+      let lastPointerX = 0;
+      let lastPointerTime = 0;
+      let pointerVelocityX = 0;
 
       noteSwiperWrap.addEventListener("mousedown", e => {
-        if (isAnimatingSlide || e.button !== 0) return;
+        if (e.button !== 0) return;
+        if (isAnimatingSlide) {
+          completeSlideTransition(animatingDirection);
+        }
         isPointerDown = true;
         pointerStartX = e.clientX;
         pointerDeltaX = 0;
+        lastPointerX = e.clientX;
+        lastPointerTime = Date.now();
+        pointerVelocityX = 0;
         noteSwiperTrack.style.transition = "none";
       });
 
       window.addEventListener("mousemove", e => {
         if (!isPointerDown) return;
         pointerDeltaX = e.clientX - pointerStartX;
-        if (Math.abs(pointerDeltaX) > 4) {
-          noteSwiperTrack.style.transform = `translate3d(${pointerDeltaX}px, 0, 0)`;
+        const now = Date.now();
+        const dt = now - lastPointerTime;
+        if (dt > 10) {
+          pointerVelocityX = (e.clientX - lastPointerX) / dt;
+          lastPointerX = e.clientX;
+          lastPointerTime = now;
         }
+        noteSwiperTrack.style.transform = `translate3d(${pointerDeltaX}px, 0, 0)`;
       });
 
       window.addEventListener("mouseup", e => {
         if (!isPointerDown) return;
         isPointerDown = false;
         const wrapWidth = noteSwiperWrap.clientWidth || 360;
-        const threshold = Math.min(wrapWidth * 0.16, 60);
+        const distThreshold = Math.min(wrapWidth * 0.15, 52);
 
         if (Math.abs(pointerDeltaX) < 6) {
           if (e.target && e.target.closest("#note-swiper-wrap")) {
@@ -2732,12 +2827,15 @@
           return;
         }
 
-        if (pointerDeltaX < -threshold) {
-          finishSlide(1, pointerDeltaX, wrapWidth);
-        } else if (pointerDeltaX > threshold) {
-          finishSlide(-1, pointerDeltaX, wrapWidth);
+        const isFlickNext = (pointerVelocityX < -0.25 || pointerDeltaX < -distThreshold) && pointerDeltaX < -15;
+        const isFlickPrev = (pointerVelocityX > 0.25 || pointerDeltaX > distThreshold) && pointerDeltaX > 15;
+
+        if (isFlickNext) {
+          finishSlide(1, pointerDeltaX, wrapWidth, pointerVelocityX);
+        } else if (isFlickPrev) {
+          finishSlide(-1, pointerDeltaX, wrapWidth, pointerVelocityX);
         } else {
-          noteSwiperTrack.style.transition = "transform 0.24s cubic-bezier(0.22, 1, 0.36, 1)";
+          noteSwiperTrack.style.transition = "transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)";
           noteSwiperTrack.style.transform = "translate3d(0, 0, 0)";
         }
       });
