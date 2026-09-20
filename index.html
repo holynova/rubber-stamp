@@ -1213,13 +1213,28 @@
         gap: 8px;
         padding-bottom: 9px;
       }
+      .header-tools {
+        gap: 6px;
+      }
       .search-capsule {
-        flex: 1 1 auto;
+        flex: 1 1 0;
+        width: 0;
+        min-width: 0;
         max-width: none;
       }
       .search-capsule input {
+        min-width: 0;
         height: 33px;
         font-size: 12.5px;
+      }
+      .btn-top-skill {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+      }
+      .btn-top-skill .btn-skill-text {
+        display: none;
       }
       .btn-top-download {
         width: 32px;
@@ -1313,6 +1328,352 @@
         padding-bottom: 24px;
       }
     }
+
+    /* Top Header Skill Button */
+    .btn-top-skill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 32px;
+      padding: 0 11px;
+      background: #eae2d3;
+      color: #5d5345;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+      box-shadow: none;
+      text-decoration: none;
+      user-select: none;
+    }
+    .btn-top-skill:hover {
+      background: #dfd5c4;
+      color: #1f2124;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .btn-top-skill:active {
+      transform: translateY(0) scale(0.97);
+    }
+    .btn-skill-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #b9281e;
+    }
+    .btn-skill-text {
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    /* Skill Modal Styling */
+    #skill-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2100;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    #skill-modal.open {
+      display: flex;
+    }
+    .skill-modal-window {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      background: #faf6ee;
+      background-image: radial-gradient(#ece3d2 1px, transparent 1px);
+      background-size: 20px 20px;
+      border: 1px solid rgba(185, 40, 30, 0.16);
+      border-radius: 18px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      animation: modalScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalScaleIn {
+      0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .skill-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(250, 246, 238, 0.95);
+    }
+    .skill-header-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .skill-badge-logo {
+      width: 34px;
+      height: 34px;
+      background: #b9281e;
+      color: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(185, 40, 30, 0.28);
+      font-family: var(--font-seal, serif);
+      flex-shrink: 0;
+    }
+    .skill-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-modal-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      color: #231b15;
+      letter-spacing: -0.01em;
+      font-family: monospace, sans-serif;
+    }
+    .skill-ver-tag {
+      display: inline-block;
+      padding: 2px 7px;
+      background: #e8ded0;
+      color: #726252;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .skill-modal-subtitle {
+      margin: 3px 0 0;
+      font-size: 12.5px;
+      color: #7a6e62;
+    }
+    .skill-modal-close {
+      background: rgba(0, 0, 0, 0.05);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      cursor: pointer;
+      transition: all .15s ease;
+      flex-shrink: 0;
+    }
+    .skill-modal-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #000;
+      transform: scale(1.06);
+    }
+    .skill-modal-body {
+      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: calc(88vh - 80px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
+    }
+    .skill-section {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .skill-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: #3e352d;
+    }
+    .skill-install-tabs {
+      display: flex;
+      gap: 5px;
+      background: #eae2d3;
+      padding: 2px;
+      border-radius: 14px;
+    }
+    .skill-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #756858;
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+    .skill-tab-btn.active {
+      background: #ffffff;
+      color: #1f2124;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .skill-code-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #201d1b;
+      border: 1px solid #332d29;
+      border-radius: 10px;
+      padding: 10px 14px;
+      gap: 10px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.25);
+    }
+    .skill-code-text {
+      margin: 0;
+      flex: 1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+      color: #f7ede1;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .btn-copy-skill-cmd {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #b9281e;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all .18s ease;
+    }
+    .btn-copy-skill-cmd:hover {
+      background: #9f1f16;
+      transform: scale(1.02);
+    }
+    .btn-copy-skill-cmd:active {
+      transform: scale(0.96);
+    }
+    .btn-copy-skill-cmd.copied {
+      background: #2b7a4b;
+    }
+
+    .skill-modes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 520px) {
+      .skill-modes-grid {
+        grid-template-columns: 1fr;
+      }
+      .skill-install-tabs {
+        overflow-x: auto;
+      }
+    }
+    .skill-mode-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .skill-mode-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3b322b;
+      gap: 4px;
+    }
+    .skill-mode-desc {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #665b50;
+    }
+    .skill-mode-desc strong {
+      color: #9c281e;
+    }
+    .skill-mode-example {
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(0, 0, 0, 0.08);
+      font-size: 11px;
+      color: #8c7e72;
+      line-height: 1.4;
+    }
+    .skill-mode-example code {
+      background: #f4ede1;
+      padding: 1px 4px;
+      border-radius: 4px;
+      color: #332d29;
+      font-family: monospace;
+    }
+
+    .skill-links-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .skill-link-btn {
+      flex: 1 1 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .18s ease;
+      box-sizing: border-box;
+    }
+    .skill-link-btn.primary {
+      background: #231b15;
+      color: #faf6ee;
+    }
+    .skill-link-btn.primary:hover {
+      background: #3c322b;
+      transform: translateY(-1px);
+    }
+    .skill-link-btn.secondary {
+      background: #ede3d2;
+      color: #42382f;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .skill-link-btn.secondary:hover {
+      background: #e2d6c1;
+      color: #1a1613;
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 <body>
@@ -1331,8 +1692,14 @@
         <input type="text" id="search-input" placeholder="搜索" autocomplete="off">
       </div>
 
-      <!-- Right Tools: Batch Download -->
+      <!-- Right Tools: AI Skill & Batch Download -->
       <div class="header-tools">
+        <button class="btn-top-skill" id="btn-top-skill" onclick="openSkillModal()" title="AI 橡皮图章生成器 Skill（支持文字/图片双模式）" aria-label="获取 Skill">
+          <span class="btn-skill-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </span>
+          <span class="btn-skill-text">Skill</span>
+        </button>
         <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载（点赞印章后可下载）" aria-label="批量下载" disabled>
           <span class="btn-download-icon">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -1539,6 +1906,84 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
           <span>复制链接</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Agent Skill Modal (橡皮图章生成器 Skill) -->
+  <div id="skill-modal" aria-modal="true" role="dialog">
+    <div class="skill-modal-window">
+      <!-- Modal Header -->
+      <div class="skill-modal-header">
+        <div class="skill-header-title-wrap">
+          <div class="skill-badge-logo">印</div>
+          <div>
+            <div class="skill-title-row">
+              <h3 class="skill-modal-title">rubber-stamp-art</h3>
+              <span class="skill-ver-tag">Skill v1.0</span>
+            </div>
+            <p class="skill-modal-subtitle">AI 橡皮图章版画生成器 · 支持文字/图片双模式</p>
+          </div>
+        </div>
+        <button class="skill-modal-close" onclick="closeSkillModal()" title="关闭" aria-label="关闭">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="skill-modal-body">
+        <!-- Install Command Section -->
+        <div class="skill-section">
+          <div class="skill-section-title">
+            <span>⚡️ 一键安装命令</span>
+            <div class="skill-install-tabs" id="skill-install-tabs">
+              <button class="skill-tab-btn active" data-target="npx" onclick="switchSkillTab('npx')">npx</button>
+              <button class="skill-tab-btn" data-target="claude" onclick="switchSkillTab('claude')">Claude</button>
+              <button class="skill-tab-btn" data-target="agents" onclick="switchSkillTab('agents')">Antigravity</button>
+              <button class="skill-tab-btn" data-target="cursor" onclick="switchSkillTab('cursor')">Cursor</button>
+            </div>
+          </div>
+          
+          <div class="skill-code-box">
+            <pre class="skill-code-text" id="skill-cmd-code">npx skills add holynova/rubber-stamp-world-cities --skill rubber-stamp-art</pre>
+            <button class="btn-copy-skill-cmd" id="btn-copy-skill" onclick="copySkillCommand()" title="复制命令">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span id="skill-copy-btn-text">复制</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dual Mode Showcase Section -->
+        <div class="skill-section">
+          <div class="skill-section-title">✨ 双模式工作流</div>
+          <div class="skill-modes-grid">
+            <div class="skill-mode-card">
+              <div class="skill-mode-badge text-mode">✍️ 文字输入模式</div>
+              <p class="skill-mode-desc">输入诗词名句、城市地标或抽象意象，Skill 自动规划 <strong>4:5 宣纸构图</strong>，匹配 2~3 种矿物印泥，生成 <strong>70% 黄金版心</strong> 与自然留白提示词。</p>
+              <div class="skill-mode-example"><code>"京都金阁寺"</code> → 自动生成金箔/松烟/水蓝刻版 Prompt</div>
+            </div>
+            <div class="skill-mode-card">
+              <div class="skill-mode-badge img-mode">🖼️ 图片输入模式</div>
+              <p class="skill-mode-desc">上传或输入参考照片（宠物、风景、建筑或手绘），Skill 智能<strong>剥离杂乱背景</strong>，提取关键剪影，转化为手工雕刻木刻版画与宣纸压印肌理。</p>
+              <div class="skill-mode-example"><code>用户照片</code> → 剥离光影杂色，转为阴阳刻线条与矿物印泥</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Links Section -->
+        <div class="skill-section skill-links-section">
+          <div class="skill-section-title">📖 规范文档与开源仓库</div>
+          <div class="skill-links-row">
+            <a href="https://github.com/holynova/rubber-stamp-world-cities/blob/master/skills/rubber-stamp-art/SKILL.md" target="_blank" rel="noopener noreferrer" class="skill-link-btn primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>查看 SKILL.md 完整规范</span>
+            </a>
+            <a href="https://github.com/holynova/rubber-stamp-world-cities" target="_blank" rel="noopener noreferrer" class="skill-link-btn secondary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub 仓库</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2672,6 +3117,94 @@
       };
     }
 
+    /* -------------------------------------------------------------
+       Rubber Stamp Art Skill Modal & Copy Functions
+       ------------------------------------------------------------- */
+    const skillModal = document.querySelector("#skill-modal");
+    const skillCmdCode = document.querySelector("#skill-cmd-code");
+    const skillCopyBtnText = document.querySelector("#skill-copy-btn-text");
+    const btnCopySkill = document.querySelector("#btn-copy-skill");
+
+    const SKILL_COMMANDS = {
+      npx: "npx skills add holynova/rubber-stamp-world-cities --skill rubber-stamp-art",
+      claude: "mkdir -p .claude/skills/rubber-stamp-art && curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .claude/skills/rubber-stamp-art/SKILL.md",
+      agents: "mkdir -p .agents/skills/rubber-stamp-art && curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md",
+      cursor: "mkdir -p .cursor/skills/rubber-stamp-art && curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .cursor/skills/rubber-stamp-art/SKILL.md"
+    };
+
+    let activeSkillTab = "npx";
+
+    function openSkillModal() {
+      if (!skillModal) return;
+      skillModal.classList.add("open");
+      skillModal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSkillModal() {
+      if (!skillModal) return;
+      skillModal.classList.remove("open");
+      skillModal.style.display = "none";
+      if ((!noteModal || !noteModal.classList.contains("open")) && (!shareModal || !shareModal.classList.contains("open"))) {
+        document.body.style.overflow = "";
+      }
+    }
+
+    function switchSkillTab(tabKey) {
+      activeSkillTab = tabKey;
+      const tabBtns = document.querySelectorAll(".skill-tab-btn");
+      tabBtns.forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-target") === tabKey);
+      });
+      if (skillCmdCode && SKILL_COMMANDS[tabKey]) {
+        skillCmdCode.textContent = SKILL_COMMANDS[tabKey];
+      }
+    }
+
+    function copySkillCommand() {
+      const cmd = SKILL_COMMANDS[activeSkillTab] || (skillCmdCode ? skillCmdCode.textContent.trim() : "");
+      if (!cmd) return;
+
+      const finishCopyFeedback = () => {
+        if (btnCopySkill) btnCopySkill.classList.add("copied");
+        if (skillCopyBtnText) skillCopyBtnText.textContent = "已复制 ✓";
+        showToast("已复制 Skill 安装命令到剪贴板");
+        setTimeout(() => {
+          if (btnCopySkill) btnCopySkill.classList.remove("copied");
+          if (skillCopyBtnText) skillCopyBtnText.textContent = "复制";
+        }, 2200);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cmd).then(finishCopyFeedback).catch(() => {
+          fallbackCopyText(cmd);
+          finishCopyFeedback();
+        });
+      } else {
+        fallbackCopyText(cmd);
+        finishCopyFeedback();
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+
+    if (skillModal) {
+      skillModal.onclick = (e) => {
+        if (e.target.id === "skill-modal") {
+          closeSkillModal();
+        }
+      };
+    }
+
     function setupSwiperGestures() {
       if (!noteSwiperWrap || !noteSwiperTrack) return;
       const noteWindow = noteModal.querySelector(".note-window");
@@ -3225,6 +3758,12 @@
     };
 
     window.addEventListener("keydown", e => {
+      if (skillModal && skillModal.classList.contains("open")) {
+        if (e.key === "Escape") {
+          closeSkillModal();
+          return;
+        }
+      }
       if (shareModal && shareModal.classList.contains("open")) {
         if (e.key === "Escape") {
           closeShareCard();
@@ -3284,6 +3823,11 @@
       if (!isNaN(sIdx) && currentFilteredRows[sIdx]) {
         openShareCard(currentFilteredRows[sIdx]);
       }
+    }
+
+    const skillParam = urlParams.get("skill");
+    if (skillParam === "1" || skillParam === "true") {
+      openSkillModal();
     }
 
     const immersiveParam = urlParams.get("immersive");
