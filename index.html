@@ -1708,6 +1708,10 @@
           <span class="tab-text">世界城市</span>
           <span class="tab-indicator"></span>
         </button>
+        <button class="xhs-tab" data-series="china_cities">
+          <span class="tab-text">中国城市</span>
+          <span class="tab-indicator"></span>
+        </button>
         <button class="xhs-tab" data-series="games">
           <span class="tab-text">游戏神作</span>
           <span class="tab-indicator"></span>
@@ -2071,7 +2075,7 @@
     function getAllLikedItems() {
       const set = getLikedSet();
       const allLiked = [];
-      const seriesOrder = ["scenic_spots", "poetry", "cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+      const seriesOrder = ["scenic_spots", "poetry", "cities", "china_cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
       seriesOrder.forEach(sKey => {
         const col = window.COLLECTIONS[sKey];
         if (col && col.items) {
@@ -2255,7 +2259,7 @@
        ------------------------------------------------------------- */
     function getCollection() {
       if (currentSeriesKey === "all") {
-        const order = ["scenic_spots", "poetry", "cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+        const order = ["scenic_spots", "poetry", "cities", "china_cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
         const allItems = [];
         order.forEach(k => {
           const col = window.COLLECTIONS[k];
@@ -2292,7 +2296,7 @@
 
     function getSeriesItems(seriesKey) {
       if (seriesKey === "all") {
-        const order = ["scenic_spots", "poetry", "cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+        const order = ["scenic_spots", "poetry", "cities", "china_cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
         const allItems = [];
         order.forEach(k => {
           const col = window.COLLECTIONS[k];
