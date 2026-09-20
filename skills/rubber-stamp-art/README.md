@@ -13,13 +13,13 @@
 在任意 Agent 项目终端中运行：
 
 ```bash
-npx skills add holynova/rubber-stamp-world-cities --skill rubber-stamp-art
+npx skills add holynova/rubber-stamp --skill rubber-stamp-art
 ```
 
 或指定 GitHub 完整路径：
 
 ```bash
-npx skills add https://github.com/holynova/rubber-stamp-world-cities/tree/master/skills/rubber-stamp-art
+npx skills add https://github.com/holynova/rubber-stamp/tree/master/skills/rubber-stamp-art
 ```
 
 ---
@@ -31,11 +31,11 @@ npx skills add https://github.com/holynova/rubber-stamp-world-cities/tree/master
 ```bash
 # 全局安装到 Claude Code
 mkdir -p ~/.claude/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o ~/.claude/skills/rubber-stamp-art/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o ~/.claude/skills/rubber-stamp-art/SKILL.md
 
 # 或安装到当前项目
 mkdir -p .claude/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .claude/skills/rubber-stamp-art/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .claude/skills/rubber-stamp-art/SKILL.md
 ```
 
 ---
@@ -44,7 +44,7 @@ curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/
 
 ```bash
 mkdir -p .agents/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md
 ```
 
 ---
@@ -55,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/
 
 ```bash
 mkdir -p .cursor/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .cursor/skills/rubber-stamp-art/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .cursor/skills/rubber-stamp-art/SKILL.md
 ```
 
 ---

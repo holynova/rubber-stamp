@@ -4,7 +4,7 @@
 from pathlib import Path
 import json, os, re, shutil, subprocess, time
 
-BASE = Path("/Users/sym/code/rubber-stamp-world-cities")
+BASE = Path(__file__).resolve().parent
 POETRY_DIR = BASE / "images" / "poetry"
 POETRY_DIR.mkdir(parents=True, exist_ok=True)
 

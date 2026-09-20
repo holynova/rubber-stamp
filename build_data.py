@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-BASE = Path("/Users/sym/code/rubber-stamp-world-cities")
+BASE = Path(__file__).resolve().parent
 
 def load_json(filename):
     p = BASE / filename

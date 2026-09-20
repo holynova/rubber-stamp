@@ -18,8 +18,8 @@
 ## 在线体验
 
 - Cloudflare 线上站点：<https://rubber-stamp-world-cities.xiaosang.cc/>
-- GitHub Pages 演示：<https://holynova.github.io/rubber-stamp-world-cities/>
-- GitHub 源码仓库：<https://github.com/holynova/rubber-stamp-world-cities>
+- GitHub Pages 演示：<https://holynova.github.io/rubber-stamp/>
+- GitHub 源码仓库：<https://github.com/holynova/rubber-stamp>
 
 ![画廊截图](./screenshot.png)
 
@@ -50,10 +50,10 @@
 
 ```bash
 # 通用 npx skills 安装（推荐）
-npx skills add holynova/rubber-stamp-world-cities --skill rubber-stamp-art
+npx skills add holynova/rubber-stamp --skill rubber-stamp-art
 
 # 或使用完整 GitHub 链接
-npx skills add https://github.com/holynova/rubber-stamp-world-cities/tree/master/skills/rubber-stamp-art
+npx skills add https://github.com/holynova/rubber-stamp/tree/master/skills/rubber-stamp-art
 ```
 
 ### 手动安装到 Agent (Claude Code / Antigravity / Cursor)
@@ -61,11 +61,11 @@ npx skills add https://github.com/holynova/rubber-stamp-world-cities/tree/master
 ```bash
 # 安装到当前项目 .agents 目录
 mkdir -p .agents/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp-world-cities/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md
 ```
 
 - 📖 查看技能文档：[`skills/rubber-stamp-art/SKILL.md`](./skills/rubber-stamp-art/SKILL.md)
-- 🔗 GitHub 仓库：[rubber-stamp-world-cities](https://github.com/holynova/rubber-stamp-world-cities)
+- 🔗 GitHub 仓库：[rubber-stamp](https://github.com/holynova/rubber-stamp)
 
 ## 本地运行
 
