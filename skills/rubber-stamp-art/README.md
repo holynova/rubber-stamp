@@ -8,54 +8,10 @@
 
 ## 快速安装方式
 
-### 方式 1: 使用 `npx skills`（推荐，跨平台通用）
-
-在任意 Agent 项目终端中运行：
+在支持 Agent Skills 规范的终端中运行：
 
 ```bash
 npx skills add holynova/rubber-stamp --skill rubber-stamp-art
-```
-
-或指定 GitHub 完整路径：
-
-```bash
-npx skills add https://github.com/holynova/rubber-stamp/tree/master/skills/rubber-stamp-art
-```
-
----
-
-### 方式 2: Claude Code
-
-在 Claude Code 项目中直接添加：
-
-```bash
-# 全局安装到 Claude Code
-mkdir -p ~/.claude/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o ~/.claude/skills/rubber-stamp-art/SKILL.md
-
-# 或安装到当前项目
-mkdir -p .claude/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .claude/skills/rubber-stamp-art/SKILL.md
-```
-
----
-
-### 方式 3: Antigravity / Agent Skills 规范
-
-```bash
-mkdir -p .agents/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md
-```
-
----
-
-### 方式 4: Cursor / Windsurf / VS Code
-
-将 `SKILL.md` 复制到项目的 `.cursor/rules/` 或对应技能目录：
-
-```bash
-mkdir -p .cursor/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .cursor/skills/rubber-stamp-art/SKILL.md
 ```
 
 ---

@@ -40,7 +40,7 @@
 5. **二十四节气（24 幅）**：春生、夏长、秋收、冬藏，24 幅物候印章。
 6. **山海神异（10 幅）**：九尾狐、烛九阴、帝江、白泽、毕方、鲲鹏、饕餮、穷奇、陆吾、夫诸等 10 尊神异版画。
 
-## 🎨 AI 生图 Agent Skill（橡皮图章生成器）
+## AI 生图 Agent Skill（橡皮图章生成器）
 
 项目现已内置并开源专业的 Agent 技能包：[`rubber-stamp-art`](./skills/rubber-stamp-art/SKILL.md)。
 
@@ -49,23 +49,11 @@
 ### 一键安装命令
 
 ```bash
-# 通用 npx skills 安装（推荐）
 npx skills add holynova/rubber-stamp --skill rubber-stamp-art
-
-# 或使用完整 GitHub 链接
-npx skills add https://github.com/holynova/rubber-stamp/tree/master/skills/rubber-stamp-art
 ```
 
-### 手动安装到 Agent (Claude Code / Antigravity / Cursor)
-
-```bash
-# 安装到当前项目 .agents 目录
-mkdir -p .agents/skills/rubber-stamp-art
-curl -fsSL https://raw.githubusercontent.com/holynova/rubber-stamp/master/skills/rubber-stamp-art/SKILL.md -o .agents/skills/rubber-stamp-art/SKILL.md
-```
-
-- 📖 查看技能文档：[`skills/rubber-stamp-art/SKILL.md`](./skills/rubber-stamp-art/SKILL.md)
-- 🔗 GitHub 仓库：[rubber-stamp](https://github.com/holynova/rubber-stamp)
+- 查看技能文档：[`skills/rubber-stamp-art/SKILL.md`](./skills/rubber-stamp-art/SKILL.md)
+- GitHub 仓库：[rubber-stamp](https://github.com/holynova/rubber-stamp)
 
 ## 本地运行
 
