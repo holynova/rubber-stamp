@@ -6,13 +6,18 @@
     "category": "高纬光学",
     "phenomenon": "高层大气带电粒子激发的带状流光",
     "features": "夜空中如绿色绸缎般蜿蜒舞动的极光光带、倒映于极地冰湖之上、几抹紫红霞晕",
-    "keywords": ["极光", "欧若拉", "绿幕绸缎", "极地夜空"],
+    "keywords": [
+      "极光",
+      "欧若拉",
+      "绿幕绸缎",
+      "极地夜空"
+    ],
     "colors": "极光荧绿 · 霞光紫红 · 夜幕深蓝",
     "colors_en": "aurora neon green, violet purple glow, and midnight navy blue",
     "output": "images/atmosphere/01_极光.png",
-    "theme_en": "Aurora Borealis Dancing in Night Sky",
-    "subject_en": "ethereal shimmering ribbon curtains of green and violet northern lights sweeping across a starry polar night sky above distant silhouetted spruce pines",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Aurora Borealis Dancing in Night Sky. Extremely simplified iconic silhouette of ethereal shimmering ribbon curtains of green and violet northern lights sweeping across a starry polar night sky above distant silhouetted spruce pines. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: aurora neon green, violet purple glow, and midnight navy blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Aurora Borealis Curtains Above Polar Pines",
+    "subject_en": "luminous dancing ribbons of emerald green and violet northern lights waving in the upper sky, above an open asymmetrical cluster of frost-covered spruce pine trees and snowy ground, completely open natural silhouette on Xuan paper with no circular frame or circular sky disc",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Aurora Borealis Curtains Above Polar Pines. Extremely simplified iconic silhouette of luminous dancing ribbons of emerald green and violet northern lights waving in the upper sky, above an open asymmetrical cluster of frost-covered spruce pine trees and snowy ground, completely open natural silhouette on Xuan paper with no circular frame or circular sky disc. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: aurora neon green, violet purple glow, and midnight navy blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 2,
@@ -21,13 +26,18 @@
     "category": "水汽光学",
     "phenomenon": "雨后阳光经水滴二次折射与全反射形成的双重彩弧",
     "features": "雨后晴空中一主一副两道弧形彩虹悬跨、下方几笔青翠雨洗山林与初晴阳光",
-    "keywords": ["双彩虹", "霓虹", "雨后初晴", "圆弧"],
+    "keywords": [
+      "双彩虹",
+      "霓虹",
+      "雨后初晴",
+      "圆弧"
+    ],
     "colors": "彩虹朱红 · 晴空淡青 · 草木新绿",
     "colors_en": "rainbow vermilion red, sky pale blue, and meadow fresh green",
     "output": "images/atmosphere/02_双彩虹.png",
-    "theme_en": "Double Rainbow After Rainstorm",
-    "subject_en": "a graceful arc of double rainbows spanning an open clearing after summer rain with clearing sky and gentle distant hillside contours",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Double Rainbow After Rainstorm. Extremely simplified iconic silhouette of a graceful arc of double rainbows spanning an open clearing after summer rain with clearing sky and gentle distant hillside contours. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: rainbow vermilion red, sky pale blue, and meadow fresh green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Double Rainbow Arc Over Summer Hills",
+    "subject_en": "a vibrant open arc of double rainbows arching across the sky above gentle rolling green hills and scattered trees, open landscape silhouette fading naturally into empty paper margins with absolutely no circular enclosure",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Double Rainbow Arc Over Summer Hills. Extremely simplified iconic silhouette of a vibrant open arc of double rainbows arching across the sky above gentle rolling green hills and scattered trees, open landscape silhouette fading naturally into empty paper margins with absolutely no circular enclosure. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: rainbow vermilion red, sky pale blue, and meadow fresh green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 3,
@@ -36,13 +46,18 @@
     "category": "天象交会",
     "phenomenon": "月球完全遮蔽太阳本体、贝利珠与日冕银辉迸发",
     "features": "漆黑圆月完全遮蔽太阳时迸发的璀璨钻石环闪光、四周放射状银白日冕羽芒",
-    "keywords": ["日全食", "钻石环", "日冕", "天象奇观"],
+    "keywords": [
+      "日全食",
+      "钻石环",
+      "日冕",
+      "天象奇观"
+    ],
     "colors": "曜石深黑 · 日冕银白 · 钻石光金",
     "colors_en": "obsidian deep black, corona silver white, and diamond flare gold",
     "output": "images/atmosphere/03_日全食.png",
-    "theme_en": "Total Solar Eclipse and Diamond Ring Corona",
-    "subject_en": "a stark black lunar disc eclipsing the sun with a dazzling single burst of diamond ring light flare and radial silver corona halo streams",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Total Solar Eclipse and Diamond Ring Corona. Extremely simplified iconic silhouette of a stark black lunar disc eclipsing the sun with a dazzling single burst of diamond ring light flare and radial silver corona halo streams. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: obsidian deep black, corona silver white, and diamond flare gold. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Total Solar Eclipse Corona and Diamond Flare",
+    "subject_en": "the black new moon disc surrounded by dramatic dynamic fiery silver and gold coronal flares bursting outward into space, above a rugged mountain peak silhouette, freeform cosmic silhouette with no circular framing or border",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Total Solar Eclipse Corona and Diamond Flare. Extremely simplified iconic silhouette of the black new moon disc surrounded by dramatic dynamic fiery silver and gold coronal flares bursting outward into space, above a rugged mountain peak silhouette, freeform cosmic silhouette with no circular framing or border. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: obsidian deep black, corona silver white, and diamond flare gold. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 4,
@@ -51,7 +66,12 @@
     "category": "剧烈强对流",
     "phenomenon": "强烈对流积雨云下垂的高速旋转漏斗云柱",
     "features": "自厚重漏斗乌云中旋转倒垂直抵大地的巨大龙卷漏斗柱、狂风卷起尘土线条",
-    "keywords": ["龙卷风", "风暴漏斗", "气旋", "狂风"],
+    "keywords": [
+      "龙卷风",
+      "风暴漏斗",
+      "气旋",
+      "狂风"
+    ],
     "colors": "风暴深灰 · 尘土赭黄 · 积云青黑",
     "colors_en": "storm funnel charcoal grey, dust ochre yellow, and cloud deep navy",
     "output": "images/atmosphere/04_龙卷风.png",
@@ -66,7 +86,12 @@
     "category": "放电天气",
     "phenomenon": "积雨云层间与地表强电荷释放的树状闪电",
     "features": "如金蛇狂舞般自滚滚浓重乌云中撕裂而下的分叉闪电树枝、击向远山孤峰",
-    "keywords": ["雷暴", "闪电", "金蛇狂舞", "劈空"],
+    "keywords": [
+      "雷暴",
+      "闪电",
+      "金蛇狂舞",
+      "劈空"
+    ],
     "colors": "电光苍白 · 乌云墨紫 · 远峰黛蓝",
     "colors_en": "lightning spark white, thundercloud dark violet, and distant peak slate blue",
     "output": "images/atmosphere/05_雷暴闪电.png",
@@ -81,13 +106,18 @@
     "category": "冰晶光学",
     "phenomenon": "高空卷云六角形冰晶折射形成的22度日晕环与两侧幻日光斑",
     "features": "冬日晴空中一轮主日环绕着正圆光晕光环、两侧各有一团如伴星般灿烂的幻日光斑",
-    "keywords": ["日晕", "幻日", "三日并出", "冰晶环"],
+    "keywords": [
+      "日晕",
+      "幻日",
+      "三日并出",
+      "冰晶环"
+    ],
     "colors": "光晕暖金 · 冰晶浅青 · 天空冷蓝",
     "colors_en": "halo warm gold, ice crystal pale turquoise, and cold sky blue",
     "output": "images/atmosphere/06_幻日日晕.png",
-    "theme_en": "Solar Halo with Parhelia Sun Dogs",
-    "subject_en": "a majestic solar halo ring in a cold winter sky with two bright flanking sun dogs (parhelia) and a horizontal parhelic circle over snowy ground",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Solar Halo with Parhelia Sun Dogs. Extremely simplified iconic silhouette of a majestic solar halo ring in a cold winter sky with two bright flanking sun dogs (parhelia) and a horizontal parhelic circle over snowy ground. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: halo warm gold, ice crystal pale turquoise, and cold sky blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Sun Dogs and Atmospheric Halo Above Snow Mountain",
+    "subject_en": "a radiant winter sun flanked by bright golden parhelia sun dogs and subtle vertical sun pillars rising above a jagged snow-covered mountain crest, open alpine winter silhouette with no enclosing circle border",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Sun Dogs and Atmospheric Halo Above Snow Mountain. Extremely simplified iconic silhouette of a radiant winter sun flanked by bright golden parhelia sun dogs and subtle vertical sun pillars rising above a jagged snow-covered mountain crest, open alpine winter silhouette with no enclosing circle border. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: halo warm gold, ice crystal pale turquoise, and cold sky blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 7,
@@ -96,7 +126,12 @@
     "category": "散射光学",
     "phenomenon": "傍晚低仰角阳光瑞利散射将天际层状云染成炽烈红橙色",
     "features": "层层叠叠如火熔金的晚霞云层铺满天际、由绯红渐变至金橙与暮色深紫",
-    "keywords": ["火烧云", "晚霞", "熔金", "落日霞光"],
+    "keywords": [
+      "火烧云",
+      "晚霞",
+      "熔金",
+      "落日霞光"
+    ],
     "colors": "晚霞赤红 · 霞光橙金 · 暮霭深紫",
     "colors_en": "sunset fiery red, twilight orange-gold, and dusk deep purple",
     "output": "images/atmosphere/07_晚霞火烧云.png",
@@ -111,13 +146,18 @@
     "category": "中顶层高空云",
     "phenomenon": "80公里中间层高空微细冰晶在夏夜黄昏反射地平线下阳光",
     "features": "深蓝夏夜高空中如银丝水波般闪烁着幽冷青白荧光的波纹状夜光云",
-    "keywords": ["夜光云", "高空冰晶", "银丝波纹", "幽冷荧光"],
+    "keywords": [
+      "夜光云",
+      "高空冰晶",
+      "银丝波纹",
+      "幽冷荧光"
+    ],
     "colors": "荧光银蓝 · 夜空靛青 · 繁星素白",
     "colors_en": "noctilucent silver-cyan, night sky deep indigo, and star sparkle white",
     "output": "images/atmosphere/08_夜光云.png",
-    "theme_en": "Noctilucent Clouds Glowing in Twilit Summer Sky",
-    "subject_en": "delicate rippling electric-blue noctilucent clouds glowing with luminous silver crests high in the deep twilit polar midnight sky",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Noctilucent Clouds Glowing in Twilit Summer Sky. Extremely simplified iconic silhouette of delicate rippling electric-blue noctilucent clouds glowing with luminous silver crests high in the deep twilit polar midnight sky. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: noctilucent silver-cyan, night sky deep indigo, and star sparkle white. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Noctilucent Silver Clouds Over Calm Lake",
+    "subject_en": "delicate electric-blue and silver rippling night clouds drifting horizontally across the upper canvas, reflected in open quiet lake ripples below a silhouetted shoreline of reeds and trees, open horizontal silhouette with no circular framing",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Noctilucent Silver Clouds Over Calm Lake. Extremely simplified iconic silhouette of delicate electric-blue and silver rippling night clouds drifting horizontally across the upper canvas, reflected in open quiet lake ripples below a silhouetted shoreline of reeds and trees, open horizontal silhouette with no circular framing. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: noctilucent silver-cyan, night sky deep indigo, and star sparkle white. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 9,
@@ -126,13 +166,18 @@
     "category": "水汽凝结",
     "phenomenon": "暖湿空气流经冷海面或山谷形成的浩瀚如海平流雾",
     "features": "白茫茫如平整棉絮般的茫茫云海中、几座孤立的翠绿山峰如仙岛穿透雾面",
-    "keywords": ["平流雾", "云海", "山顶仙岛", "云遮雾罩"],
+    "keywords": [
+      "平流雾",
+      "云海",
+      "山顶仙岛",
+      "云遮雾罩"
+    ],
     "colors": "雾海纯白 · 峰峦黛青 · 晨曦微金",
     "colors_en": "fog sea pure white, mountain peak dark teal, and dawn soft gold",
     "output": "images/atmosphere/09_平流雾.png",
-    "theme_en": "Advection Valley Fog with Mountain Peaks",
-    "subject_en": "a blanket of smooth white advection sea fog filling the mountain valleys with only the highest rocky peaks emerging like islands in a sea of clouds",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Advection Valley Fog with Mountain Peaks. Extremely simplified iconic silhouette of a blanket of smooth white advection sea fog filling the mountain valleys with only the highest rocky peaks emerging like islands in a sea of clouds. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: fog sea pure white, mountain peak dark teal, and dawn soft gold. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Advection Fog Rolling Through Mountain Valley",
+    "subject_en": "a sea of low-lying white advection fog rolling gracefully through a mountain pass between steep pine-crested rocky cliff pinnacles, dynamic vertical mountain landscape silhouette with completely open margins",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Advection Fog Rolling Through Mountain Valley. Extremely simplified iconic silhouette of a sea of low-lying white advection fog rolling gracefully through a mountain pass between steep pine-crested rocky cliff pinnacles, dynamic vertical mountain landscape silhouette with completely open margins. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: fog sea pure white, mountain peak dark teal, and dawn soft gold. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 10,
@@ -141,7 +186,12 @@
     "category": "天体穿梭",
     "phenomenon": "冰冻彗核接近太阳时升华出由气体与尘埃组成的辉煌彗尾",
     "features": "一颗璀璨明亮的彗星划过深邃夜空、身后拖着一条长长扫帚状的银白与海蓝离子尘埃尾",
-    "keywords": ["彗星", "长尾彗星", "星空掠影", "尘埃尾"],
+    "keywords": [
+      "彗星",
+      "长尾彗星",
+      "星空掠影",
+      "尘埃尾"
+    ],
     "colors": "彗核亮白 · 彗尾冰蓝 · 苍穹深黑",
     "colors_en": "comet coma brilliant white, comet tail ice blue, and cosmic deep black",
     "output": "images/atmosphere/10_彗星.png",
@@ -156,7 +206,12 @@
     "category": "流星群",
     "phenomenon": "地球穿越彗星轨道尘埃带时密集成群划亮夜空的流星",
     "features": "多道如银箭般平行的流星划痕穿透夜空、下方为静谧的古柏林木剪影与远山",
-    "keywords": ["流星雨", "银汉落雨", "划痕", "夜空祈愿"],
+    "keywords": [
+      "流星雨",
+      "银汉落雨",
+      "划痕",
+      "夜空祈愿"
+    ],
     "colors": "流星银白 · 夜空蓝紫 · 林木焦墨",
     "colors_en": "meteor streak silver white, night sky indigo violet, and pine silhouette black",
     "output": "images/atmosphere/11_流星雨.png",
@@ -171,13 +226,18 @@
     "category": "衍射反射光学",
     "phenomenon": "山顶背光人影投射于前方云雾层上形成周围环绕同心彩色光环的布罗肯幽灵",
     "features": "云海之上一道神圣同心圆七彩光晕光环、中心隐现人影剪影、宛如佛光普照",
-    "keywords": ["佛光", "宝光", "布罗肯幽灵", "同心光环"],
+    "keywords": [
+      "佛光",
+      "宝光",
+      "布罗肯幽灵",
+      "同心光环"
+    ],
     "colors": "彩晕金红 · 光环青绿 · 云雾米白",
     "colors_en": "solar halo red-gold, diffraction ring teal green, and mist cloud white",
     "output": "images/atmosphere/12_佛光宝光.png",
-    "theme_en": "Brocken Spectre and Buddha Light Halo",
-    "subject_en": "a mystical circular concentric rainbow halo (Brocken spectre or Buddha's light) glowing around a magnified shadow figure cast onto floating mountain mist clouds",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Brocken Spectre and Buddha Light Halo. Extremely simplified iconic silhouette of a mystical circular concentric rainbow halo (Brocken spectre or Buddha's light) glowing around a magnified shadow figure cast onto floating mountain mist clouds. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: solar halo red-gold, diffraction ring teal green, and mist cloud white. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Glory Rainbow Aura on Mountain Summit",
+    "subject_en": "a solitary hiker standing on a dramatic mountain cliff ledge overlooking vast ocean-like clouds, with a subtle rainbow aura radiating behind the figure against open mist, freeform summit silhouette with no circular seal border",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Glory Rainbow Aura on Mountain Summit. Extremely simplified iconic silhouette of a solitary hiker standing on a dramatic mountain cliff ledge overlooking vast ocean-like clouds, with a subtle rainbow aura radiating behind the figure against open mist, freeform summit silhouette with no circular seal border. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: solar halo red-gold, diffraction ring teal green, and mist cloud white. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 13,
@@ -186,7 +246,12 @@
     "category": "复杂光线折射",
     "phenomenon": "不同温度空气层密度差异导致远处景物光线曲折而在地平线上空成像",
     "features": "平静无波的大海或沙丘地平线上方、悬空浮现一座若隐若现的古朴楼阁仙山虚影",
-    "keywords": ["海市蜃楼", "蜃楼", "虚阁仙山", "光线折射"],
+    "keywords": [
+      "海市蜃楼",
+      "蜃楼",
+      "虚阁仙山",
+      "光线折射"
+    ],
     "colors": "蜃景浅黛灰 · 海水天蓝 · 暖沙金",
     "colors_en": "mirage ghost grey, horizon pale blue, and warm sand gold",
     "output": "images/atmosphere/13_海市蜃楼.png",
@@ -201,7 +266,12 @@
     "category": "干旱风沙天气",
     "phenomenon": "强冷锋前缘狂风卷起数千米高的巨大黄沙尘暴墙",
     "features": "一堵顶天立地、遮天蔽日的厚重黄沙风暴高墙排山倒海滚滚向前推进",
-    "keywords": ["沙尘暴", "沙墙", "瀚海狂风", "遮天蔽日"],
+    "keywords": [
+      "沙尘暴",
+      "沙墙",
+      "瀚海狂风",
+      "遮天蔽日"
+    ],
     "colors": "沙尘赭黄 · 风暴土褐 · 荒野深灰",
     "colors_en": "sandstorm ochre yellow, storm dust earth brown, and wilderness grey",
     "output": "images/atmosphere/14_沙尘暴.png",
@@ -216,7 +286,12 @@
     "category": "强超级单体",
     "phenomenon": "极其强烈的上升气流塑造出顶部扁平如铁砧的巨大积雨云团",
     "features": "一朵高耸入平流层、顶部平展如铁砧的庞大超级单体积雨云、云底垂下青绿冰雹柱",
-    "keywords": ["积雨云", "铁砧云", "超级单体", "冰雹"],
+    "keywords": [
+      "积雨云",
+      "铁砧云",
+      "超级单体",
+      "冰雹"
+    ],
     "colors": "砧状云苍灰 · 雹云墨青 · 暮光淡金",
     "colors_en": "anvil cloud slate grey, hail base deep green-blue, and twilight pale gold",
     "output": "images/atmosphere/15_冰雹积雨云.png",
@@ -231,7 +306,12 @@
     "category": "蒸发云象",
     "phenomenon": "高空降水在落到干燥地面前完全蒸发而形成的悬挂云底的羽状雨丝",
     "features": "高悬云朵底部飘落垂悬的丝绸状倾斜雨幡细丝线条、未触及大地便随风飘散",
-    "keywords": ["雨幡", "幡状云", "悬垂水幕", "空谷雨丝"],
+    "keywords": [
+      "雨幡",
+      "幡状云",
+      "悬垂水幕",
+      "空谷雨丝"
+    ],
     "colors": "雨幡灰青 · 积云深蓝 · 地平线暖赭",
     "colors_en": "virga rain streak slate grey, cloud navy blue, and horizon warm ochre",
     "output": "images/atmosphere/16_雨幡.png",
@@ -246,7 +326,12 @@
     "category": "微粒胶体散射",
     "phenomenon": "清晨阳光穿透薄雾森林缝隙散射出肉眼可见的束状金色光路",
     "features": "几束笔直明亮的光芒如天柱般自茂密古树树冠斜穿而下、照亮林间微尘水汽",
-    "keywords": ["丁达尔效应", "耶稣光", "圣光穿林", "晨雾光束"],
+    "keywords": [
+      "丁达尔效应",
+      "耶稣光",
+      "圣光穿林",
+      "晨雾光束"
+    ],
     "colors": "光束暖金 · 树冠墨绿 · 晨岚浅灰",
     "colors_en": "sunbeam radiant gold, forest canopy deep green, and morning mist light grey",
     "output": "images/atmosphere/17_丁达尔光.png",
@@ -261,7 +346,12 @@
     "category": "过冷却凝结",
     "phenomenon": "严寒冬日过冷却雾滴在树枝与电线上骤然冻结成的纯白冰晶沉积",
     "features": "每一根干枯树枝都包裹上厚密洁白毛茸茸针状冰晶的玉树琼枝、傲立雪野",
-    "keywords": ["雾凇", "树挂", "冰晶琼枝", "银装素裹"],
+    "keywords": [
+      "雾凇",
+      "树挂",
+      "冰晶琼枝",
+      "银装素裹"
+    ],
     "colors": "雾凇纯白 · 树干焦褐 · 寒天苍蓝",
     "colors_en": "rime frost pure white, tree trunk charcoal brown, and winter sky frosty blue",
     "output": "images/atmosphere/18_雾凇.png",
@@ -276,7 +366,12 @@
     "category": "中高层放电",
     "phenomenon": "雷暴积雨云顶上方50-90公里高空中瞬闪即逝的水母状红色发光事件",
     "features": "漆黑夜空中、雷暴云顶之上突兀绽放的一团如倒悬红色水母般的高空红色发光枝状精灵",
-    "keywords": ["红色精灵", "中高层放电", "高空红妖", "倒悬水母"],
+    "keywords": [
+      "红色精灵",
+      "中高层放电",
+      "高空红妖",
+      "倒悬水母"
+    ],
     "colors": "精灵赤红 · 闪光浅紫 · 穹苍深黑",
     "colors_en": "sprite crimson red, electric lavender glow, and high altitude black",
     "output": "images/atmosphere/19_红色精灵.png",
@@ -291,12 +386,17 @@
     "category": "高纬极昼天象",
     "phenomenon": "极圈内夏季太阳24小时始终在地平线以上游弋的极昼奇景",
     "features": "一轮低悬于地平线山脊上永不沉没的金色暖阳、将极地苔原与冷海染上长久金辉",
-    "keywords": ["午夜太阳", "极昼", "不落太阳", "苔原金晖"],
+    "keywords": [
+      "午夜太阳",
+      "极昼",
+      "不落太阳",
+      "苔原金晖"
+    ],
     "colors": "低阳金橙 · 苔原黄绿 · 极海深蓝",
     "colors_en": "midnight sun golden orange, tundra olive green, and polar ocean navy",
     "output": "images/atmosphere/20_午夜太阳.png",
-    "theme_en": "Midnight Sun Hovering Over Arctic Tundra",
-    "subject_en": "a glowing golden midnight sun skimming low along the arctic tundra mountain horizon without setting, casting long warm golden light over still polar waters",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Midnight Sun Hovering Over Arctic Tundra. Extremely simplified iconic silhouette of a glowing golden midnight sun skimming low along the arctic tundra mountain horizon without setting, casting long warm golden light over still polar waters. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: midnight sun golden orange, tundra olive green, and polar ocean navy. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Arctic Midnight Sun Along Tundra Ridge",
+    "subject_en": "a warm glowing golden sun resting gently on the jagged low ridge of arctic tundra mountains, casting long diagonal warm light rays across open coastal waters, open panorama silhouette on blank paper with no circular medallion or round boundary",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Arctic Midnight Sun Along Tundra Ridge. Extremely simplified iconic silhouette of a warm glowing golden sun resting gently on the jagged low ridge of arctic tundra mountains, casting long diagonal warm light rays across open coastal waters, open panorama silhouette on blank paper with no circular medallion or round boundary. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: midnight sun golden orange, tundra olive green, and polar ocean navy. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   }
 ]

@@ -9,6 +9,8 @@ package-lock.json
 images/backup_cities/
 images/backup_solar_terms/
 images/backup_zodiac/
+images/backup_circular/
+contact_sheets/
 
 # Impeccable
 **/skills/impeccable/scripts/bin/

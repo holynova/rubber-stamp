@@ -6,13 +6,18 @@
     "category": "须鲸巨兽",
     "habitat": "大洋深海·极地冷水域",
     "features": "身形修长宏伟的巨型蓝鲸潜游、优美流线身躯、背部喷出高耸水雾气柱",
-    "keywords": ["蓝鲸", "深海巨灵", "流线", "水雾喷柱"],
+    "keywords": [
+      "蓝鲸",
+      "深海巨灵",
+      "流线",
+      "水雾喷柱"
+    ],
     "colors": "普鲁士深蓝 · 浪花白 · 浅海青",
     "colors_en": "Prussian deep ocean blue, sea foam white, and shallow turquoise",
     "output": "images/marine/01_蓝鲸.png",
-    "theme_en": "Blue Whale in Deep Ocean",
-    "subject_en": "a colossal blue whale swimming serenely through deep ocean waters, smooth streamlined body silhouette and a majestic spout of misty water rising into the sky",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Blue Whale in Deep Ocean. Extremely simplified iconic silhouette of a colossal blue whale swimming serenely through deep ocean waters, smooth streamlined body silhouette and a majestic spout of misty water rising into the sky. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: Prussian deep ocean blue, sea foam white, and shallow turquoise. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Blue Whale Breaching Ocean Surface",
+    "subject_en": "a colossal blue whale breaching through open gentle sea waves, smooth streamlined curved body silhouette leaping gracefully with a delicate misty water spout rising into the air, open natural asymmetrical marine silhouette on warm Xuan paper",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Blue Whale Breaching Ocean Surface. Extremely simplified iconic silhouette of a colossal blue whale breaching through open gentle sea waves, smooth streamlined curved body silhouette leaping gracefully with a delicate misty water spout rising into the air, open natural asymmetrical marine silhouette on warm Xuan paper. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: Prussian deep ocean blue, sea foam white, and shallow turquoise. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 2,
@@ -21,7 +26,12 @@
     "category": "齿鲸霸主",
     "habitat": "全球大洋·极地峡湾",
     "features": "黑白分明对比强烈的虎鲸破浪而出、高耸挺拔的三角形背鳍、雄浑利落",
-    "keywords": ["虎鲸", "逆戟鲸", "高耸背鳍", "黑白破浪"],
+    "keywords": [
+      "虎鲸",
+      "逆戟鲸",
+      "高耸背鳍",
+      "黑白破浪"
+    ],
     "colors": "曜石墨黑 · 纯白腹纹 · 海青蓝",
     "colors_en": "obsidian ink black, belly pure white, and ocean slate blue",
     "output": "images/marine/02_虎鲸.png",
@@ -36,13 +46,18 @@
     "category": "软骨鱼类",
     "habitat": "热带与亚热带珊瑚海",
     "features": "如大鸟展翼般的巨大蝠鲼在碧蓝海水中翱翔滑行、流线型尾刺与头鳍",
-    "keywords": ["蝠鲼", "魔鬼鱼", "深海飞鸟", "滑翔"],
+    "keywords": [
+      "蝠鲼",
+      "魔鬼鱼",
+      "深海飞鸟",
+      "滑翔"
+    ],
     "colors": "蝠鲼墨青 · 腹底白 · 珊瑚浅蓝",
     "colors_en": "manta deep indigo, belly pale white, and coral reef cyan",
     "output": "images/marine/03_蝠鲼.png",
-    "theme_en": "Giant Manta Ray Gliding in Ocean",
-    "subject_en": "a magnificent giant oceanic manta ray with broad triangular wings gliding weightlessly through calm turquoise ocean waters",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Giant Manta Ray Gliding in Ocean. Extremely simplified iconic silhouette of a magnificent giant oceanic manta ray with broad triangular wings gliding weightlessly through calm turquoise ocean waters. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: manta deep indigo, belly pale white, and coral reef cyan. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Giant Manta Ray Gliding Through Water",
+    "subject_en": "a magnificent giant oceanic manta ray with broad triangular wings gliding weightlessly amidst gentle open sea current ripples and small bubbles, completely open freeform silhouette",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Giant Manta Ray Gliding Through Water. Extremely simplified iconic silhouette of a magnificent giant oceanic manta ray with broad triangular wings gliding weightlessly amidst gentle open sea current ripples and small bubbles, completely open freeform silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: manta deep indigo, belly pale white, and coral reef cyan. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 4,
@@ -51,7 +66,12 @@
     "category": "头足纲",
     "habitat": "北太平洋深海岩礁",
     "features": "八条遒劲灵动触腕舒卷的巨型章鱼、圆润头部与密布吸盘剪影",
-    "keywords": ["巨型章鱼", "触腕", "深海灵魅", "舒卷"],
+    "keywords": [
+      "巨型章鱼",
+      "触腕",
+      "深海灵魅",
+      "舒卷"
+    ],
     "colors": "珊瑚赭红 · 幽海深蓝 · 吸盘淡黄",
     "colors_en": "coral russet red, deep abyss navy, and sucker pale ochre",
     "output": "images/marine/04_巨型章鱼.png",
@@ -66,7 +86,12 @@
     "category": "掠食鲨鱼",
     "habitat": "热带温带大洋暖水区",
     "features": "独具一格T型双髻头部的双髻鲨优雅巡游、流线身形与锐利尾鳍",
-    "keywords": ["锤头鲨", "双髻鲨", "T型头", "巡弋"],
+    "keywords": [
+      "锤头鲨",
+      "双髻鲨",
+      "T型头",
+      "巡弋"
+    ],
     "colors": "鲨皮钢蓝 · 腹灰白 · 海水澄青",
     "colors_en": "shark steel blue, belly ash white, and clear aqua blue",
     "output": "images/marine/05_锤头鲨.png",
@@ -81,7 +106,12 @@
     "category": "海洋爬行",
     "habitat": "热带浅海珊瑚礁",
     "features": "背负几何纹理龟甲的绿海龟划动两双如桨前肢、悠然游弋于海藻间",
-    "keywords": ["海龟", "绿海龟", "龟甲", "珊瑚海"],
+    "keywords": [
+      "海龟",
+      "绿海龟",
+      "龟甲",
+      "珊瑚海"
+    ],
     "colors": "龟甲橄榄绿 · 浅赭黄 · 海水天蓝",
     "colors_en": "turtle shell olive green, shell edge pale ochre, and sea sky blue",
     "output": "images/marine/06_绿海龟.png",
@@ -96,13 +126,18 @@
     "category": "刺胞动物",
     "habitat": "大洋深层水域",
     "features": "半透明伞状水母悬浮、纤长飘逸的触手如丝垂落、自体散发幽光",
-    "keywords": ["水母", "荧光", "发光水母", "轻灵飘逸"],
+    "keywords": [
+      "水母",
+      "荧光",
+      "发光水母",
+      "轻灵飘逸"
+    ],
     "colors": "荧光幽紫 · 水母浅粉 · 深海靛蓝",
     "colors_en": "bioluminescent purple, jellyfish pastel pink, and deep indigo blue",
     "output": "images/marine/07_发光水母.png",
-    "theme_en": "Bioluminescent Jellyfish Floating in Deep Sea",
-    "subject_en": "a delicate umbrella-domed jellyfish with long ethereal trailing tentacles drifting weightlessly with glowing bioluminescent light trails in dark water",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Bioluminescent Jellyfish Floating in Deep Sea. Extremely simplified iconic silhouette of a delicate umbrella-domed jellyfish with long ethereal trailing tentacles drifting weightlessly with glowing bioluminescent light trails in dark water. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: bioluminescent purple, jellyfish pastel pink, and deep indigo blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Bioluminescent Jellyfish Drifting in Sea",
+    "subject_en": "a delicate umbrella-domed jellyfish with long ethereal trailing tentacles drifting weightlessly with glowing bioluminescent light accents, completely open vertical floating silhouette with no circular background or boundary",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Bioluminescent Jellyfish Drifting in Sea. Extremely simplified iconic silhouette of a delicate umbrella-domed jellyfish with long ethereal trailing tentacles drifting weightlessly with glowing bioluminescent light accents, completely open vertical floating silhouette with no circular background or boundary. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: bioluminescent purple, jellyfish pastel pink, and deep indigo blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 8,
@@ -111,7 +146,12 @@
     "category": "深潜齿鲸",
     "habitat": "大洋数千米深渊",
     "features": "方方正正巨型头部的抹香鲸竖直潜入深渊、强健尾鳍扬起巨大浪花",
-    "keywords": ["抹香鲸", "巨头", "深渊潜水", "尾鳍破浪"],
+    "keywords": [
+      "抹香鲸",
+      "巨头",
+      "深渊潜水",
+      "尾鳍破浪"
+    ],
     "colors": "深渊墨蓝 · 鲸身灰黑 · 浪花白",
     "colors_en": "abyss midnight blue, whale slate grey, and foam white",
     "output": "images/marine/08_抹香鲸.png",
@@ -126,7 +166,12 @@
     "category": "鳍足类",
     "habitat": "渤海辽东湾·冷温带近海",
     "features": "圆滚圆滚的斑海豹仰头憨卧于海浪拍击的潮间带礁石上、满身芝麻斑点",
-    "keywords": ["斑海豹", "辽东湾", "礁石", "憨态"],
+    "keywords": [
+      "斑海豹",
+      "辽东湾",
+      "礁石",
+      "憨态"
+    ],
     "colors": "斑纹灰褐 · 礁石深墨 · 浅浪青绿",
     "colors_en": "spotted grey-brown, reef rock dark ink, and sea spray sage green",
     "output": "images/marine/09_斑海豹.png",
@@ -141,7 +186,12 @@
     "category": "海龙科",
     "habitat": "温暖浅海海草床",
     "features": "卷曲尾巴紧紧缠绕海草的立姿小海马、管状长嘴与骨环铠甲轮廓",
-    "keywords": ["海马", "卷尾", "海草床", "骨质铠甲"],
+    "keywords": [
+      "海马",
+      "卷尾",
+      "海草床",
+      "骨质铠甲"
+    ],
     "colors": "海马暖橙 · 海草翠绿 · 细沙米黄",
     "colors_en": "seahorse warm orange, seagrass emerald green, and sand pale ochre",
     "output": "images/marine/10_海马.png",
@@ -156,7 +206,12 @@
     "category": "须鲨目",
     "habitat": "热带开阔大洋",
     "features": "背部密布棋盘状白色星斑的温顺鲸鲨在浅层阳光下滤食、宽阔扁平巨吻",
-    "keywords": ["鲸鲨", "星斑", "温和巨物", "阳光波纹"],
+    "keywords": [
+      "鲸鲨",
+      "星斑",
+      "温和巨物",
+      "阳光波纹"
+    ],
     "colors": "鲸鲨靛蓝 · 星斑纯白 · 阳光微金",
     "colors_en": "whale shark indigo, white star spots, and sunlight gold",
     "output": "images/marine/11_鲸鲨.png",
@@ -171,7 +226,12 @@
     "category": "头足纲活化石",
     "habitat": "热带深海珊瑚斜坡",
     "features": "完美对数螺旋形红白相间条纹外壳的鹦鹉螺、探出触须漂浮于海水中",
-    "keywords": ["鹦鹉螺", "黄金分割", "活化石", "几何螺旋"],
+    "keywords": [
+      "鹦鹉螺",
+      "黄金分割",
+      "活化石",
+      "几何螺旋"
+    ],
     "colors": "螺旋赭红 · 贝壳白 · 深海黛蓝",
     "colors_en": "spiral russet red, shell ivory white, and deep ocean navy",
     "output": "images/marine/12_鹦鹉螺.png",
@@ -186,7 +246,12 @@
     "category": "硬骨鱼类",
     "habitat": "热带表层大洋",
     "features": "生有宽大鸟羽状胸鳍的飞鱼腾跃出水、滑翔于碧蓝浪尖之上",
-    "keywords": ["飞鱼", "滑翔", "飞翼", "踏浪"],
+    "keywords": [
+      "飞鱼",
+      "滑翔",
+      "飞翼",
+      "踏浪"
+    ],
     "colors": "鱼身银蓝 · 飞翼翠青 · 浪尖素白",
     "colors_en": "flying fish silver blue, wing membrane teal green, and wavecrest white",
     "output": "images/marine/13_飞鱼.png",
@@ -201,7 +266,12 @@
     "category": "齿鲸类",
     "habitat": "北极冰洋裂隙",
     "features": "头部生有一根螺旋直刺向天的修长象牙状长角的雄性一角鲸穿破浮冰",
-    "keywords": ["一角鲸", "独角兽", "极地浮冰", "螺旋长角"],
+    "keywords": [
+      "一角鲸",
+      "独角兽",
+      "极地浮冰",
+      "螺旋长角"
+    ],
     "colors": "极海灰蓝 · 独角象牙白 · 冰块冷青",
     "colors_en": "arctic grey-blue, tusk ivory white, and sea ice frosty blue",
     "output": "images/marine/14_一角鲸.png",
@@ -216,7 +286,12 @@
     "category": "极地海鸟",
     "habitat": "南极大陆坚冰",
     "features": "身披燕尾服般黑白分明的帝企鹅昂首立于南极冰川之上、颈间一抹暖金",
-    "keywords": ["帝企鹅", "极地守望", "冰川", "金羽"],
+    "keywords": [
+      "帝企鹅",
+      "极地守望",
+      "冰川",
+      "金羽"
+    ],
     "colors": "企鹅墨黑 · 颈羽金黄 · 坚冰雪白",
     "colors_en": "penguin tuxedo black, neck golden yellow, and glacier ice white",
     "output": "images/marine/15_帝企鹅.png",
@@ -231,7 +306,12 @@
     "category": "高速大洋鱼类",
     "habitat": "热带大洋表层",
     "features": "高展帆状背鳍、长矛般锋利上颌的旗鱼如离弦之箭疾刺而出、激浪排空",
-    "keywords": ["旗鱼", "帆状背鳍", "海洋极速", "破浪剑吻"],
+    "keywords": [
+      "旗鱼",
+      "帆状背鳍",
+      "海洋极速",
+      "破浪剑吻"
+    ],
     "colors": "旗鳍深蓝 · 鱼身银灰 · 飞浪素白",
     "colors_en": "sail fin deep navy blue, fish body silver grey, and splash white",
     "output": "images/marine/16_旗鱼.png",
@@ -246,7 +326,12 @@
     "category": "海洋哺乳",
     "habitat": "北太平洋海藻森林",
     "features": "仰躺在巨型海藻丛中漂浮的海獭、双手在肚皮上抱着贝壳敲击、萌态可掬",
-    "keywords": ["海獭", "仰泳", "海藻床", "敲贝壳"],
+    "keywords": [
+      "海獭",
+      "仰泳",
+      "海藻床",
+      "敲贝壳"
+    ],
     "colors": "海獭暖褐 · 海藻墨绿 · 水花浅蓝",
     "colors_en": "sea otter fur warm brown, kelp forest deep green, and water ripple aqua",
     "output": "images/marine/17_海獭.png",
@@ -261,13 +346,18 @@
     "category": "软骨鱼顶级掠食",
     "habitat": "全球温带近海大洋",
     "features": "线条充满爆发力的大白鲨自深水向上冲刺巡弋、三角形锯齿利齿与黑曜眼眸",
-    "keywords": ["大白鲨", "顶级掠食者", "利齿", "海洋霸主"],
+    "keywords": [
+      "大白鲨",
+      "顶级掠食者",
+      "利齿",
+      "海洋霸主"
+    ],
     "colors": "鲨背铁灰 · 腹底纯白 · 深海幽蓝",
     "colors_en": "shark steel grey, belly white, and deep ocean navy",
     "output": "images/marine/18_大白鲨.png",
-    "theme_en": "Great White Shark Gliding Through Ocean",
-    "subject_en": "a formidable great white shark swimming powerfully through deep open ocean with iconic triangular dorsal fin and streamlined muscular body",
-    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: Great White Shark Gliding Through Ocean. Extremely simplified iconic silhouette of a formidable great white shark swimming powerfully through deep open ocean with iconic triangular dorsal fin and streamlined muscular body. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: shark steel grey, belly white, and deep ocean navy. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+    "theme_en": "Great White Shark Swimming in Ocean",
+    "subject_en": "a formidable great white shark swimming powerfully through open waters with iconic triangular dorsal fin and streamlined muscular body, flanked by dynamic sea foam splash ripples, open horizontal marine silhouette with no circular framing",
+    "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Great White Shark Swimming in Ocean. Extremely simplified iconic silhouette of a formidable great white shark swimming powerfully through open waters with iconic triangular dorsal fin and streamlined muscular body, flanked by dynamic sea foam splash ripples, open horizontal marine silhouette with no circular framing. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: shark steel grey, belly white, and deep ocean navy. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
   },
   {
     "id": 19,
@@ -276,7 +366,12 @@
     "category": "珊瑚礁鱼类",
     "habitat": "热带珊瑚礁",
     "features": "鲜艳橙白三道条纹的小丑鱼穿梭在柔软摇曳的紫海葵触须之间",
-    "keywords": ["小丑鱼", "海葵", "珊瑚礁", "共生"],
+    "keywords": [
+      "小丑鱼",
+      "海葵",
+      "珊瑚礁",
+      "共生"
+    ],
     "colors": "小丑鱼鲜橙 · 白条纹 · 海葵淡紫",
     "colors_en": "clownfish vibrant orange, stripe white, and anemone soft lavender purple",
     "output": "images/marine/19_小丑鱼与海葵.png",
@@ -291,7 +386,12 @@
     "category": "大洋奇特硬骨鱼",
     "habitat": "大洋表层晒太阳区",
     "features": "圆盘大饼状扁平身躯的翻车鱼侧浮水面晒太阳、短小尾鳍与高耸背臀鳍",
-    "keywords": ["翻车鱼", "巨盘鱼", "呆萌", "侧浮日晒"],
+    "keywords": [
+      "翻车鱼",
+      "巨盘鱼",
+      "呆萌",
+      "侧浮日晒"
+    ],
     "colors": "鱼身石板灰 · 浅腹白 · 海水天蓝",
     "colors_en": "mola body slate grey, belly off-white, and surface sea cyan",
     "output": "images/marine/20_翻车鱼.png",

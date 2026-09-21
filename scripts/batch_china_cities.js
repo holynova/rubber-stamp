@@ -37,7 +37,7 @@ const ITEMS = [
     keywords: ["外滩", "东方明珠", "陆家嘴", "江湾", "摩登"],
     colors: "浅水苍青 · 琉璃金黄 · 浓墨",
     theme: "Shanghai, Oriental Pearl Tower and Bund Skyline across Huangpu River",
-    silhouette: "the iconic Oriental Pearl Radio & TV Tower with its spherical tiers rising beside the Shanghai Tower skyline across the curving Huangpu River ripples, facing the historic Bund Customs House clock tower silhouette",
+    silhouette: "an open horizontal skyline with the iconic Oriental Pearl Radio & TV Tower and Shanghai Tower rising proudly above gentle horizontal water ripples of Huangpu River, flanked by the historic Bund Customs House clock tower, with an open asymmetrical skyline silhouette fading naturally into empty rice paper margins",
     colorPrompt: "river indigo slate blue, warm sunrise amber gold, and ink black"
   },
   {
@@ -79,7 +79,7 @@ const ITEMS = [
     keywords: ["天府", "望江楼", "锦江", "大熊猫", "翠竹"],
     colors: "翠竹青绿 · 赭石黄 · 松烟黑",
     theme: "Chengdu, Wangjiang Pavilion and Giant Panda in Bamboo Grove",
-    silhouette: "the elegant historic Wangjiang Pavilion (Chongli Tower) with flying wooden eaves overlooking the serene Jinjiang River, framed by graceful bamboo stalks and an adorable giant panda peacefully eating a bamboo branch",
+    silhouette: "the stately multi-tiered wooden Wangjiang Pavilion (Chongli Tower) with flying eaves rising beside an open cluster of fresh bamboo stalks on one side, with an adorable giant panda peacefully sitting and eating bamboo leaves, in a natural open landscape vignette with no circular framing or borders",
     colorPrompt: "mountain bamboo green, antique ochre yellow, and pine soot black"
   },
   {
@@ -93,7 +93,7 @@ const ITEMS = [
     keywords: ["山城", "洪崖洞", "长江索道", "吊脚楼", "两江"],
     colors: "吊脚楼赤褐 · 嘉陵水绿 · 暖灯金",
     theme: "Chongqing, Hongyadong Stilt Houses and Yangtze River Cableway",
-    silhouette: "the multi-tiered traditional Bayu stilt houses of Hongyadong clinging to a steep cliffside, an overhead Yangtze River cableway car gliding gracefully across the rushing river valley amidst mountain silhouettes",
+    silhouette: "the multi-tiered traditional Bayu stilt houses of Hongyadong clinging to a dramatic rugged mountain cliffside, with a modern overhead cableway car gliding in the sky above cascading city stairways, creating an open asymmetrical mountain city silhouette with clean open edges",
     colorPrompt: "terracotta brick red, misty river jade green, and warm lantern gold"
   },
   {
@@ -107,7 +107,7 @@ const ITEMS = [
     keywords: ["西湖", "雷峰塔", "三潭印月", "断桥", "钱塘"],
     colors: "龙井翠绿 · 湖光浅蓝 · 晚霞金",
     theme: "Hangzhou, West Lake Leifeng Pagoda and Three Ponds Mirroring the Moon",
-    silhouette: "the storied Leifeng Pagoda silhouette standing upon Sunset Hill across the tranquil West Lake, with stone incense gourds of the Three Ponds Mirroring the Moon in the foreground framed by weeping willow fronds",
+    silhouette: "the storied Leifeng Pagoda standing atop Sunset Hill across calm West Lake water, with stone carved lanterns of the Three Ponds Mirroring the Moon in the foreground water and a single graceful weeping willow branch dipping from the upper corner, open asymmetrical composition with no circular enclosure",
     colorPrompt: "Longjing tea green, misty water blue, and warm sunset gold"
   },
   {
@@ -135,7 +135,7 @@ const ITEMS = [
     keywords: ["江城", "黄鹤楼", "长江大桥", "蛇山", "楚天"],
     colors: "琉璃飞檐黄 · 楚地朱红 · 浩淼江蓝",
     theme: "Wuhan, Yellow Crane Tower and Wuhan Yangtze River Bridge",
-    silhouette: "the grand five-tiered Yellow Crane Tower with sweeping curved upturned eaves standing atop Snake Hill, overlooking the monumental steel truss arches of the Wuhan Yangtze River Bridge spanning the mighty river",
+    silhouette: "the majestic five-tiered Yellow Crane Tower with soaring curved flying eaves perched high on the crest of Snake Hill, looking out over the open truss span of the Wuhan Yangtze River Bridge across river waters, dynamic open vertical and diagonal architectural silhouette fading into paper margins",
     colorPrompt: "glazed tile ochre yellow, Chu cinnabar red, and Yangtze river indigo blue"
   },
   {
@@ -219,7 +219,7 @@ const ITEMS = [
     keywords: ["琴岛", "栈桥", "回澜阁", "红瓦绿树", "小青岛"],
     colors: "碧海深蓝 · 红瓦赤 · 浪花米白",
     theme: "Qingdao, Zhanqiao Pier Huilan Pavilion and Coastline",
-    silhouette: "the long curved stone Zhanqiao Pier extending into the azure sea, leading to the octagonal two-story Huilan Pavilion with sweeping eaves, framed by pine trees on seaside red granite rocks and white sea waves",
+    silhouette: "the long stone Zhanqiao Pier stretching out into the sea leading to the octagonal Huilan Pavilion with its red pillars and sweeping eaves, flanked by coastal pine trees on granite rocks and gentle ocean waves, completely open natural coastal silhouette with no circular borders",
     colorPrompt: "ocean indigo blue, terracotta roof tile red, and warm mineral white"
   },
   {
@@ -247,7 +247,7 @@ const ITEMS = [
     keywords: ["鹭岛", "鼓浪屿", "日光岩", "双子塔", "琴岛"],
     colors: "鹭岛蔚蓝 · 赤岩赭 · 茉莉白",
     theme: "Xiamen, Gulangyu Sunlight Rock and Shimao Twin Towers",
-    silhouette: "the craggy crown of Sunlight Rock overlooking the red-roofed villas of Gulangyu Island, juxtaposed against the soaring curved sail-shaped Shimao Twin Towers skyline across the sparkling sea channel with soaring egrets",
+    silhouette: "the craggy boulder summit of Sunlight Rock topped by an ancient red pavilion, looking across the blue sea channel toward the modern curved twin sail towers of Shimao, with coastal palm trees and white egrets in an open horizontal seaside panorama with unconstrained edges",
     colorPrompt: "coastal turquoise blue, Sunlight Rock ochre brown, and mineral white"
   },
   {
@@ -275,7 +275,7 @@ const ITEMS = [
     keywords: ["滨城", "星海大桥", "有轨电车", "星海湾", "海风"],
     colors: "极光深蓝 · 铁轨墨灰 · 浪花白",
     theme: "Dalian, Xinghai Bay Cross-Sea Bridge and Vintage Tramway",
-    silhouette: "the graceful curving S-shaped span of the Xinghai Bay Cross-Sea Bridge hovering over ocean swells, paired with the nostalgic silhouette of a classic vintage city tramway car surrounded by seagulls",
+    silhouette: "the modern suspension span of Xinghai Bay Cross-Sea Bridge sweeping across ocean waves, paired with a classic green-and-cream vintage tram car on coastal tracks, accompanied by flying seagulls in an open breezy marine silhouette",
     colorPrompt: "deep marine navy blue, steel charcoal grey, and froth white"
   },
   {
@@ -415,7 +415,7 @@ const ITEMS = [
     keywords: ["椰城", "骑楼老街", "云洞图书馆", "海口湾", "椰林"],
     colors: "骑楼米褐 · 椰林翠绿 · 琼海天蓝",
     theme: "Haikou, Qilou Old Street and Wormhole Library on Haikou Bay",
-    silhouette: "the ornate Baroque colonial pediments and arched arcades of Haikou Qilou arcade street, blending seamlessly with the futuristic organic curving oval window voids of the Wormhole Library and leaning coastal coconut palms",
+    silhouette: "the elegant South Asian Baroque pediments and arched pillars of Haikou Qilou Old Street arcades, flanked by a leaning tropical coconut palm and the sweeping curve of Century Bridge across Haikou Bay, completely open architectural silhouette with unconstrained borders",
     colorPrompt: "limestone arcade cream, tropical palm green, and South China Sea sky blue"
   },
   {
@@ -435,7 +435,7 @@ const ITEMS = [
 ];
 
 function buildPrompt(item) {
-  return `A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Theme: ${item.theme}. Extremely simplified iconic silhouette of ${item.silhouette}. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: ${item.colorPrompt}. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark.`;
+  return `A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: ${item.theme}. Extremely simplified iconic silhouette of ${item.silhouette}. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: ${item.colorPrompt}. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark.`;
 }
 
 module.exports = { ITEMS, buildPrompt };
