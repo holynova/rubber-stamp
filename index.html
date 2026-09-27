@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover">
-  <title>橡胶戳艺术印记 · 名胜风景 / 古诗名句 / 世界城市 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异 / 游戏神作</title>
-  <meta name="description" content="精选名胜风景、古诗名句、世界城市、珍稀动物、海洋生物、大气奇观、游戏神作等10大系列共252枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
+  <title>橡胶戳艺术印记 · 名胜风景 / 古建名山 / 古诗名句 / 世界城市 / 珍稀动物 / 海洋生物 / 大气现象 / 十二生肖 / 二十四节气 / 山海神异 / 游戏神作</title>
+  <meta name="description" content="精选名胜风景、古建名山、古诗名句、世界城市、珍稀动物、海洋生物、大气奇观、游戏神作等11大系列共296枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
 
   <!-- Analytics -->
   <script
@@ -1285,6 +1285,10 @@
           <span class="tab-text">名胜风景</span>
           <span class="tab-indicator"></span>
         </button>
+        <button class="xhs-tab" data-series="heritage_mountains">
+          <span class="tab-text">古建名山</span>
+          <span class="tab-indicator"></span>
+        </button>
         <button class="xhs-tab" data-series="poetry">
           <span class="tab-text">古诗名句</span>
           <span class="tab-indicator"></span>
@@ -1361,15 +1365,15 @@
             <div class="note-swiper-track" id="note-swiper-track">
               <!-- Prev Slide Slot -->
               <div class="swiper-slide swiper-slide-prev" id="slide-prev">
-                <img class="swiper-img" id="img-prev" src="" alt="上一张印章">
+                <img class="swiper-img" id="img-prev" src="placeholder.svg" alt="上一张印章">
               </div>
               <!-- Current Active Slide Slot -->
               <div class="swiper-slide swiper-slide-curr" id="slide-curr">
-                <img class="swiper-img" id="note-main-img" src="" alt="当前印章作品">
+                <img class="swiper-img" id="note-main-img" src="placeholder.svg" alt="当前印章作品">
               </div>
               <!-- Next Slide Slot -->
               <div class="swiper-slide swiper-slide-next" id="slide-next">
-                <img class="swiper-img" id="img-next" src="" alt="下一张印章">
+                <img class="swiper-img" id="img-next" src="placeholder.svg" alt="下一张印章">
               </div>
             </div>
           </div>
@@ -1439,7 +1443,7 @@
 
           <!-- Card Artwork Frame -->
           <div class="share-card-art-box">
-            <img id="share-card-img" class="share-card-img" src="" alt="印章作品">
+            <img id="share-card-img" class="share-card-img" src="placeholder.svg" alt="印章作品">
           </div>
 
           <!-- Card Info & Description -->
@@ -1587,7 +1591,7 @@
     function getAllLikedItems() {
       const set = getLikedSet();
       const allLiked = [];
-      const seriesOrder = ["scenic_spots", "poetry", "cities", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing", "games"];
+      const seriesOrder = ["scenic_spots", "heritage_mountains", "poetry", "cities", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing", "games"];
       seriesOrder.forEach(sKey => {
         const col = window.COLLECTIONS[sKey];
         if (col && col.items) {

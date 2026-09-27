@@ -79,6 +79,7 @@ window.ATMOSPHERE = window.COLLECTIONS.atmosphere.items;
 window.ZODIAC = window.COLLECTIONS.zodiac.items;
 window.SOLAR_TERMS = window.COLLECTIONS.solar_terms.items;
 window.SHANHAIJING = window.COLLECTIONS.shanhaijing.items;
+window.HERITAGE_MOUNTAINS = window.COLLECTIONS.heritage_mountains.items;
 
 window.GAMES = window.COLLECTIONS.games.items;
 `;

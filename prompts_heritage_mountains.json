@@ -1,0 +1,359 @@
+[
+  {
+    "id": 1,
+    "name": "故宫太和殿",
+    "title": "故宫太和殿",
+    "region": "华北",
+    "province": "北京",
+    "features": "太和殿金色重檐、朱墙与汉白玉台基",
+    "keywords": [
+      "故宫太和殿",
+      "Hall of Supreme Harmony, Forbidden City",
+      "太和殿",
+      "故宫",
+      "紫禁城"
+    ],
+    "colors": "故宫朱红 · 琉璃赭金 · 松烟墨黑",
+    "output": "images/heritage_mountains/01_故宫太和殿.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 故宫太和殿 (Hall of Supreme Harmony, Forbidden City). Extremely simplified iconic silhouette: The Hall of Supreme Harmony viewed from a gentle low three-quarter angle: its iconic broad triple-tiered golden roof with sweeping eaves, red palace walls, and elevated white-stone terrace with a few steps. Keep the imperial architecture historically grounded and highly recognizable; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: imperial cinnabar red, subdued ochre gold, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 2,
+    "name": "长城（金山岭）",
+    "title": "长城（金山岭）",
+    "region": "华北",
+    "province": "河北省滦平县",
+    "features": "金山岭长城沿山脊蜿蜒，砖石敌楼层叠",
+    "keywords": [
+      "长城（金山岭）",
+      "Great Wall at Jinshanling",
+      "长城",
+      "金山岭",
+      "烽火台"
+    ],
+    "colors": "古砖赤褐 · 苍松青褐 · 松烟墨黑",
+    "output": "images/heritage_mountains/02_长城金山岭.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 长城（金山岭） (Great Wall at Jinshanling). Extremely simplified iconic silhouette: A crenellated stone Great Wall winding over a rugged mountain ridge, punctuated by two compact square watchtowers with tiered roofs. Show a strong rising diagonal and keep the wall clearly identifiable; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: terracotta brick red, mountain pine green, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 3,
+    "name": "天坛祈年殿",
+    "title": "天坛祈年殿",
+    "region": "华北",
+    "province": "北京",
+    "features": "祈年殿蓝色三重檐与汉白玉阶基",
+    "keywords": [
+      "天坛祈年殿",
+      "Hall of Prayer for Good Harvests, Temple of Heaven",
+      "天坛",
+      "祈年殿",
+      "祭天"
+    ],
+    "colors": "祭天霁蓝 · 朱砂红 · 琉璃赭黄",
+    "output": "images/heritage_mountains/03_天坛祈年殿.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 天坛祈年殿 (Hall of Prayer for Good Harvests, Temple of Heaven). Extremely simplified iconic silhouette: The iconic circular-plan Hall of Prayer for Good Harvests in a frontal three-quarter view, its three stacked blue tiled roofs, red timber columns, and white marble terrace. The round building itself is accurate, but leave the surrounding composition open and never add a circular frame.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: river indigo, imperial cinnabar red, warm ochre. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 4,
+    "name": "布达拉宫",
+    "title": "布达拉宫",
+    "region": "西南",
+    "province": "西藏拉萨",
+    "features": "布达拉宫白宫红宫层叠宫墙与山城轮廓",
+    "keywords": [
+      "布达拉宫",
+      "Potala Palace",
+      "白宫",
+      "红宫"
+    ],
+    "colors": "宫墙朱红 · 暖石赭黄 · 松烟墨黑",
+    "output": "images/heritage_mountains/04_布达拉宫.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 布达拉宫 (Potala Palace). Extremely simplified iconic silhouette: The monumental Potala Palace rising in stepped tiers up a hillside, with its broad white lower palace, compact red upper palace, rows of small windows and golden roof details. Use a clear open silhouette and just a hint of mountain foothill; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: terracotta red, warm stone ochre, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 5,
+    "name": "悬空寺",
+    "title": "悬空寺",
+    "region": "华北",
+    "province": "山西省浑源县",
+    "features": "悬空寺木构殿阁、悬挑栈道与绝壁",
+    "keywords": [
+      "悬空寺",
+      "Hanging Temple, Mount Heng",
+      "恒山",
+      "木构"
+    ],
+    "colors": "古砖赤褐 · 石青灰 · 松烟墨黑",
+    "output": "images/heritage_mountains/05_悬空寺.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 悬空寺 (Hanging Temple, Mount Heng). Extremely simplified iconic silhouette: The Hanging Temple's wooden halls and red-brown beam supports clinging to a sheer vertical cliff, with visibly projecting galleries and a few slender support posts. Emphasize the daring architecture against a clean open paper field; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: terracotta brick red, slate blue-grey, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 6,
+    "name": "应县木塔",
+    "title": "应县木塔",
+    "region": "华北",
+    "province": "山西省应县",
+    "features": "应县木塔八角木构、多层出檐与斗拱",
+    "keywords": [
+      "应县木塔",
+      "Sakyamuni Pagoda of Fogong Temple",
+      "佛宫寺释迦塔",
+      "辽代木塔"
+    ],
+    "colors": "琉璃赭黄 · 古建朱红 · 松烟墨黑",
+    "output": "images/heritage_mountains/06_应县木塔.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 应县木塔 (Sakyamuni Pagoda of Fogong Temple). Extremely simplified iconic silhouette: The elegant octagonal multi-storey timber pagoda of Fogong Temple in a slight low-angle view, with stacked dark wooden balconies, deep eaves and legible bracket sets. Preserve its tall, slender historic silhouette; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: warm ochre, terracotta red, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 7,
+    "name": "赵州桥",
+    "title": "赵州桥",
+    "region": "华北",
+    "province": "河北省赵县",
+    "features": "赵州桥单孔敞肩石拱、石栏与河面",
+    "keywords": [
+      "赵州桥",
+      "Zhaozhou Bridge",
+      "赵州桥",
+      "安济桥",
+      "石拱桥"
+    ],
+    "colors": "暖石赭黄 · 河水苍青 · 松烟墨黑",
+    "output": "images/heritage_mountains/07_赵州桥.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 赵州桥 (Zhaozhou Bridge). Extremely simplified iconic silhouette: The elegant single-span stone Zhaozhou Bridge in a low side view, its distinctive shallow segmental arch crossing calm water, with simple carved stone balustrades and small spandrel arches. Keep the bridge silhouette open and recognizable; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: warm stone ochre, slate blue, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 8,
+    "name": "龙门石窟",
+    "title": "龙门石窟",
+    "region": "华中",
+    "province": "河南省洛阳市",
+    "features": "龙门石窟奉先寺大佛与石壁佛龛",
+    "keywords": [
+      "龙门石窟",
+      "Longmen Grottoes",
+      "龙门石窟",
+      "奉先寺",
+      "卢舍那大佛"
+    ],
+    "colors": "龙门石赭黄 · 石青灰 · 朱砂红",
+    "output": "images/heritage_mountains/08_龙门石窟.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 龙门石窟 (Longmen Grottoes). Extremely simplified iconic silhouette: A simplified cliff face at Longmen with a few carved cave niches and one monumental seated Vairocana Buddha in a central rock alcove, framed by spare vertical stone contours. Treat the cliff and sculpture as ancient carved stone architecture, not a crowded tableau.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: warm sandstone ochre, pine soot black, muted cinnabar. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 9,
+    "name": "黄鹤楼",
+    "title": "黄鹤楼",
+    "region": "华中",
+    "province": "湖北省武汉市",
+    "features": "黄鹤楼多层飞檐、朱红立柱与高台",
+    "keywords": [
+      "黄鹤楼",
+      "Yellow Crane Tower",
+      "黄鹤楼",
+      "武汉",
+      "江城"
+    ],
+    "colors": "琉璃赭黄 · 楼阁朱红 · 大江苍青",
+    "output": "images/heritage_mountains/09_黄鹤楼.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 黄鹤楼 (Yellow Crane Tower). Extremely simplified iconic silhouette: The historic Yellow Crane Tower landmark as a tall multi-tiered Chinese pavilion tower with layered golden-orange roofs, strong upward silhouette and a restrained stone terrace; a few carved cloud lines only. Do not add modern buildings or people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: ochre gold, imperial cinnabar red, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 10,
+    "name": "拙政园",
+    "title": "拙政园",
+    "region": "华东",
+    "province": "江苏省苏州市",
+    "features": "拙政园水榭、太湖石与荷塘水纹",
+    "keywords": [
+      "拙政园",
+      "Humble Administrator's Garden, Suzhou",
+      "拙政园",
+      "苏州园林",
+      "太湖石"
+    ],
+    "colors": "苍松绿 · 石青 · 暖赭",
+    "output": "images/heritage_mountains/10_苏州拙政园.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 拙政园 (Humble Administrator's Garden, Suzhou). Extremely simplified iconic silhouette: One graceful waterside pavilion from the Humble Administrator's Garden with dark sweeping roof, slender columns and a single scholar's rock at the water's edge, reflected in only a few carved ripples. Sparse classical garden architecture, no people or busy landscaping.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: mountain pine green, muted mineral teal, warm ochre. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 11,
+    "name": "珠穆朗玛峰",
+    "title": "珠穆朗玛峰",
+    "region": "亚洲",
+    "province": "中国—尼泊尔边界",
+    "features": "珠穆朗玛峰金字塔形雪顶、冰川槽谷与喜马拉雅山脊",
+    "keywords": [
+      "珠穆朗玛峰",
+      "Mount Everest",
+      "珠峰",
+      "珠穆朗玛峰",
+      "喜马拉雅"
+    ],
+    "colors": "冰川苍青 · 石青灰 · 松烟墨黑",
+    "output": "images/heritage_mountains/11_珠穆朗玛峰.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 珠穆朗玛峰 (Mount Everest). Extremely simplified iconic silhouette: Mount Everest's unmistakable high pyramidal summit rising above a sequence of sharply carved Himalayan ridges, with a few graphic snow and glacier channels. Monumental but spare; no climbers or equipment.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: slate blue, pine soot black, muted mineral teal. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 12,
+    "name": "富士山",
+    "title": "富士山",
+    "region": "亚洲",
+    "province": "日本本州",
+    "features": "富士山对称火山锥、雪帽与简练山体层线",
+    "keywords": [
+      "富士山",
+      "Mount Fuji",
+      "富士山",
+      "日本",
+      "雪顶"
+    ],
+    "colors": "富士靛青 · 火山赤褐 · 松烟墨黑",
+    "output": "images/heritage_mountains/12_富士山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 富士山 (Mount Fuji). Extremely simplified iconic silhouette: The clean, almost symmetrical cone of Mount Fuji with a distinct snowcap and a few carved contour bands. Keep the mountain as the single dominant form with spacious paper around it; no lake, buildings or people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: river indigo, muted terracotta, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 13,
+    "name": "马特洪峰",
+    "title": "马特洪峰",
+    "region": "欧洲",
+    "province": "瑞士—意大利边界",
+    "features": "马特洪峰尖锐金字塔峰顶与棱角分明的雪脊",
+    "keywords": [
+      "马特洪峰",
+      "Matterhorn",
+      "马特洪峰",
+      "阿尔卑斯",
+      "瑞士"
+    ],
+    "colors": "石青灰 · 雪白米色 · 苍松青褐",
+    "output": "images/heritage_mountains/13_马特洪峰.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 马特洪峰 (Matterhorn). Extremely simplified iconic silhouette: The Matterhorn's sharply pointed pyramidal peak and its steep, angular ridgelines, with restrained snow facets that make its silhouette immediately recognizable. No huts or climbers.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: slate blue-grey, muted mineral teal, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 14,
+    "name": "乞力马扎罗山",
+    "title": "乞力马扎罗山",
+    "region": "非洲",
+    "province": "坦桑尼亚",
+    "features": "乞力马扎罗山宽阔火山山体、雪顶与非洲高原",
+    "keywords": [
+      "乞力马扎罗山",
+      "Mount Kilimanjaro",
+      "乞力马扎罗",
+      "非洲最高峰",
+      "火山"
+    ],
+    "colors": "高原赭黄 · 苍松绿 · 山石青灰",
+    "output": "images/heritage_mountains/14_乞力马扎罗山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 乞力马扎罗山 (Mount Kilimanjaro). Extremely simplified iconic silhouette: Kilimanjaro's broad isolated volcanic massif, the gently sloping Kibo summit capped with a distinct trace of snow above restrained foothill layers. One small acacia silhouette may anchor the scale without crowding the composition.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: warm ochre, mountain pine green, slate blue. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 15,
+    "name": "德纳里山",
+    "title": "德纳里山",
+    "region": "北美洲",
+    "province": "美国阿拉斯加",
+    "features": "德纳里山宽阔双峰肩、冰川与阿拉斯加林线",
+    "keywords": [
+      "德纳里山",
+      "Denali",
+      "德纳里",
+      "阿拉斯加",
+      "北美最高峰"
+    ],
+    "colors": "冰川苍青 · 雪峰青灰 · 松烟墨黑",
+    "output": "images/heritage_mountains/15_德纳里山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 德纳里山 (Denali). Extremely simplified iconic silhouette: Denali's immense twin-shouldered Alaska summit, snow-bound upper ridges and carved glacier descending into a spare dark boreal foothill. Preserve a massive, broad mountain silhouette; no cabins or people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: slate blue, muted mineral teal, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 16,
+    "name": "阿空加瓜山",
+    "title": "阿空加瓜山",
+    "region": "南美洲",
+    "province": "阿根廷门多萨省",
+    "features": "阿空加瓜山安第斯高峰、裸岩与高山雪沟",
+    "keywords": [
+      "阿空加瓜山",
+      "Aconcagua",
+      "阿空加瓜",
+      "安第斯",
+      "南美洲最高峰"
+    ],
+    "colors": "安第斯石灰 · 高原赭红 · 松烟墨黑",
+    "output": "images/heritage_mountains/16_阿空加瓜山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 阿空加瓜山 (Aconcagua). Extremely simplified iconic silhouette: The high dry Andes summit of Aconcagua, a broad, rugged pale peak rising over spare ochre foothills and broken snow gullies. Emphasize its immense exposed rocky face, not tropical vegetation; no people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: terracotta ochre, slate blue-grey, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 17,
+    "name": "勃朗峰",
+    "title": "勃朗峰",
+    "region": "欧洲",
+    "province": "法国—意大利边界",
+    "features": "勃朗峰圆阔雪冠、冰川褶线与阿尔卑斯群峰",
+    "keywords": [
+      "勃朗峰",
+      "Mont Blanc",
+      "勃朗峰",
+      "阿尔卑斯",
+      "法国意大利"
+    ],
+    "colors": "冰川青蓝 · 苍松绿 · 山石墨黑",
+    "output": "images/heritage_mountains/17_勃朗峰.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 勃朗峰 (Mont Blanc). Extremely simplified iconic silhouette: The broad rounded crown and clustered snowy shoulders of the Mont Blanc massif, with etched glacier folds and restrained alpine foothill contours. Distinguish it from a single sharp peak; no cable cars, buildings or climbers.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: muted mineral teal, slate blue, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 18,
+    "name": "桌山",
+    "title": "桌山",
+    "region": "非洲",
+    "province": "南非开普敦",
+    "features": "桌山平顶高原、陡直岩壁与翻越山脊的云带",
+    "keywords": [
+      "桌山",
+      "Table Mountain",
+      "桌山",
+      "开普敦",
+      "南非"
+    ],
+    "colors": "苍松绿 · 苍青 · 琉璃赭黄",
+    "output": "images/heritage_mountains/18_桌山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 桌山 (Table Mountain). Extremely simplified iconic silhouette: Cape Town's iconic flat-topped Table Mountain, a level summit plateau with steep rock walls and a small ribbon of cloud spilling over one side. Keep the silhouette horizontal and unmistakable; no city skyline.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: mountain pine green, slate blue, warm ochre. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 19,
+    "name": "奥林匹斯山",
+    "title": "奥林匹斯山",
+    "region": "欧洲",
+    "province": "希腊",
+    "features": "奥林匹斯山锯齿状石灰岩峰脊与云雾",
+    "keywords": [
+      "奥林匹斯山",
+      "Mount Olympus",
+      "奥林匹斯山",
+      "希腊",
+      "神话名山"
+    ],
+    "colors": "古岩赭黄 · 山石青灰 · 松烟墨黑",
+    "output": "images/heritage_mountains/19_奥林匹斯山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 奥林匹斯山 (Mount Olympus). Extremely simplified iconic silhouette: Mount Olympus in Greece as a dramatic jagged limestone massif, broken ridgeline rising into a small carved veil of cloud above sparsely layered foothills. Evoke its mythic stature through scale only; include no gods, temples or figures.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: warm ochre, slate blue-grey, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  },
+  {
+    "id": 20,
+    "name": "维苏威火山",
+    "title": "维苏威火山",
+    "region": "欧洲",
+    "province": "意大利那不勒斯附近",
+    "features": "维苏威火山锥形轮廓、山顶火山口与熔岩沟纹",
+    "keywords": [
+      "维苏威火山",
+      "Mount Vesuvius",
+      "维苏威火山",
+      "维苏威",
+      "意大利火山"
+    ],
+    "colors": "火山朱砂赤 · 矿石青绿 · 松烟墨黑",
+    "output": "images/heritage_mountains/20_维苏威火山.png",
+    "prompt": "A clean minimalist hand-carved rubber stamp / woodblock relief artwork centered on a 4:5 vertical canvas of opaque warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by balanced 28-32% clean paper negative space and elegant margins. Open natural asymmetrical silhouette, never a circular composition, circle frame, medallion, or border. Theme: 维苏威火山 (Mount Vesuvius). Extremely simplified iconic silhouette: The recognizable low volcanic cone of Mount Vesuvius with its distinct summit crater and a few etched lava channels, standing alone above quiet foothill strata. Keep it dormant-looking, with no eruption plume, buildings or people.. Bold carved linocut relief lines, tactile gouge marks, dry ink gaps, naturally uneven edges, and subtle color registration misalignment. Use 2-3 muted traditional mineral spot colors: terracotta brick red, muted mineral teal, pine soot black. Keep the entire Xuan paper canvas opaque and visible. No photorealism, 3D, clutter, tourists, text, letters, calligraphy, watermark, signature, or logo."
+  }
+]

@@ -1,7 +1,9 @@
 import json
+import re
 from pathlib import Path
 
-BASE = Path("/Users/sym/code/rubber-stamp-world-cities")
+BASE = Path(__file__).resolve().parent
+EXISTING_DATA_SOURCE = (BASE / "data.js").read_text(encoding="utf-8") if (BASE / "data.js").exists() else ""
 
 def load_json(filename):
     p = BASE / filename
@@ -13,13 +15,72 @@ def load_json(filename):
             return []
     return []
 
+def load_existing_collections():
+    if not EXISTING_DATA_SOURCE:
+        return {}
+    marker = "window.COLLECTIONS = "
+    start = EXISTING_DATA_SOURCE.find(marker)
+    end = EXISTING_DATA_SOURCE.find(";\n\n// 兼容旧版引用", start)
+    if start < 0 or end < 0:
+        return {}
+    try:
+        return json.loads(EXISTING_DATA_SOURCE[start + len(marker):end])
+    except json.JSONDecodeError as e:
+        print(f"Error reading existing collections: {e}")
+        return {}
+
+def preserve_key_order(data, reference):
+    """Retain published JSON property order while updating generated values."""
+    if isinstance(data, dict) and isinstance(reference, dict):
+        ordered = {
+            key: preserve_key_order(data[key], reference[key])
+            for key in reference
+            if key in data
+        }
+        ordered.update((key, value) for key, value in data.items() if key not in ordered)
+        return ordered
+    if isinstance(data, list) and isinstance(reference, list) and len(data) == len(reference):
+        return [preserve_key_order(value, old_value) for value, old_value in zip(data, reference)]
+    return data
+
+def find_collection_snippet(content, collection_id):
+    match = re.search(rf'(?m)^  "{re.escape(collection_id)}": \{{', content)
+    if not match:
+        return None
+    start = match.start()
+    brace = content.find("{", match.start())
+    depth = 0
+    in_string = False
+    escaped = False
+    for index in range(brace, len(content)):
+        char = content[index]
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+        elif char == '"':
+            in_string = True
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return start, index + 1
+    return None
+
 # 1. World Cities (30)
 cities_items = load_json("prompts.json")
 
 # 2. Scenic Spots (50)
 scenic_items = load_json("prompts_scenic_spots.json")
 
-# 3. Classical Chinese Poetry (50)
+# 3. Chinese Heritage Architecture & World Mountains (20)
+heritage_mountains_items = load_json("prompts_heritage_mountains.json")
+
+# 4. Classical Chinese Poetry (50)
 poetry_raw = load_json("prompts_poetry.json")
 poetry_items = []
 for p in poetry_raw:
@@ -30,26 +91,37 @@ for p in poetry_raw:
         item["features"] = f"「{p['verse']}」 {p['features']}"
     poetry_items.append(item)
 
-# 4. Rare Wildlife (20)
+# 5. Rare Wildlife (20)
 wildlife_items = load_json("prompts_wildlife.json")
 
-# 5. Marine Life (20)
+# 6. Marine Life (20)
 marine_items = load_json("prompts_marine.json")
 
-# 6. Atmospheric Phenomena (20)
+# 7. Atmospheric Phenomena (20)
 atmosphere_items = load_json("prompts_atmosphere.json")
 
-# 7. Chinese Zodiac (12)
+# 8. Chinese Zodiac (12)
 zodiac_items = load_json("prompts_zodiac.json")
 for z in zodiac_items:
     if "title" not in z:
         z["title"] = f"{z.get('name','')} · {z.get('animal','')}"
 
-# 8. 24 Solar Terms (24)
+# 9. 24 Solar Terms (24)
 solar_items = load_json("prompts_solar_terms.json")
 
-# 9. Shan Hai Jing (10)
-shanhaijing_items = load_json("prompts_shanhaijing.json")
+# 10. Shan Hai Jing (10) is kept from the published data.js below.
+
+# Preserve the game collection generated from scripts/batch_games.js.
+existing_collections = load_existing_collections()
+games_collection = existing_collections.get("games")
+if not games_collection:
+    raise RuntimeError("Could not preserve the existing games collection from data.js")
+
+# Keep the live Shan Hai Jing collection intact; its prompt source currently differs
+# from the version already published in data.js, and this task does not revise it.
+shanhaijing_collection = existing_collections.get("shanhaijing")
+if not shanhaijing_collection:
+    raise RuntimeError("Could not preserve the existing shanhaijing collection from data.js")
 
 collections = {
     "scenic_spots": {
@@ -148,23 +220,46 @@ collections = {
         "badgeFormat": "节气 {id}",
         "items": solar_items
     },
-    "shanhaijing": {
-        "id": "shanhaijing",
-        "title": "山海神异",
-        "titleEn": "Classic of Mountains & Seas",
-        "count": len(shanhaijing_items),
-        "kicker": "classic of mountains and seas / mythical beasts / 2026",
-        "headline": "橡胶戳上古神祇<br>山海神异",
-        "desc": "10 尊中国上古神话异兽与司天神祇。取材于《山海经》大荒经与海内经，以纯粹无文字的多色木刻雕版印章，重现九尾狐、烛九阴、帝江、白泽等上古神灵的奇崛神韵。",
-        "tagPrefix": "神兽",
-        "badgeFormat": "山海 {id}",
-        "items": shanhaijing_items
+    "shanhaijing": shanhaijing_collection,
+    "games": games_collection,
+    "heritage_mountains": {
+        "id": "heritage_mountains",
+        "title": "古建名山",
+        "titleEn": "Architecture & Mountains",
+        "count": len(heritage_mountains_items),
+        "kicker": "historic architecture & world peaks / rubber stamp collection / 2026",
+        "headline": "橡胶戳名山古建<br>中国古建筑与世界名山",
+        "desc": "精选 10 处中国古建筑与 10 座世界名山，以手工线刻与多色套印留住宫殿、古桥、石窟、园林和山岳的标志性轮廓。",
+        "tagPrefix": "古建名山",
+        "badgeFormat": "地标 {id}",
+        "items": heritage_mountains_items
     }
 }
 
+for collection_id, existing_collection in existing_collections.items():
+    if collection_id in collections:
+        collections[collection_id] = preserve_key_order(
+            collections[collection_id], existing_collection
+        )
+
 total_count = sum(len(c["items"]) for c in collections.values())
 
-output_js = f"""// 橡胶戳艺术画廊数据集：名胜风景 (50) · 古诗名句 (50) · 世界城市 (30) · 珍稀动物 (20) · 海洋生物 (20) · 大气现象 (20) · 十二生肖 (12) · 二十四节气 (24) · 山海神异 (10) -> 共 {total_count} 枚
+collection_labels = {
+    "scenic_spots": "名胜风景",
+    "heritage_mountains": "古建名山",
+    "poetry": "古诗名句",
+    "cities": "世界城市",
+    "wildlife": "珍稀动物",
+    "marine": "海洋生物",
+    "atmosphere": "大气现象",
+    "zodiac": "十二生肖",
+    "solar_terms": "二十四节气",
+    "shanhaijing": "山海神异",
+    "games": "游戏神作"
+}
+summary = " · ".join(f"{collection_labels[key]} ({len(value['items'])})" for key, value in collections.items())
+
+output_js = f"""// 橡胶戳艺术画廊数据集：{summary} -> 共 {total_count} 枚
 window.COLLECTIONS = {json.dumps(collections, ensure_ascii=False, indent=2)};
 
 // 兼容旧版引用
@@ -177,7 +272,18 @@ window.ATMOSPHERE = window.COLLECTIONS.atmosphere.items;
 window.ZODIAC = window.COLLECTIONS.zodiac.items;
 window.SOLAR_TERMS = window.COLLECTIONS.solar_terms.items;
 window.SHANHAIJING = window.COLLECTIONS.shanhaijing.items;
+window.HERITAGE_MOUNTAINS = window.COLLECTIONS.heritage_mountains.items;
+window.GAMES = window.COLLECTIONS.games.items;
 """
+
+# Keep the game's published legacy indentation so this collection addition does
+# not rewrite its large existing block as an unrelated formatting change.
+existing_games_span = find_collection_snippet(EXISTING_DATA_SOURCE, "games")
+generated_games_span = find_collection_snippet(output_js, "games")
+if existing_games_span and generated_games_span:
+    old_start, old_end = existing_games_span
+    new_start, new_end = generated_games_span
+    output_js = output_js[:new_start] + EXISTING_DATA_SOURCE[old_start:old_end] + output_js[new_end:]
 
 (BASE / "data.js").write_text(output_js, encoding="utf-8")
 print(f"data.js updated successfully! Total {len(collections)} collections -> Total {total_count} stamps with full prompts.")
