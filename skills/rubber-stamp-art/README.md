@@ -11,7 +11,7 @@
 在支持 Agent Skills 规范的终端中运行：
 
 ```bash
-npx skills add holynova/rubber-stamp --skill rubber-stamp-art
+npx skills add holynova/hn-codex-skills --skill rubber-stamp-art
 ```
 
 ---

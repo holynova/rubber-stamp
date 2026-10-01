@@ -1,0 +1,363 @@
+const { execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+
+const ROOT_DIR = path.resolve(__dirname, '..');
+const OUTPUT_DIR = path.resolve(ROOT_DIR, 'images/festivals');
+const THUMB_DIR = path.resolve(ROOT_DIR, 'images/thumbnails/festivals');
+const DETAIL_DIR = path.resolve(ROOT_DIR, 'images/detail_webp/festivals');
+const TMP_DIR = '/tmp/festivals_gen';
+const OPENCLI = '/Users/sym/Library/pnpm/opencli';
+
+[OUTPUT_DIR, THUMB_DIR, DETAIL_DIR, TMP_DIR].forEach(dir => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+});
+
+const FESTIVALS_LIST = [
+  {
+    id: 1,
+    name: '春节',
+    title: '新春佳节 · 舞狮纳福',
+    features: '金毛醒狮凌空腾跃翻滚、倒贴福字窗花意象、爆竹碎红与迎春红梅枝桠',
+    keywords: ['春节', '过年', '舞狮', '醒狮', '红梅', '新年'],
+    colors: '故宫朱红 · 琉璃金黄 · 松烟墨黑',
+    file: '01_春节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Spring Festival / Chinese New Year (新春佳节舞狮纳福). Extremely simplified iconic silhouette of a vibrant traditional southern lion dance (醒狮) leaping dynamically with swirling silk mane, accompanied by a blooming winter plum branch with crimson petals and hanging festive red firecrackers, open natural diagonal festive silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, glazed tile golden yellow, and pine soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 2,
+    name: '元宵节',
+    title: '上元良宵 · 鳌山观灯',
+    features: '精巧飞檐挑挂八角金鱼琉璃花灯、青花瓷碗滚热元宵、水榭融融暖光',
+    keywords: ['元宵', '上元节', '花灯', '汤圆', '灯会', '金鱼灯'],
+    colors: '故宫朱红 · 琥珀暖黄 · 浅水石青',
+    file: '02_元宵节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Lantern Festival / Yuanxiao Festival (上元良宵观灯). Extremely simplified iconic silhouette of an ornate hanging carp-shaped palace lantern with glowing amber light and flowing silk tassels, paired with an elegant porcelain bowl of steaming sweet glutinous dumplings (汤圆) on a wooden stand, open asymmetrical festive silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, warm amber gold, and river indigo slate blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 3,
+    name: '清明节',
+    title: '清明时节 · 雨巷折柳',
+    features: '江南粉墙黛瓦、微风拂面细雨垂柳、双燕掠空、案头翡翠青团',
+    keywords: ['清明', '踏青', '折柳', '青团', '春燕', '江南水乡'],
+    colors: '柳叶新绿 · 黛瓦墨黑 · 苍石青灰',
+    file: '03_清明节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Qingming Festival (清明时节雨巷折柳). Extremely simplified iconic silhouette of sweeping weeping willow branches swaying in gentle spring rain beside curved upturned white-and-black Jiangnan roof eaves, two swallows swooping gracefully through the air, and a small bamboo steamer with glossy green rice dumplings (青团), open organic landscape contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: fresh willow green, roof tile soot black, and misty slate grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 4,
+    name: '端午节',
+    title: '端午安康 · 龙舟破浪',
+    features: '木雕龙头飞舟斩浪争渡、苍翠箬叶裹线三角香粽、菖蒲艾草斜插辟邪',
+    keywords: ['端午', '龙舟', '粽子', '艾草', '菖蒲', '赛龙舟'],
+    colors: '苍松青绿 · 故宫朱红 · 雄黄暖褐',
+    file: '04_端午节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Dragon Boat Festival / Duanwu (端午安康龙舟破浪). Extremely simplified iconic silhouette of a carved wooden dragon boat bow surging through foaming river waves, accompanied by tied green reed leaf zongzi dumplings and fragrant calamus and mugwort leaves on one flank, dynamic open diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: mountain pine green, cinnabar red, and realgar ochre. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 5,
+    name: '七夕节',
+    title: '七夕佳期 · 鹊桥相会',
+    features: '群喜鹊凌空搭桥、银河星汉飘渺流转、织女牛郎长袖遥望、牵牛花藤蔓',
+    keywords: ['七夕', '乞巧', '鹊桥', '银河', '牛郎织女', '牵牛花'],
+    colors: '河汉石青 · 桃粉浅红 · 皓月白黄',
+    file: '05_七夕节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Qixi Festival / Double Seventh (七夕鹊桥相会). Extremely simplified iconic silhouette of a celestial bridge formed by soaring magpies across swirling ethereal Milky Way clouds, with two distant figures reaching toward each other in flowing robes, adorned by climbing morning glory vines, open vertical celestial silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: river indigo slate blue, soft blossom pink, and moonlight pale yellow. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 6,
+    name: '中秋节',
+    title: '中秋团圆 · 桂影穿月',
+    features: '秋月高悬、金桂横斜破月而过、玉兔仰首凝望天际、落英缤纷',
+    keywords: ['中秋', '月饼', '赏月', '玉兔', '桂花', '明月'],
+    colors: '桂花金黄 · 故宫朱红 · 松烟墨黑',
+    file: '06_中秋节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mid-Autumn Festival - Osmanthus Branch Crossing Harvest Moon (中秋桂影穿月). Extremely simplified iconic silhouette of a luminous golden autumn moon high in the open sky, dramatically crossed by a gnarled asymmetrical osmanthus branch laden with delicate clusters of fragrant golden flowers and scattering petals, below which an agile white jade rabbit sits gazing upward in wonder, open natural organic silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: osmanthus golden yellow, imperial cinnabar red, and pine soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 7,
+    name: '重阳节',
+    title: '重阳九九 · 登高插萸',
+    features: '高远秋山层峦、傲霜金菊怒放、茱萸红果红锦香囊、竹节登山杖与重阳糕',
+    keywords: ['重阳', '登高', '菊花', '茱萸', '敬老', '秋山'],
+    colors: '金菊赭黄 · 茱萸朱红 · 远山墨青',
+    file: '07_重阳节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Chongyang Festival / Double Ninth Festival (重阳九九登高插萸). Extremely simplified iconic silhouette of blooming wild autumn chrysanthemums with frost-resistant petals, a sprig of red dogwood (茱萸) berries with a silk sachet, backed by distant stepped mountain ridges and a bamboo walking staff, open asymmetrical botanical landscape silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: chrysanthemum ochre yellow, dogwood cinnabar red, and mountain indigo green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 8,
+    name: '冬至',
+    title: '冬至阳生 · 围炉食饺',
+    features: '素雅青花瓷碗盛装热气腾腾白嫩水饺、窗棂霜花轻结、冬梅一枝探雪',
+    keywords: ['冬至', '饺子', '数九', '冬梅', '窗花', '节气'],
+    colors: '霁蓝石青 · 梅花粉红 · 墨水灰黑',
+    file: '08_冬至.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Winter Solstice / Dongzhi (冬至阳生食水饺). Extremely simplified iconic silhouette of a traditional porcelain bowl filled with plump steaming crescent-shaped dumplings (水饺) emitting delicate vapor swirls, flanked by an ancient winter-blooming plum branch with frosty pink buds protruding through a carved lattice window motif, open asymmetrical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: indigo porcelain blue, plum blossom pink, and charcoal ink black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 9,
+    name: '腊八节',
+    title: '腊八飘香 · 煮粥纳祥',
+    features: '陶罐温火细熬七宝五谷杂粮粥、红枣莲子桂圆点缀、翠绿翡翠腊八蒜坛',
+    keywords: ['腊八', '腊八粥', '腊八蒜', '五谷', '年关', '民俗'],
+    colors: '红枣朱红 · 蒜玉翠绿 · 陶泥赭褐',
+    file: '09_腊八节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Laba Festival (腊八飘香煮粥纳祥). Extremely simplified iconic silhouette of a rustic clay pot of steaming eight-treasure porridge with carved grains, red dates, and lotus seeds, paired with an earthenware jar of jade-green pickled Laba garlic cloves and stalks of harvested wheat, open organic culinary silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: jujube cinnabar red, jade garlic green, and terracotta clay brown. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 10,
+    name: '除夕',
+    title: '除夕守岁 · 辞旧迎新',
+    features: '雕花窗棂贴朱红生肖剪纸窗花、大门悬挂红灯笼、案头金桔除夕年饭',
+    keywords: ['除夕', '大年三十', '守岁', '窗花', '年夜饭', '红灯笼'],
+    colors: '故宫朱红 · 琉璃金黄 · 松烟墨黑',
+    file: '10_除夕.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Chinese New Year's Eve / Chuxi (除夕守岁辞旧迎新). Extremely simplified iconic silhouette of an ornate wooden lattice window adorned with intricate red papercut window flowers (窗花), a glowing festive red lantern hanging to one side, and a branch of auspicious golden kumquats with evergreen leaves, open festive asymmetrical contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, festive gold ochre, and pine soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 11,
+    name: '元旦',
+    title: '元旦迎新 · 岁首晨曦',
+    features: '古寺青铜大钟撞钟迎新、日历翻启新篇、破晓金红朝阳喷薄山峦',
+    keywords: ['元旦', '新年', '跨年', '撞钟', '日出', '岁首'],
+    colors: '朝阳橙金 · 青铜古绿 · 松烟黑灰',
+    file: '11_元旦.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: New Year's Day / Yuandan (元旦迎新岁首晨曦). Extremely simplified iconic silhouette of a massive ancient bronze temple bell hanging beneath curved pagoda beams with a wooden swinging log striker, with golden morning sunrise rays breaking over distant mountain ridges, open dynamic diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: sunrise amber gold, antique bronze green, and charcoal soot grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 12,
+    name: '劳动节',
+    title: '五一劳动 · 沃野耕耘',
+    features: '沉甸甸金黄麦穗麦浪、朴质手作齿轮与木工刨刀工匠工具、万物并秀朝霞',
+    keywords: ['劳动节', '五一', '麦穗', '工匠', '致敬劳动者', '丰收'],
+    colors: '麦穗金黄 · 故宫朱红 · 铁青墨黑',
+    file: '12_劳动节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: International Workers' Day / Labor Day (五一劳动致敬耕耘). Extremely simplified iconic silhouette of golden ripe wheat stalks curving gracefully, intertwined with vintage craftsman carpentry hand tools and an industrial gear contour, celebrating honest labor, open botanical-mechanical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: wheat harvest gold, industrial iron black, and cinnabar red. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 13,
+    name: '儿童节',
+    title: '六一童趣 · 纸鸢乘风',
+    features: '传统沙燕风筝凌空高飞、竹编转动小风车、纯真木马秋千、飞扬气球',
+    keywords: ['儿童节', '六一', '风筝', '纸鸢', '童年', '风车'],
+    colors: '燕羽朱红 · 苍绿石青 · 亮丽明黄',
+    file: '13_儿童节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: International Children's Day (六一童趣纸鸢乘风). Extremely simplified iconic silhouette of a traditional handcrafted swallow kite (沙燕风筝) soaring playfully through whimsical clouds with long trailing ribbon tails, accompanied by a spinning pinwheel and a carved wooden rocking horse below, open airy diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: joyful cinnabar red, playful ochre yellow, and sky slate blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 14,
+    name: '教师节',
+    title: '桃李天下 · 尊师重道',
+    features: '素雅讲台、叠放古书卷帙与墨水钢笔、一束盛开康乃馨与金黄向日葵',
+    keywords: ['教师节', '尊师重道', '桃李满天下', '书卷', '康乃馨', '向日葵'],
+    colors: '花瓣桃粉 · 向日葵金 · 书卷墨黑',
+    file: '14_教师节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Teachers' Day (桃李天下尊师重道). Extremely simplified iconic silhouette of a stack of traditional thread-bound books with an ink dip pen, gracefully paired with a blossoming sunflower and pink carnations in a ceramic vase, accompanied by a peach and plum blossom sprig, open scholarly still-life silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: sunflower golden ochre, carnation blossom pink, and scholar ink black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 15,
+    name: '国庆节',
+    title: '国泰民安 · 巍巍华表',
+    features: '天安门重檐庑殿顶朱红飞檐、汉白玉蟠龙华表柱、双和平鸽展翅高飞',
+    keywords: ['国庆节', '十一', '华表', '天安门', '和平鸽', '盛世'],
+    colors: '故宫朱红 · 琉璃金黄 · 汉白玉青',
+    file: '15_国庆节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: National Day Celebration - Tiananmen Rostrum and Huabiao (天安门华表祥云). Extremely simplified iconic silhouette of the grand Tiananmen rostrum with flying curved eaves and hanging red lanterns, paired with a towering carved marble Huabiao ceremonial pillar with auspicious dragon and cloud carvings on one side, and two white peace doves soaring upwards in an open celebratory diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, forbidden city ochre gold, and slate stone grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 16,
+    name: '中元节',
+    title: '中元寄思 · 水灯祈安',
+    features: '清幽夜江之上一盏盏粉红睡莲水灯逐波漂流、烛火摇曳、远山薄雾轻笼',
+    keywords: ['中元节', '放水灯', '河灯', '祈福', '莲花灯', '思念'],
+    colors: '莲花粉红 · 烛火暖金 · 苍江水青',
+    file: '16_中元节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Ghost Festival / Zhongyuan Floating River Lanterns (中元寄思放河灯). Extremely simplified iconic silhouette of delicate carved lotus blossom river lanterns with warm glowing candlelight floating gently on rippling dark water, trailing softly towards misty distant riverside reeds, open serene landscape contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: lotus blossom pink, candlelight warm gold, and river deep indigo. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 17,
+    name: '万圣节',
+    title: '万圣奇趣 · 南瓜古堡',
+    features: '雕刻微笑的南瓜灯溢出橙黄烛光、黑色蝙蝠展翅掠空、枯树枝桠与远方哥特飞檐古堡',
+    keywords: ['万圣节', '南瓜灯', '蝙蝠', '糖果', '奇趣', '万圣夜'],
+    colors: '南瓜橙金 · 幽夜墨黑 · 枯枝赭褐',
+    file: '17_万圣节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Halloween / All Hallows' Eve (万圣奇趣南瓜古堡). Extremely simplified iconic silhouette of a hand-carved glowing jack-o'-lantern pumpkin with warm amber candlelight shining from its cut-out smile, accompanied by gnarled twisted bare autumn branches and flying bats swooping upward toward distant spires of a gothic castle silhouette, open asymmetrical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: pumpkin warm orange, midnight soot black, and terracotta brown. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 18,
+    name: '圣诞节',
+    title: '圣诞欢歌 · 霜雪冷杉',
+    features: '挂满铃铛与红色冬青浆果的墨绿冷杉松枝、红白相间毛绒长袜、飞舞雪花与暖黄烛光',
+    keywords: ['圣诞节', '圣诞树', '冷杉', '铃铛', '雪花', '圣诞袜'],
+    colors: '圣诞深红 · 冷杉墨绿 · 暖金雪白',
+    file: '18_圣诞节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Christmas / Winter Holiday (圣诞欢歌霜雪冷杉). Extremely simplified iconic silhouette of a lush evergreen fir branch frosted with delicate snowflake crystals, hung with carved jingle bells, red holly berries, and a cozy patterned woolen holiday stocking with gentle candlelight glow, open asymmetrical botanical contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: holiday crimson red, forest pine green, and warm golden yellow. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 19,
+    name: '情人节',
+    title: '浪漫佳期 · 玫瑰花语',
+    features: '传统木刻写意两朵丝绒红玫瑰并蒂绽放、柔美飘带优雅打结、双飞彩蝶蹁跹',
+    keywords: ['情人节', '玫瑰', '浪漫', '爱情', '并蒂花', '蝴蝶'],
+    colors: '丝绒朱红 · 柔金暖橙 · 叶脉墨绿',
+    file: '19_情人节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Valentine's Day (浪漫佳期玫瑰花语). Extremely simplified iconic silhouette of two elegant blooming velvet roses entwined on thorned leafy stems, tied with a flowing decorative silk ribbon bow, and two small butterflies fluttering playfully above, open organic botanical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: deep velvet crimson red, warm rose gold, and botanical sage green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  },
+  {
+    id: 20,
+    name: '母亲节',
+    title: '寸草春晖 · 萱草忘忧',
+    features: '优雅绽放的萱草花（金针忘忧草）与淡粉康乃馨花束、温润手工编织丝带、慈爱暖意',
+    keywords: ['母亲节', '萱草', '忘忧草', '康乃馨', '母爱', '春晖'],
+    colors: '萱草橙金 · 康乃馨粉 · 苍叶墨绿',
+    file: '20_母亲节.png',
+    prompt: "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mother's Day (寸草春晖萱草忘忧). Extremely simplified iconic silhouette of traditional Chinese daylily (萱草 / 忘忧草) blooming alongside tender pink carnations, wrapped in a rustic textured ribbon with small heart-shaped leaf tendrils, open elegant floral silhouette celebrating motherly love. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: daylily warm amber gold, carnation blush pink, and muted stem green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+  }
+];
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getLatestPng(dir) {
+  const files = fs.readdirSync(dir)
+    .filter(f => f.endsWith('.png') || f.endsWith('.webp') || f.endsWith('.jpg'))
+    .map(f => {
+      const p = path.join(dir, f);
+      return { path: p, mtime: fs.statSync(p).mtimeMs, size: fs.statSync(p).size };
+    })
+    .filter(f => f.size > 100000)
+    .sort((a, b) => b.mtime - a.mtime);
+  return files.length > 0 ? files[0].path : null;
+}
+
+async function processDerivatives(targetPngPath, baseName) {
+  const thumbPath = path.join(THUMB_DIR, `${baseName}.webp`);
+  await sharp(targetPngPath)
+    .resize({ width: 400, withoutEnlargement: true })
+    .webp({ quality: 82, effort: 4 })
+    .toFile(thumbPath);
+  console.log(`  ✓ Generated thumbnail: ${thumbPath}`);
+
+  const detailPath = path.join(DETAIL_DIR, `${baseName}.webp`);
+  await sharp(targetPngPath)
+    .webp({ quality: 85, effort: 4 })
+    .toFile(detailPath);
+  console.log(`  ✓ Generated detail WebP: ${detailPath}`);
+}
+
+async function processStandardImages(rawImgPath, targetPngPath, baseName) {
+  const meta = await sharp(rawImgPath).metadata();
+  console.log(`  Raw size: ${meta.width}x${meta.height}`);
+
+  await sharp(rawImgPath)
+    .resize(1122, 1402, { fit: 'cover', position: 'center' })
+    .png({ compressionLevel: 8 })
+    .toFile(targetPngPath);
+  console.log(`  ✓ Saved standard 1122x1402 PNG: ${targetPngPath}`);
+
+  await processDerivatives(targetPngPath, baseName);
+}
+
+async function run() {
+  console.log(`=== Starting Batch Generation for Festivals Category (20 items) ===\n`);
+
+  // 1. Copy over pre-generated 06 (中秋) and 15 (国庆)
+  const zhongqiuSource = path.join(OUTPUT_DIR, '07_中秋_桂影穿月.png');
+  const zhongqiuTarget = path.join(OUTPUT_DIR, '06_中秋节.png');
+  if (fs.existsSync(zhongqiuSource) && !fs.existsSync(zhongqiuTarget)) {
+    fs.copyFileSync(zhongqiuSource, zhongqiuTarget);
+    await processDerivatives(zhongqiuTarget, '06_中秋节');
+    console.log(`✓ Copied pre-generated Mid-Autumn artwork to 06_中秋节.png`);
+  }
+
+  const guoqingSource = path.join(OUTPUT_DIR, '04_国庆_华表祥云.png');
+  const guoqingTarget = path.join(OUTPUT_DIR, '15_国庆节.png');
+  if (fs.existsSync(guoqingSource) && !fs.existsSync(guoqingTarget)) {
+    fs.copyFileSync(guoqingSource, guoqingTarget);
+    await processDerivatives(guoqingTarget, '15_国庆节');
+    console.log(`✓ Copied pre-generated National Day artwork to 15_国庆节.png`);
+  }
+
+  // 2. Generate missing items
+  for (let i = 0; i < FESTIVALS_LIST.length; i++) {
+    const item = FESTIVALS_LIST[i];
+    const targetFile = path.join(OUTPUT_DIR, item.file);
+    const baseName = path.parse(item.file).name;
+
+    if (fs.existsSync(targetFile)) {
+      console.log(`[${i + 1}/${FESTIVALS_LIST.length}] Exists: ${item.name} (${item.file}) - Skipping generation.`);
+      // Ensure thumbnails exist
+      const thumbFile = path.join(THUMB_DIR, `${baseName}.webp`);
+      const detailFile = path.join(DETAIL_DIR, `${baseName}.webp`);
+      if (!fs.existsSync(thumbFile) || !fs.existsSync(detailFile)) {
+        await processDerivatives(targetFile, baseName);
+      }
+      continue;
+    }
+
+    console.log(`------------------------------------------------------------`);
+    console.log(`[${i + 1}/${FESTIVALS_LIST.length}] Generating ${item.name} (${item.file})`);
+    console.log(`Theme: ${item.title}`);
+    console.log(`Colors: ${item.colors}`);
+
+    // Clean tmp directory
+    fs.readdirSync(TMP_DIR).forEach(f => {
+      try { fs.unlinkSync(path.join(TMP_DIR, f)); } catch(e) {}
+    });
+
+    // Reset ChatGPT conversation
+    try {
+      execSync(`${OPENCLI} chatgpt new`, { stdio: 'ignore' });
+      await sleep(2000);
+    } catch (e) {}
+
+    const cmd = `${OPENCLI} chatgpt image ${JSON.stringify(item.prompt)} --op ${TMP_DIR} --timeout 300`;
+    let success = false;
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        console.log(`  [Attempt ${attempt}/3] Running opencli chatgpt image...`);
+        execSync(cmd, { stdio: 'inherit' });
+        const latest = getLatestPng(TMP_DIR);
+        if (latest && fs.existsSync(latest)) {
+          await processStandardImages(latest, targetFile, baseName);
+          success = true;
+          break;
+        } else {
+          console.warn(`  Attempt ${attempt} produced no image in ${TMP_DIR}`);
+        }
+      } catch (err) {
+        console.error(`  Attempt ${attempt} error:`, err.message);
+      }
+      if (attempt < 3) {
+        console.log("  Waiting 10s before retry...");
+        await sleep(10000);
+      }
+    }
+
+    if (!success) {
+      console.error(`✗ Failed to generate ${item.file}`);
+    }
+
+    if (i < FESTIVALS_LIST.length - 1) {
+      console.log("  Waiting 5s before next festival...\n");
+      await sleep(5000);
+    }
+  }
+
+  // 3. Save prompts_festivals_category.json
+  const promptsPath = path.resolve(ROOT_DIR, 'prompts_festivals_category.json');
+  fs.writeFileSync(promptsPath, JSON.stringify(FESTIVALS_LIST, null, 2), 'utf-8');
+  console.log(`\n✓ Saved prompts configuration to ${promptsPath}`);
+
+  console.log(`\n=== All Festivals Processed! ===`);
+}
+
+module.exports = { FESTIVALS_LIST };
+
+if (require.main === module) {
+  run();
+}

@@ -1,4 +1,4 @@
-// 橡胶戳艺术画廊数据集：名胜风景 (50) · 古诗名句 (50) · 世界城市 (30) · 中国城市 (30) · 游戏神作 (40) · 珍稀动物 (20) · 海洋生物 (20) · 大气现象 (20) · 十二生肖 (12) · 二十四节气 (24) · 山海神异 (10) -> 共 306 枚
+// 橡胶戳艺术画廊数据集：名胜风景 (50) · 古诗名句 (50) · 世界城市 (30) · 中国城市 (30) · 时令节日 (20) · 热门胜地 (24) · 游戏神作 (40) · 珍稀动物 (20) · 海洋生物 (20) · 大气现象 (20) · 十二生肖 (12) · 二十四节气 (24) · 山海神异 (10) -> 共 350 枚
 window.COLLECTIONS = {
   "scenic_spots": {
     "id": "scenic_spots",
@@ -4872,6 +4872,804 @@ window.COLLECTIONS = {
       }
     ]
   },
+  "festivals": {
+        "id": "festivals",
+        "title": "时令节日",
+        "titleEn": "Festivals & Folkways",
+        "count": 20,
+        "kicker": "festivals & cultural traditions / rubber stamp collection / 2026",
+        "headline": "橡胶戳岁时佳节<br>华夏节庆与知名节俗",
+        "desc": "精选 20 个中国最具代表性的岁时传统节令与广为人知的现代经典节日。以极简手工多色版画雕刻印章，凝固人间烟火与岁序浪漫。",
+        "tagPrefix": "节日",
+        "badgeFormat": "节日 {id}",
+        "items": [
+            {
+                "id": 1,
+                "name": "春节",
+                "title": "新春佳节 · 舞狮纳福",
+                "features": "金毛醒狮凌空腾跃翻滚、倒贴福字窗花意象、爆竹碎红与迎春红梅枝桠",
+                "keywords": [
+                    "春节",
+                    "过年",
+                    "舞狮",
+                    "醒狮",
+                    "红梅",
+                    "新年"
+                ],
+                "colors": "故宫朱红 · 琉璃金黄 · 松烟墨黑",
+                "output": "images/festivals/01_春节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Spring Festival / Chinese New Year (新春佳节舞狮纳福). Extremely simplified iconic silhouette of a vibrant traditional southern lion dance (醒狮) leaping dynamically with swirling silk mane, accompanied by a blooming winter plum branch with crimson petals and hanging festive red firecrackers, open natural diagonal festive silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, glazed tile golden yellow, and pine soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 2,
+                "name": "元宵节",
+                "title": "上元良宵 · 鳌山观灯",
+                "features": "精巧飞檐挑挂八角金鱼琉璃花灯、青花瓷碗滚热元宵、水榭融融暖光",
+                "keywords": [
+                    "元宵",
+                    "上元节",
+                    "花灯",
+                    "汤圆",
+                    "灯会",
+                    "金鱼灯"
+                ],
+                "colors": "故宫朱红 · 琥珀暖黄 · 浅水石青",
+                "output": "images/festivals/02_元宵节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Lantern Festival / Yuanxiao Festival (上元良宵观灯). Extremely simplified iconic silhouette of an ornate hanging carp-shaped palace lantern with glowing amber light and flowing silk tassels, paired with an elegant porcelain bowl of steaming sweet glutinous dumplings (汤圆) on a wooden stand, open asymmetrical festive silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, warm amber gold, and river indigo slate blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 3,
+                "name": "清明节",
+                "title": "清明时节 · 雨巷折柳",
+                "features": "江南粉墙黛瓦、微风拂面细雨垂柳、双燕掠空、案头翡翠青团",
+                "keywords": [
+                    "清明",
+                    "踏青",
+                    "折柳",
+                    "青团",
+                    "春燕",
+                    "江南水乡"
+                ],
+                "colors": "柳叶新绿 · 黛瓦墨黑 · 苍石青灰",
+                "output": "images/festivals/03_清明节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Qingming Festival (清明时节雨巷折柳). Extremely simplified iconic silhouette of sweeping weeping willow branches swaying in gentle spring rain beside curved upturned white-and-black Jiangnan roof eaves, two swallows swooping gracefully through the air, and a small bamboo steamer with glossy green rice dumplings (青团), open organic landscape contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: fresh willow green, roof tile soot black, and misty slate grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 4,
+                "name": "端午节",
+                "title": "端午安康 · 龙舟破浪",
+                "features": "木雕龙头飞舟斩浪争渡、苍翠箬叶裹线三角香粽、菖蒲艾草斜插辟邪",
+                "keywords": [
+                    "端午",
+                    "龙舟",
+                    "粽子",
+                    "艾草",
+                    "菖蒲",
+                    "赛龙舟"
+                ],
+                "colors": "苍松青绿 · 故宫朱红 · 雄黄暖褐",
+                "output": "images/festivals/04_端午节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Dragon Boat Festival / Duanwu (端午安康龙舟破浪). Extremely simplified iconic silhouette of a carved wooden dragon boat bow surging through foaming river waves, accompanied by tied green reed leaf zongzi dumplings and fragrant calamus and mugwort leaves on one flank, dynamic open diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: mountain pine green, cinnabar red, and realgar ochre. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 5,
+                "name": "七夕节",
+                "title": "七夕佳期 · 鹊桥相会",
+                "features": "群喜鹊凌空搭桥、银河星汉飘渺流转、织女牛郎长袖遥望、牵牛花藤蔓",
+                "keywords": [
+                    "七夕",
+                    "乞巧",
+                    "鹊桥",
+                    "银河",
+                    "牛郎织女",
+                    "牵牛花"
+                ],
+                "colors": "河汉石青 · 桃粉浅红 · 皓月白黄",
+                "output": "images/festivals/05_七夕节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Qixi Festival / Double Seventh (七夕鹊桥相会). Extremely simplified iconic silhouette of a celestial bridge formed by soaring magpies across swirling ethereal Milky Way clouds, with two distant figures reaching toward each other in flowing robes, adorned by climbing morning glory vines, open vertical celestial silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: river indigo slate blue, soft blossom pink, and moonlight pale yellow. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 6,
+                "name": "中秋节",
+                "title": "中秋团圆 · 桂影穿月",
+                "features": "秋月高悬、金桂横斜破月而过、玉兔仰首凝望天际、落英缤纷",
+                "keywords": [
+                    "中秋",
+                    "月饼",
+                    "赏月",
+                    "玉兔",
+                    "桂花",
+                    "明月"
+                ],
+                "colors": "桂花金黄 · 故宫朱红 · 松烟墨黑",
+                "output": "images/festivals/06_中秋节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mid-Autumn Festival - Osmanthus Branch Crossing Harvest Moon (中秋桂影穿月). Extremely simplified iconic silhouette of a luminous golden autumn moon high in the open sky, dramatically crossed by a gnarled asymmetrical osmanthus branch laden with delicate clusters of fragrant golden flowers and scattering petals, below which an agile white jade rabbit sits gazing upward in wonder, open natural organic silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: osmanthus golden yellow, imperial cinnabar red, and pine soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 7,
+                "name": "重阳节",
+                "title": "重阳九九 · 登高插萸",
+                "features": "高远秋山层峦、傲霜金菊怒放、茱萸红果红锦香囊、竹节登山杖与重阳糕",
+                "keywords": [
+                    "重阳",
+                    "登高",
+                    "菊花",
+                    "茱萸",
+                    "敬老",
+                    "秋山"
+                ],
+                "colors": "金菊赭黄 · 茱萸朱红 · 远山墨青",
+                "output": "images/festivals/07_重阳节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Chongyang Festival / Double Ninth Festival (重阳九九登高插萸). Extremely simplified iconic silhouette of blooming wild autumn chrysanthemums with frost-resistant petals, a sprig of red dogwood (茱萸) berries with a silk sachet, backed by distant stepped mountain ridges and a bamboo walking staff, open asymmetrical botanical landscape silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: chrysanthemum ochre yellow, dogwood cinnabar red, and mountain indigo green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 8,
+                "name": "冬至",
+                "title": "冬至阳生 · 围炉食饺",
+                "features": "素雅青花瓷碗盛装热气腾腾白嫩水饺、窗棂霜花轻结、冬梅一枝探雪",
+                "keywords": [
+                    "冬至",
+                    "饺子",
+                    "数九",
+                    "冬梅",
+                    "窗花",
+                    "节气"
+                ],
+                "colors": "霁蓝石青 · 梅花粉红 · 墨水灰黑",
+                "output": "images/festivals/08_冬至.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Winter Solstice / Dongzhi (冬至阳生食水饺). Extremely simplified iconic silhouette of a traditional porcelain bowl filled with plump steaming crescent-shaped dumplings (水饺) emitting delicate vapor swirls, flanked by an ancient winter-blooming plum branch with frosty pink buds protruding through a carved lattice window motif, open asymmetrical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: indigo porcelain blue, plum blossom pink, and charcoal ink black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 9,
+                "name": "腊八节",
+                "title": "腊八飘香 · 煮粥纳祥",
+                "features": "陶罐温火细熬七宝五谷杂粮粥、红枣莲子桂圆点缀、翠绿翡翠腊八蒜坛",
+                "keywords": [
+                    "腊八",
+                    "腊八粥",
+                    "腊八蒜",
+                    "五谷",
+                    "年关",
+                    "民俗"
+                ],
+                "colors": "红枣朱红 · 蒜玉翠绿 · 陶泥赭褐",
+                "output": "images/festivals/09_腊八节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Laba Festival (腊八飘香煮粥纳祥). Extremely simplified iconic silhouette of a rustic clay pot of steaming eight-treasure porridge with carved grains, red dates, and lotus seeds, paired with an earthenware jar of jade-green pickled Laba garlic cloves and stalks of harvested wheat, open organic culinary silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: jujube cinnabar red, jade garlic green, and terracotta clay brown. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 10,
+                "name": "除夕",
+                "title": "除夕守岁 · 辞旧迎新",
+                "features": "雕花窗棂贴朱红生肖剪纸窗花、大门悬挂红灯笼、案头金桔除夕年饭",
+                "keywords": [
+                    "除夕",
+                    "大年三十",
+                    "守岁",
+                    "窗花",
+                    "年夜饭",
+                    "红灯笼"
+                ],
+                "colors": "故宫朱红 · 琉璃金黄 · 松烟墨黑",
+                "output": "images/festivals/10_除夕.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Chinese New Year's Eve / Chuxi (除夕守岁辞旧迎新). Extremely simplified iconic silhouette of an ornate wooden lattice window adorned with intricate red papercut window flowers (窗花), a glowing festive red lantern hanging to one side, and a branch of auspicious golden kumquats with evergreen leaves, open festive asymmetrical contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, festive gold ochre, and pine soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 11,
+                "name": "元旦",
+                "title": "元旦迎新 · 岁首晨曦",
+                "features": "古寺青铜大钟撞钟迎新、日历翻启新篇、破晓金红朝阳喷薄山峦",
+                "keywords": [
+                    "元旦",
+                    "新年",
+                    "跨年",
+                    "撞钟",
+                    "日出",
+                    "岁首"
+                ],
+                "colors": "朝阳橙金 · 青铜古绿 · 松烟黑灰",
+                "output": "images/festivals/11_元旦.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: New Year's Day / Yuandan (元旦迎新岁首晨曦). Extremely simplified iconic silhouette of a massive ancient bronze temple bell hanging beneath curved pagoda beams with a wooden swinging log striker, with golden morning sunrise rays breaking over distant mountain ridges, open dynamic diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: sunrise amber gold, antique bronze green, and charcoal soot grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 12,
+                "name": "劳动节",
+                "title": "五一劳动 · 沃野耕耘",
+                "features": "沉甸甸金黄麦穗麦浪、朴质手作齿轮与木工刨刀工匠工具、万物并秀朝霞",
+                "keywords": [
+                    "劳动节",
+                    "五一",
+                    "麦穗",
+                    "工匠",
+                    "致敬劳动者",
+                    "丰收"
+                ],
+                "colors": "麦穗金黄 · 故宫朱红 · 铁青墨黑",
+                "output": "images/festivals/12_劳动节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: International Workers' Day / Labor Day (五一劳动致敬耕耘). Extremely simplified iconic silhouette of golden ripe wheat stalks curving gracefully, intertwined with vintage craftsman carpentry hand tools and an industrial gear contour, celebrating honest labor, open botanical-mechanical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: wheat harvest gold, industrial iron black, and cinnabar red. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 13,
+                "name": "儿童节",
+                "title": "六一童趣 · 纸鸢乘风",
+                "features": "传统沙燕风筝凌空高飞、竹编转动小风车、纯真木马秋千、飞扬气球",
+                "keywords": [
+                    "儿童节",
+                    "六一",
+                    "风筝",
+                    "纸鸢",
+                    "童年",
+                    "风车"
+                ],
+                "colors": "燕羽朱红 · 苍绿石青 · 亮丽明黄",
+                "output": "images/festivals/13_儿童节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: International Children's Day (六一童趣纸鸢乘风). Extremely simplified iconic silhouette of a traditional handcrafted swallow kite (沙燕风筝) soaring playfully through whimsical clouds with long trailing ribbon tails, accompanied by a spinning pinwheel and a carved wooden rocking horse below, open airy diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: joyful cinnabar red, playful ochre yellow, and sky slate blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 14,
+                "name": "教师节",
+                "title": "桃李天下 · 尊师重道",
+                "features": "素雅讲台、叠放古书卷帙与墨水钢笔、一束盛开康乃馨与金黄向日葵",
+                "keywords": [
+                    "教师节",
+                    "尊师重道",
+                    "桃李满天下",
+                    "书卷",
+                    "康乃馨",
+                    "向日葵"
+                ],
+                "colors": "花瓣桃粉 · 向日葵金 · 书卷墨黑",
+                "output": "images/festivals/14_教师节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Teachers' Day (桃李天下尊师重道). Extremely simplified iconic silhouette of a stack of traditional thread-bound books with an ink dip pen, gracefully paired with a blossoming sunflower and pink carnations in a ceramic vase, accompanied by a peach and plum blossom sprig, open scholarly still-life silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: sunflower golden ochre, carnation blossom pink, and scholar ink black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 15,
+                "name": "国庆节",
+                "title": "国泰民安 · 巍巍华表",
+                "features": "天安门重檐庑殿顶朱红飞檐、汉白玉蟠龙华表柱、双和平鸽展翅高飞",
+                "keywords": [
+                    "国庆节",
+                    "十一",
+                    "华表",
+                    "天安门",
+                    "和平鸽",
+                    "盛世"
+                ],
+                "colors": "故宫朱红 · 琉璃金黄 · 汉白玉青",
+                "output": "images/festivals/15_国庆节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: National Day Celebration - Tiananmen Rostrum and Huabiao (天安门华表祥云). Extremely simplified iconic silhouette of the grand Tiananmen rostrum with flying curved eaves and hanging red lanterns, paired with a towering carved marble Huabiao ceremonial pillar with auspicious dragon and cloud carvings on one side, and two white peace doves soaring upwards in an open celebratory diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial cinnabar red, forbidden city ochre gold, and slate stone grey. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 16,
+                "name": "中元节",
+                "title": "中元寄思 · 水灯祈安",
+                "features": "清幽夜江之上一盏盏粉红睡莲水灯逐波漂流、烛火摇曳、远山薄雾轻笼",
+                "keywords": [
+                    "中元节",
+                    "放水灯",
+                    "河灯",
+                    "祈福",
+                    "莲花灯",
+                    "思念"
+                ],
+                "colors": "莲花粉红 · 烛火暖金 · 苍江水青",
+                "output": "images/festivals/16_中元节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Ghost Festival / Zhongyuan Floating River Lanterns (中元寄思放河灯). Extremely simplified iconic silhouette of delicate carved lotus blossom river lanterns with warm glowing candlelight floating gently on rippling dark water, trailing softly towards misty distant riverside reeds, open serene landscape contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: lotus blossom pink, candlelight warm gold, and river deep indigo. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 17,
+                "name": "万圣节",
+                "title": "万圣奇趣 · 南瓜古堡",
+                "features": "雕刻微笑的南瓜灯溢出橙黄烛光、黑色蝙蝠展翅掠空、枯树枝桠与远方哥特飞檐古堡",
+                "keywords": [
+                    "万圣节",
+                    "南瓜灯",
+                    "蝙蝠",
+                    "糖果",
+                    "奇趣",
+                    "万圣夜"
+                ],
+                "colors": "南瓜橙金 · 幽夜墨黑 · 枯枝赭褐",
+                "output": "images/festivals/17_万圣节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Halloween / All Hallows' Eve (万圣奇趣南瓜古堡). Extremely simplified iconic silhouette of a hand-carved glowing jack-o'-lantern pumpkin with warm amber candlelight shining from its cut-out smile, accompanied by gnarled twisted bare autumn branches and flying bats swooping upward toward distant spires of a gothic castle silhouette, open asymmetrical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: pumpkin warm orange, midnight soot black, and terracotta brown. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 18,
+                "name": "圣诞节",
+                "title": "圣诞欢歌 · 霜雪冷杉",
+                "features": "挂满铃铛与红色冬青浆果的墨绿冷杉松枝、红白相间毛绒长袜、飞舞雪花与暖黄烛光",
+                "keywords": [
+                    "圣诞节",
+                    "圣诞树",
+                    "冷杉",
+                    "铃铛",
+                    "雪花",
+                    "圣诞袜"
+                ],
+                "colors": "圣诞深红 · 冷杉墨绿 · 暖金雪白",
+                "output": "images/festivals/18_圣诞节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Christmas / Winter Holiday (圣诞欢歌霜雪冷杉). Extremely simplified iconic silhouette of a lush evergreen fir branch frosted with delicate snowflake crystals, hung with carved jingle bells, red holly berries, and a cozy patterned woolen holiday stocking with gentle candlelight glow, open asymmetrical botanical contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: holiday crimson red, forest pine green, and warm golden yellow. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 19,
+                "name": "情人节",
+                "title": "浪漫佳期 · 玫瑰花语",
+                "features": "传统木刻写意两朵丝绒红玫瑰并蒂绽放、柔美飘带优雅打结、双飞彩蝶蹁跹",
+                "keywords": [
+                    "情人节",
+                    "玫瑰",
+                    "浪漫",
+                    "爱情",
+                    "并蒂花",
+                    "蝴蝶"
+                ],
+                "colors": "丝绒朱红 · 柔金暖橙 · 叶脉墨绿",
+                "output": "images/festivals/19_情人节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Valentine's Day (浪漫佳期玫瑰花语). Extremely simplified iconic silhouette of two elegant blooming velvet roses entwined on thorned leafy stems, tied with a flowing decorative silk ribbon bow, and two small butterflies fluttering playfully above, open organic botanical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: deep velvet crimson red, warm rose gold, and botanical sage green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 20,
+                "name": "母亲节",
+                "title": "寸草春晖 · 萱草忘忧",
+                "features": "优雅绽放的萱草花（金针忘忧草）与淡粉康乃馨花束、温润手工编织丝带、慈爱暖意",
+                "keywords": [
+                    "母亲节",
+                    "萱草",
+                    "忘忧草",
+                    "康乃馨",
+                    "母爱",
+                    "春晖"
+                ],
+                "colors": "萱草橙金 · 康乃馨粉 · 苍叶墨绿",
+                "output": "images/festivals/20_母亲节.png",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mother's Day (寸草春晖萱草忘忧). Extremely simplified iconic silhouette of traditional Chinese daylily (萱草 / 忘忧草) blooming alongside tender pink carnations, wrapped in a rustic textured ribbon with small heart-shaped leaf tendrils, open elegant floral silhouette celebrating motherly love. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: daylily warm amber gold, carnation blush pink, and muted stem green. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            }
+        ]
+    },
+  "travel_destinations": {
+        "id": "travel_destinations",
+        "title": "热门胜地",
+        "titleEn": "Popular Destinations",
+        "count": 24,
+        "kicker": "travel destinations / rubber stamp collection / 2026",
+        "headline": "橡胶戳山河异域<br>中外热门名胜胜境",
+        "desc": "精选 24 处深受国人喜爱的境内外旅行胜地，囊括川藏秘境、江南水乡、彩云之南，以及日泰海岛度假热点。以极简多色版画凝固天地胜景。",
+        "tagPrefix": "胜地",
+        "badgeFormat": "胜地 {id}",
+        "items": [
+            {
+                "id": 1,
+                "name": "九寨沟",
+                "title": "九寨仙境 · 碧翠叠瀑",
+                "country": "中国 · 四川",
+                "features": "五花海叠翠层林、高山冷杉斜倚、倒木钙化池波光与钙化叠瀑飞溅",
+                "keywords": [
+                    "九寨沟",
+                    "五花海",
+                    "瀑布",
+                    "四川",
+                    "冷杉",
+                    "仙境"
+                ],
+                "colors": "松石翡翠绿 · 高山湖蓝 · 熟宣米白",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Jiuzhaigou National Park (九寨仙境碧翠叠瀑). Extremely simplified iconic silhouette of cascading tiered waterfalls splashing over mossy travertine terraces, flanked by a sweeping mountain spruce branch with needles, and crystal-clear layered alpine pools below, open diagonal landscape silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: turquoise lake green, misty alpine indigo blue, and pine needle dark jade. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 2,
+                "name": "张家界",
+                "title": "天子奇峰 · 御笔横云",
+                "country": "中国 · 湖南",
+                "features": "天子山御笔峰三千石英砂岩奇峰耸立、云雾横断、绝壁松影",
+                "keywords": [
+                    "张家界",
+                    "御笔峰",
+                    "奇峰",
+                    "云海",
+                    "湖南",
+                    "武陵源"
+                ],
+                "colors": "苍石青灰 · 松烟墨黑 · 曙霞绯红",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Zhangjiajie Tianzi Mountain (天子奇峰御笔横云). Extremely simplified iconic silhouette of soaring quartzite sandstone pillar peaks thrusting vertically into swirling mist and clouds, with a lone cliff pine clinging boldly to the rock face, dynamic open vertical mountain contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: slate pillar grey, pine soot ink black, and subtle cinnabar morning haze. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 3,
+                "name": "丽江古城",
+                "title": "丽江古韵 · 水车雪山",
+                "country": "中国 · 云南",
+                "features": "大水车转动青苔石阶、纳西木府飞檐、远处玉龙雪山锐峰连绵",
+                "keywords": [
+                    "丽江",
+                    "古城",
+                    "大水车",
+                    "玉龙雪山",
+                    "云南",
+                    "纳西"
+                ],
+                "colors": "古砖赭石 · 雪山铅白 · 青瓦墨黑",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Lijiang Old Town and Jade Dragon Snow Mountain (丽江古韵水车雪山). Extremely simplified iconic silhouette of a rustic wooden water wheel beside curved upturned Naxi wooden roof eaves, with the majestic serrated snowy ridges of Jade Dragon Mountain rising sharply in the background, open asymmetrical cultural landscape silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: terracotta tile ochre, slate roof black, and snow mountain crisp white. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 4,
+                "name": "布达拉宫",
+                "title": "雪域圣殿 · 祥云经幡",
+                "country": "中国 · 西藏",
+                "features": "红山依势而建的红宫白宫错落仰角、风马旗经幡随风飘拂",
+                "keywords": [
+                    "布达拉宫",
+                    "西藏",
+                    "拉萨",
+                    "圣殿",
+                    "经幡",
+                    "红山"
+                ],
+                "colors": "藏宫赤红 · 藏青蓝 · 白垩素白",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Potala Palace Lhasa (雪域圣殿祥云经幡). Extremely simplified iconic low-angle silhouette of the imposing terraced red and white fortress palace atop the granite hill, accented by fluttering Tibetan prayer flag ribbons trailing in high-plateau wind, open majestic stepped silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: Tibetan palace crimson red, chalk white, and deep plateau cobalt blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 5,
+                "name": "西湖断桥",
+                "title": "断桥残雪 · 柳浪闻莺",
+                "country": "中国 · 杭州",
+                "features": "断桥单孔石拱微雪、湖岸依依杨柳枝、一叶画舫掠过水波荷叶",
+                "keywords": [
+                    "西湖",
+                    "断桥",
+                    "杭州",
+                    "残雪",
+                    "垂柳",
+                    "画舫"
+                ],
+                "colors": "柳叶嫩绿 · 黛石墨黑 · 荷花胭脂",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: West Lake Broken Bridge Hangzhou (断桥残雪柳浪闻莺). Extremely simplified iconic silhouette of the gentle stone arch bridge spanning tranquil ripples, draped by weeping willow branches swaying gracefully with tender leaves, and a lone traditional pleasure boat drifting past lotus pads, open serene landscape contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: willow tender green, stone masonry charcoal grey, and subtle lotus rouge. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 6,
+                "name": "桂林山水",
+                "title": "漓江烟雨 · 扁舟泛波",
+                "country": "中国 · 广西",
+                "features": "漓江喀斯特峰林层叠、竹筏渔翁持篙独钓、鸬鹚立于竿头",
+                "keywords": [
+                    "桂林",
+                    "漓江",
+                    "山水",
+                    "竹筏",
+                    "阳朔",
+                    "喀斯特"
+                ],
+                "colors": "漓江群青 · 苍翠石绿 · 松烟墨黑",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Guilin Li River Karst Landscape (漓江烟雨扁舟泛波). Extremely simplified iconic silhouette of conical karst mountain peaks rising from misty waters, with a solitary bamboo raft gliding gently carrying a standing fisherman and a perched cormorant bird, open panoramic river silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: misty karst indigo blue, mineral pine green, and ink wash black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 7,
+                "name": "敦煌莫高窟",
+                "title": "大漠明珠 · 飞天九层",
+                "country": "中国 · 甘肃",
+                "features": "依沙崖建成的九层飞檐朱阁、鸣沙山黄沙古道、飞天飘带凌空曼舞",
+                "keywords": [
+                    "敦煌",
+                    "莫高窟",
+                    "九层楼",
+                    "飞天",
+                    "丝绸之路",
+                    "甘肃"
+                ],
+                "colors": "敦煌石青 · 鸣沙赭黄 · 朱砂赤红",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mogao Caves Dunhuang (大漠明珠飞天九层). Extremely simplified iconic silhouette of the grand nine-storey wooden facade built directly against the sandstone cliff, accompanied by the flowing silk ribbons of a celestial Flying Apsara (飞天) swirling rhythmically across the air, open desert architectural contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: desert dune ochre, cinnabar vermilion, and mineral azurite blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 8,
+                "name": "黄山迎客松",
+                "title": "奇松傲骨 · 绝壁云海",
+                "country": "中国 · 安徽",
+                "features": "玉屏峰峭壁间挺拔展臂的迎客松、花岗岩叠嶂与翻滚云海",
+                "keywords": [
+                    "黄山",
+                    "迎客松",
+                    "云海",
+                    "奇松",
+                    "安徽",
+                    "天下名山"
+                ],
+                "colors": "苍松古绿 · 花岗岩黑 · 晨曦微霞",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mount Huangshan Welcoming Pine (奇松傲骨绝壁云海). Extremely simplified iconic silhouette of the famous century-old Welcoming Pine tree reaching its welcoming branch gracefully outward from jagged vertical granite cliffs over billowing swirling sea of clouds, open dynamic diagonal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: antique pine green, granite slate charcoal, and subtle sunrise amber. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 9,
+                "name": "三亚亚龙湾",
+                "title": "天涯踏浪 · 椰林晚风",
+                "country": "中国 · 海南",
+                "features": "斜倚白沙的葱郁椰子树、翻卷白浪、热带海螺与贝雕贝壳",
+                "keywords": [
+                    "三亚",
+                    "亚龙湾",
+                    "椰林",
+                    "海滩",
+                    "海南",
+                    "度假"
+                ],
+                "colors": "椰林翡翠 · 暖沙金黄 · 浪花洁白",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Sanya Yalong Bay Tropical Coast (天涯踏浪椰林晚风). Extremely simplified iconic silhouette of leaning tropical coconut palm trees with large fan leaves swaying over cresting ocean waves lapping onto soft beach sand, with a detailed conch shell resting on the shore, open breezy coastal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: tropical palm emerald green, warm coastal sand gold, and ocean indigo blue. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 10,
+                "name": "稻城亚丁",
+                "title": "蓝色星球 · 圣洁雪峰",
+                "country": "中国 · 四川",
+                "features": "央迈勇三神山金字塔锐峰、洛绒牛场蜿蜒小溪、玛尼石堆与木栅栏",
+                "keywords": [
+                    "稻城亚丁",
+                    "央迈勇",
+                    "神山",
+                    "香格里拉",
+                    "四川",
+                    "雪山"
+                ],
+                "colors": "雪峰素白 · 高原草甸金赭 · 湖水冰蓝",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Daocheng Yading Sacred Snow Mountain (蓝色星球圣洁雪峰). Extremely simplified iconic silhouette of the pyramid-shaped Yangmaiyong holy snow peak towering sharply against the sky, overlooking meandering river streams across golden alpine meadow grasses and a small Tibetan stone cairn, open majestic high-altitude silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: pristine snow white, alpine meadow ochre gold, and glacial creek turquoise. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 11,
+                "name": "宏村月沼",
+                "title": "画里乡村 · 水镜徽居",
+                "country": "中国 · 安徽",
+                "features": "半月形古水塘倒映徽派马头墙黑白错落、石板桥巷、红灯笼悬挑",
+                "keywords": [
+                    "宏村",
+                    "月沼",
+                    "徽派建筑",
+                    "马头墙",
+                    "安徽",
+                    "古村落"
+                ],
+                "colors": "徽墨焦黑 · 粉墙铅白 · 丹砂红",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Hongcun Ancient Village Moon Pond (画里乡村水镜徽居). Extremely simplified iconic silhouette of the crescent Moon Pond reflecting stepped Huizhou horse-head gables (马头墙) and whitewashed brick walls, with a curved stone slab bridge and an ornate hanging red paper lantern, open historic village silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: Huizhou ink black, lime plaster white, and cinnabar lantern red. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 12,
+                "name": "喀纳斯湖",
+                "title": "神的自留地 · 月亮秋湾",
+                "country": "中国 · 新疆",
+                "features": "月亮湾S形碧绿湖泊、两岸茂密金黄白桦林、图瓦人小木屋炊烟",
+                "keywords": [
+                    "喀纳斯",
+                    "月亮湾",
+                    "白桦林",
+                    "新疆",
+                    "阿勒泰",
+                    "秋色"
+                ],
+                "colors": "白桦秋金 · 湖水冷碧 · 杉木褐黑",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Kanas Lake Moon Bay Xinjiang (神的自留地月亮秋湾). Extremely simplified iconic silhouette of the crescent-shaped S-curve river gorge of Moon Bay, surrounded by dense groves of golden autumnal birch trees and spruce forests, with a small rustic Tuvan log cabin nestled on the hillside, open winding river valley silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: golden birch yellow, deep glacial lake teal green, and dark cedar brown. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 13,
+                "name": "富士山",
+                "title": "新仓浅间 · 富士雪冠",
+                "country": "日本 · 山梨",
+                "features": "积雪富士山完美对称圆锥、新仓山浅间神社朱红五重塔、春樱枝桠斜垂",
+                "keywords": [
+                    "富士山",
+                    "浅间神社",
+                    "五重塔",
+                    "樱花",
+                    "日本",
+                    "地标"
+                ],
+                "colors": "朱砂红 · 富士雪白 · 远山群青",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Mount Fuji and Chureito Pagoda (新仓浅间富士雪冠). Extremely simplified iconic silhouette of the snow-capped volcanic cone of Mount Fuji towering in the distance, juxtaposed with the multi-tiered eaves of a vermilion red five-story pagoda, and delicate blooming cherry blossom branches framing the scene from the side, open layered mountain silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: shrine vermilion red, deep indigo mountain blue, and cherry blossom pale pink. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 14,
+                "name": "伏见稻荷大社",
+                "title": "千本鸟居 · 灵狐庇佑",
+                "country": "日本 · 京都",
+                "features": "蜿蜒沿山排列的千本朱红鸟居深邃长廊、衔着麦穗与宝珠的白狐石雕",
+                "keywords": [
+                    "伏见稻荷",
+                    "千本鸟居",
+                    "狐狸",
+                    "京都",
+                    "日本",
+                    "神社"
+                ],
+                "colors": "鸟居赤红 · 苍苔墨绿 · 松烟墨黑",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Fushimi Inari Taisha Kyoto (千本鸟居灵狐庇佑). Extremely simplified iconic silhouette of the winding corridor of densely stacked bright vermilion Torii gates receding rhythmically up the wooded mountain slope, fronted by a carved kitsune fox stone statue holding an ear of rice in its mouth, open dynamic perspective contour. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: intense torii gate red, moss stone grey-green, and deep charcoal black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 15,
+                "name": "浅草寺雷门",
+                "title": "江户风情 · 雷门灯明",
+                "country": "日本 · 东京",
+                "features": "重檐歇山门楼下悬挂的硕大朱红「雷門」提灯、两侧风神雷神壁龛意象",
+                "keywords": [
+                    "浅草寺",
+                    "雷门",
+                    "提灯",
+                    "东京",
+                    "日本",
+                    "江户"
+                ],
+                "colors": "提灯朱红 · 铜饰古金 · 飞檐黑灰",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Senso-ji Kaminarimon Gate Tokyo (江户风情雷门灯明). Extremely simplified iconic silhouette of the grand traditional temple gate with heavy curved tile eaves, centered on a massive ceremonial hanging red paper lantern with ornate black and brass fittings, flanked by architectural timber brackets, open majestic temple entrance silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: imperial lantern red, antique brass gold, and roof timber soot black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 16,
+                "name": "奈良若草山",
+                "title": "古都春草 · 鹿鸣呦呦",
+                "country": "日本 · 奈良",
+                "features": "若草山青翠草坡、古银杏树下俯首轻嗅的神鹿、远处东大寺飞檐微露",
+                "keywords": [
+                    "奈良",
+                    "若草山",
+                    "小鹿",
+                    "东大寺",
+                    "银杏",
+                    "日本"
+                ],
+                "colors": "银杏秋金 · 鹿毛暖赭 · 庭园苍青",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Nara Wakakusa Hill Deer and Temple (古都春草鹿鸣呦呦). Extremely simplified iconic silhouette of a spotted sacred deer standing gracefully under a sweeping ancient ginkgo tree with fan-shaped leaves, with the curved ridgepole eaves of Todaiji Great Buddha Hall peeking softly in the background, open tranquil pastoral silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: warm deer ochre brown, golden ginkgo yellow, and slate roof tile black. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 17,
+                "name": "曼谷大皇宫",
+                "title": "暹罗金辉 · 宝塔琼宇",
+                "country": "泰国 · 曼谷",
+                "features": "错落挺拔的金箔舍利尖塔群、贴满琉璃瓷片的五重泰式飞檐与合十莲花",
+                "keywords": [
+                    "曼谷",
+                    "大皇宫",
+                    "玉佛寺",
+                    "舍利塔",
+                    "泰国",
+                    "鎏金"
+                ],
+                "colors": "暹罗鎏金 · 琉璃石青 · 宝顶丹红",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Grand Palace Bangkok (暹罗金辉宝塔琼宇). Extremely simplified iconic silhouette of slender soaring golden chedi stupa spires rising above ornate multi-tiered Siamese roofs with upturned chofa bird-head horn finials and mosaic tiled walls, paired with a delicate blossoming lotus bud, open rich oriental architectural silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: royal glazed gold, temple mosaic indigo, and vermilion finial red. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 18,
+                "name": "普吉岛攀牙湾",
+                "title": "攀牙叠翠 · 碧海玉钉",
+                "country": "泰国 · 普吉",
+                "features": "如玉钉直插翡翠海的007白菜岩石、系满七彩缎带的长尾木船斩浪",
+                "keywords": [
+                    "普吉岛",
+                    "攀牙湾",
+                    "007岛",
+                    "长尾船",
+                    "泰国",
+                    "海岛"
+                ],
+                "colors": "安达曼碧绿 · 溶洞岩灰 · 船木暖棕",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Phuket Phang Nga Bay James Bond Island (攀牙叠翠碧海玉钉). Extremely simplified iconic silhouette of the steep, top-heavy limestone islet standing dramatically out of calm emerald waters, flanked by a traditional wooden longtail boat with colorful fluttering ribbons on its prow slicing through sea foam, open coastal seascape silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: tropical sea jade green, limestone weathered grey, and teakwood warm brown. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 19,
+                "name": "清迈塔佩门",
+                "title": "兰纳古韵 · 红砖飞鸽",
+                "country": "泰国 · 清迈",
+                "features": "红褐砖砌的兰纳古城墙门洞、成群和平鸽受惊振翅高飞、古寺斜阳",
+                "keywords": [
+                    "清迈",
+                    "塔佩门",
+                    "红砖墙",
+                    "鸽子",
+                    "泰国",
+                    "古城"
+                ],
+                "colors": "兰纳砖红 · 鸽羽暖灰 · 暖阳焦黄",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Chiang Mai Tha Phae Gate (兰纳古韵红砖飞鸽). Extremely simplified iconic silhouette of the historic notched terracotta-red brick city gate and crenellated wall, with a lively flock of doves fluttering dynamically into the open sky with outspread wings, open historical cultural silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: warm terracotta brick red, soft feather dove grey, and ochre sunlight. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 20,
+                "name": "芭提雅真理寺",
+                "title": "沧海梵音 · 巧夺天工",
+                "country": "泰国 · 芭提雅",
+                "features": "全部由纯木精雕而成的海滨庞大寺阁、神兽与飞天木雕层叠矗立、海浪拍崖",
+                "keywords": [
+                    "芭提雅",
+                    "真理寺",
+                    "木雕",
+                    "海边神殿",
+                    "泰国",
+                    "建筑奇迹"
+                ],
+                "colors": "原木深褐 · 碧海石蓝 · 浪花飞白",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Sanctuary of Truth Pattaya (沧海梵音巧夺天工). Extremely simplified iconic silhouette of the massive seaside all-wood sanctuary carved intricately with mythological figures, multi-tiered spires, and flying deities, perched firmly above crashing ocean waves along a rocky coast, open grand temple silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: hand-carved teakwood rich brown, ocean slate blue, and spray foam white. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 21,
+                "name": "滨海湾花园",
+                "title": "未来绿城 · 擎天古树",
+                "country": "新加坡",
+                "features": "巨型钢铁超级树垂直绿化植物缠绕、空中连桥走廊、暮色中的未来剪影",
+                "keywords": [
+                    "滨海湾",
+                    "超级树",
+                    "空中花园",
+                    "新加坡",
+                    "地标",
+                    "垂直绿化"
+                ],
+                "colors": "热带石绿 · 科技紫蓝 · 暮光微橙",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Gardens by the Bay Supertree Grove Singapore (未来绿城擎天古树). Extremely simplified iconic silhouette of soaring trumpet-shaped Supertrees entwined with lush climbing tropical ferns, connected by a suspended pedestrian skyway bridge curving gracefully in the air, open futuristic botanical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: tropical botanical viridian green, twilight purple-blue, and warm architectural orange. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 22,
+                "name": "巴厘岛海神庙",
+                "title": "海天浩渺 · 怒涛神祇",
+                "country": "印度尼西亚 · 巴厘岛",
+                "features": "屹立于黑色海蚀黑礁孤岛上的巴厘风神庙、日落滔天巨浪击石翻卷",
+                "keywords": [
+                    "巴厘岛",
+                    "海神庙",
+                    "黑礁石",
+                    "夕阳",
+                    "印尼",
+                    "海浪"
+                ],
+                "colors": "礁石玄黑 · 晚霞金红 · 怒涛飞白",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Tanah Lot Temple Bali (海天浩渺怒涛神祇). Extremely simplified iconic silhouette of the traditional Balinese multi-tiered pagoda shrine (meru) perched dramatically atop an offshore black volcanic rock formation, battered by powerful breaking sea waves and surging foam under a glowing sunset sky, open dramatic coastal silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: volcanic rock basalt black, ocean deep navy blue, and sunset burnt orange. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 23,
+                "name": "马尔代夫水屋",
+                "title": "极光潟湖 · 碧海独居",
+                "country": "马尔代夫",
+                "features": "环礁玻璃海上的木质曲折栈道、茅草水上别墅、浅海滑过的魔鬼鱼掠影",
+                "keywords": [
+                    "马尔代夫",
+                    "水上屋",
+                    "玻璃海",
+                    "浅礁",
+                    "度假",
+                    "潜水"
+                ],
+                "colors": "珊瑚薄荷绿 · 茅草暖黄 · 礁石深墨",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Maldives Overwater Villas and Lagoon (极光潟湖碧海独居). Extremely simplified iconic silhouette of thatched-roof luxury overwater bungalows built on wooden stilts along a winding jetty extending into a shallow crystal-clear coral lagoon, with the graceful silhouette of a manta ray gliding beneath ripples, open tranquil tropical silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: luminous aquamarine lagoon teal, thatched palm golden ochre, and deep reef charcoal. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            },
+            {
+                "id": 24,
+                "name": "吉萨金字塔",
+                "title": "千古奇迹 · 大漠金芒",
+                "country": "埃及 · 吉萨",
+                "features": "胡夫大金字塔锐利斜角切割黄沙大漠、夕阳拉长驼队剪影与棕榈树",
+                "keywords": [
+                    "金字塔",
+                    "吉萨",
+                    "胡夫",
+                    "驼队",
+                    "埃及",
+                    "古文明"
+                ],
+                "colors": "撒哈拉赭黄 · 阴影深褐 · 晚霞绯紫",
+                "output": "images/travel_destinations/undefined",
+                "prompt": "A clean minimalist hand-carved rubber stamp artwork centered on 4:5 vertical warm textured aged Xuan paper. The stamp artwork occupies about 65-70% of the canvas height, surrounded by a balanced 30% clean empty negative space with elegant margins. Open natural asymmetrical silhouette, freeform organic contour, absolutely NO circular frame, NO round border, NO circular enclosure. Theme: Great Pyramids of Giza (千古奇迹大漠金芒). Extremely simplified iconic silhouette of the colossal triangular sandstone faces of the Great Pyramid rising against the desert horizon with sharp sunlit and shadowed facets, fronted by a gentle caravan of camels with drivers walking across undulating sand dunes, open sweeping desert silhouette. Minimalist bold carved linocut relief lines, uncluttered composition, 2-3 muted spot colors: desert sand golden amber, pyramid shadow deep umber brown, and twilight dusty rose. Rough dry rubber stamp texture with subtle carved imperfections on fibrous paper. Pure isolated stamp artwork with clean negative space around it, NO full-bleed background, NO full scenery clutter, absolutely NO circular frame, NO round border, NO circular composition, NO circle enclosure, NO round seal medallion, absolutely NO text, NO letters, NO words, NO characters, NO typography, no watermark."
+            }
+        ]
+    },
   "games": {
     "id": "games",
     "title": "游戏神作",
@@ -5530,6 +6328,8 @@ window.COLLECTIONS = {
 // 兼容旧版引用
 window.CITIES = window.COLLECTIONS.cities.items;
 window.CHINA_CITIES = window.COLLECTIONS.china_cities ? window.COLLECTIONS.china_cities.items : [];
+window.FESTIVALS = window.COLLECTIONS.festivals ? window.COLLECTIONS.festivals.items : [];
+window.TRAVEL_DESTINATIONS = window.COLLECTIONS.travel_destinations ? window.COLLECTIONS.travel_destinations.items : [];
 window.SCENIC_SPOTS = window.COLLECTIONS.scenic_spots.items;
 window.POETRY = window.COLLECTIONS.poetry.items;
 window.WILDLIFE = window.COLLECTIONS.wildlife.items;

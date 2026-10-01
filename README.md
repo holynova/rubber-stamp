@@ -54,11 +54,11 @@
 ### 一键安装命令
 
 ```bash
-npx skills add holynova/rubber-stamp --skill rubber-stamp-art
+npx skills add holynova/hn-codex-skills --skill rubber-stamp-art
 ```
 
 - 查看技能文档：[`skills/rubber-stamp-art/SKILL.md`](./skills/rubber-stamp-art/SKILL.md)
-- GitHub 仓库：[rubber-stamp](https://github.com/holynova/rubber-stamp)
+- GitHub 技能源仓库：[hn-codex-skills](https://github.com/holynova/hn-codex-skills)
 
 ## 本地运行
 
