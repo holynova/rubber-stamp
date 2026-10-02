@@ -371,11 +371,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      opacity: 0;
-      transition: opacity .3s ease, transform .3s ease;
-    }
-    .feed-card-media img.loaded {
-      opacity: 1;
+      transition: transform .3s ease;
     }
     .feed-card:hover .feed-card-media img {
       transform: scale(1.025);
@@ -2447,6 +2443,13 @@
       const htmlChunk = nextBatch.map((x, i) => renderCardHtml(x, feedRenderedCount + i, col)).join("");
       gridEl.insertAdjacentHTML("beforeend", htmlChunk);
       feedRenderedCount += nextBatch.length;
+
+      gridEl.querySelectorAll('.feed-card-media img').forEach(img => {
+        if (img.complete && img.naturalWidth > 0) {
+          img.classList.add('loaded');
+          img.closest('.feed-card-media')?.classList.add('has-loaded');
+        }
+      });
 
       if (feedSentinel) {
         feedSentinel.style.display = feedRenderedCount < currentFilteredRows.length ? "block" : "none";
