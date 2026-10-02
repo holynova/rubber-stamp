@@ -2083,7 +2083,7 @@
     function getAllLikedItems() {
       const set = getLikedSet();
       const allLiked = [];
-      const seriesOrder = ["scenic_spots", "poetry", "cities", "china_cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+      const seriesOrder = ["scenic_spots", "poetry", "cities", "china_cities", "festivals", "travel_destinations", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
       seriesOrder.forEach(sKey => {
         const col = window.COLLECTIONS[sKey];
         if (col && col.items) {
@@ -2267,7 +2267,7 @@
        ------------------------------------------------------------- */
     function getCollection() {
       if (currentSeriesKey === "all") {
-        const order = ["scenic_spots", "poetry", "cities", "china_cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+        const order = ["scenic_spots", "poetry", "cities", "china_cities", "festivals", "travel_destinations", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
         const allItems = [];
         order.forEach(k => {
           const col = window.COLLECTIONS[k];
@@ -2304,7 +2304,7 @@
 
     function getSeriesItems(seriesKey) {
       if (seriesKey === "all") {
-        const order = ["scenic_spots", "poetry", "cities", "china_cities", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
+        const order = ["scenic_spots", "poetry", "cities", "china_cities", "festivals", "travel_destinations", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
         const allItems = [];
         order.forEach(k => {
           const col = window.COLLECTIONS[k];

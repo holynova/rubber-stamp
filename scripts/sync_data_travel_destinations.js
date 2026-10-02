@@ -7,7 +7,12 @@ const DATA_FILE = path.resolve(ROOT_DIR, 'data.js');
 const INDEX_FILE = path.resolve(ROOT_DIR, 'index.html');
 const PROMPTS_FILE = path.resolve(ROOT_DIR, 'prompts_travel_destinations.json');
 
+const files = fs.readdirSync(path.resolve(ROOT_DIR, 'images/travel_destinations')).filter(f => f.endsWith('.png'));
+
 const formattedItems = TRAVEL_DESTINATIONS_LIST.map(item => {
+  const prefix = String(item.id).padStart(2, '0');
+  const match = files.find(f => f.startsWith(prefix));
+  const fileName = match || `${prefix}_${item.name}.png`;
   return {
     id: item.id,
     name: item.name,
@@ -16,7 +21,7 @@ const formattedItems = TRAVEL_DESTINATIONS_LIST.map(item => {
     features: item.features,
     keywords: item.keywords,
     colors: item.colors,
-    output: `images/travel_destinations/${item.file}`,
+    output: `images/travel_destinations/${fileName}`,
     prompt: item.prompt
   };
 });
