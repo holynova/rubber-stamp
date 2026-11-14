@@ -1,7 +1,7 @@
 {
   "name": "rubber-stamp",
   "version": "1.0.0",
-  "description": "30 world city rubber stamp travel field-note posters | 30座世界城市的橡胶戳旅行实地笔记海报画廊",
+  "description": "rubber world gallery: 350 minimalist multi-color rubber stamp artworks across 13 collections | 350枚极简多色橡胶戳印艺术作品，13个系列",
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 8080",

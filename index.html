@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover">
-  <title>rubber world · 极简橡胶戳艺术印记</title>
-  <meta name="description" content="rubber world · 精选名胜风景、古诗名句、世界城市、游戏神作、珍稀动物、海洋生物、大气奇观等全站共276枚极简多色橡胶戳印艺术作品。附带原始作图Prompt与分类筛选。">
+  <title>rubber world 极简橡胶戳艺术印记</title>
+  <meta name="description" content="rubber world：名胜风景、古诗名句、世界城市、中国城市、时令节日、热门胜地、游戏神作、珍稀动物、海洋生物、大气奇观等 13 个系列共 350 枚极简多色橡胶戳印艺术作品。附带原始作图提示词与分类筛选。">
 
   <!-- Analytics -->
   <script
@@ -20,18 +20,12 @@
     :root {
       --paper: #f5efe6;
       --paper-card: #ffffff;
-      --paper-pop: #ffffff;
       --ink: #222222;
-      --muted: #888888;
+      --muted: #6f6355;
       --line: #e8e0d4;
       --line-dark: #d5cbbe;
-      --accent: #ff2442; /* Xiaohongshu Signature Red */
-      --accent-hover: #e01b37;
-      --seal-red: #b9281e;
-      --tab-active: #222222;
-      --tab-active-text: #ffffff;
-      --code-bg: #2b2724;
-      --code-text: #e6dac6;
+      --accent: #b9281e; /* 印泥朱砂红，全站单强调色 */
+      --accent-hover: #9e2017;
       --safe-bottom: env(safe-area-inset-bottom, 16px);
       --safe-top: env(safe-area-inset-top, 0px);
     }
@@ -66,9 +60,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(245, 239, 230, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: #f5efe6;
       border-bottom: 1px solid var(--line);
       padding: max(8px, var(--safe-top)) 16px 0;
       width: 100%;
@@ -104,13 +96,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12.5px;
+      font-size: 12px;
       font-family: Georgia, "Songti SC", serif;
       font-weight: bold;
-      box-shadow: 0 2px 6px rgba(185, 40, 30, 0.22);
     }
     .brand-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--ink);
       letter-spacing: -0.01em;
@@ -127,9 +118,9 @@
       height: 32px;
       background: #eae1d1;
       border: 1px solid transparent;
-      border-radius: 16px;
+      border-radius: 999px;
       padding: 0 12px 0 32px;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--ink);
       outline: none;
       transition: all .15s ease;
@@ -137,7 +128,6 @@
     .search-capsule input:focus {
       background: #ffffff;
       border-color: #d6ccbe;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .search-capsule .search-icon {
       position: absolute;
@@ -145,7 +135,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 12px;
-      color: #888;
+      color: #6f6355;
       pointer-events: none;
     }
 
@@ -161,43 +151,26 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
+      gap: 4px;
       height: 32px;
-      padding: 0;
-      background: #eae2d3;
-      color: #92887a;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
-      flex-shrink: 0;
-      box-shadow: none;
-    }
-    .btn-top-download:not(:disabled) {
+      padding: 0 12px;
       background: #b9281e;
       color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 2px 8px rgba(185, 40, 30, 0.28);
+      border: none;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s ease;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
-    .btn-top-download:hover:not(:disabled) {
+    .btn-top-download:hover {
       background: #9e2017;
-      transform: translateY(-1px) scale(1.05);
-      box-shadow: 0 4px 12px rgba(185, 40, 30, 0.35);
-    }
-    .btn-top-download:active:not(:disabled) {
-      transform: translateY(0) scale(0.96);
-    }
-    .btn-top-download:disabled {
-      background: #eae2d3;
-      color: #a39887;
-      border-color: transparent;
-      box-shadow: none;
-      cursor: not-allowed;
-      opacity: 0.72;
-      transform: none;
     }
     .btn-top-download.loading {
       cursor: wait;
+      opacity: 0.75;
     }
     .btn-top-download.loading .btn-download-icon svg {
       animation: spin 1s linear infinite;
@@ -216,13 +189,13 @@
       padding: 0 4px;
       background: #231b15;
       color: #ffffff;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       line-height: 14px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
+      border-radius: 999px;
       border: 1.5px solid #faf6ee;
       box-sizing: border-box;
       pointer-events: none;
@@ -271,7 +244,7 @@
     }
     .xhs-tab .tab-text {
       font-size: 14px;
-      color: #777777;
+      color: #6f6355;
       font-weight: 400;
       transition: all .15s ease;
       display: inline-flex;
@@ -283,7 +256,7 @@
     }
     .xhs-tab.active .tab-text {
       color: var(--ink);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
     }
     .xhs-tab .tab-indicator {
@@ -300,13 +273,30 @@
       width: 20px;
     }
     .xhs-tab .fav-badge {
-      font-size: 10px;
-      background: rgba(255, 36, 66, 0.12);
+      font-size: 12px;
+      background: rgba(185, 40, 30, 0.12);
       color: var(--accent);
       padding: 1px 5px;
-      border-radius: 10px;
+      border-radius: 999px;
       font-weight: 600;
       margin-left: 2px;
+    }
+    .xhs-tab .tab-count {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 1px;
+    }
+    .xhs-tab.active .tab-count {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Feed result count line */
+    .feed-count {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 2px 2px 10px;
     }
 
     /* -------------------------------------------------------------
@@ -329,20 +319,18 @@
 
     .feed-card {
       background: var(--paper-card);
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .2s ease;
       border: 1px solid var(--line);
       content-visibility: auto;
       contain-intrinsic-size: 200px 320px;
     }
     .feed-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.09);
     }
 
     /* Natural dynamic image height & progressive skeleton shimmer */
@@ -385,7 +373,7 @@
       background: #ffffff;
     }
     .feed-card-title {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 500;
       color: #222222;
       line-height: 1.35;
@@ -410,8 +398,8 @@
       overflow: hidden;
     }
     .author-name {
-      font-size: 11px;
-      color: #777777;
+      font-size: 12px;
+      color: #6f6355;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -424,7 +412,7 @@
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      color: #777777;
+      color: #6f6355;
       cursor: pointer;
       transition: transform .15s ease, color .15s ease;
       flex-shrink: 0;
@@ -458,8 +446,6 @@
       inset: 0;
       z-index: 1000;
       background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -478,7 +464,7 @@
       background: #ffffff;
       width: min(92vw, 660px);
       height: min(92vh, 920px);
-      border-radius: 16px;
+      border-radius: 12px;
       box-shadow: 0 24px 70px rgba(0,0,0,0.45);
       display: flex;
       flex-direction: column;
@@ -528,7 +514,7 @@
       margin-left: 6px;
     }
     .note-author-name {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
       color: #222222;
       overflow: hidden;
@@ -704,7 +690,7 @@
       gap: 12px;
     }
     .note-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       color: #222222;
       line-height: 1.35;
@@ -715,7 +701,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      font-size: 14.5px;
+      font-size: 14px;
       line-height: 1.6;
       color: #333333;
     }
@@ -738,7 +724,7 @@
       gap: 10px;
     }
     .prompt-title-tag {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 600;
       color: #333333;
     }
@@ -750,8 +736,8 @@
       color: #444444;
       border: 1px solid #dfd5c4;
       padding: 3px 9px;
-      border-radius: 6px;
-      font-size: 11.5px;
+      border-radius: 8px;
+      font-size: 12px;
       cursor: pointer;
       transition: all .15s ease;
     }
@@ -762,9 +748,9 @@
     }
     .prompt-full-text {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12.5px;
+      font-size: 12px;
       line-height: 1.65;
-      color: #555555;
+      color: #5c5245;
       background: transparent;
       border: none;
       padding: 2px 0 0;
@@ -794,19 +780,28 @@
     }
 
     .note-bottom-action {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+      min-width: 56px;
+      border-radius: 12px;
       background: #f7f4ee;
       border: 1px solid #ede5d8;
-      padding: 0;
+      padding: 7px 10px 6px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 3px;
       color: #333333;
       cursor: pointer;
-      transition: all .15s ease;
+      transition: background .15s ease;
       flex-shrink: 0;
+    }
+    .note-bottom-action .action-label {
+      font-size: 12px;
+      line-height: 1;
+      color: #333333;
+    }
+    .note-bottom-action.liked .action-label {
+      color: var(--accent);
     }
     .note-bottom-action:hover {
       background: #eee6d8;
@@ -823,8 +818,8 @@
       stroke: currentColor;
     }
     .note-bottom-action.liked {
-      background: #fff0f2;
-      border-color: #ffcdd4;
+      background: rgba(185, 40, 30, 0.07);
+      border-color: rgba(185, 40, 30, 0.3);
       color: var(--accent);
     }
     .note-bottom-action.liked svg {
@@ -861,6 +856,12 @@
     .note-nav-prev { left: -60px; }
     .note-nav-next { right: -60px; }
 
+    /* 窄屏下翻页箭头收进窗内，避免被推出可视区 */
+    @media (max-width: 900px) {
+      .note-nav-prev { left: 8px; }
+      .note-nav-next { right: 8px; }
+    }
+
     /* Toast Notification */
     #toast {
       position: fixed;
@@ -868,18 +869,18 @@
       left: 50%;
       transform: translateX(-50%) translateY(50px);
       background: rgba(20, 18, 16, 0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       color: #faf5eb;
       padding: 9px 18px;
-      border-radius: 20px;
-      font-size: 13px;
+      border-radius: 999px;
+      font-size: 14px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.3);
       opacity: 0;
       pointer-events: none;
       transition: all .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 3000;
-      white-space: nowrap;
+      max-width: calc(100vw - 32px);
+      white-space: normal;
+      text-align: center;
     }
     #toast.show {
       opacity: 1;
@@ -892,7 +893,7 @@
       text-align: center;
       padding: 60px 20px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
     .empty-favorites {
       background: var(--paper-card);
@@ -903,7 +904,6 @@
       margin: 40px auto;
     }
     .empty-favorites .empty-icon {
-      font-size: 40px;
       margin-bottom: 10px;
     }
     .empty-favorites h3 {
@@ -913,7 +913,7 @@
       font-weight: 600;
     }
     .empty-favorites p {
-      font-size: 13.5px;
+      font-size: 14px;
       line-height: 1.6;
       color: var(--muted);
       margin: 0 0 18px;
@@ -923,11 +923,10 @@
       color: #fff;
       border: none;
       padding: 8px 18px;
-      border-radius: 18px;
-      font-size: 13.5px;
+      border-radius: 999px;
+      font-size: 14px;
       font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(255, 36, 66, 0.3);
     }
 
     /* -------------------------------------------------------------
@@ -943,8 +942,6 @@
       height: 100%;
       z-index: 2000;
       background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1017,7 +1014,7 @@
     .share-card-paper {
       width: 100%;
       background: #fbf8f2;
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 12px 12px 10px;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
       border: 1px solid #e5dbcb;
@@ -1039,7 +1036,7 @@
     .share-card-series {
       font-size: 12px;
       font-weight: 600;
-      color: #666666;
+      color: #6f6355;
       letter-spacing: 0.8px;
     }
 
@@ -1078,8 +1075,8 @@
       text-overflow: ellipsis;
     }
     .share-card-features {
-      font-size: 11px;
-      color: #666666;
+      font-size: 12px;
+      color: #6f6355;
       margin: 0;
       line-height: 1.4;
       display: -webkit-box;
@@ -1107,21 +1104,21 @@
       overflow: hidden;
     }
     .share-qr-title {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       color: #222222;
       white-space: nowrap;
     }
     .share-qr-desc {
-      font-size: 9.5px;
-      color: #777777;
+      font-size: 12px;
+      color: #6f6355;
       white-space: nowrap;
     }
     .share-qr-right {
       flex-shrink: 0;
       background: #ffffff;
       padding: 3px;
-      border-radius: 6px;
+      border-radius: 8px;
       border: 1px solid #e5ddcf;
       display: flex;
       align-items: center;
@@ -1144,10 +1141,10 @@
     }
     .btn-share-save {
       flex: 1 1 auto;
-      background: linear-gradient(135deg, #ff2442, #e01b37);
+      background: #b9281e;
       color: #ffffff;
       border: none;
-      border-radius: 20px;
+      border-radius: 999px;
       padding: 8px 12px;
       font-size: 12px;
       font-weight: 600;
@@ -1156,13 +1153,11 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      box-shadow: 0 4px 12px rgba(255, 36, 66, 0.35);
       transition: all .15s ease;
       white-space: nowrap;
     }
     .btn-share-save:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(255, 36, 66, 0.45);
     }
     .btn-share-save:active {
       transform: translateY(0);
@@ -1172,14 +1167,13 @@
       background: rgba(255, 255, 255, 0.18);
       color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 20px;
+      border-radius: 999px;
       padding: 8px 12px;
-      font-size: 11.5px;
+      font-size: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 3px;
-      backdrop-filter: blur(4px);
       transition: all .15s ease;
       white-space: nowrap;
     }
@@ -1195,7 +1189,7 @@
         padding: max(13px, calc(var(--safe-top) + 8px)) 12px 0;
       }
       .brand-title {
-        font-size: 13.5px;
+        font-size: 14px;
         font-weight: 700;
         letter-spacing: -0.02em;
         white-space: nowrap;
@@ -1221,7 +1215,7 @@
       .search-capsule input {
         min-width: 0;
         height: 33px;
-        font-size: 12.5px;
+        font-size: 12px;
       }
       .btn-top-skill {
         width: 32px;
@@ -1232,11 +1226,6 @@
       .btn-top-skill .btn-skill-text {
         display: none;
       }
-      .btn-top-download {
-        width: 32px;
-        height: 32px;
-        padding: 0;
-      }
       .xhs-tabs-nav {
         gap: 16px;
         padding: 2px 2px 6px;
@@ -1245,7 +1234,7 @@
         font-size: 14px;
       }
       .xhs-tab.active .tab-text {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       /* Fixed 2-column mobile feed with comfortable breathing room */
@@ -1258,18 +1247,18 @@
         gap: 10px;
       }
       .feed-card {
-        border-radius: 10px;
+        border-radius: 12px;
       }
       .feed-card-info {
         padding: 6px 8px 8px;
         gap: 4px;
       }
       .feed-card-title {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.32;
       }
       .author-name {
-        font-size: 10.5px;
+        font-size: 12px;
       }
 
       /* Mobile Note Detail Page Fullscreen overlay */
@@ -1310,12 +1299,6 @@
         min-height: calc(52px + var(--safe-bottom));
         gap: 28px;
       }
-      .note-bottom-action {
-        width: 44px;
-        height: 44px;
-        padding: 0;
-        border-radius: 50%;
-      }
       .note-bottom-action svg {
         width: 22px;
         height: 22px;
@@ -1337,7 +1320,7 @@
       background: #eae2d3;
       color: #5d5345;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 16px;
+      border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
@@ -1351,7 +1334,6 @@
       background: #dfd5c4;
       color: #1f2124;
       transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
     .btn-top-skill:active {
       transform: translateY(0) scale(0.97);
@@ -1378,8 +1360,6 @@
       height: 100%;
       z-index: 2100;
       background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1398,7 +1378,7 @@
       background-image: radial-gradient(#ece3d2 1px, transparent 1px);
       background-size: 20px 20px;
       border: 1px solid rgba(185, 40, 30, 0.16);
-      border-radius: 18px;
+      border-radius: 12px;
       box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
       overflow: hidden;
       display: flex;
@@ -1436,9 +1416,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
-      box-shadow: 0 2px 8px rgba(185, 40, 30, 0.28);
       font-family: var(--font-seal, serif);
       flex-shrink: 0;
     }
@@ -1454,21 +1433,20 @@
       font-weight: 700;
       color: #231b15;
       letter-spacing: -0.01em;
-      font-family: monospace, sans-serif;
     }
     .skill-ver-tag {
       display: inline-block;
       padding: 2px 7px;
       background: #e8ded0;
-      color: #726252;
-      border-radius: 10px;
-      font-size: 11px;
+      color: #5c5245;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 600;
     }
     .skill-modal-subtitle {
       margin: 3px 0 0;
       font-size: 12px;
-      color: #7a6e62;
+      color: #6f6355;
       line-height: 1.35;
     }
     .skill-modal-close {
@@ -1480,7 +1458,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #555;
+      color: #5c5245;
       cursor: pointer;
       transition: all .15s ease;
       flex-shrink: 0;
@@ -1505,11 +1483,17 @@
       flex-direction: column;
       gap: 9px;
     }
+    .skill-intro {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #3e352d;
+    }
     .skill-section-title {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: #3e352d;
     }
@@ -1519,16 +1503,15 @@
       align-items: center;
       background: #201d1b;
       border: 1px solid #332d29;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 10px 14px;
       gap: 10px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.25);
     }
     .skill-code-text {
       margin: 0;
       flex: 1;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 11.5px;
+      font-size: 12px;
       line-height: 1.45;
       color: #f7ede1;
       white-space: pre-wrap;
@@ -1541,7 +1524,7 @@
       background: #b9281e;
       color: #ffffff;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 6px 12px;
       font-size: 12px;
       font-weight: 600;
@@ -1550,14 +1533,14 @@
       transition: all .18s ease;
     }
     .btn-copy-skill-cmd:hover {
-      background: #9f1f16;
+      background: #9e2017;
       transform: scale(1.02);
     }
     .btn-copy-skill-cmd:active {
       transform: scale(0.96);
     }
     .btn-copy-skill-cmd.copied {
-      background: #2b7a4b;
+      background: #9e2017;
     }
 
     .skill-modes-grid {
@@ -1573,12 +1556,11 @@
     .skill-mode-card {
       background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.07);
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
     .skill-mode-badge {
       display: inline-flex;
@@ -1595,14 +1577,14 @@
       color: #665b50;
     }
     .skill-mode-desc strong {
-      color: #9c281e;
+      color: #b9281e;
     }
     .skill-mode-example {
       margin-top: 4px;
       padding-top: 6px;
       border-top: 1px dashed rgba(0, 0, 0, 0.08);
-      font-size: 11px;
-      color: #8c7e72;
+      font-size: 12px;
+      color: #6f6355;
       line-height: 1.4;
     }
     .skill-mode-example code {
@@ -1625,8 +1607,8 @@
       justify-content: center;
       gap: 7px;
       padding: 9px 14px;
-      border-radius: 10px;
-      font-size: 12.5px;
+      border-radius: 8px;
+      font-size: 12px;
       font-weight: 600;
       text-decoration: none;
       transition: all .18s ease;
@@ -1665,21 +1647,22 @@
       <!-- Search Capsule -->
       <div class="search-capsule">
         <span class="search-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-        <input type="text" id="search-input" placeholder="搜索" autocomplete="off">
+        <input type="text" id="search-input" placeholder="搜索名胜、诗句、城市、动物…" autocomplete="off">
       </div>
 
       <!-- Right Tools: AI Skill & Batch Download -->
       <div class="header-tools">
-        <button class="btn-top-skill" id="btn-top-skill" onclick="openSkillModal()" title="AI 橡皮图章生成器 Skill（支持文字/图片双模式）" aria-label="获取 Skill">
+        <button class="btn-top-skill" id="btn-top-skill" onclick="openSkillModal()" title="做图技能：让 AI 帮你画同款橡皮章" aria-label="做图技能">
           <span class="btn-skill-icon">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
           </span>
           <span class="btn-skill-text">Skill</span>
         </button>
-        <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载（点赞印章后可下载）" aria-label="批量下载" disabled>
+        <button class="btn-top-download" id="btn-batch-download" onclick="downloadLikedStamps()" title="批量下载已点赞的原图" aria-label="批量下载已点赞的原图">
           <span class="btn-download-icon">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           </span>
+          <span id="batch-download-label">下载</span>
           <span class="btn-download-badge" id="batch-download-count" style="display: none;">0</span>
         </button>
       </div>
@@ -1754,6 +1737,7 @@
 
   <!-- Feed Waterfall Container -->
   <main class="feed-container">
+    <div class="feed-count" id="feed-count"></div>
     <div class="feed-grid" id="grid"></div>
     <div id="feed-sentinel" style="height: 20px; margin-top: 10px; visibility: hidden;"></div>
   </main>
@@ -1768,7 +1752,7 @@
         </button>
 
         <div class="note-author-info">
-          <div class="note-author-name" id="note-author-name">名胜风景 · 第 01 枚</div>
+          <div class="note-author-name" id="note-author-name">名胜风景 第 01 枚</div>
         </div>
       </div>
 
@@ -1808,13 +1792,13 @@
             <!-- Inline Xiaohongshu Prompt Block -->
             <div class="note-prompt-section">
               <div class="prompt-section-header">
-                <span class="prompt-title-tag">提示词</span>
-                <button class="btn-copy-inline-prompt" onclick="copyCurrentPrompt()" title="点击复制 Prompt">
+                <span class="prompt-title-tag">作图提示词</span>
+                <button class="btn-copy-inline-prompt" onclick="copyCurrentPrompt()" title="复制作图提示词">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                   <span>复制</span>
                 </button>
               </div>
-              <div class="prompt-full-text" id="note-prompt-text" onclick="copyCurrentPrompt()" title="点击一键复制作图 Prompt"></div>
+              <div class="prompt-full-text" id="note-prompt-text" onclick="copyCurrentPrompt()" title="点一下复制作图提示词"></div>
             </div>
           </div>
         </div>
@@ -1825,16 +1809,19 @@
         <!-- Like Button -->
         <button class="note-bottom-action" id="btn-note-like" onclick="toggleNoteLike()" title="点赞">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span class="action-label">点赞</span>
         </button>
 
         <!-- Download Single PNG Button -->
-        <button class="note-bottom-action" id="btn-note-download" onclick="downloadCurrentNote()" title="下载高清原图">
+        <button class="note-bottom-action" id="btn-note-download" onclick="downloadCurrentNote()" title="下载原图">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span class="action-label">下载</span>
         </button>
 
         <!-- Share Button -->
-        <button class="note-bottom-action" id="btn-note-share" onclick="shareCurrentNote()" title="生成分享海报">
+        <button class="note-bottom-action" id="btn-note-share" onclick="shareCurrentNote()" title="分享海报">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          <span class="action-label">分享</span>
         </button>
       </div>
     </div>
@@ -1874,8 +1861,8 @@
           <!-- Card Footer with QR Code -->
           <div class="share-card-footer">
             <div class="share-footer-left">
-              <div class="share-qr-title">长按识别二维码</div>
-              <div class="share-qr-desc">鉴赏与获取 Prompt</div>
+              <div class="share-qr-title">扫码查看这枚印章</div>
+              <div class="share-qr-desc">含原图与作图提示词</div>
             </div>
             <div class="share-qr-right">
               <canvas id="share-card-qr" width="46" height="46"></canvas>
@@ -1888,7 +1875,7 @@
       <div class="share-modal-actions">
         <button class="btn-share-save" id="btn-share-save-poster" onclick="downloadShareCardPoster()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>保存分享海报 (PNG)</span>
+          <span>下载分享海报</span>
         </button>
         <button class="btn-share-link" onclick="copyShareCardLink()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
@@ -1910,7 +1897,7 @@
               <h3 class="skill-modal-title">rubber-stamp-art</h3>
               <span class="skill-ver-tag">Skill v1.0</span>
             </div>
-            <p class="skill-modal-subtitle">AI 橡皮图章版画生成器 · 支持文字/图片双模式</p>
+            <p class="skill-modal-subtitle">AI 橡皮图章版画生成器，文字或图片都能用</p>
           </div>
         </div>
         <button class="skill-modal-close" onclick="closeSkillModal()" title="关闭" aria-label="关闭">
@@ -1920,9 +1907,10 @@
 
       <!-- Modal Body -->
       <div class="skill-modal-body">
+        <p class="skill-intro">给 AI 编程助手用的作图技能，装好后让 AI 帮你画同款橡皮章。</p>
         <!-- Install Command Section -->
         <div class="skill-section">
-          <div class="skill-section-title">一键安装命令</div>
+          <div class="skill-section-title">安装命令</div>
           <div class="skill-code-box">
             <pre class="skill-code-text" id="skill-cmd-code">npx skills add holynova/hn-codex-skills --skill rubber-stamp-art</pre>
             <button class="btn-copy-skill-cmd" id="btn-copy-skill" onclick="copySkillCommand()" title="复制命令">
@@ -1968,7 +1956,7 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast">已复制作图 Prompt 到剪贴板</div>
+  <div id="toast">已复制</div>
 
   <!-- Scripts: Dependencies & Data -->
   <script src="jszip.min.js"></script>
@@ -1990,6 +1978,7 @@
     const favTabBadge = document.querySelector("#fav-tab-badge");
     const batchDownloadCount = document.querySelector("#batch-download-count");
     const btnBatchDownload = document.querySelector("#btn-batch-download");
+    const feedCountEl = document.querySelector("#feed-count");
 
     // Note Detail Modal elements
     const noteModal = document.querySelector("#note-detail-modal");
@@ -2072,6 +2061,20 @@
       }
     }
 
+    // 清掉本地收藏里已不存在的旧记录，避免角标数与列表对不上
+    function pruneStaleLikes() {
+      const set = getLikedSet();
+      const valid = new Set(getSeriesItems("all").map(x => x.output));
+      let changed = false;
+      set.forEach(key => {
+        if (!valid.has(key)) {
+          set.delete(key);
+          changed = true;
+        }
+      });
+      if (changed) saveLikedSet(set);
+    }
+
     function isLiked(output) {
       return getLikedSet().has(output);
     }
@@ -2107,7 +2110,7 @@
       if (liked) {
         set.delete(item.output);
         saveLikedSet(set);
-        showToast(`已取消对「${name}」的点赞`);
+        showToast(`已取消点赞「${name}」`);
       } else {
         set.add(item.output);
         saveLikedSet(set);
@@ -2119,8 +2122,7 @@
     }
 
     function handleCardLike(output) {
-      const col = getCollection();
-      const item = col.items.find(x => x.output === output) || getAllLikedItems().find(x => x.output === output);
+      const item = getCollection("all").items.find(x => x.output === output) || getAllLikedItems().find(x => x.output === output);
       if (item) toggleLike(item);
     }
 
@@ -2134,10 +2136,9 @@
         batchDownloadCount.style.display = count > 0 ? "inline-flex" : "none";
       }
       if (btnBatchDownload) {
-        btnBatchDownload.disabled = count === 0;
-        btnBatchDownload.title = count > 0 
-          ? `批量下载已点赞的 ${count} 张高清原图` 
-          : "批量下载（点赞印章后可下载）";
+        btnBatchDownload.title = count > 0
+          ? `批量下载已点赞的 ${count} 张原图`
+          : "还没有点赞的作品";
         btnBatchDownload.setAttribute("aria-label", btnBatchDownload.title);
       }
 
@@ -2165,7 +2166,7 @@
 
     function getHeartSvg(filled) {
       return filled
-        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="#ff2442" stroke="#ff2442" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`
+        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="#b9281e" stroke="#b9281e" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`
         : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
     }
 
@@ -2179,39 +2180,47 @@
     /* -------------------------------------------------------------
        Batch & Single Download (JSZip Client-Side Packaging)
        ------------------------------------------------------------- */
+    function formatSize(bytes) {
+      if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+      return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    }
+
     async function downloadLikedStamps() {
       const likedItems = getAllLikedItems();
       if (likedItems.length === 0) {
-        showToast("您还没有点赞任何印章作品，请先点赞！");
+        showToast("还没有点赞的作品，先点赞再来这里批量下载");
         return;
       }
+      if (btnBatchDownload.classList.contains("loading")) return;
 
-      btnBatchDownload.disabled = true;
       btnBatchDownload.classList.add("loading");
+      const labelEl = document.getElementById("batch-download-label");
 
       try {
-        showToast("正在准备打包组件...");
+        showToast("正在准备打包…");
         if (typeof JSZip === "undefined") {
           await loadScriptOnce("jszip.min.js");
         }
-        showToast(`准备打包 ${likedItems.length} 张高清原图...`);
+        showToast(`正在打包 ${likedItems.length} 张原图…`);
         const zip = new JSZip();
         const folder = zip.folder("rubber-stamps-favorites");
 
+        let totalBytes = 0;
         for (let i = 0; i < likedItems.length; i++) {
           const item = likedItems[i];
-          showToast(`正在打包 (${i + 1}/${likedItems.length})...`);
+          if (labelEl) labelEl.textContent = `下载中 ${i + 1}/${likedItems.length}`;
 
           const response = await fetch(item.output);
           if (!response.ok) throw new Error(`无法获取图片: ${item.output}`);
           const blob = await response.blob();
+          totalBytes += blob.size;
 
           const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\/:*?"<>|]/g, "_");
           const filename = `${item.seriesTitle || "印章"}_${String(item.id).padStart(2, "0")}_${cleanTitle}.png`;
           folder.file(filename, blob);
         }
 
-        showToast("正在压缩原图合集，请稍候...");
+        showToast("正在压缩…");
         const zipBlob = await zip.generateAsync({
           type: "blob",
           compression: "DEFLATE",
@@ -2227,12 +2236,13 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(downloadUrl);
 
-        showToast(`成功打包下载 ${likedItems.length} 张高清原图！`);
+        showToast(`已打包下载 ${likedItems.length} 张原图，共 ${formatSize(totalBytes)}`);
       } catch (err) {
         console.error("Batch download error:", err);
         showToast("下载遇到问题，请检查网络后重试");
       } finally {
         btnBatchDownload.classList.remove("loading");
+        if (labelEl) labelEl.textContent = "下载";
         updateLikesUI();
       }
     }
@@ -2241,7 +2251,7 @@
       if (!item || !item.output) return;
       try {
         const cleanTitle = (item.title || item.city || item.name || `stamp_${item.id}`).replace(/[\/:*?"<>|]/g, "_");
-        showToast(`正在下载「${cleanTitle}」原图...`);
+        showToast(`正在下载「${cleanTitle}」原图…`);
         const res = await fetch(item.output);
         if (!res.ok) throw new Error("Fetch failed");
         const blob = await res.blob();
@@ -2252,7 +2262,7 @@
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(a.href);
-        showToast(`已保存「${cleanTitle}」高清原图`);
+        showToast(`已下载「${cleanTitle}」原图（${formatSize(blob.size)}）`);
       } catch (e) {
         showToast("下载失败，请稍后重试");
       }
@@ -2261,8 +2271,8 @@
     /* -------------------------------------------------------------
        Collection Resolver
        ------------------------------------------------------------- */
-    function getCollection() {
-      if (currentSeriesKey === "all") {
+    function getCollection(key = currentSeriesKey) {
+      if (key === "all") {
         const order = ["scenic_spots", "poetry", "cities", "china_cities", "festivals", "travel_destinations", "games", "wildlife", "marine", "atmosphere", "zodiac", "solar_terms", "shanhaijing"];
         const allItems = [];
         order.forEach(k => {
@@ -2285,7 +2295,7 @@
           items: allItems
         };
       }
-      if (currentSeriesKey === "favorites") {
+      if (key === "favorites") {
         const likedItems = getAllLikedItems();
         return {
           id: "favorites",
@@ -2295,7 +2305,7 @@
           items: likedItems
         };
       }
-      return window.COLLECTIONS[currentSeriesKey] || window.COLLECTIONS.scenic_spots;
+      return window.COLLECTIONS[key] || window.COLLECTIONS.scenic_spots;
     }
 
     function getSeriesItems(seriesKey) {
@@ -2359,9 +2369,9 @@
       setTimeout(() => toastEl.classList.remove("show"), 2000);
     }
 
-    function copyText(text, successMsg = "已复制作图 Prompt 到剪贴板") {
+    function copyText(text, successMsg = "已复制") {
       if (!text) {
-        showToast("暂无可复制的 Prompt");
+        showToast("这枚作品没有提示词");
         return;
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -2384,7 +2394,7 @@
         document.execCommand("copy");
         showToast(successMsg);
       } catch (e) {
-        showToast("复制失败，请手动选取");
+        showToast("复制失败，请手动选择文字复制");
       }
       document.body.removeChild(ta);
     }
@@ -2471,15 +2481,29 @@
       feedSentinelObserver.observe(feedSentinel);
     }
 
+    function updateFeedCount(col, q, n) {
+      if (!feedCountEl) return;
+      if (q) {
+        feedCountEl.textContent = `找到 ${n} 枚`;
+      } else if (currentSeriesKey === "favorites") {
+        feedCountEl.textContent = `已点赞 ${n} 枚`;
+      } else {
+        feedCountEl.textContent = `${col.title}，共 ${col.items.length} 枚`;
+      }
+    }
+
     function render() {
-      const col = getCollection();
       const q = searchInput.value.trim().toLowerCase();
+      // 有搜索词时自动搜全部作品（点赞页内搜索仍只搜已点赞）
+      const col = (q && currentSeriesKey !== "favorites") ? getCollection("all") : getCollection();
 
       currentFilteredRows = col.items.filter(x => {
         const titleStr = (x.city || x.title || x.name || "") + " " + (x.animal || "") + " " + (x.season || "") + " " + (x.region || "") + " " + (x.province || "") + " " + (x.author || "") + " " + (x.work || "") + " " + (x.category || "") + " " + (x.seriesTitle || "");
         const textToMatch = (titleStr + " " + (x.features || "") + " " + (x.keywords || []).join(" ") + " " + (x.colors || "")).toLowerCase();
         return !q || textToMatch.includes(q);
       });
+
+      updateFeedCount(col, q, currentFilteredRows.length);
 
       if (!currentFilteredRows.length) {
         if (feedSentinel) feedSentinel.style.display = "none";
@@ -2488,12 +2512,12 @@
             <div class="empty empty-favorites">
               <div class="empty-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
               <h3>暂无已点赞的印章作品</h3>
-              <p>在画廊中浏览喜欢的印章作品时，点击点赞收藏至此处，即可一键批量打包下载！</p>
-              <button class="btn-goto-gallery" onclick="switchSeries('all')">去浏览印章画廊</button>
+              <p>看到喜欢的作品，点一下爱心收藏到这里，之后可以批量打包下载。</p>
+              <button class="btn-goto-gallery" onclick="switchSeries('all')">去浏览画廊</button>
             </div>
           `;
         } else {
-          gridEl.innerHTML = '<div class="empty">没有找到符合条件的印章作品。</div>';
+          gridEl.innerHTML = '<div class="empty">没有找到相关作品，换个词试试。</div>';
         }
         return;
       }
@@ -2529,6 +2553,16 @@
       t.addEventListener("click", () => switchSeries(t.dataset.series));
     });
 
+    // 在分类标签后显示各系列枚数（点赞页已有角标，跳过）
+    seriesTabs.forEach(t => {
+      const key = t.dataset.series;
+      if (key === "favorites") return;
+      const span = document.createElement("span");
+      span.className = "tab-count";
+      span.textContent = getSeriesItems(key).length;
+      t.appendChild(span);
+    });
+
     let searchDebounceTimer = null;
     searchInput.oninput = () => {
       clearTimeout(searchDebounceTimer);
@@ -2558,6 +2592,15 @@
       }
 
       noteModal.classList.toggle("immersive-mode", isImmersive);
+
+      if (isImmersive) {
+        try {
+          if (!localStorage.getItem("rubberStampImmersiveHintShown")) {
+            showToast("轻点图片退出全屏");
+            localStorage.setItem("rubberStampImmersiveHintShown", "1");
+          }
+        } catch (e) { /* 隐私模式下跳过提示 */ }
+      }
 
     }
 
@@ -2697,10 +2740,10 @@
       // Trigger lookahead preloader for subsequent slides (focus on +1, +2, +3, +4, -1)
       preloadAdjacentDetails(index);
 
-      noteAuthorName.textContent = seriesTitle + ` · 第 ${String(x.id).padStart(2, "0")} 枚`;
+      noteAuthorName.textContent = seriesTitle + ` 第 ${String(x.id).padStart(2, "0")} 枚`;
 
       noteTitle.textContent = displayName;
-      noteDesc.textContent = x.features || (x.keywords || []).join(" · ") || "";
+      noteDesc.textContent = x.features || (x.keywords || []).join("、") || "";
       notePromptText.textContent = promptText;
 
       syncNoteLikeUI(liked);
@@ -2818,7 +2861,7 @@
       if (currentFilteredRows[currentModalIndex]) {
         const item = currentFilteredRows[currentModalIndex];
         const displayName = item.city || item.title || item.name;
-        copyText(item.prompt, `已复制「${displayName}」作图 Prompt`);
+        copyText(item.prompt, `已复制「${displayName}」的作图提示词`);
       }
     }
 
@@ -2840,7 +2883,7 @@
        ------------------------------------------------------------- */
     function getShareUrl(item) {
       const base = window.location.origin + window.location.pathname;
-      const seriesKey = item.seriesKey || currentSeriesKey || "scenic_spots";
+      const seriesKey = item.seriesKey || currentSeriesKey || "all";
       const idOrName = item.name || item.city || item.title || item.id;
       return `${base}?item=${encodeURIComponent(idOrName)}#${seriesKey}`;
     }
@@ -2856,7 +2899,7 @@
       currentShareItem = item;
       const col = getCollection();
       const displayName = item.city || item.title || item.name || "橡胶戳作品";
-      const seriesTitle = item.seriesTitle || col.title || "华夏胜景系列";
+      const seriesTitle = item.seriesTitle || col.title || "橡胶戳系列";
       const thumbUrl = getThumbnailUrl(item.output);
 
       if (shareCardSeriesTag) shareCardSeriesTag.textContent = seriesTitle;
@@ -2865,7 +2908,7 @@
         shareCardImg.alt = displayName;
       }
       if (shareCardTitle) shareCardTitle.textContent = displayName;
-      if (shareCardFeatures) shareCardFeatures.textContent = item.features || (item.keywords || []).join(" · ") || "";
+      if (shareCardFeatures) shareCardFeatures.textContent = item.features || (item.keywords || []).join("、") || "";
 
       if (shareModal) {
         shareModal.style.display = "flex";
@@ -2927,7 +2970,7 @@
       const name = currentShareItem.city || currentShareItem.title || currentShareItem.name;
       const shareUrl = getShareUrl(currentShareItem);
       const text = `【rubber world】${name}\n${shareUrl}`;
-      copyText(text, `已复制「${name}」分享链接到剪贴板`);
+      copyText(text, `已复制「${name}」的分享链接`);
     }
 
     async function downloadShareCardPoster() {
@@ -2935,11 +2978,11 @@
       const item = currentShareItem;
       const col = getCollection();
       const displayName = item.city || item.title || item.name || "橡胶戳作品";
-      const seriesTitle = item.seriesTitle || col.title || "华夏胜景系列";
+      const seriesTitle = item.seriesTitle || col.title || "橡胶戳系列";
       const shareUrl = getShareUrl(item);
 
       const origBtnHtml = btnShareSavePoster.innerHTML;
-      btnShareSavePoster.innerHTML = `<span>正在生成高清海报...</span>`;
+      btnShareSavePoster.innerHTML = `<span>正在生成海报…</span>`;
       btnShareSavePoster.disabled = true;
 
       try {
@@ -2995,7 +3038,7 @@
         // 3. Top Header: Minimal Series Title Centered
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillStyle = "#666666";
+        ctx.fillStyle = "#6f6355";
         ctx.font = "500 20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
         ctx.fillText(seriesTitle, W / 2, 58);
 
@@ -3015,9 +3058,9 @@
         ctx.font = "bold 32px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
         ctx.fillText(displayName, pad, titleY);
 
-        ctx.fillStyle = "#666666";
+        ctx.fillStyle = "#6f6355";
         ctx.font = "20px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        const features = item.features || (item.keywords || []).join(" · ") || "";
+        const features = item.features || (item.keywords || []).join("、") || "";
         ctx.fillText(features.length > 34 ? features.slice(0, 33) + "..." : features, pad, featuresY);
 
         // 6. Dashed Separator Line
@@ -3033,11 +3076,11 @@
         // 7. Footer Left Typography & Right QR Code
         ctx.fillStyle = "#222222";
         ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText("长按识别二维码", pad, qrBoxY + 36);
+        ctx.fillText("扫码查看这枚印章", pad, qrBoxY + 36);
 
-        ctx.fillStyle = "#777777";
+        ctx.fillStyle = "#6f6355";
         ctx.font = "18px -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
-        ctx.fillText("鉴赏与获取 Prompt", pad, qrBoxY + 76);
+        ctx.fillText("含原图与作图提示词", pad, qrBoxY + 76);
 
         // Right QR Code
         if (typeof QRCode === "undefined") {
@@ -3077,7 +3120,7 @@
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
-          showToast(`成功保存「${displayName}」分享海报！`);
+          showToast(`已下载「${displayName}」分享海报`);
         }, "image/png");
 
       } catch (err) {
@@ -3136,7 +3179,7 @@
       const finishCopyFeedback = () => {
         if (btnCopySkill) btnCopySkill.classList.add("copied");
         if (skillCopyBtnText) skillCopyBtnText.textContent = "已复制";
-        showToast("已复制 Skill 安装命令到剪贴板");
+        showToast("已复制安装命令");
         setTimeout(() => {
           if (btnCopySkill) btnCopySkill.classList.remove("copied");
           if (skillCopyBtnText) skillCopyBtnText.textContent = "复制";
@@ -3754,18 +3797,6 @@
 
     const urlParams = new URLSearchParams(window.location.search);
 
-    if (urlParams.get("seedLikes") === "1" || urlParams.get("seedLikes") === "true") {
-      const demoLikes = [
-        "images/scenic_spots/01_故宫博物院.png",
-        "images/scenic_spots/02_八达岭长城.png",
-        "images/poetry/01_竹外桃花三两枝.png",
-        "images/poetry/50_一蓑烟雨任平生.png",
-        "images/wildlife/01_大熊猫.png",
-        "images/marine/01_蓝鲸.png"
-      ];
-      localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify(demoLikes));
-    }
-
     const rawHash = window.location.hash.replace("#", "");
     const cleanHash = rawHash.split("?")[0];
     if (cleanHash && (window.COLLECTIONS[cleanHash] || cleanHash === "favorites" || cleanHash === "all")) {
@@ -3775,6 +3806,7 @@
       preloadAdjacentTabs("all");
     }
 
+    pruneStaleLikes();
     updateLikesUI();
 
     const modalParam = urlParams.get("modal");
